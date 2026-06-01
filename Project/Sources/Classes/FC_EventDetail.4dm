@@ -83,7 +83,6 @@ Function btnAiAction4EventHandler($formEventCode : Integer)
 
 //MARK: - Private
 Function _onLoad()
-	RESIZE FORM WINDOW(1100; 800)
 	This._populateHeader()
 	This._loadEventLines()
 	This._renderAIPanel(Null)
@@ -333,13 +332,28 @@ Function _showConfirmPanel($action : Object; $execResult : Object)
 	OBJECT SET TITLE(*; "text_confirm_impact_val"; $prefix+String($impact; "### ### ##0 €"))
 	OBJECT SET TITLE(*; "text_confirm_newtotal_val"; String($currentTotal+$impact; "### ### ##0 €"))
 	This._setConfirmPanelVisible(True)
-	RESIZE FORM WINDOW(1460; 800)
+	This._resizeWindow(1460)
 
 Function _hideConfirmPanel()
-	RESIZE FORM WINDOW(1100; 800)
 	This._setConfirmPanelVisible(False)
+	This._resizeWindow(1100)
 	This._pendingExecResult:=Null
 	This._pendingAction:=Null
+
+Function _resizeWindow($width : Integer)
+	var $curL; $curT; $curR; $curB : Integer
+	GET WINDOW RECT($curL; $curT; $curR; $curB; Current form window)
+	var $height : Integer:=$curB-$curT
+	// Clamp to screen so expanded window doesn't go off-screen
+	var $screenL; $screenT; $screenR; $screenB : Integer
+	SCREEN COORDINATES($screenL; $screenT; $screenR; $screenB)
+	If (($curL+$width)>$screenR)
+		$curL:=$screenR-$width
+		If ($curL<$screenL)
+			$curL:=$screenL
+		End if 
+	End if 
+	SET WINDOW RECT($curL; $curT; $curL+$width; $curT+$height; Current form window)
 
 Function _setConfirmPanelVisible($visible : Boolean)
 	OBJECT SET VISIBLE(*; "rect_confirm_sep"; $visible)
