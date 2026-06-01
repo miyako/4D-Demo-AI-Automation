@@ -1,136 +1,457 @@
 {
   "_comment": "Service templates per weather profile. Key = venueOption__conditions__temperature. Each entry: mandatory (always add), optional (add with given probability 0..1).",
-
   "indoor__indifferent__normal": {
     "mandatory": [
-      { "category": "Catering",           "useGuests": true },
-      { "category": "Sound & AV",         "qty": 1, "prefer": "indoor" },
-      { "category": "Lighting",           "qty": 1, "prefer": "indoor" },
-      { "category": "Coordination",       "qty": 1, "label": "Chef de projet événementiel" }
+      {
+        "category": "Catering",
+        "useGuests": true
+      },
+      {
+        "category": "Sound & AV",
+        "qty": 1,
+        "prefer": "indoor"
+      },
+      {
+        "category": "Lighting",
+        "qty": 1,
+        "prefer": "indoor"
+      },
+      {
+        "category": "Coordination",
+        "qty": 1,
+        "label": "Event project manager"
+      }
     ],
     "optional": [
-      { "prob": 0.7, "category": "Photography & Film", "qty": 1 },
-      { "prob": 0.6, "category": "Security",           "useGuestsFraction": 100 },
-      { "prob": 0.5, "category": "Entertainment",      "qty": 1 },
-      { "prob": 0.4, "category": "Furniture & Decor",  "qty": 1 },
-      { "prob": 0.3, "category": "Communication",      "qty": 1 },
-      { "prob": 0.2, "category": "Transport",          "qty": 1 }
+      {
+        "prob": 0.7,
+        "category": "Photography & Film",
+        "qty": 1
+      },
+      {
+        "prob": 0.6,
+        "category": "Security",
+        "useGuestsFraction": 100
+      },
+      {
+        "prob": 0.5,
+        "category": "Entertainment",
+        "qty": 1
+      },
+      {
+        "prob": 0.4,
+        "category": "Furniture & Decor",
+        "qty": 1
+      },
+      {
+        "prob": 0.3,
+        "category": "Communication",
+        "qty": 1
+      },
+      {
+        "prob": 0.2,
+        "category": "Transport",
+        "qty": 1
+      }
     ]
   },
-
   "outdoor__sunny__normal": {
     "mandatory": [
-      { "category": "Catering",           "useGuests": true },
-      { "category": "Sound & AV",         "qty": 1, "prefer": "outdoor" },
-      { "category": "Lighting",           "qty": 1 },
-      { "category": "Structures",         "qty": 1, "label": "Podium/scène 6x4m" }
+      {
+        "category": "Catering",
+        "useGuests": true
+      },
+      {
+        "category": "Sound & AV",
+        "qty": 1,
+        "prefer": "outdoor"
+      },
+      {
+        "category": "Lighting",
+        "qty": 1
+      },
+      {
+        "category": "Structures",
+        "qty": 1,
+        "label": "Stage/podium 6x4m"
+      }
     ],
     "optional": [
-      { "prob": 0.8, "category": "Photography & Film",  "qty": 1 },
-      { "prob": 0.7, "category": "Security",            "useGuestsFraction": 100 },
-      { "prob": 0.6, "category": "Entertainment",       "qty": 1 },
-      { "prob": 0.5, "category": "Furniture & Decor",   "qty": 1 },
-      { "prob": 0.4, "category": "Structures",          "qty": 1 },
-      { "prob": 0.3, "category": "Transport",           "qty": 1 },
-      { "prob": 0.3, "category": "Technical",           "qty": 1, "label": "Wi-Fi haute densité (réseau dédié)" }
+      {
+        "prob": 0.8,
+        "category": "Photography & Film",
+        "qty": 1
+      },
+      {
+        "prob": 0.7,
+        "category": "Security",
+        "useGuestsFraction": 100
+      },
+      {
+        "prob": 0.6,
+        "category": "Entertainment",
+        "qty": 1
+      },
+      {
+        "prob": 0.5,
+        "category": "Furniture & Decor",
+        "qty": 1
+      },
+      {
+        "prob": 0.4,
+        "category": "Structures",
+        "qty": 1
+      },
+      {
+        "prob": 0.3,
+        "category": "Transport",
+        "qty": 1
+      },
+      {
+        "prob": 0.3,
+        "category": "Technical",
+        "qty": 1,
+        "label": "High-density Wi-Fi (dedicated network)"
+      }
     ]
   },
-
   "outdoor__sunny__hot": {
     "mandatory": [
-      { "category": "Catering",           "useGuests": true },
-      { "category": "Sound & AV",         "qty": 1, "prefer": "outdoor" },
-      { "category": "Lighting",           "qty": 1 },
-      { "category": "Structures",         "qty": 1, "label": "Tente stretch clear-span 20x40m" },
-      { "category": "Technical",          "useGuestsFraction": 200, "label": "Climatisation mobile (unité)" },
-      { "category": "Furniture & Decor",  "qty": 1, "label": "Parasol chauffant extérieur" },
-      { "category": "Health & Safety",    "qty": 1, "label": "Infirmier/secouriste" }
+      {
+        "category": "Catering",
+        "useGuests": true
+      },
+      {
+        "category": "Sound & AV",
+        "qty": 1,
+        "prefer": "outdoor"
+      },
+      {
+        "category": "Lighting",
+        "qty": 1
+      },
+      {
+        "category": "Structures",
+        "qty": 1,
+        "label": "Stretch clear-span tent 20x40m"
+      },
+      {
+        "category": "Technical",
+        "useGuestsFraction": 200,
+        "label": "Mobile air conditioning unit"
+      },
+      {
+        "category": "Furniture & Decor",
+        "qty": 1,
+        "label": "Outdoor patio heater"
+      },
+      {
+        "category": "Health & Safety",
+        "qty": 1,
+        "label": "First-aider/paramedic"
+      }
     ],
     "optional": [
-      { "prob": 0.8, "category": "Photography & Film",  "qty": 1 },
-      { "prob": 0.7, "category": "Security",            "useGuestsFraction": 100 },
-      { "prob": 0.6, "category": "Entertainment",       "qty": 1 },
-      { "prob": 0.5, "category": "Furniture & Decor",   "qty": 1 },
-      { "prob": 0.4, "category": "Transport",           "qty": 1 },
-      { "prob": 0.3, "category": "Technical",           "qty": 1, "label": "Groupe électrogène 100 kVA" }
+      {
+        "prob": 0.8,
+        "category": "Photography & Film",
+        "qty": 1
+      },
+      {
+        "prob": 0.7,
+        "category": "Security",
+        "useGuestsFraction": 100
+      },
+      {
+        "prob": 0.6,
+        "category": "Entertainment",
+        "qty": 1
+      },
+      {
+        "prob": 0.5,
+        "category": "Furniture & Decor",
+        "qty": 1
+      },
+      {
+        "prob": 0.4,
+        "category": "Transport",
+        "qty": 1
+      },
+      {
+        "prob": 0.3,
+        "category": "Technical",
+        "qty": 1,
+        "label": "Generator 100 kVA"
+      }
     ]
   },
-
   "outdoor__sunny__cold": {
     "mandatory": [
-      { "category": "Catering",           "useGuests": true },
-      { "category": "Sound & AV",         "qty": 1, "prefer": "outdoor" },
-      { "category": "Lighting",           "qty": 1 },
-      { "category": "Structures",         "qty": 1, "label": "Tente semi-fermée 10x20m" },
-      { "category": "Technical",          "useGuestsFraction": 300, "label": "Chauffage air chaud (tente)" }
+      {
+        "category": "Catering",
+        "useGuests": true
+      },
+      {
+        "category": "Sound & AV",
+        "qty": 1,
+        "prefer": "outdoor"
+      },
+      {
+        "category": "Lighting",
+        "qty": 1
+      },
+      {
+        "category": "Structures",
+        "qty": 1,
+        "label": "Semi-closed tent 10x20m"
+      },
+      {
+        "category": "Technical",
+        "useGuestsFraction": 300,
+        "label": "Hot air heater (tent)"
+      }
     ],
     "optional": [
-      { "prob": 0.7, "category": "Photography & Film",  "qty": 1 },
-      { "prob": 0.6, "category": "Security",            "useGuestsFraction": 100 },
-      { "prob": 0.5, "category": "Entertainment",       "qty": 1 },
-      { "prob": 0.4, "category": "Furniture & Decor",   "qty": 1 },
-      { "prob": 0.3, "category": "Transport",           "qty": 1 }
+      {
+        "prob": 0.7,
+        "category": "Photography & Film",
+        "qty": 1
+      },
+      {
+        "prob": 0.6,
+        "category": "Security",
+        "useGuestsFraction": 100
+      },
+      {
+        "prob": 0.5,
+        "category": "Entertainment",
+        "qty": 1
+      },
+      {
+        "prob": 0.4,
+        "category": "Furniture & Decor",
+        "qty": 1
+      },
+      {
+        "prob": 0.3,
+        "category": "Transport",
+        "qty": 1
+      }
     ]
   },
-
   "outdoor__rain__normal": {
     "mandatory": [
-      { "category": "Catering",           "useGuests": true },
-      { "category": "Sound & AV",         "qty": 1, "prefer": "outdoor" },
-      { "category": "Lighting",           "qty": 1 },
-      { "category": "Structures",         "qty": 1, "label": "Tente semi-fermée 10x20m" },
-      { "category": "Structures",         "qty": 1, "label": "Chapiteau prestige 30x50m" },
-      { "category": "Furniture & Decor",  "useGuestsFraction": 2, "label": "Parapluie personnalisé événement" },
-      { "category": "Furniture & Decor",  "useGuestsFraction": 50, "minQty": 1, "label": "Poncho pluie jetable (lot de 50)" },
-      { "category": "Technical",          "qty": 1, "label": "Groupe électrogène 100 kVA" }
+      {
+        "category": "Catering",
+        "useGuests": true
+      },
+      {
+        "category": "Sound & AV",
+        "qty": 1,
+        "prefer": "outdoor"
+      },
+      {
+        "category": "Lighting",
+        "qty": 1
+      },
+      {
+        "category": "Structures",
+        "qty": 1,
+        "label": "Semi-closed tent 10x20m"
+      },
+      {
+        "category": "Structures",
+        "qty": 1,
+        "label": "Prestige marquee 30x50m"
+      },
+      {
+        "category": "Furniture & Decor",
+        "useGuestsFraction": 2,
+        "label": "Custom branded umbrella"
+      },
+      {
+        "category": "Furniture & Decor",
+        "useGuestsFraction": 50,
+        "minQty": 1,
+        "label": "Disposable rain poncho (pack of 50)"
+      },
+      {
+        "category": "Technical",
+        "qty": 1,
+        "label": "Generator 100 kVA"
+      }
     ],
     "optional": [
-      { "prob": 0.8, "category": "Security",            "useGuestsFraction": 100 },
-      { "prob": 0.7, "category": "Photography & Film",  "qty": 1 },
-      { "prob": 0.5, "category": "Entertainment",       "qty": 1 },
-      { "prob": 0.4, "category": "Furniture & Decor",   "qty": 1 },
-      { "prob": 0.3, "category": "Transport",           "qty": 1 }
+      {
+        "prob": 0.8,
+        "category": "Security",
+        "useGuestsFraction": 100
+      },
+      {
+        "prob": 0.7,
+        "category": "Photography & Film",
+        "qty": 1
+      },
+      {
+        "prob": 0.5,
+        "category": "Entertainment",
+        "qty": 1
+      },
+      {
+        "prob": 0.4,
+        "category": "Furniture & Decor",
+        "qty": 1
+      },
+      {
+        "prob": 0.3,
+        "category": "Transport",
+        "qty": 1
+      }
     ]
   },
-
   "outdoor__rain__hot": {
     "mandatory": [
-      { "category": "Catering",           "useGuests": true },
-      { "category": "Sound & AV",         "qty": 1, "prefer": "outdoor" },
-      { "category": "Lighting",           "qty": 1 },
-      { "category": "Structures",         "qty": 1, "label": "Tente stretch clear-span 20x40m" },
-      { "category": "Structures",         "qty": 1, "label": "Chapiteau prestige 30x50m" },
-      { "category": "Furniture & Decor",  "useGuestsFraction": 2, "label": "Parapluie personnalisé événement" },
-      { "category": "Furniture & Decor",  "useGuestsFraction": 50, "minQty": 1, "label": "Poncho pluie jetable (lot de 50)" },
-      { "category": "Technical",          "useGuestsFraction": 200, "label": "Climatisation mobile (unité)" },
-      { "category": "Health & Safety",    "qty": 1, "label": "Infirmier/secouriste" }
+      {
+        "category": "Catering",
+        "useGuests": true
+      },
+      {
+        "category": "Sound & AV",
+        "qty": 1,
+        "prefer": "outdoor"
+      },
+      {
+        "category": "Lighting",
+        "qty": 1
+      },
+      {
+        "category": "Structures",
+        "qty": 1,
+        "label": "Stretch clear-span tent 20x40m"
+      },
+      {
+        "category": "Structures",
+        "qty": 1,
+        "label": "Prestige marquee 30x50m"
+      },
+      {
+        "category": "Furniture & Decor",
+        "useGuestsFraction": 2,
+        "label": "Custom branded umbrella"
+      },
+      {
+        "category": "Furniture & Decor",
+        "useGuestsFraction": 50,
+        "minQty": 1,
+        "label": "Disposable rain poncho (pack of 50)"
+      },
+      {
+        "category": "Technical",
+        "useGuestsFraction": 200,
+        "label": "Mobile air conditioning unit"
+      },
+      {
+        "category": "Health & Safety",
+        "qty": 1,
+        "label": "First-aider/paramedic"
+      }
     ],
     "optional": [
-      { "prob": 0.8, "category": "Security",            "useGuestsFraction": 100 },
-      { "prob": 0.7, "category": "Photography & Film",  "qty": 1 },
-      { "prob": 0.5, "category": "Entertainment",       "qty": 1 },
-      { "prob": 0.3, "category": "Transport",           "qty": 1 }
+      {
+        "prob": 0.8,
+        "category": "Security",
+        "useGuestsFraction": 100
+      },
+      {
+        "prob": 0.7,
+        "category": "Photography & Film",
+        "qty": 1
+      },
+      {
+        "prob": 0.5,
+        "category": "Entertainment",
+        "qty": 1
+      },
+      {
+        "prob": 0.3,
+        "category": "Transport",
+        "qty": 1
+      }
     ]
   },
-
   "outdoor__rain__cold": {
     "mandatory": [
-      { "category": "Catering",           "useGuests": true },
-      { "category": "Sound & AV",         "qty": 1, "prefer": "outdoor" },
-      { "category": "Lighting",           "qty": 1 },
-      { "category": "Structures",         "qty": 1, "label": "Tente semi-fermée 10x20m" },
-      { "category": "Structures",         "qty": 1, "label": "Chapiteau prestige 30x50m" },
-      { "category": "Furniture & Decor",  "useGuestsFraction": 2, "label": "Parapluie personnalisé événement" },
-      { "category": "Furniture & Decor",  "useGuestsFraction": 50, "minQty": 1, "label": "Poncho pluie jetable (lot de 50)" },
-      { "category": "Technical",          "useGuestsFraction": 300, "label": "Chauffage air chaud (tente)" },
-      { "category": "Technical",          "qty": 1, "label": "Groupe électrogène 250 kVA" },
-      { "category": "Health & Safety",    "qty": 1, "label": "Infirmier/secouriste" }
+      {
+        "category": "Catering",
+        "useGuests": true
+      },
+      {
+        "category": "Sound & AV",
+        "qty": 1,
+        "prefer": "outdoor"
+      },
+      {
+        "category": "Lighting",
+        "qty": 1
+      },
+      {
+        "category": "Structures",
+        "qty": 1,
+        "label": "Semi-closed tent 10x20m"
+      },
+      {
+        "category": "Structures",
+        "qty": 1,
+        "label": "Prestige marquee 30x50m"
+      },
+      {
+        "category": "Furniture & Decor",
+        "useGuestsFraction": 2,
+        "label": "Custom branded umbrella"
+      },
+      {
+        "category": "Furniture & Decor",
+        "useGuestsFraction": 50,
+        "minQty": 1,
+        "label": "Disposable rain poncho (pack of 50)"
+      },
+      {
+        "category": "Technical",
+        "useGuestsFraction": 300,
+        "label": "Hot air heater (tent)"
+      },
+      {
+        "category": "Technical",
+        "qty": 1,
+        "label": "Generator 250 kVA"
+      },
+      {
+        "category": "Health & Safety",
+        "qty": 1,
+        "label": "First-aider/paramedic"
+      }
     ],
     "optional": [
-      { "prob": 0.9, "category": "Security",            "useGuestsFraction": 100 },
-      { "prob": 0.7, "category": "Photography & Film",  "qty": 1 },
-      { "prob": 0.4, "category": "Entertainment",       "qty": 1 },
-      { "prob": 0.3, "category": "Transport",           "qty": 1 }
+      {
+        "prob": 0.9,
+        "category": "Security",
+        "useGuestsFraction": 100
+      },
+      {
+        "prob": 0.7,
+        "category": "Photography & Film",
+        "qty": 1
+      },
+      {
+        "prob": 0.4,
+        "category": "Entertainment",
+        "qty": 1
+      },
+      {
+        "prob": 0.3,
+        "category": "Transport",
+        "qty": 1
+      }
     ]
   }
 }

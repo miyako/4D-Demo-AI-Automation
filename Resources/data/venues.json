@@ -1,0 +1,2466 @@
+[
+  {
+    "name": "Palais des Congrès de Paris",
+    "address": "2 Place de la Porte Maillot",
+    "city": "Paris",
+    "country": "France",
+    "latitude": 48.8784,
+    "longitude": 2.283,
+    "venueType": "indoor",
+    "capacity": 3700,
+    "timezone": "Europe/Paris",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 3700,
+      "rentalPrice": 15000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Château de Vaux-le-Vicomte",
+    "address": "77950 Maincy",
+    "city": "Maincy",
+    "country": "France",
+    "latitude": 48.5672,
+    "longitude": 2.7139,
+    "venueType": "outdoor",
+    "capacity": 2000,
+    "timezone": "Europe/Paris",
+    "outdoorOption": {
+      "name": "Espace extérieur",
+      "capacity": 2000,
+      "rentalPrice": 6000
+    },
+    "indoorOption": null
+  },
+  {
+    "name": "Stade de France – Espace Prestige",
+    "address": "ZAC du Cornillon Nord",
+    "city": "Saint-Denis",
+    "country": "France",
+    "latitude": 48.9244,
+    "longitude": 2.3601,
+    "venueType": "indoor",
+    "capacity": 5000,
+    "timezone": "Europe/Paris",
+    "indoorOption": {
+      "name": "Espace Prestige",
+      "capacity": 5000,
+      "rentalPrice": 20000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Musée d'Orsay – Grande Nef",
+    "address": "1 Rue de la Légion d'Honneur",
+    "city": "Paris",
+    "country": "France",
+    "latitude": 48.86,
+    "longitude": 2.3266,
+    "venueType": "indoor",
+    "capacity": 800,
+    "timezone": "Europe/Paris",
+    "indoorOption": {
+      "name": "Grande Nef",
+      "capacity": 800,
+      "rentalPrice": 2500
+    },
+    "outdoorOption": {
+      "name": "Terrasse extérieure",
+      "capacity": 266,
+      "rentalPrice": 500
+    }
+  },
+  {
+    "name": "Domaine de Chantilly",
+    "address": "60500 Chantilly",
+    "city": "Chantilly",
+    "country": "France",
+    "latitude": 49.194,
+    "longitude": 2.4848,
+    "venueType": "mixed",
+    "capacity": 1500,
+    "timezone": "Europe/Paris",
+    "indoorOption": {
+      "name": "Indoor hall",
+      "capacity": 750,
+      "rentalPrice": 2500
+    },
+    "outdoorOption": {
+      "name": "Espace extérieur",
+      "capacity": 1500,
+      "rentalPrice": 4500
+    }
+  },
+  {
+    "name": "Le Grand Palais Éphémère",
+    "address": "Champ-de-Mars, Avenue de la Motte-Picquet",
+    "city": "Paris",
+    "country": "France",
+    "latitude": 48.8541,
+    "longitude": 2.2982,
+    "venueType": "indoor",
+    "capacity": 4000,
+    "timezone": "Europe/Paris",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 4000,
+      "rentalPrice": 16000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Palais du Pharo",
+    "address": "58 Boulevard Charles Livon",
+    "city": "Marseille",
+    "country": "France",
+    "latitude": 43.293,
+    "longitude": 5.362,
+    "venueType": "mixed",
+    "capacity": 1200,
+    "timezone": "Europe/Paris",
+    "indoorOption": {
+      "name": "Indoor hall",
+      "capacity": 600,
+      "rentalPrice": 2000
+    },
+    "outdoorOption": {
+      "name": "Espace extérieur",
+      "capacity": 1200,
+      "rentalPrice": 3500
+    }
+  },
+  {
+    "name": "Parc Floral de Paris",
+    "address": "Route de la Pyramide, Bois de Vincennes",
+    "city": "Paris",
+    "country": "France",
+    "latitude": 48.8322,
+    "longitude": 2.4414,
+    "venueType": "outdoor",
+    "capacity": 3000,
+    "timezone": "Europe/Paris",
+    "outdoorOption": {
+      "name": "Espace extérieur",
+      "capacity": 3000,
+      "rentalPrice": 12000
+    },
+    "indoorOption": null
+  },
+  {
+    "name": "Château Cos d'Estournel",
+    "address": "33180 Saint-Estèphe",
+    "city": "Saint-Estèphe",
+    "country": "France",
+    "latitude": 45.287,
+    "longitude": -0.7625,
+    "venueType": "outdoor",
+    "capacity": 400,
+    "timezone": "Europe/Paris",
+    "outdoorOption": {
+      "name": "Espace extérieur",
+      "capacity": 400,
+      "rentalPrice": 1000
+    },
+    "indoorOption": {
+      "name": "Reception hall",
+      "capacity": 100,
+      "rentalPrice": 500
+    }
+  },
+  {
+    "name": "Zénith de Lyon",
+    "address": "160 Boulevard Stalingrad",
+    "city": "Villeurbanne",
+    "country": "France",
+    "latitude": 45.758,
+    "longitude": 4.8827,
+    "venueType": "indoor",
+    "capacity": 6000,
+    "timezone": "Europe/Paris",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 6000,
+      "rentalPrice": 30000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "The Shard – Shangri-La Ballroom",
+    "address": "32 London Bridge Street",
+    "city": "London",
+    "country": "United Kingdom",
+    "latitude": 51.5045,
+    "longitude": -0.0865,
+    "venueType": "indoor",
+    "capacity": 500,
+    "timezone": "Europe/London",
+    "indoorOption": {
+      "name": "Shangri-La Ballroom",
+      "capacity": 500,
+      "rentalPrice": 1500
+    },
+    "outdoorOption": {
+      "name": "Jardin",
+      "capacity": 166,
+      "rentalPrice": 500
+    }
+  },
+  {
+    "name": "Blenheim Palace",
+    "address": "Woodstock OX20 1PP",
+    "city": "Woodstock",
+    "country": "United Kingdom",
+    "latitude": 51.8426,
+    "longitude": -1.3606,
+    "venueType": "mixed",
+    "capacity": 2500,
+    "timezone": "Europe/London",
+    "indoorOption": {
+      "name": "Indoor hall",
+      "capacity": 1250,
+      "rentalPrice": 4500
+    },
+    "outdoorOption": {
+      "name": "Espace extérieur",
+      "capacity": 2500,
+      "rentalPrice": 10000
+    }
+  },
+  {
+    "name": "The O2 Arena – Indigo",
+    "address": "Peninsula Square",
+    "city": "London",
+    "country": "United Kingdom",
+    "latitude": 51.503,
+    "longitude": 0.0032,
+    "venueType": "indoor",
+    "capacity": 2350,
+    "timezone": "Europe/London",
+    "indoorOption": {
+      "name": "Indigo",
+      "capacity": 2350,
+      "rentalPrice": 9500
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Edinburgh Castle – Esplanade",
+    "address": "Castlehill",
+    "city": "Edinburgh",
+    "country": "United Kingdom",
+    "latitude": 55.9486,
+    "longitude": -3.1999,
+    "venueType": "outdoor",
+    "capacity": 1500,
+    "timezone": "Europe/London",
+    "outdoorOption": {
+      "name": "Esplanade",
+      "capacity": 1500,
+      "rentalPrice": 4500
+    },
+    "indoorOption": {
+      "name": "Reception hall",
+      "capacity": 375,
+      "rentalPrice": 1500
+    }
+  },
+  {
+    "name": "Kensington Palace – Orangery",
+    "address": "Kensington Gardens",
+    "city": "London",
+    "country": "United Kingdom",
+    "latitude": 51.5051,
+    "longitude": -0.187,
+    "venueType": "indoor",
+    "capacity": 250,
+    "timezone": "Europe/London",
+    "indoorOption": {
+      "name": "Orangery",
+      "capacity": 250,
+      "rentalPrice": 1000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "BMW Welt",
+    "address": "Am Olympiapark 1",
+    "city": "Munich",
+    "country": "Germany",
+    "latitude": 48.1776,
+    "longitude": 11.5559,
+    "venueType": "indoor",
+    "capacity": 2500,
+    "timezone": "Europe/Berlin",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 2500,
+      "rentalPrice": 10000
+    },
+    "outdoorOption": {
+      "name": "Terrasse extérieure",
+      "capacity": 833,
+      "rentalPrice": 2000
+    }
+  },
+  {
+    "name": "Potsdamer Platz – Event Hall",
+    "address": "Potsdamer Platz 1",
+    "city": "Berlin",
+    "country": "Germany",
+    "latitude": 52.5096,
+    "longitude": 13.3762,
+    "venueType": "indoor",
+    "capacity": 1800,
+    "timezone": "Europe/Berlin",
+    "indoorOption": {
+      "name": "Event Hall",
+      "capacity": 1800,
+      "rentalPrice": 5500
+    },
+    "outdoorOption": {
+      "name": "Terrasse extérieure",
+      "capacity": 600,
+      "rentalPrice": 1500
+    }
+  },
+  {
+    "name": "Hamburgische Staatsoper",
+    "address": "Große Theaterstraße 25",
+    "city": "Hamburg",
+    "country": "Germany",
+    "latitude": 53.5568,
+    "longitude": 9.9845,
+    "venueType": "indoor",
+    "capacity": 1674,
+    "timezone": "Europe/Berlin",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 1674,
+      "rentalPrice": 5000
+    },
+    "outdoorOption": {
+      "name": "Terrasse extérieure",
+      "capacity": 558,
+      "rentalPrice": 1500
+    }
+  },
+  {
+    "name": "Rhine Riverbank Pavilion",
+    "address": "Kennedyufer 2",
+    "city": "Cologne",
+    "country": "Germany",
+    "latitude": 50.934,
+    "longitude": 6.9601,
+    "venueType": "outdoor",
+    "capacity": 1200,
+    "timezone": "Europe/Berlin",
+    "outdoorOption": {
+      "name": "Espace extérieur",
+      "capacity": 1200,
+      "rentalPrice": 3500
+    },
+    "indoorOption": {
+      "name": "Reception hall",
+      "capacity": 300,
+      "rentalPrice": 1000
+    }
+  },
+  {
+    "name": "Palau de la Música Catalana",
+    "address": "C/ Palau de la Música, 4-6",
+    "city": "Barcelona",
+    "country": "Spain",
+    "latitude": 41.3875,
+    "longitude": 2.1752,
+    "venueType": "indoor",
+    "capacity": 2200,
+    "timezone": "Europe/Madrid",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 2200,
+      "rentalPrice": 9000
+    },
+    "outdoorOption": {
+      "name": "Jardin",
+      "capacity": 733,
+      "rentalPrice": 2000
+    }
+  },
+  {
+    "name": "Real Alcázar de Sevilla – Jardines",
+    "address": "Patio de Banderas, s/n",
+    "city": "Seville",
+    "country": "Spain",
+    "latitude": 37.3826,
+    "longitude": -5.99,
+    "venueType": "outdoor",
+    "capacity": 800,
+    "timezone": "Europe/Madrid",
+    "outdoorOption": {
+      "name": "Jardines",
+      "capacity": 800,
+      "rentalPrice": 2500
+    },
+    "indoorOption": null
+  },
+  {
+    "name": "IFEMA Madrid – Pabellón de Cristal",
+    "address": "Av. del Partenón, 5",
+    "city": "Madrid",
+    "country": "Spain",
+    "latitude": 40.4715,
+    "longitude": -3.6154,
+    "venueType": "mixed",
+    "capacity": 5000,
+    "timezone": "Europe/Madrid",
+    "indoorOption": {
+      "name": "Indoor hall",
+      "capacity": 2500,
+      "rentalPrice": 9000
+    },
+    "outdoorOption": {
+      "name": "Espace extérieur",
+      "capacity": 5000,
+      "rentalPrice": 20000
+    }
+  },
+  {
+    "name": "Alhambra – Patio de los Leones",
+    "address": "Calle Real de la Alhambra",
+    "city": "Granada",
+    "country": "Spain",
+    "latitude": 37.1762,
+    "longitude": -3.588,
+    "venueType": "outdoor",
+    "capacity": 600,
+    "timezone": "Europe/Madrid",
+    "outdoorOption": {
+      "name": "Patio de los Leones",
+      "capacity": 600,
+      "rentalPrice": 2000
+    },
+    "indoorOption": {
+      "name": "Reception hall",
+      "capacity": 150,
+      "rentalPrice": 500
+    }
+  },
+  {
+    "name": "Villa d'Este – Terrace Garden",
+    "address": "Piazza Trento, 5",
+    "city": "Cernobbio",
+    "country": "Italy",
+    "latitude": 45.8521,
+    "longitude": 9.0735,
+    "venueType": "outdoor",
+    "capacity": 700,
+    "timezone": "Europe/Rome",
+    "outdoorOption": {
+      "name": "Terrace Garden",
+      "capacity": 700,
+      "rentalPrice": 2000
+    },
+    "indoorOption": {
+      "name": "Reception hall",
+      "capacity": 175,
+      "rentalPrice": 500
+    }
+  },
+  {
+    "name": "Colosseo – Area Esterna",
+    "address": "Piazza del Colosseo, 1",
+    "city": "Rome",
+    "country": "Italy",
+    "latitude": 41.8902,
+    "longitude": 12.4922,
+    "venueType": "outdoor",
+    "capacity": 1000,
+    "timezone": "Europe/Rome",
+    "outdoorOption": {
+      "name": "Area Esterna",
+      "capacity": 1000,
+      "rentalPrice": 3000
+    },
+    "indoorOption": null
+  },
+  {
+    "name": "Palazzo Ducale – Sala del Maggior Consiglio",
+    "address": "Piazza San Marco, 1",
+    "city": "Venice",
+    "country": "Italy",
+    "latitude": 45.4338,
+    "longitude": 12.3388,
+    "venueType": "indoor",
+    "capacity": 1200,
+    "timezone": "Europe/Rome",
+    "indoorOption": {
+      "name": "Sala del Maggior Consiglio",
+      "capacity": 1200,
+      "rentalPrice": 3500
+    },
+    "outdoorOption": {
+      "name": "Jardin",
+      "capacity": 400,
+      "rentalPrice": 1000
+    }
+  },
+  {
+    "name": "Teatro alla Scala",
+    "address": "Via Filodrammatici, 2",
+    "city": "Milan",
+    "country": "Italy",
+    "latitude": 45.4675,
+    "longitude": 9.1897,
+    "venueType": "indoor",
+    "capacity": 2030,
+    "timezone": "Europe/Rome",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 2030,
+      "rentalPrice": 8000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Atlantis The Palm – Grand Ballroom",
+    "address": "Crescent Road, Palm Jumeirah",
+    "city": "Dubai",
+    "country": "United Arab Emirates",
+    "latitude": 25.1304,
+    "longitude": 55.1171,
+    "venueType": "indoor",
+    "capacity": 3000,
+    "timezone": "Asia/Dubai",
+    "indoorOption": {
+      "name": "Grand Ballroom",
+      "capacity": 3000,
+      "rentalPrice": 12000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Burj Al Arab – Al Falak Ballroom",
+    "address": "Jumeirah Beach Road",
+    "city": "Dubai",
+    "country": "United Arab Emirates",
+    "latitude": 25.1412,
+    "longitude": 55.1853,
+    "venueType": "indoor",
+    "capacity": 800,
+    "timezone": "Asia/Dubai",
+    "indoorOption": {
+      "name": "Al Falak Ballroom",
+      "capacity": 800,
+      "rentalPrice": 2500
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Desert Safari Camp – Al Marmoom",
+    "address": "Al Marmoom Desert Reserve",
+    "city": "Dubai",
+    "country": "United Arab Emirates",
+    "latitude": 24.85,
+    "longitude": 55.4,
+    "venueType": "outdoor",
+    "capacity": 500,
+    "timezone": "Asia/Dubai",
+    "outdoorOption": {
+      "name": "Al Marmoom",
+      "capacity": 500,
+      "rentalPrice": 1500
+    },
+    "indoorOption": {
+      "name": "Reception hall",
+      "capacity": 125,
+      "rentalPrice": 500
+    }
+  },
+  {
+    "name": "Yas Island – Ferrari World Piazza",
+    "address": "Yas Island",
+    "city": "Abu Dhabi",
+    "country": "United Arab Emirates",
+    "latitude": 24.4835,
+    "longitude": 54.6077,
+    "venueType": "outdoor",
+    "capacity": 2000,
+    "timezone": "Asia/Dubai",
+    "outdoorOption": {
+      "name": "Ferrari World Piazza",
+      "capacity": 2000,
+      "rentalPrice": 6000
+    },
+    "indoorOption": {
+      "name": "Reception hall",
+      "capacity": 500,
+      "rentalPrice": 2000
+    }
+  },
+  {
+    "name": "Tokyo International Forum",
+    "address": "3-5-1 Marunouchi, Chiyoda",
+    "city": "Tokyo",
+    "country": "Japan",
+    "latitude": 35.6766,
+    "longitude": 139.7638,
+    "venueType": "indoor",
+    "capacity": 5000,
+    "timezone": "Asia/Tokyo",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 5000,
+      "rentalPrice": 20000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Kyoto International Conference Center",
+    "address": "Takaragaike, Sakyo",
+    "city": "Kyoto",
+    "country": "Japan",
+    "latitude": 35.0518,
+    "longitude": 135.7694,
+    "venueType": "indoor",
+    "capacity": 2000,
+    "timezone": "Asia/Tokyo",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 2000,
+      "rentalPrice": 6000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Himeji Castle – Inner Bailey",
+    "address": "68 Honmachi",
+    "city": "Himeji",
+    "country": "Japan",
+    "latitude": 34.8394,
+    "longitude": 134.6939,
+    "venueType": "outdoor",
+    "capacity": 600,
+    "timezone": "Asia/Tokyo",
+    "outdoorOption": {
+      "name": "Inner Bailey",
+      "capacity": 600,
+      "rentalPrice": 2000
+    },
+    "indoorOption": null
+  },
+  {
+    "name": "The Library of Congress – Great Hall",
+    "address": "10 First St SE",
+    "city": "Washington DC",
+    "country": "United States",
+    "latitude": 38.8887,
+    "longitude": -77.0047,
+    "venueType": "indoor",
+    "capacity": 1200,
+    "timezone": "America/New_York",
+    "indoorOption": {
+      "name": "Great Hall",
+      "capacity": 1200,
+      "rentalPrice": 3500
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "The Metropolitan Museum – Temple of Dendur",
+    "address": "1000 Fifth Avenue",
+    "city": "New York",
+    "country": "United States",
+    "latitude": 40.7794,
+    "longitude": -73.9632,
+    "venueType": "indoor",
+    "capacity": 800,
+    "timezone": "America/New_York",
+    "indoorOption": {
+      "name": "Temple of Dendur",
+      "capacity": 800,
+      "rentalPrice": 2500
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Hollywood Bowl",
+    "address": "2301 N Highland Ave",
+    "city": "Los Angeles",
+    "country": "United States",
+    "latitude": 34.1122,
+    "longitude": -118.3392,
+    "venueType": "outdoor",
+    "capacity": 17500,
+    "timezone": "America/Los_Angeles",
+    "outdoorOption": {
+      "name": "Espace extérieur",
+      "capacity": 17500,
+      "rentalPrice": 87500
+    },
+    "indoorOption": null
+  },
+  {
+    "name": "Navy Pier – Grand Ballroom",
+    "address": "600 E Grand Ave",
+    "city": "Chicago",
+    "country": "United States",
+    "latitude": 41.8919,
+    "longitude": -87.6051,
+    "venueType": "indoor",
+    "capacity": 2700,
+    "timezone": "America/Chicago",
+    "indoorOption": {
+      "name": "Grand Ballroom",
+      "capacity": 2700,
+      "rentalPrice": 11000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "The Breakers – Ballroom",
+    "address": "1 S County Rd",
+    "city": "Palm Beach",
+    "country": "United States",
+    "latitude": 26.7131,
+    "longitude": -80.0366,
+    "venueType": "indoor",
+    "capacity": 900,
+    "timezone": "America/New_York",
+    "indoorOption": {
+      "name": "Ballroom",
+      "capacity": 900,
+      "rentalPrice": 2500
+    },
+    "outdoorOption": {
+      "name": "Jardin",
+      "capacity": 300,
+      "rentalPrice": 1000
+    }
+  },
+  {
+    "name": "Dolby Theatre",
+    "address": "6801 Hollywood Blvd",
+    "city": "Los Angeles",
+    "country": "United States",
+    "latitude": 34.1017,
+    "longitude": -118.3395,
+    "venueType": "indoor",
+    "capacity": 3400,
+    "timezone": "America/Los_Angeles",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 3400,
+      "rentalPrice": 13500
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Marina Bay Sands – Sands Expo",
+    "address": "10 Bayfront Avenue",
+    "city": "Singapore",
+    "country": "Singapore",
+    "latitude": 1.2834,
+    "longitude": 103.8607,
+    "venueType": "indoor",
+    "capacity": 45000,
+    "timezone": "Asia/Singapore",
+    "indoorOption": {
+      "name": "Sands Expo",
+      "capacity": 45000,
+      "rentalPrice": 225000
+    },
+    "outdoorOption": {
+      "name": "Jardin",
+      "capacity": 15000,
+      "rentalPrice": 37500
+    }
+  },
+  {
+    "name": "Capella Singapore – Grand Ballroom",
+    "address": "1 The Knolls, Sentosa Island",
+    "city": "Singapore",
+    "country": "Singapore",
+    "latitude": 1.25,
+    "longitude": 103.826,
+    "venueType": "indoor",
+    "capacity": 750,
+    "timezone": "Asia/Singapore",
+    "indoorOption": {
+      "name": "Grand Ballroom",
+      "capacity": 750,
+      "rentalPrice": 2000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Gardens by the Bay – Supertree Grove",
+    "address": "18 Marina Gardens Drive",
+    "city": "Singapore",
+    "country": "Singapore",
+    "latitude": 1.2816,
+    "longitude": 103.8636,
+    "venueType": "outdoor",
+    "capacity": 3000,
+    "timezone": "Asia/Singapore",
+    "outdoorOption": {
+      "name": "Supertree Grove",
+      "capacity": 3000,
+      "rentalPrice": 12000
+    },
+    "indoorOption": null
+  },
+  {
+    "name": "Palais Amani – Riad Gardens",
+    "address": "12 Derb El Miter",
+    "city": "Marrakech",
+    "country": "Morocco",
+    "latitude": 31.63,
+    "longitude": -7.994,
+    "venueType": "outdoor",
+    "capacity": 300,
+    "timezone": "Africa/Casablanca",
+    "outdoorOption": {
+      "name": "Riad Gardens",
+      "capacity": 300,
+      "rentalPrice": 1000
+    },
+    "indoorOption": {
+      "name": "Reception hall",
+      "capacity": 75,
+      "rentalPrice": 500
+    }
+  },
+  {
+    "name": "Palmeraie Golf Palace – Marquise",
+    "address": "Circuit de la Palmeraie",
+    "city": "Marrakech",
+    "country": "Morocco",
+    "latitude": 31.6686,
+    "longitude": -8.0072,
+    "venueType": "outdoor",
+    "capacity": 1000,
+    "timezone": "Africa/Casablanca",
+    "outdoorOption": {
+      "name": "Marquise",
+      "capacity": 1000,
+      "rentalPrice": 3000
+    },
+    "indoorOption": null
+  },
+  {
+    "name": "Espace Sidi Mohammed Ben Abdallah",
+    "address": "Avenue des FAR",
+    "city": "Casablanca",
+    "country": "Morocco",
+    "latitude": 33.5731,
+    "longitude": -7.5898,
+    "venueType": "indoor",
+    "capacity": 2500,
+    "timezone": "Africa/Casablanca",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 2500,
+      "rentalPrice": 10000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Sydney Opera House – Concert Hall",
+    "address": "Bennelong Point",
+    "city": "Sydney",
+    "country": "Australia",
+    "latitude": -33.8568,
+    "longitude": 151.2153,
+    "venueType": "indoor",
+    "capacity": 2679,
+    "timezone": "Australia/Sydney",
+    "indoorOption": {
+      "name": "Concert Hall",
+      "capacity": 2679,
+      "rentalPrice": 10500
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Royal Botanic Garden – Mrs Macquaries Point",
+    "address": "Mrs Macquaries Rd",
+    "city": "Sydney",
+    "country": "Australia",
+    "latitude": -33.8642,
+    "longitude": 151.2239,
+    "venueType": "outdoor",
+    "capacity": 5000,
+    "timezone": "Australia/Sydney",
+    "outdoorOption": {
+      "name": "Mrs Macquaries Point",
+      "capacity": 5000,
+      "rentalPrice": 20000
+    },
+    "indoorOption": {
+      "name": "Reception hall",
+      "capacity": 1250,
+      "rentalPrice": 5000
+    }
+  },
+  {
+    "name": "Crown Melbourne – Grand Ballroom",
+    "address": "8 Whiteman Street",
+    "city": "Melbourne",
+    "country": "Australia",
+    "latitude": -37.8226,
+    "longitude": 144.9571,
+    "venueType": "indoor",
+    "capacity": 2000,
+    "timezone": "Australia/Melbourne",
+    "indoorOption": {
+      "name": "Grand Ballroom",
+      "capacity": 2000,
+      "rentalPrice": 6000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Museu do Amanhã – Esplanada",
+    "address": "Praça Mauá, 1",
+    "city": "Rio de Janeiro",
+    "country": "Brazil",
+    "latitude": -22.8971,
+    "longitude": -43.1729,
+    "venueType": "outdoor",
+    "capacity": 3000,
+    "timezone": "America/Sao_Paulo",
+    "outdoorOption": {
+      "name": "Esplanada",
+      "capacity": 3000,
+      "rentalPrice": 12000
+    },
+    "indoorOption": null
+  },
+  {
+    "name": "Transamerica Expo Center",
+    "address": "Av. Dr. Mário Vilas Boas Rodrigues, 387",
+    "city": "São Paulo",
+    "country": "Brazil",
+    "latitude": -23.648,
+    "longitude": -46.6968,
+    "venueType": "indoor",
+    "capacity": 15000,
+    "timezone": "America/Sao_Paulo",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 15000,
+      "rentalPrice": 75000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Copacabana Palace – Pérgola",
+    "address": "Av. Atlântica, 1702",
+    "city": "Rio de Janeiro",
+    "country": "Brazil",
+    "latitude": -22.9686,
+    "longitude": -43.1763,
+    "venueType": "outdoor",
+    "capacity": 500,
+    "timezone": "America/Sao_Paulo",
+    "outdoorOption": {
+      "name": "Pérgola",
+      "capacity": 500,
+      "rentalPrice": 1500
+    },
+    "indoorOption": null
+  },
+  {
+    "name": "Cape Town CTICC",
+    "address": "1 Lower Long Street",
+    "city": "Cape Town",
+    "country": "South Africa",
+    "latitude": -33.9167,
+    "longitude": 18.4255,
+    "venueType": "indoor",
+    "capacity": 5000,
+    "timezone": "Africa/Johannesburg",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 5000,
+      "rentalPrice": 20000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Groot Constantia – Jonkershuis",
+    "address": "Groot Constantia Road",
+    "city": "Cape Town",
+    "country": "South Africa",
+    "latitude": -34.0293,
+    "longitude": 18.4183,
+    "venueType": "outdoor",
+    "capacity": 400,
+    "timezone": "Africa/Johannesburg",
+    "outdoorOption": {
+      "name": "Jonkershuis",
+      "capacity": 400,
+      "rentalPrice": 1000
+    },
+    "indoorOption": {
+      "name": "Reception hall",
+      "capacity": 100,
+      "rentalPrice": 500
+    }
+  },
+  {
+    "name": "Sun City – The Superbowl",
+    "address": "R565, Sun City",
+    "city": "Sun City",
+    "country": "South Africa",
+    "latitude": -25.343,
+    "longitude": 27.099,
+    "venueType": "indoor",
+    "capacity": 6000,
+    "timezone": "Africa/Johannesburg",
+    "indoorOption": {
+      "name": "The Superbowl",
+      "capacity": 6000,
+      "rentalPrice": 30000
+    },
+    "outdoorOption": {
+      "name": "Jardin",
+      "capacity": 2000,
+      "rentalPrice": 5000
+    }
+  },
+  {
+    "name": "Taj Mahal Palace – Crystal Room",
+    "address": "Apollo Bunder",
+    "city": "Mumbai",
+    "country": "India",
+    "latitude": 18.922,
+    "longitude": 72.8334,
+    "venueType": "indoor",
+    "capacity": 500,
+    "timezone": "Asia/Kolkata",
+    "indoorOption": {
+      "name": "Crystal Room",
+      "capacity": 500,
+      "rentalPrice": 1500
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Falaknuma Palace – Durbar Hall",
+    "address": "Engine Bowli, Falaknuma",
+    "city": "Hyderabad",
+    "country": "India",
+    "latitude": 17.3268,
+    "longitude": 78.4665,
+    "venueType": "indoor",
+    "capacity": 600,
+    "timezone": "Asia/Kolkata",
+    "indoorOption": {
+      "name": "Durbar Hall",
+      "capacity": 600,
+      "rentalPrice": 2000
+    },
+    "outdoorOption": {
+      "name": "Terrasse extérieure",
+      "capacity": 200,
+      "rentalPrice": 500
+    }
+  },
+  {
+    "name": "Umaid Bhawan Palace – Peacock Courtyard",
+    "address": "Circuit House Road",
+    "city": "Jodhpur",
+    "country": "India",
+    "latitude": 26.2851,
+    "longitude": 73.0291,
+    "venueType": "outdoor",
+    "capacity": 1000,
+    "timezone": "Asia/Kolkata",
+    "outdoorOption": {
+      "name": "Peacock Courtyard",
+      "capacity": 1000,
+      "rentalPrice": 3000
+    },
+    "indoorOption": null
+  },
+  {
+    "name": "Palais des congrès de Montréal",
+    "address": "1001 Place Jean-Paul-Riopelle",
+    "city": "Montreal",
+    "country": "Canada",
+    "latitude": 45.5042,
+    "longitude": -73.5638,
+    "venueType": "indoor",
+    "capacity": 5000,
+    "timezone": "America/Toronto",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 5000,
+      "rentalPrice": 20000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Banff Springs Hotel – Van Horne Ballroom",
+    "address": "405 Spray Avenue",
+    "city": "Banff",
+    "country": "Canada",
+    "latitude": 51.1625,
+    "longitude": -115.5622,
+    "venueType": "indoor",
+    "capacity": 800,
+    "timezone": "America/Denver",
+    "indoorOption": {
+      "name": "Van Horne Ballroom",
+      "capacity": 800,
+      "rentalPrice": 2500
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Vancouver Convention Centre – West",
+    "address": "1055 Canada Place",
+    "city": "Vancouver",
+    "country": "Canada",
+    "latitude": 49.2889,
+    "longitude": -123.1111,
+    "venueType": "indoor",
+    "capacity": 10000,
+    "timezone": "America/Vancouver",
+    "indoorOption": {
+      "name": "West",
+      "capacity": 10000,
+      "rentalPrice": 50000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Palacio de Bellas Artes – Sala Principal",
+    "address": "Av. Juárez S/N, Centro Histórico",
+    "city": "Mexico City",
+    "country": "Mexico",
+    "latitude": 19.4352,
+    "longitude": -99.1412,
+    "venueType": "indoor",
+    "capacity": 1800,
+    "timezone": "America/Mexico_City",
+    "indoorOption": {
+      "name": "Sala Principal",
+      "capacity": 1800,
+      "rentalPrice": 5500
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Xcaret – Teatro Gran Tlachco",
+    "address": "Carretera Federal 307 Km 282",
+    "city": "Playa del Carmen",
+    "country": "Mexico",
+    "latitude": 20.581,
+    "longitude": -87.1162,
+    "venueType": "outdoor",
+    "capacity": 6000,
+    "timezone": "America/Cancun",
+    "outdoorOption": {
+      "name": "Teatro Gran Tlachco",
+      "capacity": 6000,
+      "rentalPrice": 30000
+    },
+    "indoorOption": null
+  },
+  {
+    "name": "COEX – Grand Ballroom",
+    "address": "513 Yeongdong-daero, Gangnam-gu",
+    "city": "Seoul",
+    "country": "South Korea",
+    "latitude": 37.5126,
+    "longitude": 127.0582,
+    "venueType": "indoor",
+    "capacity": 3000,
+    "timezone": "Asia/Seoul",
+    "indoorOption": {
+      "name": "Grand Ballroom",
+      "capacity": 3000,
+      "rentalPrice": 12000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Gyeongbokgung Palace – Heungnyemun",
+    "address": "161 Sajik-ro, Jongno-gu",
+    "city": "Seoul",
+    "country": "South Korea",
+    "latitude": 37.5796,
+    "longitude": 126.977,
+    "venueType": "outdoor",
+    "capacity": 800,
+    "timezone": "Asia/Seoul",
+    "outdoorOption": {
+      "name": "Heungnyemun",
+      "capacity": 800,
+      "rentalPrice": 2500
+    },
+    "indoorOption": {
+      "name": "Reception hall",
+      "capacity": 200,
+      "rentalPrice": 1000
+    }
+  },
+  {
+    "name": "Rijksmuseum – Great Hall",
+    "address": "Museumstraat 1",
+    "city": "Amsterdam",
+    "country": "Netherlands",
+    "latitude": 52.36,
+    "longitude": 4.8852,
+    "venueType": "indoor",
+    "capacity": 800,
+    "timezone": "Europe/Amsterdam",
+    "indoorOption": {
+      "name": "Great Hall",
+      "capacity": 800,
+      "rentalPrice": 2500
+    },
+    "outdoorOption": {
+      "name": "Terrasse extérieure",
+      "capacity": 266,
+      "rentalPrice": 500
+    }
+  },
+  {
+    "name": "Ziggo Dome – Diamond Lounge",
+    "address": "De Passage 100",
+    "city": "Amsterdam",
+    "country": "Netherlands",
+    "latitude": 52.3114,
+    "longitude": 4.9401,
+    "venueType": "indoor",
+    "capacity": 1500,
+    "timezone": "Europe/Amsterdam",
+    "indoorOption": {
+      "name": "Diamond Lounge",
+      "capacity": 1500,
+      "rentalPrice": 4500
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Palais des Nations – Salle des Assemblées",
+    "address": "Av. de la Paix 8-14",
+    "city": "Geneva",
+    "country": "Switzerland",
+    "latitude": 46.2268,
+    "longitude": 6.1404,
+    "venueType": "indoor",
+    "capacity": 2000,
+    "timezone": "Europe/Zurich",
+    "indoorOption": {
+      "name": "Assembly Hall",
+      "capacity": 2000,
+      "rentalPrice": 6000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Zürich Marriott – Grand Ballroom",
+    "address": "Neumühlequai 42",
+    "city": "Zurich",
+    "country": "Switzerland",
+    "latitude": 47.3658,
+    "longitude": 8.542,
+    "venueType": "indoor",
+    "capacity": 1200,
+    "timezone": "Europe/Zurich",
+    "indoorOption": {
+      "name": "Grand Ballroom",
+      "capacity": 1200,
+      "rentalPrice": 3500
+    },
+    "outdoorOption": {
+      "name": "Terrasse extérieure",
+      "capacity": 400,
+      "rentalPrice": 1000
+    }
+  },
+  {
+    "name": "Teatro Colón – Sala Principal",
+    "address": "Cerrito 628",
+    "city": "Buenos Aires",
+    "country": "Argentina",
+    "latitude": -34.6009,
+    "longitude": -58.3834,
+    "venueType": "indoor",
+    "capacity": 2478,
+    "timezone": "America/Argentina/Buenos_Aires",
+    "indoorOption": {
+      "name": "Sala Principal",
+      "capacity": 2478,
+      "rentalPrice": 10000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Puerto Madero – Faena Arts Center",
+    "address": "Aimé Painé 1169",
+    "city": "Buenos Aires",
+    "country": "Argentina",
+    "latitude": -34.6198,
+    "longitude": -58.3643,
+    "venueType": "mixed",
+    "capacity": 1000,
+    "timezone": "America/Argentina/Buenos_Aires",
+    "indoorOption": {
+      "name": "Indoor hall",
+      "capacity": 500,
+      "rentalPrice": 2000
+    },
+    "outdoorOption": {
+      "name": "Espace extérieur",
+      "capacity": 1000,
+      "rentalPrice": 3000
+    }
+  },
+  {
+    "name": "Centro Cultural de Belém – Grande Auditório",
+    "address": "Praça do Império",
+    "city": "Lisbon",
+    "country": "Portugal",
+    "latitude": 38.6971,
+    "longitude": -9.2068,
+    "venueType": "indoor",
+    "capacity": 1450,
+    "timezone": "Europe/Lisbon",
+    "indoorOption": {
+      "name": "Grande Auditório",
+      "capacity": 1450,
+      "rentalPrice": 4500
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Palácio de Queluz – Sala do Trono",
+    "address": "Largo do Palácio",
+    "city": "Queluz",
+    "country": "Portugal",
+    "latitude": 38.7542,
+    "longitude": -9.2562,
+    "venueType": "indoor",
+    "capacity": 600,
+    "timezone": "Europe/Lisbon",
+    "indoorOption": {
+      "name": "Sala do Trono",
+      "capacity": 600,
+      "rentalPrice": 2000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "BITEC – Hall 98",
+    "address": "88 Bangna-Trad Road, Bangna",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "latitude": 13.6816,
+    "longitude": 100.6108,
+    "venueType": "indoor",
+    "capacity": 10000,
+    "timezone": "Asia/Bangkok",
+    "indoorOption": {
+      "name": "Hall 98",
+      "capacity": 10000,
+      "rentalPrice": 50000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Mandarin Oriental Bangkok – Authors Garden",
+    "address": "48 Oriental Avenue",
+    "city": "Bangkok",
+    "country": "Thailand",
+    "latitude": 13.7245,
+    "longitude": 100.5144,
+    "venueType": "outdoor",
+    "capacity": 400,
+    "timezone": "Asia/Bangkok",
+    "outdoorOption": {
+      "name": "Authors Garden",
+      "capacity": 400,
+      "rentalPrice": 1000
+    },
+    "indoorOption": null
+  },
+  {
+    "name": "Cairo International Convention Centre",
+    "address": "Nasr City",
+    "city": "Cairo",
+    "country": "Egypt",
+    "latitude": 30.0645,
+    "longitude": 31.3337,
+    "venueType": "indoor",
+    "capacity": 5000,
+    "timezone": "Africa/Cairo",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 5000,
+      "rentalPrice": 20000
+    },
+    "outdoorOption": {
+      "name": "Jardin",
+      "capacity": 1666,
+      "rentalPrice": 4000
+    }
+  },
+  {
+    "name": "Pyramids of Giza – Sound & Light Stage",
+    "address": "Al Haram",
+    "city": "Giza",
+    "country": "Egypt",
+    "latitude": 29.9773,
+    "longitude": 31.1325,
+    "venueType": "outdoor",
+    "capacity": 2000,
+    "timezone": "Africa/Cairo",
+    "outdoorOption": {
+      "name": "Sound & Light Stage",
+      "capacity": 2000,
+      "rentalPrice": 6000
+    },
+    "indoorOption": {
+      "name": "Reception hall",
+      "capacity": 500,
+      "rentalPrice": 2000
+    }
+  },
+  {
+    "name": "Qatar National Convention Centre",
+    "address": "Education City",
+    "city": "Doha",
+    "country": "Qatar",
+    "latitude": 25.3122,
+    "longitude": 51.4228,
+    "venueType": "indoor",
+    "capacity": 10000,
+    "timezone": "Asia/Qatar",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 10000,
+      "rentalPrice": 50000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Katara Cultural Village – Amphitheatre",
+    "address": "Katara, Building 12",
+    "city": "Doha",
+    "country": "Qatar",
+    "latitude": 25.3617,
+    "longitude": 51.5393,
+    "venueType": "outdoor",
+    "capacity": 5000,
+    "timezone": "Asia/Qatar",
+    "outdoorOption": {
+      "name": "Amphitheatre",
+      "capacity": 5000,
+      "rentalPrice": 20000
+    },
+    "indoorOption": null
+  },
+  {
+    "name": "Auckland War Memorial Museum – Winter Garden",
+    "address": "The Domain, Parnell",
+    "city": "Auckland",
+    "country": "New Zealand",
+    "latitude": -36.8599,
+    "longitude": 174.7785,
+    "venueType": "outdoor",
+    "capacity": 800,
+    "timezone": "Pacific/Auckland",
+    "outdoorOption": {
+      "name": "Winter Garden",
+      "capacity": 800,
+      "rentalPrice": 2500
+    },
+    "indoorOption": null
+  },
+  {
+    "name": "Te Papa – Soundings Theatre",
+    "address": "55 Cable Street",
+    "city": "Wellington",
+    "country": "New Zealand",
+    "latitude": -41.2902,
+    "longitude": 174.7818,
+    "venueType": "indoor",
+    "capacity": 500,
+    "timezone": "Pacific/Auckland",
+    "indoorOption": {
+      "name": "Soundings Theatre",
+      "capacity": 500,
+      "rentalPrice": 1500
+    },
+    "outdoorOption": {
+      "name": "Jardin",
+      "capacity": 166,
+      "rentalPrice": 500
+    }
+  },
+  {
+    "name": "Çırağan Palace Kempinski – Ballroom",
+    "address": "Çırağan Caddesi 32",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "latitude": 41.0437,
+    "longitude": 29.0146,
+    "venueType": "indoor",
+    "capacity": 800,
+    "timezone": "Europe/Istanbul",
+    "indoorOption": {
+      "name": "Ballroom",
+      "capacity": 800,
+      "rentalPrice": 2500
+    },
+    "outdoorOption": {
+      "name": "Jardin",
+      "capacity": 266,
+      "rentalPrice": 500
+    }
+  },
+  {
+    "name": "Hagia Sophia – Outer Courtyard",
+    "address": "Sultanahmet",
+    "city": "Istanbul",
+    "country": "Turkey",
+    "latitude": 41.0086,
+    "longitude": 28.9802,
+    "venueType": "outdoor",
+    "capacity": 1000,
+    "timezone": "Europe/Istanbul",
+    "outdoorOption": {
+      "name": "Outer Courtyard",
+      "capacity": 1000,
+      "rentalPrice": 3000
+    },
+    "indoorOption": null
+  },
+  {
+    "name": "Palais des Beaux-Arts (BOZAR)",
+    "address": "Rue Ravenstein 23",
+    "city": "Brussels",
+    "country": "Belgium",
+    "latitude": 50.8455,
+    "longitude": 4.3577,
+    "venueType": "indoor",
+    "capacity": 2500,
+    "timezone": "Europe/Brussels",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 2500,
+      "rentalPrice": 10000
+    },
+    "outdoorOption": {
+      "name": "Jardin",
+      "capacity": 833,
+      "rentalPrice": 2000
+    }
+  },
+  {
+    "name": "Château de la Hulpe",
+    "address": "Drève Richelle 161A",
+    "city": "La Hulpe",
+    "country": "Belgium",
+    "latitude": 50.603,
+    "longitude": 4.4806,
+    "venueType": "mixed",
+    "capacity": 600,
+    "timezone": "Europe/Brussels",
+    "indoorOption": {
+      "name": "Indoor hall",
+      "capacity": 300,
+      "rentalPrice": 1000
+    },
+    "outdoorOption": {
+      "name": "Espace extérieur",
+      "capacity": 600,
+      "rentalPrice": 2000
+    }
+  },
+  {
+    "name": "Stockholmsmässan – Stockholm Waterfront",
+    "address": "Nils Ericsons Plan 4",
+    "city": "Stockholm",
+    "country": "Sweden",
+    "latitude": 59.3307,
+    "longitude": 18.0563,
+    "venueType": "indoor",
+    "capacity": 3000,
+    "timezone": "Europe/Stockholm",
+    "indoorOption": {
+      "name": "Stockholm Waterfront",
+      "capacity": 3000,
+      "rentalPrice": 12000
+    },
+    "outdoorOption": {
+      "name": "Jardin",
+      "capacity": 1000,
+      "rentalPrice": 2500
+    }
+  },
+  {
+    "name": "Drottningholm Palace – Garden Stage",
+    "address": "Drottningholm",
+    "city": "Ekero",
+    "country": "Sweden",
+    "latitude": 59.3219,
+    "longitude": 17.8867,
+    "venueType": "outdoor",
+    "capacity": 1200,
+    "timezone": "Europe/Stockholm",
+    "outdoorOption": {
+      "name": "Garden Stage",
+      "capacity": 1200,
+      "rentalPrice": 3500
+    },
+    "indoorOption": null
+  },
+  {
+    "name": "ICE Kraków Congress Centre",
+    "address": "ul. Marii Konopnickiej 17",
+    "city": "Krakow",
+    "country": "Poland",
+    "latitude": 50.0533,
+    "longitude": 19.934,
+    "venueType": "indoor",
+    "capacity": 2300,
+    "timezone": "Europe/Warsaw",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 2300,
+      "rentalPrice": 9000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Warsaw Marriott – Crystal Hall",
+    "address": "Al. Jerozolimskie 65/79",
+    "city": "Warsaw",
+    "country": "Poland",
+    "latitude": 52.2283,
+    "longitude": 21.0101,
+    "venueType": "indoor",
+    "capacity": 1500,
+    "timezone": "Europe/Warsaw",
+    "indoorOption": {
+      "name": "Crystal Hall",
+      "capacity": 1500,
+      "rentalPrice": 4500
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Hermitage Museum – St George Hall",
+    "address": "Palace Square, 2",
+    "city": "Saint Petersburg",
+    "country": "Russia",
+    "latitude": 59.9398,
+    "longitude": 30.3146,
+    "venueType": "indoor",
+    "capacity": 1200,
+    "timezone": "Europe/Moscow",
+    "indoorOption": {
+      "name": "St George Hall",
+      "capacity": 1200,
+      "rentalPrice": 3500
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Crocus City Hall",
+    "address": "65-66 km MKAD, Krasnogorsk",
+    "city": "Moscow",
+    "country": "Russia",
+    "latitude": 55.819,
+    "longitude": 37.362,
+    "venueType": "indoor",
+    "capacity": 7500,
+    "timezone": "Europe/Moscow",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 7500,
+      "rentalPrice": 37500
+    },
+    "outdoorOption": {
+      "name": "Terrasse extérieure",
+      "capacity": 2500,
+      "rentalPrice": 6000
+    }
+  },
+  {
+    "name": "KICC – Tsavo Ballroom",
+    "address": "City Hall Way",
+    "city": "Nairobi",
+    "country": "Kenya",
+    "latitude": -1.2834,
+    "longitude": 36.8191,
+    "venueType": "indoor",
+    "capacity": 1500,
+    "timezone": "Africa/Nairobi",
+    "indoorOption": {
+      "name": "Tsavo Ballroom",
+      "capacity": 1500,
+      "rentalPrice": 4500
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Fairmont Norfolk – Garden Terrace",
+    "address": "Harry Thuku Road",
+    "city": "Nairobi",
+    "country": "Kenya",
+    "latitude": -1.2808,
+    "longitude": 36.8171,
+    "venueType": "outdoor",
+    "capacity": 400,
+    "timezone": "Africa/Nairobi",
+    "outdoorOption": {
+      "name": "Garden Terrace",
+      "capacity": 400,
+      "rentalPrice": 1000
+    },
+    "indoorOption": {
+      "name": "Reception hall",
+      "capacity": 100,
+      "rentalPrice": 500
+    }
+  },
+  {
+    "name": "GEM Center",
+    "address": "8 Nguyen Binh Khiem, Da Kao",
+    "city": "Ho Chi Minh City",
+    "country": "Vietnam",
+    "latitude": 10.7876,
+    "longitude": 106.6982,
+    "venueType": "indoor",
+    "capacity": 3000,
+    "timezone": "Asia/Ho_Chi_Minh",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 3000,
+      "rentalPrice": 12000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "JW Marriott Hanoi – Grand Ballroom",
+    "address": "8 Do Duc Duc, My Dinh",
+    "city": "Hanoi",
+    "country": "Vietnam",
+    "latitude": 21.0245,
+    "longitude": 105.783,
+    "venueType": "indoor",
+    "capacity": 2000,
+    "timezone": "Asia/Bangkok",
+    "indoorOption": {
+      "name": "Grand Ballroom",
+      "capacity": 2000,
+      "rentalPrice": 6000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Eko Convention Centre",
+    "address": "Plot 1415, Adetokunbo Ademola Street",
+    "city": "Lagos",
+    "country": "Nigeria",
+    "latitude": 6.4288,
+    "longitude": 3.4263,
+    "venueType": "indoor",
+    "capacity": 5000,
+    "timezone": "Africa/Lagos",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 5000,
+      "rentalPrice": 20000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Abuja Transcorp Hilton – Grand Ballroom",
+    "address": "1 Aguiyi Ironsi Street, Maitama",
+    "city": "Abuja",
+    "country": "Nigeria",
+    "latitude": 9.0631,
+    "longitude": 7.5033,
+    "venueType": "indoor",
+    "capacity": 1200,
+    "timezone": "Africa/Lagos",
+    "indoorOption": {
+      "name": "Grand Ballroom",
+      "capacity": 1200,
+      "rentalPrice": 3500
+    },
+    "outdoorOption": {
+      "name": "Terrasse extérieure",
+      "capacity": 400,
+      "rentalPrice": 1000
+    }
+  },
+  {
+    "name": "Prague Congress Centre",
+    "address": "5. kvetna 65",
+    "city": "Prague",
+    "country": "Czech Republic",
+    "latitude": 50.0612,
+    "longitude": 14.4268,
+    "venueType": "indoor",
+    "capacity": 9300,
+    "timezone": "Europe/Prague",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 9300,
+      "rentalPrice": 46500
+    },
+    "outdoorOption": {
+      "name": "Terrasse extérieure",
+      "capacity": 3100,
+      "rentalPrice": 8000
+    }
+  },
+  {
+    "name": "Lobkowicz Palace – Concert Hall",
+    "address": "Jirske namesti 3",
+    "city": "Prague",
+    "country": "Czech Republic",
+    "latitude": 50.0909,
+    "longitude": 14.4077,
+    "venueType": "indoor",
+    "capacity": 200,
+    "timezone": "Europe/Prague",
+    "indoorOption": {
+      "name": "Concert Hall",
+      "capacity": 200,
+      "rentalPrice": 500
+    },
+    "outdoorOption": {
+      "name": "Jardin",
+      "capacity": 66,
+      "rentalPrice": 500
+    }
+  },
+  {
+    "name": "Bella Center Copenhagen",
+    "address": "Center Boulevard 5",
+    "city": "Copenhagen",
+    "country": "Denmark",
+    "latitude": 55.6336,
+    "longitude": 12.5679,
+    "venueType": "indoor",
+    "capacity": 10000,
+    "timezone": "Europe/Copenhagen",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 10000,
+      "rentalPrice": 50000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Kronborg Castle – Courtyard",
+    "address": "Kronborg 2C",
+    "city": "Helsingor",
+    "country": "Denmark",
+    "latitude": 56.0387,
+    "longitude": 12.6207,
+    "venueType": "outdoor",
+    "capacity": 2000,
+    "timezone": "Europe/Copenhagen",
+    "outdoorOption": {
+      "name": "Courtyard",
+      "capacity": 2000,
+      "rentalPrice": 6000
+    },
+    "indoorOption": {
+      "name": "Reception hall",
+      "capacity": 500,
+      "rentalPrice": 2000
+    }
+  },
+  {
+    "name": "Oslo Spektrum",
+    "address": "Sonja Henies plass 2",
+    "city": "Oslo",
+    "country": "Norway",
+    "latitude": 59.9126,
+    "longitude": 10.7537,
+    "venueType": "indoor",
+    "capacity": 9500,
+    "timezone": "Europe/Oslo",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 9500,
+      "rentalPrice": 47500
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Akershus Fortress – Courtyard",
+    "address": "Festningstomta 1",
+    "city": "Oslo",
+    "country": "Norway",
+    "latitude": 59.9077,
+    "longitude": 10.7361,
+    "venueType": "outdoor",
+    "capacity": 3000,
+    "timezone": "Europe/Oslo",
+    "outdoorOption": {
+      "name": "Courtyard",
+      "capacity": 3000,
+      "rentalPrice": 12000
+    },
+    "indoorOption": {
+      "name": "Reception hall",
+      "capacity": 750,
+      "rentalPrice": 3000
+    }
+  },
+  {
+    "name": "Messukeskus – Hall 7",
+    "address": "Messuaukio 1",
+    "city": "Helsinki",
+    "country": "Finland",
+    "latitude": 60.2022,
+    "longitude": 24.9257,
+    "venueType": "indoor",
+    "capacity": 12000,
+    "timezone": "Europe/Helsinki",
+    "indoorOption": {
+      "name": "Hall 7",
+      "capacity": 12000,
+      "rentalPrice": 60000
+    },
+    "outdoorOption": {
+      "name": "Terrasse extérieure",
+      "capacity": 4000,
+      "rentalPrice": 10000
+    }
+  },
+  {
+    "name": "Helsinki City Hall – Juhlasali",
+    "address": "Pohjoisesplanadi 11-13",
+    "city": "Helsinki",
+    "country": "Finland",
+    "latitude": 60.1679,
+    "longitude": 24.9528,
+    "venueType": "indoor",
+    "capacity": 700,
+    "timezone": "Europe/Helsinki",
+    "indoorOption": {
+      "name": "Juhlasali",
+      "capacity": 700,
+      "rentalPrice": 2000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Hofburg Vienna – Imperial Hall",
+    "address": "Michaelerkuppel",
+    "city": "Vienna",
+    "country": "Austria",
+    "latitude": 48.2073,
+    "longitude": 16.3659,
+    "venueType": "indoor",
+    "capacity": 1200,
+    "timezone": "Europe/Vienna",
+    "indoorOption": {
+      "name": "Imperial Hall",
+      "capacity": 1200,
+      "rentalPrice": 3500
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Schönbrunn Palace – Great Gallery",
+    "address": "Schonbrunner Schlossstrasse 47",
+    "city": "Vienna",
+    "country": "Austria",
+    "latitude": 48.1845,
+    "longitude": 16.3123,
+    "venueType": "indoor",
+    "capacity": 600,
+    "timezone": "Europe/Vienna",
+    "indoorOption": {
+      "name": "Great Gallery",
+      "capacity": 600,
+      "rentalPrice": 2000
+    },
+    "outdoorOption": {
+      "name": "Jardin",
+      "capacity": 200,
+      "rentalPrice": 500
+    }
+  },
+  {
+    "name": "Convention Centre Dublin",
+    "address": "Spencer Dock",
+    "city": "Dublin",
+    "country": "Ireland",
+    "latitude": 53.3474,
+    "longitude": -6.2369,
+    "venueType": "indoor",
+    "capacity": 8000,
+    "timezone": "Europe/Dublin",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 8000,
+      "rentalPrice": 40000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Dublin Castle – State Apartments",
+    "address": "Dame Street",
+    "city": "Dublin",
+    "country": "Ireland",
+    "latitude": 53.343,
+    "longitude": -6.2671,
+    "venueType": "indoor",
+    "capacity": 800,
+    "timezone": "Europe/Dublin",
+    "indoorOption": {
+      "name": "State Apartments",
+      "capacity": 800,
+      "rentalPrice": 2500
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Kilkenny Castle – Great Hall",
+    "address": "The Parade",
+    "city": "Kilkenny",
+    "country": "Ireland",
+    "latitude": 52.6508,
+    "longitude": -7.2543,
+    "venueType": "indoor",
+    "capacity": 400,
+    "timezone": "Europe/Dublin",
+    "indoorOption": {
+      "name": "Great Hall",
+      "capacity": 400,
+      "rentalPrice": 1000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Harpa Concert Hall – Eldborg",
+    "address": "Austurbakki 2",
+    "city": "Reykjavik",
+    "country": "Iceland",
+    "latitude": 64.1503,
+    "longitude": -21.9322,
+    "venueType": "indoor",
+    "capacity": 1800,
+    "timezone": "Atlantic/Reykjavik",
+    "indoorOption": {
+      "name": "Eldborg",
+      "capacity": 1800,
+      "rentalPrice": 5500
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Þingvellir National Park – Amphitheatre",
+    "address": "Þingvallavatn",
+    "city": "Þingvellir",
+    "country": "Iceland",
+    "latitude": 64.2559,
+    "longitude": -21.13,
+    "venueType": "outdoor",
+    "capacity": 5000,
+    "timezone": "Atlantic/Reykjavik",
+    "outdoorOption": {
+      "name": "Amphitheatre",
+      "capacity": 5000,
+      "rentalPrice": 20000
+    },
+    "indoorOption": null
+  },
+  {
+    "name": "Hong Kong Convention Centre – Hall 5",
+    "address": "1 Expo Drive, Wan Chai",
+    "city": "Hong Kong",
+    "country": "Hong Kong",
+    "latitude": 22.2828,
+    "longitude": 114.1731,
+    "venueType": "indoor",
+    "capacity": 10000,
+    "timezone": "Asia/Hong_Kong",
+    "indoorOption": {
+      "name": "Hall 5",
+      "capacity": 10000,
+      "rentalPrice": 50000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Tai Kwun – JC Contemporary",
+    "address": "10 Hollywood Road, Central",
+    "city": "Hong Kong",
+    "country": "Hong Kong",
+    "latitude": 22.2826,
+    "longitude": 114.1551,
+    "venueType": "outdoor",
+    "capacity": 500,
+    "timezone": "Asia/Hong_Kong",
+    "outdoorOption": {
+      "name": "JC Contemporary",
+      "capacity": 500,
+      "rentalPrice": 1500
+    },
+    "indoorOption": null
+  },
+  {
+    "name": "Romexpo – Pavilion B1",
+    "address": "Bulevardul Expozitiei 2",
+    "city": "Bucharest",
+    "country": "Romania",
+    "latitude": 44.4663,
+    "longitude": 26.0788,
+    "venueType": "indoor",
+    "capacity": 5000,
+    "timezone": "Europe/Bucharest",
+    "indoorOption": {
+      "name": "Pavilion B1",
+      "capacity": 5000,
+      "rentalPrice": 20000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Peles Castle – Terrace",
+    "address": "Aleea Pelesului 2",
+    "city": "Sinaia",
+    "country": "Romania",
+    "latitude": 45.3606,
+    "longitude": 25.5403,
+    "venueType": "outdoor",
+    "capacity": 300,
+    "timezone": "Europe/Bucharest",
+    "outdoorOption": {
+      "name": "Terrace",
+      "capacity": 300,
+      "rentalPrice": 1000
+    },
+    "indoorOption": {
+      "name": "Reception hall",
+      "capacity": 75,
+      "rentalPrice": 500
+    }
+  },
+  {
+    "name": "Palais des Congrès de Tunis",
+    "address": "Avenue Mohamed V",
+    "city": "Tunis",
+    "country": "Tunisia",
+    "latitude": 36.8202,
+    "longitude": 10.1858,
+    "venueType": "indoor",
+    "capacity": 2000,
+    "timezone": "Africa/Tunis",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 2000,
+      "rentalPrice": 6000
+    },
+    "outdoorOption": {
+      "name": "Jardin",
+      "capacity": 666,
+      "rentalPrice": 1500
+    }
+  },
+  {
+    "name": "Carthage Amphitheatre",
+    "address": "Collines de Carthage",
+    "city": "Carthage",
+    "country": "Tunisia",
+    "latitude": 36.8578,
+    "longitude": 10.325,
+    "venueType": "outdoor",
+    "capacity": 5000,
+    "timezone": "Africa/Tunis",
+    "outdoorOption": {
+      "name": "Espace extérieur",
+      "capacity": 5000,
+      "rentalPrice": 20000
+    },
+    "indoorOption": {
+      "name": "Reception hall",
+      "capacity": 1250,
+      "rentalPrice": 5000
+    }
+  },
+  {
+    "name": "King Abdulaziz ICC – Grand Hall",
+    "address": "King Fahd Road",
+    "city": "Riyadh",
+    "country": "Saudi Arabia",
+    "latitude": 24.7138,
+    "longitude": 46.6753,
+    "venueType": "indoor",
+    "capacity": 3000,
+    "timezone": "Asia/Riyadh",
+    "indoorOption": {
+      "name": "Grand Hall",
+      "capacity": 3000,
+      "rentalPrice": 12000
+    },
+    "outdoorOption": {
+      "name": "Jardin",
+      "capacity": 1000,
+      "rentalPrice": 2500
+    }
+  },
+  {
+    "name": "Al-Ula Amphitheatre",
+    "address": "AlUla",
+    "city": "Al-Ula",
+    "country": "Saudi Arabia",
+    "latitude": 26.6209,
+    "longitude": 37.922,
+    "venueType": "outdoor",
+    "capacity": 2500,
+    "timezone": "Asia/Riyadh",
+    "outdoorOption": {
+      "name": "Espace extérieur",
+      "capacity": 2500,
+      "rentalPrice": 10000
+    },
+    "indoorOption": null
+  },
+  {
+    "name": "CICC – Abdou Diouf",
+    "address": "Diamniadio",
+    "city": "Diamniadio",
+    "country": "Senegal",
+    "latitude": 14.7258,
+    "longitude": -17.188,
+    "venueType": "indoor",
+    "capacity": 2000,
+    "timezone": "Africa/Dakar",
+    "indoorOption": {
+      "name": "Abdou Diouf",
+      "capacity": 2000,
+      "rentalPrice": 6000
+    },
+    "outdoorOption": {
+      "name": "Jardin",
+      "capacity": 666,
+      "rentalPrice": 1500
+    }
+  },
+  {
+    "name": "Île de Gorée – Place du Gouvernement",
+    "address": "Île de Gorée",
+    "city": "Dakar",
+    "country": "Senegal",
+    "latitude": 14.6717,
+    "longitude": -17.398,
+    "venueType": "outdoor",
+    "capacity": 800,
+    "timezone": "Africa/Dakar",
+    "outdoorOption": {
+      "name": "Place du Gouvernement",
+      "capacity": 800,
+      "rentalPrice": 2500
+    },
+    "indoorOption": null
+  },
+  {
+    "name": "Lisinski Concert Hall",
+    "address": "Trg Stjepana Radica 4",
+    "city": "Zagreb",
+    "country": "Croatia",
+    "latitude": 45.7989,
+    "longitude": 15.9763,
+    "venueType": "indoor",
+    "capacity": 1840,
+    "timezone": "Europe/Zagreb",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 1840,
+      "rentalPrice": 5500
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Diocletian's Palace – Peristyle",
+    "address": "Ul. kralja Tomislava",
+    "city": "Split",
+    "country": "Croatia",
+    "latitude": 43.5081,
+    "longitude": 16.4401,
+    "venueType": "outdoor",
+    "capacity": 500,
+    "timezone": "Europe/Zagreb",
+    "outdoorOption": {
+      "name": "Peristyle",
+      "capacity": 500,
+      "rentalPrice": 1500
+    },
+    "indoorOption": null
+  },
+  {
+    "name": "Papp László Budapest Sportaréna",
+    "address": "Stefánia út 2",
+    "city": "Budapest",
+    "country": "Hungary",
+    "latitude": 47.4995,
+    "longitude": 19.1024,
+    "venueType": "indoor",
+    "capacity": 12500,
+    "timezone": "Europe/Budapest",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 12500,
+      "rentalPrice": 62500
+    },
+    "outdoorOption": {
+      "name": "Terrasse extérieure",
+      "capacity": 4166,
+      "rentalPrice": 10500
+    }
+  },
+  {
+    "name": "Buda Castle – Ceremonial Hall",
+    "address": "Szent György tér 2",
+    "city": "Budapest",
+    "country": "Hungary",
+    "latitude": 47.4963,
+    "longitude": 19.0398,
+    "venueType": "indoor",
+    "capacity": 400,
+    "timezone": "Europe/Budapest",
+    "indoorOption": {
+      "name": "Ceremonial Hall",
+      "capacity": 400,
+      "rentalPrice": 1000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Accra International Conference Centre",
+    "address": "Castle Road",
+    "city": "Accra",
+    "country": "Ghana",
+    "latitude": 5.5521,
+    "longitude": -0.2013,
+    "venueType": "indoor",
+    "capacity": 2000,
+    "timezone": "Africa/Accra",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 2000,
+      "rentalPrice": 6000
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Oman Convention & Exhibition Centre",
+    "address": "Muscat",
+    "city": "Muscat",
+    "country": "Oman",
+    "latitude": 23.6082,
+    "longitude": 58.4053,
+    "venueType": "indoor",
+    "capacity": 3000,
+    "timezone": "Asia/Muscat",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 3000,
+      "rentalPrice": 12000
+    },
+    "outdoorOption": {
+      "name": "Terrasse extérieure",
+      "capacity": 1000,
+      "rentalPrice": 2500
+    }
+  },
+  {
+    "name": "Al Bustan Palace – Ballroom",
+    "address": "Al Bustan Street",
+    "city": "Muscat",
+    "country": "Oman",
+    "latitude": 23.5801,
+    "longitude": 58.6295,
+    "venueType": "indoor",
+    "capacity": 800,
+    "timezone": "Asia/Muscat",
+    "indoorOption": {
+      "name": "Ballroom",
+      "capacity": 800,
+      "rentalPrice": 2500
+    },
+    "outdoorOption": null
+  },
+  {
+    "name": "Kuwait International Fair – Hall 3",
+    "address": "Arabian Gulf Street",
+    "city": "Kuwait City",
+    "country": "Kuwait",
+    "latitude": 29.3697,
+    "longitude": 47.9783,
+    "venueType": "indoor",
+    "capacity": 5000,
+    "timezone": "Asia/Kuwait",
+    "indoorOption": {
+      "name": "Hall 3",
+      "capacity": 5000,
+      "rentalPrice": 20000
+    },
+    "outdoorOption": {
+      "name": "Jardin",
+      "capacity": 1666,
+      "rentalPrice": 4000
+    }
+  },
+  {
+    "name": "Kirchberg Conference Centre",
+    "address": "1 Place de l'Europe",
+    "city": "Luxembourg City",
+    "country": "Luxembourg",
+    "latitude": 49.6229,
+    "longitude": 6.1433,
+    "venueType": "indoor",
+    "capacity": 800,
+    "timezone": "Europe/Luxembourg",
+    "indoorOption": {
+      "name": "Main hall",
+      "capacity": 800,
+      "rentalPrice": 2500
+    },
+    "outdoorOption": {
+      "name": "Jardin",
+      "capacity": 266,
+      "rentalPrice": 500
+    }
+  },
+  {
+    "name": "Château de Bourglinster – Courtyard",
+    "address": "6 Rue du Château",
+    "city": "Bourglinster",
+    "country": "Luxembourg",
+    "latitude": 49.7445,
+    "longitude": 6.3479,
+    "venueType": "outdoor",
+    "capacity": 400,
+    "timezone": "Europe/Luxembourg",
+    "outdoorOption": {
+      "name": "Courtyard",
+      "capacity": 400,
+      "rentalPrice": 1000
+    },
+    "indoorOption": {
+      "name": "Reception hall",
+      "capacity": 100,
+      "rentalPrice": 500
+    }
+  }
+]

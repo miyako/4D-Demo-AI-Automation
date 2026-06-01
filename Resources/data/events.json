@@ -3,25 +3,25 @@
     "clientIndex": 81,
     "venueIndex": 28,
     "guestCount": 115,
-    "notes": "Lancement produit – Dubai"
+    "notes": "Product launch – Dubai"
   },
   {
     "clientIndex": 94,
     "venueIndex": 26,
     "guestCount": 35,
-    "notes": "Fête du personnel – Milan"
+    "notes": "Staff party – Milan"
   },
   {
     "clientIndex": 11,
     "venueIndex": 55,
     "guestCount": 157,
-    "notes": "Afterwork networking – Mumbai"
+    "notes": "Networking afterwork – Mumbai"
   },
   {
     "clientIndex": 91,
     "venueIndex": 107,
     "guestCount": 155,
-    "notes": "Afterwork networking – Dublin"
+    "notes": "Networking afterwork – Dublin"
   },
   {
     "clientIndex": 89,
@@ -33,13 +33,13 @@
     "clientIndex": 11,
     "venueIndex": 97,
     "guestCount": 376,
-    "notes": "Journée portes ouvertes – Prague"
+    "notes": "Open day – Prague"
   },
   {
     "clientIndex": 5,
     "venueIndex": 117,
     "guestCount": 393,
-    "notes": "Fête du personnel – Carthage"
+    "notes": "Staff party – Carthage"
   },
   {
     "clientIndex": 80,
@@ -51,25 +51,25 @@
     "clientIndex": 37,
     "venueIndex": 20,
     "guestCount": 342,
-    "notes": "Afterwork networking – Seville"
+    "notes": "Networking afterwork – Seville"
   },
   {
     "clientIndex": 20,
     "venueIndex": 94,
     "guestCount": 43,
-    "notes": "Sommet leadership – Hanoi"
+    "notes": "Summit leadership – Hanoi"
   },
   {
     "clientIndex": 77,
     "venueIndex": 43,
     "guestCount": 973,
-    "notes": "Fête du personnel – Marrakech"
+    "notes": "Staff party – Marrakech"
   },
   {
     "clientIndex": 34,
     "venueIndex": 56,
     "guestCount": 79,
-    "notes": "Festival d'entreprise – Hyderabad"
+    "notes": "Corporate festival – Hyderabad"
   },
   {
     "clientIndex": 40,
@@ -81,13 +81,13 @@
     "clientIndex": 83,
     "venueIndex": 127,
     "guestCount": 138,
-    "notes": "Présentation investisseurs – Muscat"
+    "notes": "Investor presentation – Muscat"
   },
   {
     "clientIndex": 31,
     "venueIndex": 67,
     "guestCount": 498,
-    "notes": "Convention partenaires – Geneva"
+    "notes": "Partners convention – Geneva"
   },
   {
     "clientIndex": 28,
@@ -99,13 +99,13 @@
     "clientIndex": 80,
     "venueIndex": 40,
     "guestCount": 890,
-    "notes": "Séminaire R&D – Singapore"
+    "notes": "R&D seminar – Singapore"
   },
   {
     "clientIndex": 67,
     "venueIndex": 64,
     "guestCount": 258,
-    "notes": "Journée RSE – Seoul"
+    "notes": "Day event RSE – Seoul"
   },
   {
     "clientIndex": 82,
@@ -123,13 +123,13 @@
     "clientIndex": 81,
     "venueIndex": 129,
     "guestCount": 42,
-    "notes": "Soirée VIP clients – Kuwait City"
+    "notes": "Evening event VIP clients – Kuwait City"
   },
   {
     "clientIndex": 76,
     "venueIndex": 82,
     "guestCount": 94,
-    "notes": "Cérémonie d'ouverture – Istanbul"
+    "notes": "Ceremony d'ouverture – Istanbul"
   },
   {
     "clientIndex": 7,
@@ -141,31 +141,31 @@
     "clientIndex": 16,
     "venueIndex": 121,
     "guestCount": 1121,
-    "notes": "Journée RSE – Dakar"
+    "notes": "Day event RSE – Dakar"
   },
   {
     "clientIndex": 27,
     "venueIndex": 51,
     "guestCount": 948,
-    "notes": "Dîner de charité – Rio de Janeiro"
+    "notes": "Dinner –– Rio de Janeiro"
   },
   {
     "clientIndex": 15,
     "venueIndex": 63,
     "guestCount": 123,
-    "notes": "Afterwork networking – Seoul"
+    "notes": "Networking afterwork – Seoul"
   },
   {
     "clientIndex": 75,
     "venueIndex": 56,
     "guestCount": 34,
-    "notes": "Séminaire annuel – Hyderabad"
+    "notes": "Annual seminar – Hyderabad"
   },
   {
     "clientIndex": 4,
     "venueIndex": 84,
     "guestCount": 1185,
-    "notes": "Remise de prix – La Hulpe"
+    "notes": "Awards ceremony – La Hulpe"
   },
   {
     "clientIndex": 27,
@@ -177,37 +177,37 @@
     "clientIndex": 24,
     "venueIndex": 24,
     "guestCount": 933,
-    "notes": "Journée portes ouvertes – Rome"
+    "notes": "Open day – Rome"
   },
   {
     "clientIndex": 59,
     "venueIndex": 13,
     "guestCount": 131,
-    "notes": "Journée portes ouvertes – Edinburgh"
+    "notes": "Open day – Edinburgh"
   },
   {
     "clientIndex": 24,
     "venueIndex": 48,
     "guestCount": 416,
-    "notes": "Fête du personnel – Melbourne"
+    "notes": "Staff party – Melbourne"
   },
   {
     "clientIndex": 59,
     "venueIndex": 63,
     "guestCount": 58,
-    "notes": "Remise de prix – Seoul"
+    "notes": "Awards ceremony – Seoul"
   },
   {
     "clientIndex": 83,
     "venueIndex": 3,
     "guestCount": 670,
-    "notes": "Gala de fin d'année – Paris"
+    "notes": "Year-end gala – Paris"
   },
   {
     "clientIndex": 62,
     "venueIndex": 123,
     "guestCount": 668,
-    "notes": "Congrès sectoriel – Split"
+    "notes": "Industry congress – Split"
   },
   {
     "clientIndex": 0,
@@ -231,7 +231,7 @@
     "clientIndex": 7,
     "venueIndex": 130,
     "guestCount": 88,
-    "notes": "Gala de fin d'année – Luxembourg City"
+    "notes": "Year-end gala – Luxembourg City"
   },
   {
     "clientIndex": 51,
@@ -249,43 +249,43 @@
     "clientIndex": 50,
     "venueIndex": 33,
     "guestCount": 509,
-    "notes": "Dîner de charité – Himeji"
+    "notes": "Dinner –– Himeji"
   },
   {
     "clientIndex": 79,
     "venueIndex": 25,
     "guestCount": 107,
-    "notes": "Remise de prix – Venice"
+    "notes": "Awards ceremony – Venice"
   },
   {
     "clientIndex": 44,
     "venueIndex": 17,
     "guestCount": 280,
-    "notes": "Cérémonie de remise des diplômes – Hamburg"
+    "notes": "Graduation ceremony – Hamburg"
   },
   {
     "clientIndex": 78,
     "venueIndex": 2,
     "guestCount": 253,
-    "notes": "Journée RSE – Saint-Denis"
+    "notes": "Day event RSE – Saint-Denis"
   },
   {
     "clientIndex": 14,
     "venueIndex": 27,
     "guestCount": 114,
-    "notes": "Journée RSE – Dubai"
+    "notes": "Day event RSE – Dubai"
   },
   {
     "clientIndex": 91,
     "venueIndex": 87,
     "guestCount": 1017,
-    "notes": "Congrès sectoriel – Krakow"
+    "notes": "Industry congress – Krakow"
   },
   {
     "clientIndex": 32,
     "venueIndex": 13,
     "guestCount": 70,
-    "notes": "Gala de fin d'année – Edinburgh"
+    "notes": "Year-end gala – Edinburgh"
   },
   {
     "clientIndex": 42,
@@ -303,97 +303,97 @@
     "clientIndex": 47,
     "venueIndex": 37,
     "guestCount": 38,
-    "notes": "Séminaire R&D – Chicago"
+    "notes": "R&D seminar – Chicago"
   },
   {
     "clientIndex": 45,
     "venueIndex": 53,
     "guestCount": 1073,
-    "notes": "Cérémonie de remise des diplômes – Cape Town"
+    "notes": "Graduation ceremony – Cape Town"
   },
   {
     "clientIndex": 79,
     "venueIndex": 39,
     "guestCount": 40,
-    "notes": "Cérémonie de remise des diplômes – Los Angeles"
+    "notes": "Graduation ceremony – Los Angeles"
   },
   {
     "clientIndex": 22,
     "venueIndex": 6,
     "guestCount": 300,
-    "notes": "Soirée partenaires – Dubaï"
+    "notes": "Partners evening – Dubai"
   },
   {
     "clientIndex": 89,
     "venueIndex": 27,
     "guestCount": 189,
-    "notes": "Célébration anniversaire – Dubai"
+    "notes": "Anniversary celebration – Dubai"
   },
   {
     "clientIndex": 58,
     "venueIndex": 89,
     "guestCount": 80,
-    "notes": "Dîner de charité – Saint Petersburg"
+    "notes": "Dinner –– Saint Petersburg"
   },
   {
     "clientIndex": 84,
     "venueIndex": 49,
     "guestCount": 235,
-    "notes": "Présentation investisseurs – Rio de Janeiro"
+    "notes": "Investor presentation – Rio de Janeiro"
   },
   {
     "clientIndex": 82,
     "venueIndex": 130,
     "guestCount": 73,
-    "notes": "Présentation investisseurs – Luxembourg City"
+    "notes": "Investor presentation – Luxembourg City"
   },
   {
     "clientIndex": 14,
     "venueIndex": 66,
     "guestCount": 611,
-    "notes": "Forum innovation – Amsterdam"
+    "notes": "Innovation forum – Amsterdam"
   },
   {
     "clientIndex": 44,
     "venueIndex": 80,
     "guestCount": 145,
-    "notes": "Séminaire R&D – Wellington"
+    "notes": "R&D seminar – Wellington"
   },
   {
     "clientIndex": 32,
     "venueIndex": 11,
     "guestCount": 146,
-    "notes": "Séminaire R&D – Woodstock"
+    "notes": "R&D seminar – Woodstock"
   },
   {
     "clientIndex": 46,
     "venueIndex": 110,
     "guestCount": 369,
-    "notes": "Remise de prix – Reykjavik"
+    "notes": "Awards ceremony – Reykjavik"
   },
   {
     "clientIndex": 84,
     "venueIndex": 31,
     "guestCount": 834,
-    "notes": "Dîner de charité – Tokyo"
+    "notes": "Dinner –– Tokyo"
   },
   {
     "clientIndex": 89,
     "venueIndex": 75,
     "guestCount": 1180,
-    "notes": "Journée RSE – Cairo"
+    "notes": "Day event RSE – Cairo"
   },
   {
     "clientIndex": 86,
     "venueIndex": 44,
     "guestCount": 66,
-    "notes": "Marathon digital – Marrakech"
+    "notes": "Digital marathon – Marrakech"
   },
   {
     "clientIndex": 38,
     "venueIndex": 73,
     "guestCount": 496,
-    "notes": "Congrès sectoriel – Bangkok"
+    "notes": "Industry congress – Bangkok"
   },
   {
     "clientIndex": 59,
@@ -405,43 +405,43 @@
     "clientIndex": 84,
     "venueIndex": 21,
     "guestCount": 164,
-    "notes": "Workshop créatif – Madrid"
+    "notes": "Creative workshop – Madrid"
   },
   {
     "clientIndex": 86,
     "venueIndex": 79,
     "guestCount": 98,
-    "notes": "Afterwork networking – Auckland"
+    "notes": "Networking afterwork – Auckland"
   },
   {
     "clientIndex": 60,
     "venueIndex": 18,
     "guestCount": 699,
-    "notes": "Déjeuner d'affaires – Cologne"
+    "notes": "Business lunch – Cologne"
   },
   {
     "clientIndex": 63,
     "venueIndex": 102,
     "guestCount": 609,
-    "notes": "Cérémonie de remise des diplômes – Oslo"
+    "notes": "Graduation ceremony – Oslo"
   },
   {
     "clientIndex": 28,
     "venueIndex": 45,
     "guestCount": 59,
-    "notes": "Exposition artistique corporate – Casablanca"
+    "notes": "Exhibition artistique corporate – Casablanca"
   },
   {
     "clientIndex": 58,
     "venueIndex": 34,
     "guestCount": 486,
-    "notes": "Déjeuner d'affaires – Washington DC"
+    "notes": "Business lunch – Washington DC"
   },
   {
     "clientIndex": 96,
     "venueIndex": 113,
     "guestCount": 936,
-    "notes": "Marathon digital – Hong Kong"
+    "notes": "Digital marathon – Hong Kong"
   },
   {
     "clientIndex": 20,
@@ -453,31 +453,31 @@
     "clientIndex": 66,
     "venueIndex": 124,
     "guestCount": 136,
-    "notes": "Cérémonie de remise des diplômes – Budapest"
+    "notes": "Graduation ceremony – Budapest"
   },
   {
     "clientIndex": 34,
     "venueIndex": 85,
     "guestCount": 90,
-    "notes": "Festival d'entreprise – Stockholm"
+    "notes": "Corporate festival – Stockholm"
   },
   {
     "clientIndex": 49,
     "venueIndex": 39,
     "guestCount": 838,
-    "notes": "Congrès sectoriel – Los Angeles"
+    "notes": "Industry congress – Los Angeles"
   },
   {
     "clientIndex": 53,
     "venueIndex": 15,
     "guestCount": 520,
-    "notes": "Congrès sectoriel – Munich"
+    "notes": "Industry congress – Munich"
   },
   {
     "clientIndex": 61,
     "venueIndex": 1,
     "guestCount": 176,
-    "notes": "Sommet leadership – Maincy"
+    "notes": "Summit leadership – Maincy"
   },
   {
     "clientIndex": 62,
@@ -489,85 +489,85 @@
     "clientIndex": 85,
     "venueIndex": 103,
     "guestCount": 59,
-    "notes": "Assemblée générale – Helsinki"
+    "notes": "General assembly – Helsinki"
   },
   {
     "clientIndex": 50,
     "venueIndex": 6,
     "guestCount": 134,
-    "notes": "Gala de fin d'année – Marseille"
+    "notes": "Year-end gala – Marseille"
   },
   {
     "clientIndex": 6,
     "venueIndex": 66,
     "guestCount": 432,
-    "notes": "Célébration anniversaire – Amsterdam"
+    "notes": "Anniversary celebration – Amsterdam"
   },
   {
     "clientIndex": 48,
     "venueIndex": 71,
     "guestCount": 46,
-    "notes": "Journée formation – Lisbon"
+    "notes": "Training day – Lisbon"
   },
   {
     "clientIndex": 95,
     "venueIndex": 13,
     "guestCount": 44,
-    "notes": "Sommet leadership – Edinburgh"
+    "notes": "Summit leadership – Edinburgh"
   },
   {
     "clientIndex": 96,
     "venueIndex": 7,
     "guestCount": 187,
-    "notes": "Cérémonie de remise des diplômes – Paris"
+    "notes": "Graduation ceremony – Paris"
   },
   {
     "clientIndex": 30,
     "venueIndex": 32,
     "guestCount": 723,
-    "notes": "Table ronde sectorielle – Kyoto"
+    "notes": "Industry roundtable – Kyoto"
   },
   {
     "clientIndex": 89,
     "venueIndex": 65,
     "guestCount": 258,
-    "notes": "Réunion stratégique – Amsterdam"
+    "notes": "Strategy meeting – Amsterdam"
   },
   {
     "clientIndex": 13,
     "venueIndex": 6,
     "guestCount": 166,
-    "notes": "Dîner de charité – Marseille"
+    "notes": "Dinner –– Marseille"
   },
   {
     "clientIndex": 9,
     "venueIndex": 62,
     "guestCount": 74,
-    "notes": "Journée portes ouvertes – Playa del Carmen"
+    "notes": "Open day – Playa del Carmen"
   },
   {
     "clientIndex": 72,
     "venueIndex": 10,
     "guestCount": 389,
-    "notes": "Sommet leadership – London"
+    "notes": "Summit leadership – London"
   },
   {
     "clientIndex": 1,
     "venueIndex": 107,
     "guestCount": 1150,
-    "notes": "Cérémonie d'ouverture – Dublin"
+    "notes": "Ceremony d'ouverture – Dublin"
   },
   {
     "clientIndex": 90,
     "venueIndex": 39,
     "guestCount": 467,
-    "notes": "Séminaire R&D – Los Angeles"
+    "notes": "R&D seminar – Los Angeles"
   },
   {
     "clientIndex": 78,
     "venueIndex": 123,
     "guestCount": 185,
-    "notes": "Déjeuner d'affaires – Split"
+    "notes": "Business lunch – Split"
   },
   {
     "clientIndex": 11,
@@ -579,7 +579,7 @@
     "clientIndex": 43,
     "venueIndex": 7,
     "guestCount": 449,
-    "notes": "Cérémonie d'ouverture – Paris"
+    "notes": "Ceremony d'ouverture – Paris"
   },
   {
     "clientIndex": 33,
@@ -591,25 +591,25 @@
     "clientIndex": 66,
     "venueIndex": 48,
     "guestCount": 172,
-    "notes": "Gala de fin d'année – Melbourne"
+    "notes": "Year-end gala – Melbourne"
   },
   {
     "clientIndex": 88,
     "venueIndex": 121,
     "guestCount": 208,
-    "notes": "Cérémonie d'ouverture – Dakar"
+    "notes": "Ceremony d'ouverture – Dakar"
   },
   {
     "clientIndex": 28,
     "venueIndex": 103,
     "guestCount": 877,
-    "notes": "Cérémonie de remise des diplômes – Helsinki"
+    "notes": "Graduation ceremony – Helsinki"
   },
   {
     "clientIndex": 70,
     "venueIndex": 88,
     "guestCount": 860,
-    "notes": "Séminaire R&D – Warsaw"
+    "notes": "R&D seminar – Warsaw"
   },
   {
     "clientIndex": 34,
@@ -621,13 +621,13 @@
     "clientIndex": 95,
     "venueIndex": 47,
     "guestCount": 447,
-    "notes": "Soirée de gala – Sydney"
+    "notes": "Gala evening – Sydney"
   },
   {
     "clientIndex": 12,
     "venueIndex": 49,
     "guestCount": 44,
-    "notes": "Workshop créatif – Rio de Janeiro"
+    "notes": "Creative workshop – Rio de Janeiro"
   },
   {
     "clientIndex": 90,
@@ -639,25 +639,25 @@
     "clientIndex": 81,
     "venueIndex": 125,
     "guestCount": 980,
-    "notes": "Journée portes ouvertes – Budapest"
+    "notes": "Open day – Budapest"
   },
   {
     "clientIndex": 56,
     "venueIndex": 87,
     "guestCount": 33,
-    "notes": "Forum innovation – Krakow"
+    "notes": "Innovation forum – Krakow"
   },
   {
     "clientIndex": 51,
     "venueIndex": 125,
     "guestCount": 160,
-    "notes": "Remise de prix – Budapest"
+    "notes": "Awards ceremony – Budapest"
   },
   {
     "clientIndex": 72,
     "venueIndex": 77,
     "guestCount": 95,
-    "notes": "Gala de fin d'année – Doha"
+    "notes": "Year-end gala – Doha"
   },
   {
     "clientIndex": 66,
@@ -669,19 +669,19 @@
     "clientIndex": 78,
     "venueIndex": 25,
     "guestCount": 70,
-    "notes": "Congrès sectoriel – Venice"
+    "notes": "Industry congress – Venice"
   },
   {
     "clientIndex": 20,
     "venueIndex": 61,
     "guestCount": 502,
-    "notes": "Forum innovation – Mexico City"
+    "notes": "Innovation forum – Mexico City"
   },
   {
     "clientIndex": 57,
     "venueIndex": 120,
     "guestCount": 789,
-    "notes": "Workshop créatif – Diamniadio"
+    "notes": "Creative workshop – Diamniadio"
   },
   {
     "clientIndex": 9,
@@ -699,25 +699,25 @@
     "clientIndex": 21,
     "venueIndex": 78,
     "guestCount": 795,
-    "notes": "Soirée VIP clients – Doha"
+    "notes": "Evening event VIP clients – Doha"
   },
   {
     "clientIndex": 15,
     "venueIndex": 119,
     "guestCount": 1012,
-    "notes": "Dîner de charité – Al-Ula"
+    "notes": "Dinner –– Al-Ula"
   },
   {
     "clientIndex": 56,
     "venueIndex": 20,
     "guestCount": 421,
-    "notes": "Soirée VIP clients – Seville"
+    "notes": "Evening event VIP clients – Seville"
   },
   {
     "clientIndex": 3,
     "venueIndex": 23,
     "guestCount": 73,
-    "notes": "Afterwork networking – Cernobbio"
+    "notes": "Networking afterwork – Cernobbio"
   },
   {
     "clientIndex": 86,
@@ -729,7 +729,7 @@
     "clientIndex": 35,
     "venueIndex": 46,
     "guestCount": 593,
-    "notes": "Convention partenaires – Sydney"
+    "notes": "Partners convention – Sydney"
   },
   {
     "clientIndex": 44,
@@ -741,19 +741,19 @@
     "clientIndex": 52,
     "venueIndex": 126,
     "guestCount": 72,
-    "notes": "Workshop créatif – Accra"
+    "notes": "Creative workshop – Accra"
   },
   {
     "clientIndex": 58,
     "venueIndex": 22,
     "guestCount": 46,
-    "notes": "Festival d'entreprise – Granada"
+    "notes": "Corporate festival – Granada"
   },
   {
     "clientIndex": 84,
     "venueIndex": 118,
     "guestCount": 870,
-    "notes": "Journée formation – Riyadh"
+    "notes": "Training day – Riyadh"
   },
   {
     "clientIndex": 80,
@@ -771,61 +771,61 @@
     "clientIndex": 70,
     "venueIndex": 3,
     "guestCount": 616,
-    "notes": "Journée RSE – Paris"
+    "notes": "Day event RSE – Paris"
   },
   {
     "clientIndex": 15,
     "venueIndex": 39,
     "guestCount": 779,
-    "notes": "Cérémonie d'ouverture – Los Angeles"
+    "notes": "Ceremony d'ouverture – Los Angeles"
   },
   {
     "clientIndex": 61,
     "venueIndex": 120,
     "guestCount": 150,
-    "notes": "Cérémonie de remise des diplômes – Diamniadio"
+    "notes": "Graduation ceremony – Diamniadio"
   },
   {
     "clientIndex": 76,
     "venueIndex": 130,
     "guestCount": 412,
-    "notes": "Team building outdoor – Luxembourg City"
+    "notes": "Outdoor team building – Luxembourg City"
   },
   {
     "clientIndex": 0,
     "venueIndex": 72,
     "guestCount": 652,
-    "notes": "Dîner de charité – Queluz"
+    "notes": "Dinner –– Queluz"
   },
   {
     "clientIndex": 68,
     "venueIndex": 123,
     "guestCount": 886,
-    "notes": "Sommet leadership – Split"
+    "notes": "Summit leadership – Split"
   },
   {
     "clientIndex": 41,
     "venueIndex": 48,
     "guestCount": 66,
-    "notes": "Cérémonie de remise des diplômes – Melbourne"
+    "notes": "Graduation ceremony – Melbourne"
   },
   {
     "clientIndex": 40,
     "venueIndex": 121,
     "guestCount": 54,
-    "notes": "Célébration anniversaire – Dakar"
+    "notes": "Anniversary celebration – Dakar"
   },
   {
     "clientIndex": 16,
     "venueIndex": 128,
     "guestCount": 51,
-    "notes": "Convention partenaires – Muscat"
+    "notes": "Partners convention – Muscat"
   },
   {
     "clientIndex": 67,
     "venueIndex": 116,
     "guestCount": 98,
-    "notes": "Séminaire annuel – Tunis"
+    "notes": "Annual seminar – Tunis"
   },
   {
     "clientIndex": 9,
@@ -837,25 +837,25 @@
     "clientIndex": 42,
     "venueIndex": 97,
     "guestCount": 70,
-    "notes": "Festival d'entreprise – Prague"
+    "notes": "Corporate festival – Prague"
   },
   {
     "clientIndex": 79,
     "venueIndex": 17,
     "guestCount": 70,
-    "notes": "Cérémonie de remise des diplômes – Hamburg"
+    "notes": "Graduation ceremony – Hamburg"
   },
   {
     "clientIndex": 55,
     "venueIndex": 25,
     "guestCount": 58,
-    "notes": "Journée portes ouvertes – Venice"
+    "notes": "Open day – Venice"
   },
   {
     "clientIndex": 41,
     "venueIndex": 14,
     "guestCount": 127,
-    "notes": "Workshop créatif – London"
+    "notes": "Creative workshop – London"
   },
   {
     "clientIndex": 67,
@@ -867,7 +867,7 @@
     "clientIndex": 10,
     "venueIndex": 97,
     "guestCount": 110,
-    "notes": "Marathon digital – Prague"
+    "notes": "Digital marathon – Prague"
   },
   {
     "clientIndex": 29,
@@ -879,7 +879,7 @@
     "clientIndex": 86,
     "venueIndex": 40,
     "guestCount": 376,
-    "notes": "Remise de prix – Singapore"
+    "notes": "Awards ceremony – Singapore"
   },
   {
     "clientIndex": 81,
@@ -891,43 +891,43 @@
     "clientIndex": 61,
     "venueIndex": 27,
     "guestCount": 383,
-    "notes": "Cérémonie de remise des diplômes – Dubai"
+    "notes": "Graduation ceremony – Dubai"
   },
   {
     "clientIndex": 89,
     "venueIndex": 75,
     "guestCount": 72,
-    "notes": "Lancement produit – Cairo"
+    "notes": "Product launch – Cairo"
   },
   {
     "clientIndex": 77,
     "venueIndex": 127,
     "guestCount": 317,
-    "notes": "Workshop créatif – Muscat"
+    "notes": "Creative workshop – Muscat"
   },
   {
     "clientIndex": 28,
     "venueIndex": 48,
     "guestCount": 46,
-    "notes": "Marathon digital – Melbourne"
+    "notes": "Digital marathon – Melbourne"
   },
   {
     "clientIndex": 80,
     "venueIndex": 10,
     "guestCount": 217,
-    "notes": "Dîner de charité – London"
+    "notes": "Dinner –– London"
   },
   {
     "clientIndex": 93,
     "venueIndex": 33,
     "guestCount": 121,
-    "notes": "Gala de fin d'année – Himeji"
+    "notes": "Year-end gala – Himeji"
   },
   {
     "clientIndex": 16,
     "venueIndex": 93,
     "guestCount": 339,
-    "notes": "Exposition artistique corporate – Ho Chi Minh City"
+    "notes": "Exhibition artistique corporate – Ho Chi Minh City"
   },
   {
     "clientIndex": 61,
@@ -939,43 +939,43 @@
     "clientIndex": 86,
     "venueIndex": 101,
     "guestCount": 402,
-    "notes": "Journée RSE – Oslo"
+    "notes": "Day event RSE – Oslo"
   },
   {
     "clientIndex": 68,
     "venueIndex": 31,
     "guestCount": 1098,
-    "notes": "Déjeuner d'affaires – Tokyo"
+    "notes": "Business lunch – Tokyo"
   },
   {
     "clientIndex": 81,
     "venueIndex": 95,
     "guestCount": 441,
-    "notes": "Journée portes ouvertes – Lagos"
+    "notes": "Open day – Lagos"
   },
   {
     "clientIndex": 78,
     "venueIndex": 56,
     "guestCount": 809,
-    "notes": "Remise de prix – Hyderabad"
+    "notes": "Awards ceremony – Hyderabad"
   },
   {
     "clientIndex": 14,
     "venueIndex": 35,
     "guestCount": 32,
-    "notes": "Conférence internationale – New York"
+    "notes": "International conference – New York"
   },
   {
     "clientIndex": 30,
     "venueIndex": 34,
     "guestCount": 127,
-    "notes": "Célébration anniversaire – Washington DC"
+    "notes": "Anniversary celebration – Washington DC"
   },
   {
     "clientIndex": 53,
     "venueIndex": 25,
     "guestCount": 343,
-    "notes": "Cérémonie d'ouverture – Venice"
+    "notes": "Ceremony d'ouverture – Venice"
   },
   {
     "clientIndex": 27,
@@ -993,13 +993,13 @@
     "clientIndex": 11,
     "venueIndex": 54,
     "guestCount": 86,
-    "notes": "Soirée VIP clients – Sun City"
+    "notes": "Evening event VIP clients – Sun City"
   },
   {
     "clientIndex": 72,
     "venueIndex": 52,
     "guestCount": 150,
-    "notes": "Remise de prix – Cape Town"
+    "notes": "Awards ceremony – Cape Town"
   },
   {
     "clientIndex": 29,
@@ -1011,73 +1011,73 @@
     "clientIndex": 16,
     "venueIndex": 64,
     "guestCount": 37,
-    "notes": "Forum innovation – Seoul"
+    "notes": "Innovation forum – Seoul"
   },
   {
     "clientIndex": 45,
     "venueIndex": 60,
     "guestCount": 50,
-    "notes": "Convention partenaires – Vancouver"
+    "notes": "Partners convention – Vancouver"
   },
   {
     "clientIndex": 16,
     "venueIndex": 107,
     "guestCount": 987,
-    "notes": "Exposition artistique corporate – Dublin"
+    "notes": "Exhibition artistique corporate – Dublin"
   },
   {
     "clientIndex": 46,
     "venueIndex": 131,
     "guestCount": 36,
-    "notes": "Convention partenaires – Bourglinster"
+    "notes": "Partners convention – Bourglinster"
   },
   {
     "clientIndex": 93,
     "venueIndex": 77,
     "guestCount": 990,
-    "notes": "Déjeuner d'affaires – Doha"
+    "notes": "Business lunch – Doha"
   },
   {
     "clientIndex": 54,
     "venueIndex": 27,
     "guestCount": 75,
-    "notes": "Cérémonie d'ouverture – Dubai"
+    "notes": "Ceremony d'ouverture – Dubai"
   },
   {
     "clientIndex": 41,
     "venueIndex": 37,
     "guestCount": 499,
-    "notes": "Remise de prix – Chicago"
+    "notes": "Awards ceremony – Chicago"
   },
   {
     "clientIndex": 48,
     "venueIndex": 75,
     "guestCount": 62,
-    "notes": "Déjeuner d'affaires – Cairo"
+    "notes": "Business lunch – Cairo"
   },
   {
     "clientIndex": 83,
     "venueIndex": 55,
     "guestCount": 316,
-    "notes": "Séminaire R&D – Mumbai"
+    "notes": "R&D seminar – Mumbai"
   },
   {
     "clientIndex": 58,
     "venueIndex": 102,
     "guestCount": 360,
-    "notes": "Journée formation – Oslo"
+    "notes": "Training day – Oslo"
   },
   {
     "clientIndex": 85,
     "venueIndex": 65,
     "guestCount": 39,
-    "notes": "Réunion stratégique – Amsterdam"
+    "notes": "Strategy meeting – Amsterdam"
   },
   {
     "clientIndex": 10,
     "venueIndex": 23,
     "guestCount": 36,
-    "notes": "Séminaire R&D – Cernobbio"
+    "notes": "R&D seminar – Cernobbio"
   },
   {
     "clientIndex": 75,
@@ -1089,19 +1089,19 @@
     "clientIndex": 76,
     "venueIndex": 79,
     "guestCount": 153,
-    "notes": "Sommet leadership – Auckland"
+    "notes": "Summit leadership – Auckland"
   },
   {
     "clientIndex": 84,
     "venueIndex": 123,
     "guestCount": 36,
-    "notes": "Afterwork networking – Split"
+    "notes": "Networking afterwork – Split"
   },
   {
     "clientIndex": 35,
     "venueIndex": 57,
     "guestCount": 485,
-    "notes": "Séminaire R&D – Jodhpur"
+    "notes": "R&D seminar – Jodhpur"
   },
   {
     "clientIndex": 3,
@@ -1119,25 +1119,25 @@
     "clientIndex": 94,
     "venueIndex": 7,
     "guestCount": 885,
-    "notes": "Gala de fin d'année – Paris"
+    "notes": "Year-end gala – Paris"
   },
   {
     "clientIndex": 58,
     "venueIndex": 87,
     "guestCount": 53,
-    "notes": "Assemblée générale – Krakow"
+    "notes": "General assembly – Krakow"
   },
   {
     "clientIndex": 6,
     "venueIndex": 39,
     "guestCount": 78,
-    "notes": "Assemblée générale – Los Angeles"
+    "notes": "General assembly – Los Angeles"
   },
   {
     "clientIndex": 34,
     "venueIndex": 113,
     "guestCount": 426,
-    "notes": "Séminaire R&D – Hong Kong"
+    "notes": "R&D seminar – Hong Kong"
   },
   {
     "clientIndex": 27,
@@ -1149,55 +1149,55 @@
     "clientIndex": 67,
     "venueIndex": 78,
     "guestCount": 130,
-    "notes": "Conférence internationale – Doha"
+    "notes": "International conference – Doha"
   },
   {
     "clientIndex": 38,
     "venueIndex": 54,
     "guestCount": 78,
-    "notes": "Team building outdoor – Sun City"
+    "notes": "Outdoor team building – Sun City"
   },
   {
     "clientIndex": 0,
     "venueIndex": 127,
     "guestCount": 96,
-    "notes": "Séminaire R&D – Muscat"
+    "notes": "R&D seminar – Muscat"
   },
   {
     "clientIndex": 64,
     "venueIndex": 90,
     "guestCount": 55,
-    "notes": "Remise de prix – Moscow"
+    "notes": "Awards ceremony – Moscow"
   },
   {
     "clientIndex": 58,
     "venueIndex": 19,
     "guestCount": 914,
-    "notes": "Festival d'entreprise – Barcelona"
+    "notes": "Corporate festival – Barcelona"
   },
   {
     "clientIndex": 37,
     "venueIndex": 29,
     "guestCount": 1132,
-    "notes": "Présentation investisseurs – Dubai"
+    "notes": "Investor presentation – Dubai"
   },
   {
     "clientIndex": 88,
     "venueIndex": 92,
     "guestCount": 749,
-    "notes": "Gala de fin d'année – Nairobi"
+    "notes": "Year-end gala – Nairobi"
   },
   {
     "clientIndex": 75,
     "venueIndex": 102,
     "guestCount": 130,
-    "notes": "Exposition artistique corporate – Oslo"
+    "notes": "Exhibition artistique corporate – Oslo"
   },
   {
     "clientIndex": 42,
     "venueIndex": 43,
     "guestCount": 161,
-    "notes": "Remise de prix – Marrakech"
+    "notes": "Awards ceremony – Marrakech"
   },
   {
     "clientIndex": 44,
@@ -1209,13 +1209,13 @@
     "clientIndex": 22,
     "venueIndex": 39,
     "guestCount": 975,
-    "notes": "Remise de prix – Los Angeles"
+    "notes": "Awards ceremony – Los Angeles"
   },
   {
     "clientIndex": 87,
     "venueIndex": 82,
     "guestCount": 980,
-    "notes": "Festival d'entreprise – Istanbul"
+    "notes": "Corporate festival – Istanbul"
   },
   {
     "clientIndex": 80,
@@ -1233,13 +1233,13 @@
     "clientIndex": 82,
     "venueIndex": 23,
     "guestCount": 68,
-    "notes": "Marathon digital – Cernobbio"
+    "notes": "Digital marathon – Cernobbio"
   },
   {
     "clientIndex": 57,
     "venueIndex": 48,
     "guestCount": 68,
-    "notes": "Festival d'entreprise – Melbourne"
+    "notes": "Corporate festival – Melbourne"
   },
   {
     "clientIndex": 57,
@@ -1257,43 +1257,43 @@
     "clientIndex": 46,
     "venueIndex": 95,
     "guestCount": 54,
-    "notes": "Workshop créatif – Lagos"
+    "notes": "Creative workshop – Lagos"
   },
   {
     "clientIndex": 80,
     "venueIndex": 85,
     "guestCount": 1194,
-    "notes": "Remise de prix – Stockholm"
+    "notes": "Awards ceremony – Stockholm"
   },
   {
     "clientIndex": 36,
     "venueIndex": 64,
     "guestCount": 122,
-    "notes": "Soirée VIP clients – Seoul"
+    "notes": "Evening event VIP clients – Seoul"
   },
   {
     "clientIndex": 44,
     "venueIndex": 79,
     "guestCount": 817,
-    "notes": "Présentation investisseurs – Auckland"
+    "notes": "Investor presentation – Auckland"
   },
   {
     "clientIndex": 82,
     "venueIndex": 84,
     "guestCount": 595,
-    "notes": "Team building outdoor – La Hulpe"
+    "notes": "Outdoor team building – La Hulpe"
   },
   {
     "clientIndex": 65,
     "venueIndex": 92,
     "guestCount": 292,
-    "notes": "Lancement produit – Nairobi"
+    "notes": "Product launch – Nairobi"
   },
   {
     "clientIndex": 62,
     "venueIndex": 49,
     "guestCount": 38,
-    "notes": "Afterwork networking – Rio de Janeiro"
+    "notes": "Networking afterwork – Rio de Janeiro"
   },
   {
     "clientIndex": 64,
@@ -1305,25 +1305,25 @@
     "clientIndex": 19,
     "venueIndex": 41,
     "guestCount": 74,
-    "notes": "Forum innovation – Singapore"
+    "notes": "Innovation forum – Singapore"
   },
   {
     "clientIndex": 52,
     "venueIndex": 93,
     "guestCount": 158,
-    "notes": "Cérémonie de remise des diplômes – Ho Chi Minh City"
+    "notes": "Graduation ceremony – Ho Chi Minh City"
   },
   {
     "clientIndex": 68,
     "venueIndex": 61,
     "guestCount": 876,
-    "notes": "Dîner de charité – Mexico City"
+    "notes": "Dinner –– Mexico City"
   },
   {
     "clientIndex": 59,
     "venueIndex": 72,
     "guestCount": 147,
-    "notes": "Célébration anniversaire – Queluz"
+    "notes": "Anniversary celebration – Queluz"
   },
   {
     "clientIndex": 77,
@@ -1335,13 +1335,13 @@
     "clientIndex": 91,
     "venueIndex": 31,
     "guestCount": 779,
-    "notes": "Workshop créatif – Tokyo"
+    "notes": "Creative workshop – Tokyo"
   },
   {
     "clientIndex": 65,
     "venueIndex": 37,
     "guestCount": 313,
-    "notes": "Séminaire R&D – Chicago"
+    "notes": "R&D seminar – Chicago"
   },
   {
     "clientIndex": 3,
@@ -1353,31 +1353,31 @@
     "clientIndex": 10,
     "venueIndex": 95,
     "guestCount": 250,
-    "notes": "Afterwork networking – Lagos"
+    "notes": "Networking afterwork – Lagos"
   },
   {
     "clientIndex": 18,
     "venueIndex": 35,
     "guestCount": 642,
-    "notes": "Conférence internationale – New York"
+    "notes": "International conference – New York"
   },
   {
     "clientIndex": 57,
     "venueIndex": 1,
     "guestCount": 653,
-    "notes": "Gala de fin d'année – Maincy"
+    "notes": "Year-end gala – Maincy"
   },
   {
     "clientIndex": 14,
     "venueIndex": 73,
     "guestCount": 744,
-    "notes": "Cérémonie de remise des diplômes – Bangkok"
+    "notes": "Graduation ceremony – Bangkok"
   },
   {
     "clientIndex": 81,
     "venueIndex": 117,
     "guestCount": 37,
-    "notes": "Remise de prix – Carthage"
+    "notes": "Awards ceremony – Carthage"
   },
   {
     "clientIndex": 80,
@@ -1389,43 +1389,43 @@
     "clientIndex": 0,
     "venueIndex": 90,
     "guestCount": 66,
-    "notes": "Cérémonie de remise des diplômes – Moscow"
+    "notes": "Graduation ceremony – Moscow"
   },
   {
     "clientIndex": 67,
     "venueIndex": 92,
     "guestCount": 63,
-    "notes": "Remise de prix – Nairobi"
+    "notes": "Awards ceremony – Nairobi"
   },
   {
     "clientIndex": 49,
     "venueIndex": 120,
     "guestCount": 70,
-    "notes": "Conférence internationale – Diamniadio"
+    "notes": "International conference – Diamniadio"
   },
   {
     "clientIndex": 45,
     "venueIndex": 17,
     "guestCount": 253,
-    "notes": "Sommet leadership – Hamburg"
+    "notes": "Summit leadership – Hamburg"
   },
   {
     "clientIndex": 17,
     "venueIndex": 11,
     "guestCount": 975,
-    "notes": "Sommet leadership – Woodstock"
+    "notes": "Summit leadership – Woodstock"
   },
   {
     "clientIndex": 80,
     "venueIndex": 46,
     "guestCount": 434,
-    "notes": "Team building outdoor – Sydney"
+    "notes": "Outdoor team building – Sydney"
   },
   {
     "clientIndex": 25,
     "venueIndex": 11,
     "guestCount": 1027,
-    "notes": "Soirée de gala – Woodstock"
+    "notes": "Gala evening – Woodstock"
   },
   {
     "clientIndex": 69,
@@ -1443,43 +1443,43 @@
     "clientIndex": 95,
     "venueIndex": 112,
     "guestCount": 454,
-    "notes": "Célébration anniversaire – Hong Kong"
+    "notes": "Anniversary celebration – Hong Kong"
   },
   {
     "clientIndex": 66,
     "venueIndex": 68,
     "guestCount": 134,
-    "notes": "Gala de fin d'année – Zurich"
+    "notes": "Year-end gala – Zurich"
   },
   {
     "clientIndex": 69,
     "venueIndex": 75,
     "guestCount": 367,
-    "notes": "Festival d'entreprise – Cairo"
+    "notes": "Corporate festival – Cairo"
   },
   {
     "clientIndex": 39,
     "venueIndex": 114,
     "guestCount": 285,
-    "notes": "Soirée VIP clients – Bucharest"
+    "notes": "Evening event VIP clients – Bucharest"
   },
   {
     "clientIndex": 57,
     "venueIndex": 10,
     "guestCount": 69,
-    "notes": "Sommet leadership – London"
+    "notes": "Summit leadership – London"
   },
   {
     "clientIndex": 9,
     "venueIndex": 103,
     "guestCount": 182,
-    "notes": "Réunion stratégique – Helsinki"
+    "notes": "Strategy meeting – Helsinki"
   },
   {
     "clientIndex": 77,
     "venueIndex": 112,
     "guestCount": 320,
-    "notes": "Conférence internationale – Hong Kong"
+    "notes": "International conference – Hong Kong"
   },
   {
     "clientIndex": 46,
@@ -1503,55 +1503,55 @@
     "clientIndex": 66,
     "venueIndex": 99,
     "guestCount": 113,
-    "notes": "Journée RSE – Copenhagen"
+    "notes": "Day event RSE – Copenhagen"
   },
   {
     "clientIndex": 78,
     "venueIndex": 73,
     "guestCount": 575,
-    "notes": "Cérémonie d'ouverture – Bangkok"
+    "notes": "Ceremony d'ouverture – Bangkok"
   },
   {
     "clientIndex": 22,
     "venueIndex": 113,
     "guestCount": 363,
-    "notes": "Gala de fin d'année – Hong Kong"
+    "notes": "Year-end gala – Hong Kong"
   },
   {
     "clientIndex": 90,
     "venueIndex": 16,
     "guestCount": 117,
-    "notes": "Journée RSE – Berlin"
+    "notes": "Day event RSE – Berlin"
   },
   {
     "clientIndex": 46,
     "venueIndex": 130,
     "guestCount": 742,
-    "notes": "Afterwork networking – Luxembourg City"
+    "notes": "Networking afterwork – Luxembourg City"
   },
   {
     "clientIndex": 3,
     "venueIndex": 92,
     "guestCount": 127,
-    "notes": "Journée RSE – Nairobi"
+    "notes": "Day event RSE – Nairobi"
   },
   {
     "clientIndex": 78,
     "venueIndex": 22,
     "guestCount": 1038,
-    "notes": "Remise de prix – Granada"
+    "notes": "Awards ceremony – Granada"
   },
   {
     "clientIndex": 52,
     "venueIndex": 18,
     "guestCount": 960,
-    "notes": "Team building outdoor – Cologne"
+    "notes": "Outdoor team building – Cologne"
   },
   {
     "clientIndex": 87,
     "venueIndex": 88,
     "guestCount": 150,
-    "notes": "Team building outdoor – Warsaw"
+    "notes": "Outdoor team building – Warsaw"
   },
   {
     "clientIndex": 55,
@@ -1563,91 +1563,91 @@
     "clientIndex": 20,
     "venueIndex": 82,
     "guestCount": 52,
-    "notes": "Afterwork networking – Istanbul"
+    "notes": "Networking afterwork – Istanbul"
   },
   {
     "clientIndex": 32,
     "venueIndex": 50,
     "guestCount": 47,
-    "notes": "Journée RSE – São Paulo"
+    "notes": "Day event RSE – São Paulo"
   },
   {
     "clientIndex": 64,
     "venueIndex": 43,
     "guestCount": 287,
-    "notes": "Convention partenaires – Marrakech"
+    "notes": "Partners convention – Marrakech"
   },
   {
     "clientIndex": 72,
     "venueIndex": 10,
     "guestCount": 85,
-    "notes": "Lancement produit – London"
+    "notes": "Product launch – London"
   },
   {
     "clientIndex": 73,
     "venueIndex": 106,
     "guestCount": 454,
-    "notes": "Marathon digital – Vienna"
+    "notes": "Digital marathon – Vienna"
   },
   {
     "clientIndex": 82,
     "venueIndex": 77,
     "guestCount": 804,
-    "notes": "Table ronde sectorielle – Doha"
+    "notes": "Industry roundtable – Doha"
   },
   {
     "clientIndex": 9,
     "venueIndex": 15,
     "guestCount": 133,
-    "notes": "Assemblée générale – Munich"
+    "notes": "General assembly – Munich"
   },
   {
     "clientIndex": 43,
     "venueIndex": 36,
     "guestCount": 120,
-    "notes": "Festival d'entreprise – Los Angeles"
+    "notes": "Corporate festival – Los Angeles"
   },
   {
     "clientIndex": 47,
     "venueIndex": 131,
     "guestCount": 36,
-    "notes": "Journée RSE – Bourglinster"
+    "notes": "Day event RSE – Bourglinster"
   },
   {
     "clientIndex": 34,
     "venueIndex": 115,
     "guestCount": 797,
-    "notes": "Cérémonie de remise des diplômes – Sinaia"
+    "notes": "Graduation ceremony – Sinaia"
   },
   {
     "clientIndex": 78,
     "venueIndex": 107,
     "guestCount": 367,
-    "notes": "Cérémonie de remise des diplômes – Dublin"
+    "notes": "Graduation ceremony – Dublin"
   },
   {
     "clientIndex": 24,
     "venueIndex": 40,
     "guestCount": 815,
-    "notes": "Cérémonie d'ouverture – Singapore"
+    "notes": "Ceremony d'ouverture – Singapore"
   },
   {
     "clientIndex": 2,
     "venueIndex": 23,
     "guestCount": 323,
-    "notes": "Présentation investisseurs – Cernobbio"
+    "notes": "Investor presentation – Cernobbio"
   },
   {
     "clientIndex": 6,
     "venueIndex": 12,
     "guestCount": 61,
-    "notes": "Workshop créatif – London"
+    "notes": "Creative workshop – London"
   },
   {
     "clientIndex": 13,
     "venueIndex": 110,
     "guestCount": 387,
-    "notes": "Team building outdoor – Reykjavik"
+    "notes": "Outdoor team building – Reykjavik"
   },
   {
     "clientIndex": 5,
@@ -1665,138 +1665,138 @@
     "clientIndex": 16,
     "venueIndex": 24,
     "guestCount": 373,
-    "notes": "Présentation investisseurs – Rome"
+    "notes": "Investor presentation – Rome"
   },
   {
     "clientIndex": 96,
     "venueIndex": 36,
     "guestCount": 68,
-    "notes": "Soirée de gala – Los Angeles"
+    "notes": "Gala evening – Los Angeles"
   },
   {
     "clientIndex": 5,
     "venueIndex": 9,
     "guestCount": 1031,
-    "notes": "Team building outdoor – Villeurbanne"
+    "notes": "Outdoor team building – Villeurbanne"
   },
   {
     "clientIndex": 19,
     "venueIndex": 131,
     "guestCount": 666,
-    "notes": "Team building outdoor – Bourglinster"
+    "notes": "Outdoor team building – Bourglinster"
   },
   {
     "clientIndex": 78,
     "venueIndex": 76,
     "guestCount": 1045,
-    "notes": "Convention partenaires – Giza"
+    "notes": "Partners convention – Giza"
   },
   {
     "clientIndex": 90,
     "venueIndex": 76,
     "guestCount": 31,
-    "notes": "Table ronde sectorielle – Giza"
+    "notes": "Industry roundtable – Giza"
   },
   {
     "clientIndex": 53,
     "venueIndex": 78,
     "guestCount": 140,
-    "notes": "Lancement produit – Doha"
+    "notes": "Product launch – Doha"
   },
   {
     "clientIndex": 92,
     "venueIndex": 13,
     "guestCount": 1144,
-    "notes": "Convention partenaires – Edinburgh"
+    "notes": "Partners convention – Edinburgh"
   },
   {
     "clientIndex": 22,
     "venueIndex": 31,
     "guestCount": 500,
-    "notes": "Gala désertique – Dubaï"
+    "notes": "Desert gala – Dubai"
   },
   {
     "clientIndex": 56,
     "venueIndex": 80,
     "guestCount": 920,
-    "notes": "Journée formation – Wellington"
+    "notes": "Training day – Wellington"
   },
   {
     "clientIndex": 94,
     "venueIndex": 15,
     "guestCount": 832,
-    "notes": "Team building outdoor – Munich"
+    "notes": "Outdoor team building – Munich"
   },
   {
     "clientIndex": 67,
     "venueIndex": 96,
     "guestCount": 472,
-    "notes": "Festival d'entreprise – Abuja"
+    "notes": "Corporate festival – Abuja"
   },
   {
     "clientIndex": 86,
     "venueIndex": 67,
     "guestCount": 326,
-    "notes": "Marathon digital – Geneva"
+    "notes": "Digital marathon – Geneva"
   },
   {
     "clientIndex": 28,
     "venueIndex": 76,
     "guestCount": 824,
-    "notes": "Workshop créatif – Giza"
+    "notes": "Creative workshop – Giza"
   },
   {
     "clientIndex": 44,
     "venueIndex": 70,
     "guestCount": 888,
-    "notes": "Workshop créatif – Buenos Aires"
+    "notes": "Creative workshop – Buenos Aires"
   },
   {
     "clientIndex": 44,
     "venueIndex": 37,
     "guestCount": 854,
-    "notes": "Workshop créatif – Chicago"
+    "notes": "Creative workshop – Chicago"
   },
   {
     "clientIndex": 83,
     "venueIndex": 65,
     "guestCount": 475,
-    "notes": "Table ronde sectorielle – Amsterdam"
+    "notes": "Industry roundtable – Amsterdam"
   },
   {
     "clientIndex": 17,
     "venueIndex": 27,
     "guestCount": 77,
-    "notes": "Marathon digital – Dubai"
+    "notes": "Digital marathon – Dubai"
   },
   {
     "clientIndex": 85,
     "venueIndex": 57,
     "guestCount": 838,
-    "notes": "Afterwork networking – Jodhpur"
+    "notes": "Networking afterwork – Jodhpur"
   },
   {
     "clientIndex": 12,
     "venueIndex": 35,
     "guestCount": 916,
-    "notes": "Séminaire annuel – New York"
+    "notes": "Annual seminar – New York"
   },
   {
     "clientIndex": 61,
     "venueIndex": 51,
     "guestCount": 116,
-    "notes": "Workshop créatif – Rio de Janeiro"
+    "notes": "Creative workshop – Rio de Janeiro"
   },
   {
     "clientIndex": 68,
     "venueIndex": 9,
     "guestCount": 537,
-    "notes": "Forum innovation – Villeurbanne"
+    "notes": "Innovation forum – Villeurbanne"
   },
   {
     "clientIndex": 63,
     "venueIndex": 47,
     "guestCount": 32,
-    "notes": "Workshop créatif – Sydney"
+    "notes": "Creative workshop – Sydney"
   }
 ]

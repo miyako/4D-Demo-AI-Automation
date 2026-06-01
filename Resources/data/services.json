@@ -1,0 +1,843 @@
+[
+  {
+    "category": "Catering",
+    "label": "Dinner cocktail – classic formula",
+    "unit": "pers",
+    "unitPrice": 85.0,
+    "available": true
+  },
+  {
+    "category": "Catering",
+    "label": "Dinner cocktail – premium formula",
+    "unit": "pers",
+    "unitPrice": 120.0,
+    "available": true
+  },
+  {
+    "category": "Catering",
+    "label": "Seated dinner – 3 courses",
+    "unit": "pers",
+    "unitPrice": 145.0,
+    "available": true
+  },
+  {
+    "category": "Catering",
+    "label": "Seated dinner – 5-course gastronomic",
+    "unit": "pers",
+    "unitPrice": 220.0,
+    "available": true
+  },
+  {
+    "category": "Catering",
+    "label": "Buffet lunch",
+    "unit": "pers",
+    "unitPrice": 65.0,
+    "available": true
+  },
+  {
+    "category": "Catering",
+    "label": "Prestige brunch",
+    "unit": "pers",
+    "unitPrice": 95.0,
+    "available": true
+  },
+  {
+    "category": "Catering",
+    "label": "Food trucks (truck included)",
+    "unit": "day",
+    "unitPrice": 1800.0,
+    "available": true
+  },
+  {
+    "category": "Catering",
+    "label": "Welcome reception – 1h",
+    "unit": "pers",
+    "unitPrice": 35.0,
+    "available": true
+  },
+  {
+    "category": "Catering",
+    "label": "Welcome reception – 2h",
+    "unit": "pers",
+    "unitPrice": 55.0,
+    "available": true
+  },
+  {
+    "category": "Catering",
+    "label": "Full vegetarian menu",
+    "unit": "pers",
+    "unitPrice": 75.0,
+    "available": true
+  },
+  {
+    "category": "Catering",
+    "label": "Full vegan menu",
+    "unit": "pers",
+    "unitPrice": 80.0,
+    "available": true
+  },
+  {
+    "category": "Catering",
+    "label": "Certified halal menu",
+    "unit": "pers",
+    "unitPrice": 70.0,
+    "available": true
+  },
+  {
+    "category": "Catering",
+    "label": "Certified kosher menu",
+    "unit": "pers",
+    "unitPrice": 90.0,
+    "available": true
+  },
+  {
+    "category": "Catering",
+    "label": "Cheese & wine bar",
+    "unit": "pers",
+    "unitPrice": 45.0,
+    "available": true
+  },
+  {
+    "category": "Catering",
+    "label": "Sushi & tartare station",
+    "unit": "hour",
+    "unitPrice": 950.0,
+    "available": true
+  },
+  {
+    "category": "Catering",
+    "label": "Candy bar & desserts",
+    "unit": "pers",
+    "unitPrice": 28.0,
+    "available": true
+  },
+  {
+    "category": "Catering",
+    "label": "Custom wedding/event cake",
+    "unit": "unit",
+    "unitPrice": 650.0,
+    "available": true
+  },
+  {
+    "category": "Catering",
+    "label": "VIP meal box",
+    "unit": "unit",
+    "unitPrice": 55.0,
+    "available": true
+  },
+  {
+    "category": "Catering",
+    "label": "Cocktail bar animation",
+    "unit": "hour",
+    "unitPrice": 750.0,
+    "available": true
+  },
+  {
+    "category": "Catering",
+    "label": "Continental breakfast service",
+    "unit": "pers",
+    "unitPrice": 22.0,
+    "available": true
+  },
+  {
+    "category": "Sound & AV",
+    "label": "Indoor sound system <300 pax",
+    "unit": "day",
+    "unitPrice": 1200.0,
+    "available": true
+  },
+  {
+    "category": "Sound & AV",
+    "label": "Indoor sound system 300–1000 pax",
+    "unit": "day",
+    "unitPrice": 2800.0,
+    "available": true
+  },
+  {
+    "category": "Sound & AV",
+    "label": "Indoor sound system >1000 pax",
+    "unit": "day",
+    "unitPrice": 5500.0,
+    "available": true
+  },
+  {
+    "category": "Sound & AV",
+    "label": "Outdoor sound system – medium",
+    "unit": "day",
+    "unitPrice": 3500.0,
+    "available": true
+  },
+  {
+    "category": "Sound & AV",
+    "label": "Outdoor sound system – large stage",
+    "unit": "day",
+    "unitPrice": 8000.0,
+    "available": true
+  },
+  {
+    "category": "Sound & AV",
+    "label": "Indoor LED screen – 6x3m",
+    "unit": "day",
+    "unitPrice": 2200.0,
+    "available": true
+  },
+  {
+    "category": "Sound & AV",
+    "label": "Outdoor LED screen – 9x5m",
+    "unit": "day",
+    "unitPrice": 4500.0,
+    "available": true
+  },
+  {
+    "category": "Sound & AV",
+    "label": "HD projector + screen",
+    "unit": "day",
+    "unitPrice": 600.0,
+    "available": true
+  },
+  {
+    "category": "Sound & AV",
+    "label": "4K projector + video mapping",
+    "unit": "day",
+    "unitPrice": 3200.0,
+    "available": true
+  },
+  {
+    "category": "Sound & AV",
+    "label": "Simultaneous interpretation system (4 languages)",
+    "unit": "day",
+    "unitPrice": 2500.0,
+    "available": true
+  },
+  {
+    "category": "Sound & AV",
+    "label": "Wireless microphones (set of 4)",
+    "unit": "day",
+    "unitPrice": 350.0,
+    "available": true
+  },
+  {
+    "category": "Sound & AV",
+    "label": "Lectern",
+    "unit": "unit",
+    "unitPrice": 180.0,
+    "available": true
+  },
+  {
+    "category": "Sound & AV",
+    "label": "HD audio-video recording",
+    "unit": "day",
+    "unitPrice": 1800.0,
+    "available": true
+  },
+  {
+    "category": "Sound & AV",
+    "label": "Live streaming",
+    "unit": "day",
+    "unitPrice": 2200.0,
+    "available": true
+  },
+  {
+    "category": "Sound & AV",
+    "label": "Sound/lighting technician",
+    "unit": "day",
+    "unitPrice": 500.0,
+    "available": true
+  },
+  {
+    "category": "Lighting",
+    "label": "Indoor stage lighting",
+    "unit": "day",
+    "unitPrice": 1500.0,
+    "available": true
+  },
+  {
+    "category": "Lighting",
+    "label": "Outdoor architectural lighting",
+    "unit": "day",
+    "unitPrice": 2200.0,
+    "available": true
+  },
+  {
+    "category": "Lighting",
+    "label": "Facade video mapping",
+    "unit": "soirée",
+    "unitPrice": 4800.0,
+    "available": true
+  },
+  {
+    "category": "Lighting",
+    "label": "LED string light decoration",
+    "unit": "package",
+    "unitPrice": 800.0,
+    "available": true
+  },
+  {
+    "category": "Lighting",
+    "label": "Colour wash spotlights (set of 8)",
+    "unit": "day",
+    "unitPrice": 600.0,
+    "available": true
+  },
+  {
+    "category": "Lighting",
+    "label": "Moving head lights (set of 4)",
+    "unit": "day",
+    "unitPrice": 1200.0,
+    "available": true
+  },
+  {
+    "category": "Lighting",
+    "label": "Laser show",
+    "unit": "soirée",
+    "unitPrice": 2800.0,
+    "available": true
+  },
+  {
+    "category": "Lighting",
+    "label": "DMX lighting controller",
+    "unit": "day",
+    "unitPrice": 400.0,
+    "available": true
+  },
+  {
+    "category": "Structures",
+    "label": "Pagoda tent 5x5m",
+    "unit": "day",
+    "unitPrice": 350.0,
+    "available": true
+  },
+  {
+    "category": "Structures",
+    "label": "Semi-closed tent 10x20m",
+    "unit": "day",
+    "unitPrice": 1800.0,
+    "available": true
+  },
+  {
+    "category": "Structures",
+    "label": "Stretch clear-span tent 20x40m",
+    "unit": "day",
+    "unitPrice": 5500.0,
+    "available": true
+  },
+  {
+    "category": "Structures",
+    "label": "Prestige marquee 30x50m",
+    "unit": "day",
+    "unitPrice": 12000.0,
+    "available": true
+  },
+  {
+    "category": "Structures",
+    "label": "Stage/podium 6x4m",
+    "unit": "day",
+    "unitPrice": 800.0,
+    "available": true
+  },
+  {
+    "category": "Structures",
+    "label": "Stage/podium 12x8m",
+    "unit": "day",
+    "unitPrice": 2200.0,
+    "available": true
+  },
+  {
+    "category": "Structures",
+    "label": "Modular raised platform",
+    "unit": "m²",
+    "unitPrice": 45.0,
+    "available": true
+  },
+  {
+    "category": "Structures",
+    "label": "Dance floor",
+    "unit": "m²",
+    "unitPrice": 25.0,
+    "available": true
+  },
+  {
+    "category": "Structures",
+    "label": "Crowd control barriers",
+    "unit": "metre",
+    "unitPrice": 12.0,
+    "available": true
+  },
+  {
+    "category": "Structures",
+    "label": "Stage fencing",
+    "unit": "metre",
+    "unitPrice": 20.0,
+    "available": true
+  },
+  {
+    "category": "Structures",
+    "label": "Waterproof flooring (per m²)",
+    "unit": "m²",
+    "unitPrice": 18.0,
+    "available": true,
+    "description": "Heavy-duty waterproof interlocking floor panels, suitable for outdoor events on grass or wet ground."
+  },
+  {
+    "category": "Furniture & Decor",
+    "label": "Round tables 180cm (10 pax)",
+    "unit": "unit",
+    "unitPrice": 35.0,
+    "available": true
+  },
+  {
+    "category": "Furniture & Decor",
+    "label": "Gold Chiavari chairs",
+    "unit": "unit",
+    "unitPrice": 8.0,
+    "available": true
+  },
+  {
+    "category": "Furniture & Decor",
+    "label": "White Napoleon chairs",
+    "unit": "unit",
+    "unitPrice": 7.0,
+    "available": true
+  },
+  {
+    "category": "Furniture & Decor",
+    "label": "Lounge furniture set",
+    "unit": "unit",
+    "unitPrice": 280.0,
+    "available": true
+  },
+  {
+    "category": "Furniture & Decor",
+    "label": "High bar tables (standing)",
+    "unit": "unit",
+    "unitPrice": 45.0,
+    "available": true
+  },
+  {
+    "category": "Furniture & Decor",
+    "label": "Floral centrepiece decoration",
+    "unit": "unit",
+    "unitPrice": 120.0,
+    "available": true
+  },
+  {
+    "category": "Furniture & Decor",
+    "label": "Floral entrance arch",
+    "unit": "unit",
+    "unitPrice": 650.0,
+    "available": true
+  },
+  {
+    "category": "Furniture & Decor",
+    "label": "Printed photo backdrop 3x2m",
+    "unit": "unit",
+    "unitPrice": 380.0,
+    "available": true
+  },
+  {
+    "category": "Furniture & Decor",
+    "label": "Interactive photo booth",
+    "unit": "day",
+    "unitPrice": 850.0,
+    "available": true
+  },
+  {
+    "category": "Furniture & Decor",
+    "label": "Room draping & fabric decor",
+    "unit": "package",
+    "unitPrice": 1200.0,
+    "available": true
+  },
+  {
+    "category": "Furniture & Decor",
+    "label": "Directional signage",
+    "unit": "package",
+    "unitPrice": 450.0,
+    "available": true
+  },
+  {
+    "category": "Furniture & Decor",
+    "label": "White table linen",
+    "unit": "table",
+    "unitPrice": 18.0,
+    "available": true
+  },
+  {
+    "category": "Furniture & Decor",
+    "label": "Porcelain tableware (full set)",
+    "unit": "pers",
+    "unitPrice": 12.0,
+    "available": true
+  },
+  {
+    "category": "Furniture & Decor",
+    "label": "Crystal glassware",
+    "unit": "pers",
+    "unitPrice": 8.0,
+    "available": true
+  },
+  {
+    "category": "Security",
+    "label": "Security guard",
+    "unit": "poste/nuit",
+    "unitPrice": 280.0,
+    "available": true
+  },
+  {
+    "category": "Security",
+    "label": "Dog handler",
+    "unit": "poste/nuit",
+    "unitPrice": 380.0,
+    "available": true
+  },
+  {
+    "category": "Security",
+    "label": "Security gate/arch",
+    "unit": "unit",
+    "unitPrice": 250.0,
+    "available": true
+  },
+  {
+    "category": "Security",
+    "label": "Security coordinator",
+    "unit": "day",
+    "unitPrice": 650.0,
+    "available": true
+  },
+  {
+    "category": "Security",
+    "label": "RFID badge system",
+    "unit": "package",
+    "unitPrice": 1800.0,
+    "available": true
+  },
+  {
+    "category": "Entertainment",
+    "label": "Professional DJ",
+    "unit": "soirée",
+    "unitPrice": 1500.0,
+    "available": true
+  },
+  {
+    "category": "Entertainment",
+    "label": "Jazz orchestra – 5 musicians",
+    "unit": "soirée",
+    "unitPrice": 3200.0,
+    "available": true
+  },
+  {
+    "category": "Entertainment",
+    "label": "Chamber orchestra – 12 musicians",
+    "unit": "soirée",
+    "unitPrice": 6500.0,
+    "available": true
+  },
+  {
+    "category": "Entertainment",
+    "label": "Live music band",
+    "unit": "soirée",
+    "unitPrice": 2800.0,
+    "available": true
+  },
+  {
+    "category": "Entertainment",
+    "label": "Circus artist",
+    "unit": "soirée",
+    "unitPrice": 1800.0,
+    "available": true
+  },
+  {
+    "category": "Entertainment",
+    "label": "Close-up magician",
+    "unit": "hour",
+    "unitPrice": 750.0,
+    "available": true
+  },
+  {
+    "category": "Entertainment",
+    "label": "Event host/MC",
+    "unit": "day",
+    "unitPrice": 1800.0,
+    "available": true
+  },
+  {
+    "category": "Entertainment",
+    "label": "Fireworks show",
+    "unit": "package",
+    "unitPrice": 8500.0,
+    "available": true
+  },
+  {
+    "category": "Entertainment",
+    "label": "Dance performance",
+    "unit": "soirée",
+    "unitPrice": 2200.0,
+    "available": true
+  },
+  {
+    "category": "Entertainment",
+    "label": "Corporate escape game",
+    "unit": "package",
+    "unitPrice": 3500.0,
+    "available": true
+  },
+  {
+    "category": "Entertainment",
+    "label": "Cooking competition (MasterChef style)",
+    "unit": "package",
+    "unitPrice": 4200.0,
+    "available": true
+  },
+  {
+    "category": "Entertainment",
+    "label": "Hosted wine tasting",
+    "unit": "hour",
+    "unitPrice": 950.0,
+    "available": true
+  },
+  {
+    "category": "Photography & Film",
+    "label": "Event photographer",
+    "unit": "day",
+    "unitPrice": 1200.0,
+    "available": true
+  },
+  {
+    "category": "Photography & Film",
+    "label": "Photographer + videographer",
+    "unit": "day",
+    "unitPrice": 2200.0,
+    "available": true
+  },
+  {
+    "category": "Photography & Film",
+    "label": "3-minute after-movie",
+    "unit": "package",
+    "unitPrice": 3800.0,
+    "available": true
+  },
+  {
+    "category": "Photography & Film",
+    "label": "Cinematic drone",
+    "unit": "demi-journée",
+    "unitPrice": 1500.0,
+    "available": true
+  },
+  {
+    "category": "Photography & Film",
+    "label": "Photographer with same-day editing",
+    "unit": "day",
+    "unitPrice": 1800.0,
+    "available": true
+  },
+  {
+    "category": "Transport",
+    "label": "Minibus shuttle 16 seats",
+    "unit": "day",
+    "unitPrice": 650.0,
+    "available": true
+  },
+  {
+    "category": "Transport",
+    "label": "Coach bus 50 seats",
+    "unit": "day",
+    "unitPrice": 1200.0,
+    "available": true
+  },
+  {
+    "category": "Transport",
+    "label": "VIP limousine (up to 4 pax)",
+    "unit": "day",
+    "unitPrice": 950.0,
+    "available": true
+  },
+  {
+    "category": "Transport",
+    "label": "VIP airport transfer (sedan)",
+    "unit": "trajet",
+    "unitPrice": 180.0,
+    "available": true
+  },
+  {
+    "category": "Transport",
+    "label": "Valet parking",
+    "unit": "day",
+    "unitPrice": 450.0,
+    "available": true
+  },
+  {
+    "category": "Transport",
+    "label": "Secured parking",
+    "unit": "day",
+    "unitPrice": 600.0,
+    "available": true
+  },
+  {
+    "category": "Accommodation",
+    "label": "Standard room – group rate",
+    "unit": "nuit/chambre",
+    "unitPrice": 150.0,
+    "available": true
+  },
+  {
+    "category": "Accommodation",
+    "label": "Superior room – group rate",
+    "unit": "nuit/chambre",
+    "unitPrice": 220.0,
+    "available": true
+  },
+  {
+    "category": "Accommodation",
+    "label": "Junior suite (1 night)",
+    "unit": "night",
+    "unitPrice": 450.0,
+    "available": true
+  },
+  {
+    "category": "Communication",
+    "label": "Custom printed invitations (100 copies)",
+    "unit": "set",
+    "unitPrice": 380.0,
+    "available": true
+  },
+  {
+    "category": "Communication",
+    "label": "Event mobile app",
+    "unit": "package",
+    "unitPrice": 3500.0,
+    "available": true
+  },
+  {
+    "category": "Communication",
+    "label": "Event website",
+    "unit": "package",
+    "unitPrice": 2200.0,
+    "available": true
+  },
+  {
+    "category": "Communication",
+    "label": "Live social media wall",
+    "unit": "day",
+    "unitPrice": 1200.0,
+    "available": true
+  },
+  {
+    "category": "Communication",
+    "label": "Translation & interpreting",
+    "unit": "day",
+    "unitPrice": 800.0,
+    "available": true
+  },
+  {
+    "category": "Technical",
+    "label": "Generator 100 kVA",
+    "unit": "day",
+    "unitPrice": 850.0,
+    "available": true
+  },
+  {
+    "category": "Technical",
+    "label": "Generator 250 kVA",
+    "unit": "day",
+    "unitPrice": 1800.0,
+    "available": true
+  },
+  {
+    "category": "Technical",
+    "label": "Mobile air conditioning unit",
+    "unit": "day",
+    "unitPrice": 380.0,
+    "available": true
+  },
+  {
+    "category": "Technical",
+    "label": "Hot air heater (tent)",
+    "unit": "day",
+    "unitPrice": 650.0,
+    "available": true
+  },
+  {
+    "category": "Technical",
+    "label": "High-density Wi-Fi (dedicated network)",
+    "unit": "day",
+    "unitPrice": 1200.0,
+    "available": true
+  },
+  {
+    "category": "Technical",
+    "label": "Mobile charging stations",
+    "unit": "unité/journée",
+    "unitPrice": 85.0,
+    "available": true
+  },
+  {
+    "category": "Health & Safety",
+    "label": "First-aider/paramedic",
+    "unit": "day",
+    "unitPrice": 480.0,
+    "available": true
+  },
+  {
+    "category": "Health & Safety",
+    "label": "Standby ambulance",
+    "unit": "day",
+    "unitPrice": 1500.0,
+    "available": true
+  },
+  {
+    "category": "Health & Safety",
+    "label": "Emergency safety plan & coordination",
+    "unit": "package",
+    "unitPrice": 950.0,
+    "available": true
+  },
+  {
+    "category": "Coordination",
+    "label": "Event project manager",
+    "unit": "day",
+    "unitPrice": 850.0,
+    "available": true
+  },
+  {
+    "category": "Coordination",
+    "label": "Logistics assistant",
+    "unit": "day",
+    "unitPrice": 380.0,
+    "available": true
+  },
+  {
+    "category": "Coordination",
+    "label": "Reception host",
+    "unit": "day",
+    "unitPrice": 280.0,
+    "available": true
+  },
+  {
+    "category": "Coordination",
+    "label": "General stage manager",
+    "unit": "day",
+    "unitPrice": 950.0,
+    "available": true
+  },
+  {
+    "category": "Furniture & Decor",
+    "label": "Custom branded umbrella",
+    "unit": "unit",
+    "unitPrice": 12.0,
+    "available": true
+  },
+  {
+    "category": "Furniture & Decor",
+    "label": "Disposable rain poncho (pack of 50)",
+    "unit": "set",
+    "unitPrice": 45.0,
+    "available": true
+  },
+  {
+    "category": "Furniture & Decor",
+    "label": "Outdoor patio heater",
+    "unit": "unit",
+    "unitPrice": 180.0,
+    "available": true
+  }
+]

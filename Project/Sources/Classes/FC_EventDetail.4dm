@@ -573,9 +573,9 @@ Function _removeOutdoorServicesAfterIndoorSwitch()
 	// Categories and label patterns that are only needed outdoors
 	var $outdoorCategories : Collection:=["Structures"]
 	var $outdoorLabelPatterns : Collection:=[\
-		"extérieure"; "outdoor"; "tente"; "chapiteau"; "pagode"; "stretch"; \
-		"parasol"; "parapluie"; "poncho"; "climatisation"; "chauffage air chaud"; \
-		"groupe électrogène"; "sonorisation extérieure"\
+		"extérieure"; "outdoor"; "tent"; "marquee"; "pagoda"; "stretch"; \
+		"patio heater"; "umbrella"; "poncho"; "air conditioning"; "hot air heater"; \
+		"generator"; "outdoor sound"\
 	]
 
 	var $lines : cs.EventLineSelection:=ds.EventLine.query("eventID = :1"; This.event.ID)
