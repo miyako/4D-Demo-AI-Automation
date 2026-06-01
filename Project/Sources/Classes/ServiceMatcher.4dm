@@ -59,7 +59,7 @@ Function search($query : Text; $category : Text; $limit : Integer) : Collection
 	var $vec : 4D.Vector:=$result.vector
 
 	// Recherche vectorielle ORDA
-	var $comparisonVector : Object:={vector: $vec; metric: mk cosine; threshold: 0.4}
+	var $comparisonVector : Object:={vector: $vec; metric: mk cosine; threshold: 0.3}
 	var $found : cs.ServiceSelection
 
 	If ($category#"")

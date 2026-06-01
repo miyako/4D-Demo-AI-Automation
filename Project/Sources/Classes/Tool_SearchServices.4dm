@@ -29,6 +29,11 @@ Function search_services($params : Object) : Text
 	var $category : Text:=Choose($params.category#Null; $params.category; "")
 	var $results : Collection:=$matcher.search($params.query; $category; 5)
 
+	// Debug log
+	var $logEntry : Text:=String(Current time)+" query="+String($params.query)+" category="+$category+" results="+String($results.length)+"\n"
+	var $logFile : 4D.File:=Folder(fk logs folder).file("search_services.log")
+	$logFile.setText($logFile.exists ? ($logFile.getText()+$logEntry) : $logEntry)
+
 	If ($results.length=0)
 		return JSON Stringify({results: []; message: "No matching services found"})
 	End if 
