@@ -544,10 +544,15 @@ Function _applyVenueSwitch()
 	var $setup : Object:=This.event.weatherSetup
 	If ($setup#Null)
 		$setup.conditions:="indifferent"
+		$setup.temperature:="normal"
 		This.event.weatherSetup:=$setup
 	End if 
 	This.event.weatherAlertLevel:="none"
 	This.event.save()
+
+	// Remove outdoor-specific services no longer needed indoors
+	This._removeOutdoorServicesAfterIndoorSwitch()
+
 	// Hide confirm panel (resets _pendingVenueSwitchData and _pendingActionIndex)
 	This._hideConfirmPanel()
 	// Refresh UI
@@ -561,7 +566,43 @@ Function _applyVenueSwitch()
 	End if 
 	cs.UIHelpers.me.resetActionButtons()
 	cs.UIHelpers.me.showActionButtons(This.aiActions)
-	OBJECT SET TITLE(*; "text_ai_status"; "✅ Switched to indoor venue. No weather risk.")
+	OBJECT SET TITLE(*; "text_ai_status"; "✅ Switched to indoor venue. Outdoor services removed.")
+
+// ─── Remove outdoor-specific services after an indoor venue switch ────────────
+Function _removeOutdoorServicesAfterIndoorSwitch()
+	// Categories and label patterns that are only needed outdoors
+	var $outdoorCategories : Collection:=["Structures"]
+	var $outdoorLabelPatterns : Collection:=[\
+		"extérieure"; "outdoor"; "tente"; "chapiteau"; "pagode"; "stretch"; \
+		"parasol"; "parapluie"; "poncho"; "climatisation"; "chauffage air chaud"; \
+		"groupe électrogène"; "sonorisation extérieure"\
+	]
+
+	var $lines : cs.EventLineSelection:=ds.EventLine.query("eventID = :1"; This.event.ID)
+	var $line : cs.EventLineEntity
+	For each ($line; $lines)
+		var $svc : cs.ServiceEntity:=ds.Service.get($line.serviceID)
+		If ($svc#Null)
+			var $shouldRemove : Boolean:=False
+			// Remove all Structures (tents, stages are outdoor only)
+			If ($outdoorCategories.indexOf($svc.category)>=0)
+				$shouldRemove:=True
+			End if 
+			// Remove by label pattern
+			If (Not($shouldRemove))
+				var $lbl : Text:=Lowercase($svc.label)
+				var $pattern : Text
+				For each ($pattern; $outdoorLabelPatterns)
+					If (Position($pattern; $lbl)>0)
+						$shouldRemove:=True
+					End if 
+				End for each 
+			End if 
+			If ($shouldRemove)
+				$line.drop()
+			End if 
+		End if 
+	End for each 
 
 
 Function _weatherBadge($level : Text) : Text
