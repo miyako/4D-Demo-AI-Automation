@@ -376,7 +376,20 @@ Function _onExecutionDone($execResult : Object; $action : Object; $context : Obj
 	End if 
 
 	If (($execResult.proposedLines=Null) || ($execResult.proposedLines.length=0))
-		OBJECT SET TITLE(*; "text_ai_status"; "No services proposed.")
+		OBJECT SET TITLE(*; "text_ai_status"; "⚠ No matching service found in catalog.")
+		return 
+	End if 
+
+	// Safety: if ALL lines are 'remove' with no 'add' lines for an add_services action → abort
+	var $hasAdd2 : Boolean:=False
+	var $pl0 : Object
+	For each ($pl0; $execResult.proposedLines)
+		If ($pl0.delta="add") | ($pl0.delta="update")
+			$hasAdd2:=True
+		End if 
+	End for each 
+	If (Not($hasAdd2) && ($action.actionType="add_services"))
+		OBJECT SET TITLE(*; "text_ai_status"; "⚠ Service not available in catalog.")
 		return 
 	End if 
 

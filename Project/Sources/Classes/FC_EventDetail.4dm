@@ -301,8 +301,26 @@ Function _onExecutionDone($execResult : Object; $action : Object)
 	End if 
 
 	If (($execResult.proposedLines=Null) || ($execResult.proposedLines.length=0))
-		OBJECT SET TITLE(*; "text_ai_status"; "No services proposed.")
+		OBJECT SET TITLE(*; "text_ai_status"; "⚠ No matching service found in catalog.")
 		return 
+	End if 
+
+	// Safety: if ALL lines are 'remove' with no 'add' lines → hallucination, abort
+	var $hasAdd : Boolean:=False
+	var $hasNonRemove : Boolean:=False
+	var $pl2 : Object
+	For each ($pl2; $execResult.proposedLines)
+		If ($pl2.delta="add") | ($pl2.delta="update")
+			$hasAdd:=True
+			$hasNonRemove:=True
+		End if 
+	End for each 
+	If (Not($hasAdd))
+		// Only removes proposed for what was supposed to be an add/replace — abort
+		If ($action.actionType="add_services")
+			OBJECT SET TITLE(*; "text_ai_status"; "⚠ Service not available in catalog.")
+			return 
+		End if 
 	End if 
 
 	// Safety: remove any 'add' lines whose label also appears in a 'remove' line

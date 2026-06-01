@@ -279,6 +279,8 @@ Function executeActionAsync($hiddenPrompt : Text; $context : Object; $callback :
 		End for each 
 	End if 
 	$system:=$system+"\nFor 'add' lines: ONLY propose services that were actually returned by the search_services tool. "
+	$system:=$system+"CRITICAL: If search_services returns no results for the requested service, return an EMPTY proposedLines array. "
+	$system:=$system+"NEVER emit 'remove' lines for an 'add_services' task — only emit removes for 'remove_services' or 'replace_services' tasks. "
 	$system:=$system+"For 'remove' lines: use the exact label and unitPrice from the existing services list above — do NOT search for them. "
 	$system:=$system+"Return a JSON with: proposedLines (array of {serviceID, label, category, quantity, unitPrice, delta}), summary (text), totalImpact (number in euros). "
 	$system:=$system+"For 'remove' lines, serviceID may be empty string. totalImpact = sum of add lines minus sum of remove lines."
