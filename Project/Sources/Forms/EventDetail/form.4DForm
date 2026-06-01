@@ -367,14 +367,14 @@
           "left": 776,
           "top": 218,
           "width": 308,
-          "height": 18,
+          "height": 36,
           "text": "",
           "class": "textLabel"
         },
         "text_ai_explanation": {
           "type": "text",
           "left": 776,
-          "top": 244,
+          "top": 260,
           "width": 308,
           "height": 110,
           "text": "",
@@ -383,7 +383,7 @@
         "btn_ai_action1": {
           "type": "button",
           "left": 776,
-          "top": 366,
+          "top": 382,
           "width": 308,
           "height": 48,
           "text": "",
@@ -399,7 +399,7 @@
         "btn_ai_action2": {
           "type": "button",
           "left": 776,
-          "top": 420,
+          "top": 436,
           "width": 308,
           "height": 48,
           "text": "",
@@ -415,7 +415,7 @@
         "btn_ai_action3": {
           "type": "button",
           "left": 776,
-          "top": 474,
+          "top": 490,
           "width": 308,
           "height": 48,
           "text": "",
@@ -431,7 +431,7 @@
         "btn_ai_action4": {
           "type": "button",
           "left": 776,
-          "top": 528,
+          "top": 544,
           "width": 308,
           "height": 48,
           "text": "",
@@ -447,7 +447,7 @@
         "text_ai_validation_badge": {
           "type": "text",
           "left": 776,
-          "top": 590,
+          "top": 606,
           "width": 308,
           "height": 30,
           "text": "",

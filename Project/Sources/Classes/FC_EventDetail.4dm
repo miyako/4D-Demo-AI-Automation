@@ -143,14 +143,13 @@ Function _renderAIPanel($weatherResult : Object)
 	var $setup : Object:=This.event.weatherSetup
 	var $forecast : Object:=This.event.weatherForecast
 	var $setupStr : Text:=""
-	var $forecastStr : Text:=""
 	If ($setup#Null)
 		$setupStr:="Planned: "+This._setupLabel($setup)
 	End if 
 	If ($forecast#Null)
-		$forecastStr:=" | Forecast: "+This._setupLabel($forecast)
+		$setupStr:=$setupStr+"\nForecast: "+This._setupLabel($forecast)
 	End if 
-	OBJECT SET TITLE(*; "text_ai_setup"; $setupStr+$forecastStr) 
+	OBJECT SET TITLE(*; "text_ai_setup"; $setupStr) 
 
 	If ($weatherResult=Null)
 		var $level : Text:=This.event.weatherAlertLevel
