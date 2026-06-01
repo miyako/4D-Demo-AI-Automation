@@ -81,7 +81,7 @@
           "left": 16,
           "top": 80,
           "width": 728,
-          "height": 160,
+          "height": 176,
           "class": "bgCard"
         },
         "text_client_label": {
@@ -182,6 +182,24 @@
           "height": 20,
           "text": "",
           "class": "textSuccess"
+        },
+        "text_option_label": {
+          "type": "text",
+          "left": 560,
+          "top": 200,
+          "width": 140,
+          "height": 16,
+          "text": "OPTION",
+          "class": "textLabel"
+        },
+        "text_option_val": {
+          "type": "text",
+          "left": 560,
+          "top": 216,
+          "width": 180,
+          "height": 20,
+          "text": "",
+          "class": "textBody"
         },
         "text_services_header": {
           "type": "text",

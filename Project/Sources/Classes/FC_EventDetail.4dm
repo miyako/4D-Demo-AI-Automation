@@ -11,6 +11,7 @@ property _currentIndex : Integer
 property _pendingExecResult : Object
 property _pendingAction : Object
 property _pendingActionIndex : Integer
+property _pendingVenueSwitchData : Object
 
 Class constructor($event : cs.EventEntity; $eventIDs : Collection)
 	This.event:=$event
@@ -21,6 +22,7 @@ Class constructor($event : cs.EventEntity; $eventIDs : Collection)
 	This._pendingExecResult:=Null
 	This._pendingAction:=Null
 	This._pendingActionIndex:=-1
+	This._pendingVenueSwitchData:=Null
 	If ($eventIDs#Null)
 		This._eventIDs:=$eventIDs
 	Else 
@@ -104,10 +106,11 @@ Function _populateHeader()
 	OBJECT SET TITLE(*; "text_date_val"; String($evt.eventDate; "EEEE dd MMMM yyyy"))
 	OBJECT SET TITLE(*; "text_guests_val"; String($evt.guestCount)+" guests")
 
-	// Venue with indoor/outdoor indicator
+	// Venue with separate indoor/outdoor indicator
 	var $venueLabel : Text:=Choose($venue#Null; $venue.name+" – "+$venue.city+", "+$venue.country; "—")
-	var $optionLabel : Text:=Choose($evt.venueOption="indoor"; " 🏢"; " 🌳")
-	OBJECT SET TITLE(*; "text_venue_val"; $venueLabel+$optionLabel)
+	OBJECT SET TITLE(*; "text_venue_val"; $venueLabel)
+	var $optionIcon : Text:=Choose($evt.venueOption="indoor"; "🏢 Indoor"; "🌳 Outdoor")
+	OBJECT SET TITLE(*; "text_option_val"; $optionIcon)
 	OBJECT SET TITLE(*; "text_status_val"; This._statusLabel($evt.status))
 	OBJECT SET TITLE(*; "text_weather_badge"; This._weatherBadge($evt.weatherAlertLevel))
 
@@ -236,6 +239,12 @@ Function _executeAction($index : Integer)
 	var $type : Text:=$action.actionType
 	This._pendingActionIndex:=$index
 
+	// switch_venue is handled locally — no AI tool calling needed
+	If ($type="switch_venue")
+		This._executeSwitchVenue($action)
+		return 
+	End if 
+
 	// Si l'action a un hiddenPrompt, utiliser le Temps 2 (tool calling)
 	If (($action.hiddenPrompt#Null) && ($action.hiddenPrompt#""))
 		This._executeWithToolCalling($action)
@@ -299,6 +308,33 @@ Function _onExecutionDone($execResult : Object; $action : Object)
 	OBJECT SET TITLE(*; "text_ai_status"; "")
 	This._showConfirmPanel($action; $execResult)
 
+// ─── switch_venue : handled locally, no AI needed ────────────────────────────
+Function _executeSwitchVenue($action : Object)
+	var $venue : cs.VenueEntity:=This.event.venue
+	If (($venue=Null) || ($venue.indoorOption=Null))
+		OBJECT SET TITLE(*; "text_ai_status"; "❌ No indoor option available at this venue.")
+		return 
+	End if 
+	var $oldRental : Real:=This.event.venueRentalPrice
+	var $newRental : Real:=Num($venue.indoorOption.rentalPrice)
+	var $rentalDelta : Real:=$newRental-$oldRental
+	// Store for commit in btnConfirmActionEventHandler
+	This._pendingVenueSwitchData:={ \
+		newOption: "indoor"; \
+		newRentalPrice: $newRental; \
+		oldRentalPrice: $oldRental; \
+		venueName: $venue.indoorOption.name \
+	}
+	// Build synthetic execResult for the confirm panel
+	var $execResult : Object:={proposedLines: []; summary: "Switch to indoor venue '"+$venue.indoorOption.name+"' (capacity: "+String(Num($venue.indoorOption.capacity))+"). Weather risk will be eliminated."}
+	$execResult.proposedLines.push({ \
+		label: "Switch to indoor: "+$venue.indoorOption.name; \
+		quantity: 1; \
+		unitPrice: $rentalDelta; \
+		delta: "venue_switch" \
+	})
+	This._showConfirmPanel($action; $execResult)
+
 Function _showConfirmPanel($action : Object; $execResult : Object)
 	This._pendingAction:=$action
 	This._pendingExecResult:=$execResult
@@ -320,6 +356,9 @@ Function _showConfirmPanel($action : Object; $execResult : Object)
 				$lineTotal:=-$lineTotal
 			: ($line.delta="update")
 				$deltaIcon:="✏"
+				$impact:=$impact+$lineTotal
+			: ($line.delta="venue_switch")
+				$deltaIcon:="🏢"
 				$impact:=$impact+$lineTotal
 		End case 
 		This.confirmLines.push({ \
@@ -344,6 +383,7 @@ Function _hideConfirmPanel()
 	This._pendingExecResult:=Null
 	This._pendingAction:=Null
 	This._pendingActionIndex:=-1
+	This._pendingVenueSwitchData:=Null
 
 Function _resizeWindow($width : Integer)
 	var $curL; $curT; $curR; $curB : Integer
@@ -399,6 +439,11 @@ Function _setConfirmPanelVisible($visible : Boolean)
 Function btnConfirmActionEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
+			// Route venue switch separately
+			If (This._pendingVenueSwitchData#Null)
+				This._applyVenueSwitch()
+				return 
+			End if 
 			If (This._pendingExecResult=Null)
 				return 
 			End if 
@@ -470,7 +515,37 @@ Function _updateSetupDisplay()
 	End if 
 	OBJECT SET TITLE(*; "text_ai_setup"; $setupStr)
 
-//MARK: - Helpers
+// Apply the pending venue switch: updates event entity and refreshes UI.
+Function _applyVenueSwitch()
+	var $data : Object:=This._pendingVenueSwitchData
+	var $confirmedIndex : Integer:=This._pendingActionIndex
+	// Update event fields
+	This.event.venueOption:="indoor"
+	This.event.venueRentalPrice:=$data.newRentalPrice
+	// Indoor event: weather becomes indifferent, no alert
+	var $setup : Object:=This.event.weatherSetup
+	If ($setup#Null)
+		$setup.conditions:="indifferent"
+		This.event.weatherSetup:=$setup
+	End if 
+	This.event.weatherAlertLevel:="none"
+	This.event.save()
+	// Hide confirm panel (resets _pendingVenueSwitchData and _pendingActionIndex)
+	This._hideConfirmPanel()
+	// Refresh UI
+	This._populateHeader()
+	This._loadEventLines()
+	This._updateSetupDisplay()
+	OBJECT SET TITLE(*; "text_weather_badge"; This._weatherBadge("none"))
+	// Remove confirmed action button
+	If (($confirmedIndex>=0) && ($confirmedIndex<This.aiActions.length))
+		This.aiActions.remove($confirmedIndex; 1)
+	End if 
+	cs.UIHelpers.me.resetActionButtons()
+	cs.UIHelpers.me.showActionButtons(This.aiActions)
+	OBJECT SET TITLE(*; "text_ai_status"; "✅ Switched to indoor venue. No weather risk.")
+
+
 Function _weatherBadge($level : Text) : Text
 	Case of 
 		: ($level="critical")
