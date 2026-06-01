@@ -10,6 +10,7 @@ property _eventIDs : Collection
 property _currentIndex : Integer
 property _pendingExecResult : Object
 property _pendingAction : Object
+property _pendingActionIndex : Integer
 
 Class constructor($event : cs.EventEntity; $eventIDs : Collection)
 	This.event:=$event
@@ -19,6 +20,7 @@ Class constructor($event : cs.EventEntity; $eventIDs : Collection)
 	This.running:=False
 	This._pendingExecResult:=Null
 	This._pendingAction:=Null
+	This._pendingActionIndex:=-1
 	If ($eventIDs#Null)
 		This._eventIDs:=$eventIDs
 	Else 
@@ -232,6 +234,7 @@ Function _executeAction($index : Integer)
 	End if 
 	var $action : Object:=This.aiActions[$index]
 	var $type : Text:=$action.actionType
+	This._pendingActionIndex:=$index
 
 	// Si l'action a un hiddenPrompt, utiliser le Temps 2 (tool calling)
 	If (($action.hiddenPrompt#Null) && ($action.hiddenPrompt#""))
@@ -340,6 +343,7 @@ Function _hideConfirmPanel()
 	This._resizeWindow(1100)
 	This._pendingExecResult:=Null
 	This._pendingAction:=Null
+	This._pendingActionIndex:=-1
 
 Function _resizeWindow($width : Integer)
 	var $curL; $curT; $curR; $curB : Integer
@@ -398,10 +402,23 @@ Function btnConfirmActionEventHandler($formEventCode : Integer)
 			If (This._pendingExecResult=Null)
 				return 
 			End if 
+			// 1. Remember which action index was confirmed before hide clears it
+			var $confirmedIndex : Integer:=This._pendingActionIndex
+			// 2. Apply service changes to DB
 			cs.EventLineService.me.applyProposedChanges(This.event.ID; This._pendingExecResult.proposedLines)
+			// 3. Hide panel and reload lines
 			This._hideConfirmPanel()
 			This._loadEventLines()
-			OBJECT SET TITLE(*; "text_ai_status"; "✅ Action applied successfully.")
+			// 4. Re-assess effective planned weather from updated service list
+			This._reassessEventSetup()
+			// 5. Remove the confirmed action button from the action list
+			If (($confirmedIndex>=0) && ($confirmedIndex<This.aiActions.length))
+				This.aiActions.splice($confirmedIndex; 1)
+			End if 
+			// 6. Re-render remaining action buttons
+			cs.UIHelpers.me.resetActionButtons()
+			cs.UIHelpers.me.showActionButtons(This.aiActions)
+			OBJECT SET TITLE(*; "text_ai_status"; "✅ Action applied. Event setup re-assessed.")
 	End case 
 
 Function btnCancelConfirmEventHandler($formEventCode : Integer)
@@ -410,6 +427,48 @@ Function btnCancelConfirmEventHandler($formEventCode : Integer)
 			This._hideConfirmPanel()
 			OBJECT SET TITLE(*; "text_ai_status"; "Action cancelled.")
 	End case 
+
+// Re-assess the event's effective planned weatherSetup based on current service lines.
+// Updates weatherSetup.conditions, recomputes alertLevel, saves, and refreshes UI.
+Function _reassessEventSetup()
+	var $setup : Object:=This.event.weatherSetup
+	If ($setup=Null)
+		return 
+	End if 
+	var $weather : cs.WeatherService:=cs.WeatherService.me
+	var $newConditions : Text:=$weather.assessSetupFromLines(This.eventLines; $setup.conditions)
+	If ($newConditions="")
+		return  // indoor/indifferent: no change
+	End if 
+	If ($setup.conditions=$newConditions)
+		return  // already correct
+	End if 
+	// Update conditions in the stored setup object
+	$setup.conditions:=$newConditions
+	This.event.weatherSetup:=$setup
+	// Recompute alert level against current forecast
+	If (This.event.weatherForecast#Null)
+		This.event.weatherAlertLevel:=$weather.compareWeather($setup; This.event.weatherForecast; This.event.venueOption)
+	Else 
+		This.event.weatherAlertLevel:="none"
+	End if 
+	This.event.save()
+	// Refresh header badge and setup/forecast display
+	OBJECT SET TITLE(*; "text_weather_badge"; This._weatherBadge(This.event.weatherAlertLevel))
+	This._updateSetupDisplay()
+
+// Refresh only the planned/forecast labels in the AI panel (without clearing explanation/actions).
+Function _updateSetupDisplay()
+	var $setup : Object:=This.event.weatherSetup
+	var $forecast : Object:=This.event.weatherForecast
+	var $setupStr : Text:=""
+	If ($setup#Null)
+		$setupStr:="Planned: "+This._setupLabel($setup)
+	End if 
+	If ($forecast#Null)
+		$setupStr:=$setupStr+"\nForecast: "+This._forecastLabel($forecast)
+	End if 
+	OBJECT SET TITLE(*; "text_ai_setup"; $setupStr)
 
 //MARK: - Helpers
 Function _weatherBadge($level : Text) : Text

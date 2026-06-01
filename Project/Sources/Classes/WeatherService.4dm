@@ -168,6 +168,33 @@ Function rationalizeWeather($weatherData : Object) : Object
 
 	return {conditions: $conditions; temperature: $temperature}
 
+// ─── Assess effective planned weather from current service lines ─────────────
+// Checks if shelter/rain-protection structures are present to derive conditions.
+// Returns "rain" or "sunny" for outdoor events; "" if no change is applicable.
+Function assessSetupFromLines($lines : Collection; $currentConditions : Text) : Text
+	// Indoor events are always indifferent — never change
+	If ($currentConditions="indifferent")
+		return ""
+	End if
+	// Rain-protection structures: tents, chapiteaux, pagodas
+	var $rainKeywords : Collection:=["tente"; "chapiteau"; "pagode"; "stretch"; "bâche"; "tent"; "canopy"; "shelter"]
+	var $hasRainProtection : Boolean:=False
+	var $line : Object
+	For each ($line; $lines)
+		var $label : Text:=Lowercase($line.serviceLabel)
+		var $k : Text
+		For each ($k; $rainKeywords)
+			If (Position($k; $label)>0)
+				$hasRainProtection:=True
+			End if
+		End for each
+	End for each
+	If ($hasRainProtection)
+		return "rain"
+	Else
+		return "sunny"
+	End if
+
 // ─── Compare contracted vs forecast weather ──────────────────────────────────
 // Returns alert level: "none", "watch", "warning"
 Function compareWeather($setup : Object; $forecast : Object; $venueOption : Text) : Text
