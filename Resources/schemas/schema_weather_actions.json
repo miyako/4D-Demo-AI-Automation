@@ -57,7 +57,8 @@
         "properties": {
           "actionType": {
             "type": "string",
-            "description": "Type d'action proposée."
+            "enum": ["add_services", "remove_services", "replace_services", "switch_venue", "notify_client"],
+            "description": "Type d'action concrète: add_services (ajouter des prestations), remove_services (retirer des prestations inutiles), replace_services (remplacer des prestations), switch_venue (basculer indoor/outdoor), notify_client (envoyer un message au client)."
           },
           "label": {
             "type": "string",
