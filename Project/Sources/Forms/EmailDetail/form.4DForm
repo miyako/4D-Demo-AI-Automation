@@ -733,6 +733,36 @@
           "method": "objbtn_confirm_action.4dm",
           "class": "btnPrimary",
           "visible": false
+        },
+        "btn_prev": {
+          "type": "button",
+          "left": 110,
+          "top": 16,
+          "width": 32,
+          "height": 32,
+          "text": "‹",
+          "events": [
+            "onClick"
+          ],
+          "focusable": true,
+          "method": "objbtn_prev.4dm",
+          "class": "btnBack",
+          "style": "flat"
+        },
+        "btn_next": {
+          "type": "button",
+          "left": 148,
+          "top": 16,
+          "width": 32,
+          "height": 32,
+          "text": "›",
+          "events": [
+            "onClick"
+          ],
+          "focusable": true,
+          "method": "objbtn_next.4dm",
+          "class": "btnBack",
+          "style": "flat"
         }
       }
     }

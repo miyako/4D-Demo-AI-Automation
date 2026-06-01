@@ -12,8 +12,10 @@ property _catalog : Collection
 property _pendingExecResult : Object
 property _pendingAction : Object
 property _pendingActionIndex : Integer
+property _emailIDs : Collection
+property _currentIndex : Integer
 
-Class constructor($email : cs.EmailEntity)
+Class constructor($email : cs.EmailEntity; $emailIDs : Collection)
 	This.email:=$email
 	This.event:=Null
 	This.eventLines:=[]
@@ -25,6 +27,12 @@ Class constructor($email : cs.EmailEntity)
 	This._pendingExecResult:=Null
 	This._pendingAction:=Null
 	This._pendingActionIndex:=-1
+	If ($emailIDs#Null)
+		This._emailIDs:=$emailIDs
+	Else 
+		This._emailIDs:=[]
+	End if 
+	This._currentIndex:=This._emailIDs.indexOf($email.ID)
 
 //MARK: - Form & form objects event handlers
 Function formEventHandler($formEventCode : Integer)
@@ -95,6 +103,13 @@ Function btnCancelConfirmEventHandler($formEventCode : Integer)
 			OBJECT SET TITLE(*; "text_ai_status"; "Action cancelled.")
 	End case 
 Function _onLoad()
+	This._populateHeader()
+	This._setEventPanelVisible(False)
+	This._setConfirmPanelVisible(False)
+	This._resetAIPanel()
+	This._updateNavButtons()
+
+Function _populateHeader()
 	var $m : cs.EmailEntity:=This.email
 	OBJECT SET TITLE(*; "text_subject"; $m.subject)
 	OBJECT SET TITLE(*; "text_from_val"; $m.sender)
@@ -112,10 +127,6 @@ Function _onLoad()
 			OBJECT SET TITLE(*; "text_linked_event"; "Linked to: "+$evt.contractRef+" – "+$evt.venue.name+" – "+String($evt.eventDate; "dd/MM/yyyy"))
 		End if 
 	End if 
-
-	This._setEventPanelVisible(False)
-	This._setConfirmPanelVisible(False)
-	This._resetAIPanel()
 
 Function _runAnalysis()
 	This.running:=True
@@ -570,3 +581,46 @@ Function _aiSubtitle($type : Text) : Text
 		Else 
 			return "Read and summarize"
 	End case 
+
+Function btnPrevEventHandler($event : Integer)
+	If ($event=On Clicked)
+		This._navigate(-1)
+	End if 
+
+Function btnNextEventHandler($event : Integer)
+	If ($event=On Clicked)
+		This._navigate(1)
+	End if 
+
+Function _navigate($direction : Integer)
+	var $newIndex : Integer:=This._currentIndex+$direction
+	If ($newIndex<0) | ($newIndex>=This._emailIDs.length)
+		return 
+	End if 
+	var $newID : Variant:=This._emailIDs[$newIndex]
+	var $newEmail : cs.EmailEntity:=ds.Email.get($newID)
+	If ($newEmail=Null)
+		return 
+	End if 
+	This._currentIndex:=$newIndex
+	This.email:=$newEmail
+	This.event:=Null
+	This.eventLines:=[]
+	This.confirmLines:=[]
+	This.aiActions:=[]
+	This.aiResult:=Null
+	This.running:=False
+	This._pendingExecResult:=Null
+	This._pendingAction:=Null
+	This._pendingActionIndex:=-1
+	This._setEventPanelVisible(False)
+	This._hideConfirmPanel()
+	This._resetAIPanel()
+	This._populateHeader()
+	This._updateNavButtons()
+	This._resizeWindow(1100)
+
+Function _updateNavButtons()
+	var $hasList : Boolean:=(This._emailIDs.length>1)
+	OBJECT SET ENABLED(*; "btn_prev"; $hasList & (This._currentIndex>0))
+	OBJECT SET ENABLED(*; "btn_next"; $hasList & (This._currentIndex<This._emailIDs.length-1))

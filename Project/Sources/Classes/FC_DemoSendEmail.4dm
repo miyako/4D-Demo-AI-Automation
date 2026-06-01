@@ -128,7 +128,7 @@ Function _send()
 	$email.linkedEventID:=""
 	$email.save()
 
-	var $fc : cs.FC_EmailDetail:=cs.FC_EmailDetail.new($email)
+	var $fc : cs.FC_EmailDetail:=cs.FC_EmailDetail.new($email; Null)
 	var $w : Integer:=Open form window("EmailDetail"; Plain form window)
 	DIALOG("EmailDetail"; $fc)
 	CLOSE WINDOW($w)
