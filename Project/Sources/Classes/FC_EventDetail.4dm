@@ -305,6 +305,24 @@ Function _onExecutionDone($execResult : Object; $action : Object)
 		return 
 	End if 
 
+	// Safety: remove any 'add' lines whose label also appears in a 'remove' line
+	var $removeLabels : Collection:=[]
+	var $pl : Object
+	For each ($pl; $execResult.proposedLines)
+		If ($pl.delta="remove")
+			$removeLabels.push(Lowercase($pl.label))
+		End if 
+	End for each 
+	If ($removeLabels.length>0)
+		var $cleanLines : Collection:=[]
+		For each ($pl; $execResult.proposedLines)
+			If (Not(($pl.delta="add") && $removeLabels.includes(Lowercase($pl.label))))
+				$cleanLines.push($pl)
+			End if 
+		End for each 
+		$execResult.proposedLines:=$cleanLines
+	End if 
+
 	OBJECT SET TITLE(*; "text_ai_status"; "")
 	This._showConfirmPanel($action; $execResult)
 

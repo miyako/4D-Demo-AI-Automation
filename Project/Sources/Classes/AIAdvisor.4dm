@@ -255,7 +255,8 @@ Function executeActionAsync($hiddenPrompt : Text; $context : Object; $callback :
 	$system:=$system+"- 'remove': an EXISTING service to remove — do NOT search for it, take label/quantity/unitPrice directly from the existing services list in context\n"
 	$system:=$system+"- 'update': change the quantity of an existing service\n\n"
 	$system:=$system+"For 'replace_services' tasks: you must produce BOTH 'remove' lines (for existing services listed under REMOVE:) AND 'add' lines (found via search_services for items listed under SEARCH:). "
-	$system:=$system+"Do NOT search for services that are listed under REMOVE — just emit them with delta:'remove'.\n\n"
+	$system:=$system+"Do NOT search for services that are listed under REMOVE — just emit them with delta:'remove'. "
+	$system:=$system+"CRITICAL: Never add a service (delta:'add') if you are also removing a service with the same or equivalent label. A service cannot be both removed and added in the same proposal.\n\n"
 	$system:=$system+"Context:\n"
 	If ($context.eventID#Null)
 		$system:=$system+"- Event ID: "+$context.eventID+"\n"
