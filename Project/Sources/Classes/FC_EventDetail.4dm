@@ -345,9 +345,28 @@ Function _resizeWindow($width : Integer)
 	var $curL; $curT; $curR; $curB : Integer
 	GET WINDOW RECT($curL; $curT; $curR; $curB; Current form window)
 	var $height : Integer:=$curB-$curT
-	// Clamp to screen so expanded window doesn't go off-screen
+	// Detect which screen the window is currently on
 	var $screenL; $screenT; $screenR; $screenB : Integer
-	SCREEN COORDINATES($screenL; $screenT; $screenR; $screenB)
+	var $sL; $sT; $sR; $sB : Integer
+	var $i : Integer
+	$screenL:=0
+	$screenT:=0
+	$screenR:=0
+	$screenB:=0
+	For ($i; 1; Count screens)
+		SCREEN COORDINATES($sL; $sT; $sR; $sB; $i)
+		If (($curL>=$sL) && ($curL<$sR))
+			$screenL:=$sL
+			$screenT:=$sT
+			$screenR:=$sR
+			$screenB:=$sB
+		End if 
+	End for 
+	If ($screenR=$screenL)
+		// Fallback to main screen
+		SCREEN COORDINATES($screenL; $screenT; $screenR; $screenB)
+	End if 
+	// Clamp to detected screen so window doesn't go off-screen
 	If (($curL+$width)>$screenR)
 		$curL:=$screenR-$width
 		If ($curL<$screenL)
