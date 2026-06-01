@@ -191,6 +191,7 @@
           "width": 220,
           "height": 24,
           "text": "Venues",
+          "textAlign": "center",
           "class": "textSection"
         },
         "text_card3_sub": {
