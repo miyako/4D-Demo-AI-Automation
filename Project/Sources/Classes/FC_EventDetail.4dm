@@ -12,6 +12,9 @@ property _pendingExecResult : Object
 property _pendingAction : Object
 property _pendingActionIndex : Integer
 property _pendingVenueSwitchData : Object
+property activeAdvisorTab : Text
+property linkedEmail : cs.EmailEntity
+property hasEmail : Boolean
 
 Class constructor($event : cs.EventEntity; $eventIDs : Collection)
 	This.event:=$event
@@ -23,6 +26,9 @@ Class constructor($event : cs.EventEntity; $eventIDs : Collection)
 	This._pendingAction:=Null
 	This._pendingActionIndex:=-1
 	This._pendingVenueSwitchData:=Null
+	This.activeAdvisorTab:="weather"
+	This.linkedEmail:=Null
+	This.hasEmail:=False
 	If ($eventIDs#Null)
 		This._eventIDs:=$eventIDs
 	Else 
@@ -85,11 +91,36 @@ Function btnAiAction4EventHandler($formEventCode : Integer)
 			This._executeAction(3)
 	End case 
 
+Function btnTabWeatherEventHandler($formEventCode : Integer)
+	Case of 
+		: ($formEventCode=On Clicked)
+			This._setAdvisorTab("weather")
+	End case 
+
+Function btnTabEmailEventHandler($formEventCode : Integer)
+	Case of 
+		: ($formEventCode=On Clicked)
+			This._setAdvisorTab("email")
+	End case 
+
+Function btnEmailAnalyzeEventHandler($formEventCode : Integer)
+	Case of 
+		: ($formEventCode=On Clicked)
+			This._runEmailAnalysis()
+	End case 
+
 //MARK: - Private
 Function _onLoad()
 	This._resizeWindow(1100)
 	This._populateHeader()
 	This._loadEventLines()
+	// Check for linked unread email
+	var $emails : cs.EmailSelection:=ds.Email.query("linkedEventID = :1 AND emailStatus = :2"; String(This.event.ID); "unread")
+	If ($emails.length>0)
+		This.linkedEmail:=$emails.first()
+		This.hasEmail:=True
+		OBJECT SET VISIBLE(*; "btn_tab_email"; True)
+	End if 
 	This._renderAIPanel(Null)
 	This._updateNavButtons()
 	This._applyReadOnlyIfDone()
@@ -195,6 +226,97 @@ Function _renderAIPanel($weatherResult : Object)
 	var $actions : Collection:=$wa.actions
 	cs.UIHelpers.me.showActionButtons($actions)
 	This.aiActions:=$actions
+
+// ─── Tab management ───────────────────────────────────────────────────────────
+Function _setAdvisorTab($tab : Text)
+	This.activeAdvisorTab:=$tab
+	cs.UIHelpers.me.resetActionButtons()
+	This.aiActions:=[]
+
+	var $isWeather : Boolean:=($tab="weather")
+	// Weather tab controls
+	OBJECT SET VISIBLE(*; "text_ai_status"; $isWeather)
+	OBJECT SET VISIBLE(*; "text_ai_context"; $isWeather)
+	OBJECT SET VISIBLE(*; "text_ai_setup"; $isWeather)
+	OBJECT SET VISIBLE(*; "text_ai_explanation"; $isWeather)
+	OBJECT SET VISIBLE(*; "btn_ai_analyze"; $isWeather)
+	OBJECT SET VISIBLE(*; "text_ai_validation_badge"; $isWeather)
+	// Email tab controls
+	OBJECT SET VISIBLE(*; "text_email_meta"; Not($isWeather))
+	OBJECT SET VISIBLE(*; "text_email_subject"; Not($isWeather))
+	OBJECT SET VISIBLE(*; "input_email_body"; Not($isWeather))
+	OBJECT SET VISIBLE(*; "text_email_ai_status"; Not($isWeather))
+	OBJECT SET VISIBLE(*; "text_email_ai_result"; Not($isWeather))
+	OBJECT SET VISIBLE(*; "btn_email_analyze"; Not($isWeather))
+	// Tab button styles
+	OBJECT SET STYLE SHEET(*; "btn_tab_weather"; Choose($isWeather; "btnFilterActive"; "btnFilterInactive"))
+	OBJECT SET STYLE SHEET(*; "btn_tab_email"; Choose(Not($isWeather); "btnFilterActive"; "btnFilterInactive"))
+	// Load email content if switching to email tab
+	If (Not($isWeather) && (This.linkedEmail#Null))
+		This._loadEmailTab()
+	End if 
+
+Function _loadEmailTab()
+	var $e : cs.EmailEntity:=This.linkedEmail
+	If ($e=Null)
+		return 
+	End if 
+	var $meta : Text:="From: "+$e.sender+" <"+$e.senderEmail+">"
+	$meta:=$meta+"\nReceived: "+String($e.receivedAt; "dd MMM yyyy")
+	OBJECT SET TITLE(*; "text_email_meta"; $meta)
+	OBJECT SET TITLE(*; "text_email_subject"; $e.subject)
+	OBJECT SET VALUE("input_email_body"; $e.body)
+	OBJECT SET TITLE(*; "text_email_ai_status"; "Click 'Analyze Email with AI' to process this request.")
+	OBJECT SET TITLE(*; "text_email_ai_result"; "")
+
+// ─── Email AI analysis ────────────────────────────────────────────────────────
+Function _runEmailAnalysis()
+	If (This.linkedEmail=Null)
+		return 
+	End if 
+	This.running:=True
+	OBJECT SET TITLE(*; "btn_email_analyze"; "⏳ Analyzing...")
+	OBJECT SET TITLE(*; "text_email_ai_status"; "Analyzing modification request...")
+
+	var $advisor : cs.AIAdvisor:=cs.AIAdvisor.new()
+	var $self : Object:=This
+	$advisor.analyzeLinkedEmailAsync(This.linkedEmail; This.event; This.eventLines; Formula($self._onEmailAnalysisDone($1)))
+
+Function _onEmailAnalysisDone($result : Object)
+	If (Form=Null)
+		return 
+	End if 
+	This.running:=False
+	OBJECT SET TITLE(*; "btn_email_analyze"; "📧 Analyze Email with AI")
+
+	If (Not($result.success))
+		OBJECT SET TITLE(*; "text_email_ai_status"; "❌ Analysis failed")
+		OBJECT SET TITLE(*; "text_email_ai_result"; $result.validationError)
+		return 
+	End if 
+
+	var $impacts : Object:=$result.impacts
+	OBJECT SET TITLE(*; "text_email_ai_status"; "✓ Modification request analyzed")
+
+	// Build summary text
+	var $summary : Text:=""
+	If (($impacts.summary#Null) && ($impacts.summary#""))
+		$summary:=$impacts.summary+"\n\n"
+	End if 
+	If (($impacts.impacts#Null) && ($impacts.impacts.length>0))
+		$summary:=$summary+"Service changes:\n"
+		var $imp : Object
+		For each ($imp; $impacts.impacts)
+			$summary:=$summary+"• "+String($imp.description)+"\n"
+		End for each 
+	End if 
+	OBJECT SET TITLE(*; "text_email_ai_result"; $summary)
+
+	// Show execution actions
+	If (($impacts.executionActions#Null) && ($impacts.executionActions.length>0))
+		cs.UIHelpers.me.showActionButtons($impacts.executionActions)
+		This.aiActions:=$impacts.executionActions
+	End if 
 
 Function _runWeatherAnalysis()
 	This.running:=True

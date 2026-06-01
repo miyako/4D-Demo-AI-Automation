@@ -127,7 +127,7 @@
           "top": 188,
           "width": 220,
           "height": 48,
-          "text": "📬",
+          "text": "📦",
           "fontSize": 36,
           "textAlign": "center"
         },
@@ -137,7 +137,7 @@
           "top": 244,
           "width": 220,
           "height": 24,
-          "text": "Inbox",
+          "text": "Services",
           "textAlign": "center",
           "class": "textSection"
         },
@@ -147,7 +147,7 @@
           "top": 272,
           "width": 204,
           "height": 36,
-          "text": "Client emails with\nAI routing & analysis",
+          "text": "Browse the service\ncatalog",
           "textAlign": "center",
           "class": "textMuted"
         },
@@ -157,12 +157,12 @@
           "top": 330,
           "width": 180,
           "height": 40,
-          "text": "Open Inbox",
+          "text": "Open Services",
           "events": [
             "onClick"
           ],
           "focusable": true,
-          "method": "objbtn_inbox.4dm",
+          "method": "objbtn_services.4dm",
           "class": "btnPrimary",
           "style": "flat"
         },
@@ -180,7 +180,7 @@
           "top": 188,
           "width": 220,
           "height": 48,
-          "text": "✉️",
+          "text": "📍",
           "fontSize": 36,
           "textAlign": "center"
         },
@@ -190,8 +190,7 @@
           "top": 244,
           "width": 220,
           "height": 24,
-          "text": "Simulate Email",
-          "textAlign": "center",
+          "text": "Venues",
           "class": "textSection"
         },
         "text_card3_sub": {
@@ -200,7 +199,7 @@
           "top": 272,
           "width": 204,
           "height": 36,
-          "text": "Send a demo email\nand watch AI react",
+          "text": "Explore venues &\nrental pricing",
           "textAlign": "center",
           "class": "textMuted"
         },
@@ -210,12 +209,12 @@
           "top": 330,
           "width": 180,
           "height": 40,
-          "text": "Simulate Email",
+          "text": "Open Venues",
           "events": [
             "onClick"
           ],
           "focusable": true,
-          "method": "objbtn_simulate.4dm",
+          "method": "objbtn_venues.4dm",
           "class": "btnPrimary",
           "style": "flat"
         },

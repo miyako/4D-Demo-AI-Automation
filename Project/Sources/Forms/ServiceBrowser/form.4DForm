@@ -1,0 +1,231 @@
+{
+  "rightMargin": 0,
+  "bottomMargin": 0,
+  "windowSizingX": "fixed",
+  "windowSizingY": "fixed",
+  "windowMinWidth": 900,
+  "windowMinHeight": 680,
+  "pages": [
+    null,
+    {
+      "objects": {
+        "rect_bg": {
+          "type": "rectangle",
+          "left": 0,
+          "top": 0,
+          "width": 900,
+          "height": 680,
+          "class": "bgForm"
+        },
+        "rect_header": {
+          "type": "rectangle",
+          "left": 0,
+          "top": 0,
+          "width": 900,
+          "height": 64,
+          "class": "bgHeader"
+        },
+        "btn_back": {
+          "type": "button",
+          "left": 16,
+          "top": 16,
+          "width": 80,
+          "height": 32,
+          "text": "← Home",
+          "events": [
+            "onClick"
+          ],
+          "focusable": true,
+          "method": "objbtn_back.4dm",
+          "class": "btnBack",
+          "style": "flat"
+        },
+        "text_title": {
+          "type": "text",
+          "left": 196,
+          "top": 18,
+          "width": 300,
+          "height": 28,
+          "text": "📦 Services Catalog",
+          "class": "textTitle"
+        },
+        "text_count": {
+          "type": "text",
+          "left": 700,
+          "top": 22,
+          "width": 180,
+          "height": 20,
+          "text": "",
+          "textAlign": "right",
+          "class": "textMuted"
+        },
+        "rect_filter_bar": {
+          "type": "rectangle",
+          "left": 0,
+          "top": 64,
+          "width": 900,
+          "height": 52,
+          "class": "bgToolbar"
+        },
+        "input_search": {
+          "type": "input",
+          "left": 24,
+          "top": 78,
+          "width": 240,
+          "height": 28,
+          "enterable": true,
+          "placeholder": "Search services...",
+          "events": [
+            "onChange"
+          ],
+          "method": "objinput_search.4dm",
+          "class": "filterInput"
+        },
+        "btn_filter_all": {
+          "type": "button",
+          "left": 280,
+          "top": 78,
+          "width": 60,
+          "height": 28,
+          "text": "All",
+          "events": [
+            "onClick"
+          ],
+          "focusable": true,
+          "method": "objbtn_filter_all.4dm",
+          "class": "btnFilterActive",
+          "style": "flat"
+        },
+        "btn_filter_catering": {
+          "type": "button",
+          "left": 348,
+          "top": 78,
+          "width": 80,
+          "height": 28,
+          "text": "Catering",
+          "events": [
+            "onClick"
+          ],
+          "focusable": true,
+          "method": "objbtn_filter_catering.4dm",
+          "class": "btnFilterInactive",
+          "style": "flat"
+        },
+        "btn_filter_sound": {
+          "type": "button",
+          "left": 436,
+          "top": 78,
+          "width": 80,
+          "height": 28,
+          "text": "Sound & AV",
+          "events": [
+            "onClick"
+          ],
+          "focusable": true,
+          "method": "objbtn_filter_sound.4dm",
+          "class": "btnFilterInactive",
+          "style": "flat"
+        },
+        "btn_filter_structures": {
+          "type": "button",
+          "left": 524,
+          "top": 78,
+          "width": 90,
+          "height": 28,
+          "text": "Structures",
+          "events": [
+            "onClick"
+          ],
+          "focusable": true,
+          "method": "objbtn_filter_structures.4dm",
+          "class": "btnFilterInactive",
+          "style": "flat"
+        },
+        "btn_filter_decor": {
+          "type": "button",
+          "left": 622,
+          "top": 78,
+          "width": 110,
+          "height": 28,
+          "text": "Furniture & Decor",
+          "events": [
+            "onClick"
+          ],
+          "focusable": true,
+          "method": "objbtn_filter_decor.4dm",
+          "class": "btnFilterInactive",
+          "style": "flat"
+        },
+        "listbox_services": {
+          "type": "listbox",
+          "left": 0,
+          "top": 116,
+          "width": 900,
+          "height": 564,
+          "listboxType": "collection",
+          "dataSource": "Form.services",
+          "headerHeight": "30px",
+          "showHeaders": true,
+          "rowHeight": "40px",
+          "events": [],
+          "columns": [
+            {
+              "header": { "text": "CATEGORY" },
+              "dataSource": "This.category",
+              "name": "col_cat",
+              "width": 160,
+              "fontSize": 11,
+              "verticalAlign": "middle",
+              "class": "colMuted"
+            },
+            {
+              "header": { "text": "SERVICE" },
+              "dataSource": "This.label",
+              "name": "col_label",
+              "width": 420,
+              "fontSize": 13,
+              "verticalAlign": "middle",
+              "class": "colPrimary"
+            },
+            {
+              "header": { "text": "UNIT" },
+              "dataSource": "This.unit",
+              "name": "col_unit",
+              "width": 80,
+              "fontSize": 12,
+              "textAlign": "center",
+              "verticalAlign": "middle",
+              "class": "colMuted"
+            },
+            {
+              "header": { "text": "UNIT PRICE" },
+              "dataSource": "This.unitPriceStr",
+              "name": "col_price",
+              "width": 140,
+              "fontSize": 12,
+              "textAlign": "right",
+              "verticalAlign": "middle",
+              "class": "colDefault"
+            },
+            {
+              "header": { "text": "" },
+              "dataSource": "This.availableIcon",
+              "name": "col_avail",
+              "width": 40,
+              "fontSize": 14,
+              "textAlign": "center",
+              "verticalAlign": "middle"
+            }
+          ],
+          "class": "listbox",
+          "verticalAlign": "middle"
+        }
+      }
+    }
+  ],
+  "events": [
+    "onLoad"
+  ],
+  "formClass": "FC_ServiceBrowser",
+  "method": "method.4dm"
+}

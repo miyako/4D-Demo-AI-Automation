@@ -92,6 +92,17 @@
             },
             {
               "header": {
+                "text": ""
+              },
+              "dataSource": "This.emailIcon",
+              "name": "col_email",
+              "width": 28,
+              "fontSize": 14,
+              "textAlign": "center",
+              "verticalAlign": "middle"
+            },
+            {
+              "header": {
                 "text": "DATE"
               },
               "dataSource": "This.eventDateStr",
@@ -273,9 +284,24 @@
           "class": "btnFilterInactive",
           "style": "flat"
         },
+        "btn_filter_email": {
+          "type": "button",
+          "left": 546,
+          "top": 76,
+          "width": 130,
+          "height": 28,
+          "text": "📧 Email",
+          "events": [
+            "onClick"
+          ],
+          "focusable": true,
+          "method": "objbtn_filter_email.4dm",
+          "class": "btnFilterInactive",
+          "style": "flat"
+        },
         "btn_toggle_past": {
           "type": "button",
-          "left": 560,
+          "left": 684,
           "top": 76,
           "width": 110,
           "height": 28,

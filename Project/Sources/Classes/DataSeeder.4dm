@@ -4,6 +4,7 @@
 
 singleton Class constructor()
 property _weatherTemplates : Object
+property _seededEventIDs : Collection
 
 // ─── Point d'entrée principal ─────────────────────────────────────────────────
 Function seedIfEmpty()
@@ -38,6 +39,7 @@ Function resetAll()
 
 	// Reset cached templates so file is reloaded
 	This._weatherTemplates:=Null
+	This._seededEventIDs:=Null
 
 	// Ré-importer tout depuis les JSON
 	This._seedClients()
@@ -241,11 +243,19 @@ Function _addLine($evt : cs.EventEntity; $svc : Object; $qty : Integer; $status 
 	$line.save()
 
 // ─── Emails ───────────────────────────────────────────────────────────────────
+// Only modification emails, all linked to a specific confirmed event
 Function _seedEmails()
 	var $file : 4D.File:=Folder(fk resources folder).file("data/emails.json")
 	var $data : Collection:=JSON Parse($file.getText())
 	var $item : Object
 	var $e : cs.EmailEntity
+
+	// If _seededEventIDs not set (seedIfEmpty called after events already existed), load them
+	If (This._seededEventIDs=Null)
+		var $allEvts : cs.EventSelection:=ds.Event.all().orderBy("contractRef ASC")
+		This._seededEventIDs:=$allEvts.toCollection("ID")
+	End if 
+
 	For each ($item; $data)
 		$e:=ds.Email.new()
 		$e.sender:=$item.sender
@@ -253,13 +263,17 @@ Function _seedEmails()
 		$e.subject:=$item.subject
 		$e.body:=$item.body
 		$e.receivedAt:=Date($item.receivedAt)
-		$e.emailStatus:=$item.emailStatus
-		$e.emailType:=$item.emailType
-		// linkedEventIndex → résoudre vers ID si non null
-		// Pour la démo, on laisse null — l'EmailAnalyzer le découvrira
-		$e.linkedEventID:=""
+		$e.emailStatus:="unread"
+		$e.emailType:="modification"
+		// Resolve linkedEventIndex → actual event ID
+		var $idx : Integer:=Num($item.linkedEventIndex)
+		If (($idx>=0) && ($idx<This._seededEventIDs.length))
+			$e.linkedEventID:=String(This._seededEventIDs[$idx].ID)
+		Else 
+			$e.linkedEventID:=""
+		End if 
 		$e.save()
-	End for each
+	End for each 
 
 // ─── Régénération des events avec dates relatives ─────────────────────────────
 // Supprime tous les events + eventlines, puis recharge events.json avec des
@@ -390,6 +404,11 @@ Function regenerateEvents()
 		var $fakeItem : Object:={guestCount: $evt.guestCount; status: $status}
 		This._generateEventLines($evt; $fakeItem; $svcByCategory)
 	End for
+
+	// Store ordered event IDs for email linking (position matches events.json order)
+	// contractRef = "CTR-YYYY-1XX" where XX = index+100, so sort numerically via contractRef
+	var $allEvts : cs.EventSelection:=ds.Event.all().orderBy("contractRef ASC")
+	This._seededEventIDs:=$allEvts.toCollection("ID")
 
 // ─── Embeddings vectoriels des services ───────────────────────────────────────
 Function _buildServiceEmbeddings()

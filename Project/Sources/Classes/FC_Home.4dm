@@ -19,16 +19,16 @@ Function btnEventsEventHandler($formEventCode : Integer)
 			This._openEvents()
 	End case 
 
-Function btnInboxEventHandler($formEventCode : Integer)
+Function btnServicesEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
-			This._openInbox()
+			This._openServices()
 	End case 
 
-Function btnSimulateEventHandler($formEventCode : Integer)
+Function btnVenuesEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
-			This._openSimulate()
+			This._openVenues()
 	End case 
 
 Function btnRegenerateEventHandler($formEventCode : Integer)
@@ -62,14 +62,14 @@ Function _openEvents()
 	DIALOG("EventList")
 	CLOSE WINDOW($w)
 
-Function _openInbox()
-	var $w : Integer:=Open form window("EmailInbox"; Plain form window)
-	DIALOG("EmailInbox")
+Function _openServices()
+	var $w : Integer:=Open form window("ServiceBrowser"; Plain form window)
+	DIALOG("ServiceBrowser")
 	CLOSE WINDOW($w)
 
-Function _openSimulate()
-	var $w : Integer:=Open form window("DemoSendEmail"; Plain form window)
-	DIALOG("DemoSendEmail")
+Function _openVenues()
+	var $w : Integer:=Open form window("VenueBrowser"; Plain form window)
+	DIALOG("VenueBrowser")
 	CLOSE WINDOW($w)
 
 Function _regenerateData()

@@ -245,6 +245,48 @@ Function _onModificationChatDone($chatResult : Object; $callback : 4D.Function)
 	$result.ambiguous:=($parsed.candidateEvents#Null) && ($parsed.candidateEvents.length>1)
 	$callback.call(Null; $result)
 
+// ─── Scénario 3b : Email de modification lié directement à un événement connu ──
+// L'événement est déjà identifié — pas besoin de disambiguïser.
+// $callback reçoit {success; impacts; validationError}
+Function analyzeLinkedEmailAsync($email : cs.EmailEntity; $event : cs.EventEntity; $eventLines : Collection; $callback : 4D.Function)
+	var $schemaImpacts : Object:=This._loadSchema("schema_modification_impacts.json")
+	If ($schemaImpacts=Null)
+		$callback.call(Null; {success: False; impacts: Null; validationError: "Cannot load schema_modification_impacts.json"})
+		return 
+	End if 
+
+	var $venue : cs.VenueEntity:=$event.venue
+	var $eventText : Text:="Contract: "+$event.contractRef
+	$eventText:=$eventText+" | Date: "+String($event.eventDate; "yyyy-MM-dd")
+	$eventText:=$eventText+" | Venue: "+Choose($venue#Null; $venue.name; "?")
+	$eventText:=$eventText+" | Guests: "+String($event.guestCount)
+
+	var $linesText : Text:=""
+	var $line : Object
+	For each ($line; $eventLines)
+		$linesText:=$linesText+"- [ID:"+String($line.serviceID)+"] "+$line.serviceLabel+" × "+String($line.quantity)+" @ "+String($line.unitPrice)+"€/u\n"
+	End for each 
+
+	var $system : Text:="You are a contract specialist for Event Pulse. "
+	$system:=$system+"A client has sent a modification request for a confirmed event. The event is already identified. "
+	$system:=$system+"Analyze the request and propose executionActions (max 3) that can be applied to the event. "
+	$system:=$system+"For each executionAction, include a 'hiddenPrompt' describing exactly what services to search/add/remove with quantities.\n"
+	$system:=$system+"Set selectedEventID to the event ID provided. Do not populate candidateEvents.\n"
+	$system:=$system+"Respond ONLY with a valid JSON object matching the modification_impacts schema. No markdown."
+
+	var $user : Text:="From: "+$email.sender+" <"+$email.senderEmail+">"
+	$user:=$user+"\nSubject: "+$email.subject+"\n\n"
+	$user:=$user+"Body:\n"+$email.body+"\n\n"
+	$user:=$user+"Event: "+$eventText+"\n"
+	If ($eventLines.length>0)
+		$user:=$user+"\nCurrent services:\n"+$linesText
+	End if 
+
+	var $self : Object:=This
+	var $cb : 4D.Function:=$callback
+	This._chat:=This._createChat($system; $schemaImpacts; "modification_impacts"; Formula($self._onModificationChatDone($1; $cb)))
+	This._chat.prompt($user)
+
 // ─── Temps 2 : Exécution avec tool calling (ChatHelper + registerTools) ──────
 // $callback reçoit {success; proposedLines; summary; totalImpact; error}
 Function executeActionAsync($hiddenPrompt : Text; $context : Object; $callback : 4D.Function)
