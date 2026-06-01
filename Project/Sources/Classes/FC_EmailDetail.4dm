@@ -235,7 +235,7 @@ Function _renderModificationResult($result : Object)
 		var $candText : Text:="Please select the correct event:\n"
 		var $cand : Object
 		For each ($cand; $data.candidateEvents)
-			$candText:=$candText+"• "+$cand.contractRef+" – "+$cand.venueName+" ("+$cand.eventDate+")\n"
+			$candText:=$candText+"• "+String($cand.contractRef)+" – "+String($cand.venueName)+" ("+String($cand.eventDate)+")\n"
 		End for each 
 		OBJECT SET TITLE(*; "text_ai_context"; $candText)
 
@@ -248,7 +248,7 @@ Function _renderModificationResult($result : Object)
 		End if 
 		For ($i; 0; $maxDisamb-1)
 			$c:=$data.candidateEvents[$i]
-			$disambActions.push({actionType: "resolve_ambiguity"; label: $c.contractRef+" – "+$c.venueName; params: {eventID: $c.eventID}})
+			$disambActions.push({actionType: "resolve_ambiguity"; label: String($c.contractRef)+" – "+String($c.venueName); params: {eventID: $c.eventID}})
 		End for 
 		This.aiActions:=$disambActions
 		This._renderActionButtons($disambActions)
