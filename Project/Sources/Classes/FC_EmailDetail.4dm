@@ -377,7 +377,8 @@ Function _onExecutionDone($execResult : Object; $action : Object; $context : Obj
 	End if 
 
 	If (($execResult.proposedLines=Null) || ($execResult.proposedLines.length=0))
-		OBJECT SET TITLE(*; "text_ai_status"; "⚠ No matching service found in catalog.")
+		var $reason : Text:=Choose(($execResult.summary#Null) && ($execResult.summary#""); $execResult.summary; "No matching service found in catalog.")
+		OBJECT SET TITLE(*; "text_ai_status"; "⚠ "+$reason)
 		return 
 	End if 
 
@@ -390,7 +391,8 @@ Function _onExecutionDone($execResult : Object; $action : Object; $context : Obj
 		End if 
 	End for each 
 	If (Not($hasAdd2) && ($action.actionType="add_services"))
-		OBJECT SET TITLE(*; "text_ai_status"; "⚠ Service not available in catalog.")
+		var $reason2 : Text:=Choose(($execResult.summary#Null) && ($execResult.summary#""); $execResult.summary; "Service not available in catalog.")
+		OBJECT SET TITLE(*; "text_ai_status"; "⚠ "+$reason2)
 		return 
 	End if 
 

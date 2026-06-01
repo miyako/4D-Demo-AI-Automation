@@ -302,7 +302,8 @@ Function _onExecutionDone($execResult : Object; $action : Object)
 	End if 
 
 	If (($execResult.proposedLines=Null) || ($execResult.proposedLines.length=0))
-		OBJECT SET TITLE(*; "text_ai_status"; "⚠ No matching service found in catalog.")
+		var $reason : Text:=Choose(($execResult.summary#Null) && ($execResult.summary#""); $execResult.summary; "No matching service found in catalog.")
+		OBJECT SET TITLE(*; "text_ai_status"; "⚠ "+$reason)
 		return 
 	End if 
 
@@ -319,7 +320,8 @@ Function _onExecutionDone($execResult : Object; $action : Object)
 	If (Not($hasAdd))
 		// Only removes proposed for what was supposed to be an add/replace — abort
 		If ($action.actionType="add_services")
-			OBJECT SET TITLE(*; "text_ai_status"; "⚠ Service not available in catalog.")
+			var $reason2 : Text:=Choose(($execResult.summary#Null) && ($execResult.summary#""); $execResult.summary; "Service not available in catalog.")
+			OBJECT SET TITLE(*; "text_ai_status"; "⚠ "+$reason2)
 			return 
 		End if 
 	End if 

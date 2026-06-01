@@ -751,7 +751,7 @@
   },
   {
     "category": "Technical",
-    "label": "Hot air heater (tent)",
+    "label": "Mobile hot air heater",
     "unit": "day",
     "unitPrice": 650.0,
     "available": true
@@ -838,6 +838,20 @@
     "label": "Outdoor patio heater",
     "unit": "unit",
     "unitPrice": 180.0,
+    "available": true
+  },
+  {
+    "category": "Technical",
+    "label": "Electric space heater (indoor)",
+    "unit": "unit/day",
+    "unitPrice": 120.0,
+    "available": true
+  },
+  {
+    "category": "Technical",
+    "label": "Mobile gas heater",
+    "unit": "unit/day",
+    "unitPrice": 95.0,
     "available": true
   }
 ]
