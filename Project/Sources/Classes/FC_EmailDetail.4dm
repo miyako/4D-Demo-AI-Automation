@@ -516,8 +516,9 @@ Function _loadEventLines()
 	OBJECT SET TITLE(*; "text_ev_total_val"; String($total; "### ### ##0 €"))
 
 Function _setEventPanelVisible($visible : Boolean)
+	OBJECT SET VISIBLE(*; "rect_email_sep"; $visible)
+	OBJECT SET VISIBLE(*; "text_event_placeholder"; False)  // never show placeholder
 	OBJECT SET VISIBLE(*; "rect_event_bg"; $visible)
-	OBJECT SET VISIBLE(*; "text_event_placeholder"; Not($visible))
 	OBJECT SET VISIBLE(*; "rect_event_card"; $visible)
 	OBJECT SET VISIBLE(*; "text_ev_client_lbl"; $visible)
 	OBJECT SET VISIBLE(*; "text_ev_client_val"; $visible)
