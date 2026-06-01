@@ -83,6 +83,7 @@ Function btnAiAction4EventHandler($formEventCode : Integer)
 
 //MARK: - Private
 Function _onLoad()
+	RESIZE FORM WINDOW(1100; 800)
 	This._populateHeader()
 	This._loadEventLines()
 	This._renderAIPanel(Null)
