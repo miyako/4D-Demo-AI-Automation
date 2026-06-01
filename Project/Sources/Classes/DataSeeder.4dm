@@ -3,6 +3,7 @@
 // Appelé au démarrage de l'application (On Startup / Home form On Load)
 
 singleton Class constructor()
+property _weatherTemplates : Object
 
 // ─── Point d'entrée principal ─────────────────────────────────────────────────
 Function seedIfEmpty()
@@ -34,6 +35,9 @@ Function resetAll()
 	ds.Service.all().drop()
 	ds.Venue.all().drop()
 	ds.Client.all().drop()
+
+	// Reset cached templates so file is reloaded
+	This._weatherTemplates:=Null
 
 	// Ré-importer tout depuis les JSON
 	This._seedClients()
@@ -114,46 +118,84 @@ Function _generateEventLines($evt : cs.EventEntity; $item : Object; $svcByCatego
 	var $status : Text:=$item.status
 	var $lineStatus : Text:=Choose($status="confirmed"; "confirmed"; "pending")
 
-	// Always add catering
-	This._addRandomService($evt; $svcByCategory; "Catering"; $guestCount; $lineStatus)
-	// Always add Sound & AV
-	This._addRandomService($evt; $svcByCategory; "Sound & AV"; 1; $lineStatus)
-	// 70% chance: add Lighting
-	If (Random%10<7)
-		This._addRandomService($evt; $svcByCategory; "Lighting"; 1; $lineStatus)
-	End if
-	// 60% chance: add Photography
-	If (Random%10<6)
-		This._addRandomService($evt; $svcByCategory; "Photography & Film"; 1; $lineStatus)
-	End if
-	// 50% chance: add Security
-	If (Random%10<5)
-		This._addRandomService($evt; $svcByCategory; "Security"; 1+($guestCount/100); $lineStatus)
-	End if
-	// 40% chance: add Structures (for outdoor events)
-	If ((Random%10<4) && ($evt.venueOption="outdoor"))
-		This._addRandomService($evt; $svcByCategory; "Structures"; 1; $lineStatus)
-	End if
-
-	// Weather-coherent services based on weatherSetup
+	// Build weather profile key
 	var $setup : Object:=$evt.weatherSetup
-	If ($setup#Null)
-		// Rain-planned events: add rain protection
-		If ($setup.conditions="rain")
-			This._addRandomService($evt; $svcByCategory; "Structures"; 1; $lineStatus)
-			This._addServiceByLabel($evt; $svcByCategory; "Furniture & Decor"; "Parapluie personnalisé événement"; $guestCount/2; $lineStatus)
-			This._addServiceByLabel($evt; $svcByCategory; "Furniture & Decor"; "Poncho pluie jetable (lot de 50)"; ($guestCount/50)+1; $lineStatus)
+	var $conditions : Text:=Choose($setup#Null; $setup.conditions; "indifferent")
+	var $temperature : Text:=Choose($setup#Null; $setup.temperature; "normal")
+	var $venueOption : Text:=$evt.venueOption
+	var $profileKey : Text:=$venueOption+"__"+$conditions+"__"+$temperature
+
+	// Load templates (cached)
+	If (This._weatherTemplates=Null)
+		var $tplFile : 4D.File:=Folder(fk resources folder).file("data/weather-service-templates.json")
+		This._weatherTemplates:=JSON Parse($tplFile.getText())
+	End if 
+
+	// Fallback to indoor__indifferent__normal if key not found
+	var $tpl : Object:=This._weatherTemplates[$profileKey]
+	If ($tpl=Null)
+		$tpl:=This._weatherTemplates["indoor__indifferent__normal"]
+	End if 
+	If ($tpl=Null)
+		return 
+	End if 
+
+	// Apply mandatory services
+	var $spec : Object
+	For each ($spec; $tpl.mandatory)
+		var $qty : Integer
+		If ($spec.useGuests=True)
+			$qty:=$guestCount
+		Else 
+			If ($spec.useGuestsFraction#Null)
+				$qty:=Int($guestCount/$spec.useGuestsFraction)
+				If ($spec.minQty#Null)
+					If ($qty<$spec.minQty)
+						$qty:=$spec.minQty
+					End if 
+				End if 
+				If ($qty<1)
+					$qty:=1
+				End if 
+			Else 
+				$qty:=$spec.qty
+			End if 
 		End if 
-		// Hot-planned events: add cooling
-		If ($setup.temperature="hot")
-			This._addServiceByLabel($evt; $svcByCategory; "Technical"; "Climatisation mobile (unité)"; 1+($guestCount/200); $lineStatus)
-			This._addServiceByLabel($evt; $svcByCategory; "Furniture & Decor"; "Parasol chauffant extérieur"; 0; $lineStatus)
+		If ($spec.label#Null)
+			This._addServiceByLabel($evt; $svcByCategory; $spec.category; $spec.label; $qty; $lineStatus)
+		Else 
+			If ($spec.prefer="outdoor")
+				This._addPreferredService($evt; $svcByCategory; $spec.category; $qty; $lineStatus; True)
+			Else 
+				If ($spec.prefer="indoor")
+					This._addPreferredService($evt; $svcByCategory; $spec.category; $qty; $lineStatus; False)
+				Else 
+					This._addRandomService($evt; $svcByCategory; $spec.category; $qty; $lineStatus)
+				End if 
+			End if 
 		End if 
-		// Cold-planned events: add heating
-		If ($setup.temperature="cold")
-			This._addServiceByLabel($evt; $svcByCategory; "Technical"; "Chauffage air chaud (tente)"; 1+($guestCount/300); $lineStatus)
+	End for each 
+
+	// Apply optional services (probabilistic)
+	For each ($spec; $tpl.optional)
+		var $roll : Real:=Random%100/100
+		If ($roll<$spec.prob)
+			var $oqty : Integer
+			If ($spec.useGuestsFraction#Null)
+				$oqty:=Int($guestCount/$spec.useGuestsFraction)
+				If ($oqty<1)
+					$oqty:=1
+				End if 
+			Else 
+				$oqty:=$spec.qty
+			End if 
+			If ($spec.label#Null)
+				This._addServiceByLabel($evt; $svcByCategory; $spec.category; $spec.label; $oqty; $lineStatus)
+			Else 
+				This._addRandomService($evt; $svcByCategory; $spec.category; $oqty; $lineStatus)
+			End if 
 		End if 
-	End if
+	End for each 
 
 // ─── Ajoute un service aléatoire d'une catégorie donnée ──────────────────────
 Function _addRandomService($evt : cs.EventEntity; $svcByCategory : Object; $category : Text; $qty : Integer; $lineStatus : Text)
@@ -161,6 +203,19 @@ Function _addRandomService($evt : cs.EventEntity; $svcByCategory : Object; $cate
 	If (($list#Null) && ($list.length>0))
 		This._addLine($evt; $list[Random%$list.length]; $qty; $lineStatus)
 	End if
+
+// ─── Ajoute un service en préférant les labels outdoor ou indoor ──────────────
+Function _addPreferredService($evt : cs.EventEntity; $svcByCategory : Object; $category : Text; $qty : Integer; $lineStatus : Text; $preferOutdoor : Boolean)
+	var $list : Collection:=$svcByCategory[$category]
+	If (($list=Null) || ($list.length=0))
+		return 
+	End if 
+	var $keyword : Text:=Choose($preferOutdoor; "extérieure"; "salle")
+	var $preferred : Collection:=$list.query("label = :1"; "@"+$keyword+"@")
+	If ($preferred.length=0)
+		$preferred:=$list
+	End if 
+	This._addLine($evt; $preferred[Random%$preferred.length]; $qty; $lineStatus)
 
 // ─── Ajoute un service spécifique par son label ───────────────────────────────
 Function _addServiceByLabel($evt : cs.EventEntity; $svcByCategory : Object; $category : Text; $label : Text; $qty : Integer; $lineStatus : Text)
