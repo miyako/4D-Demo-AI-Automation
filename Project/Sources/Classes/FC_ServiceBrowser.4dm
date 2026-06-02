@@ -60,11 +60,6 @@ Function _onLoad()
 
 Function _setCategory($cat : Text)
 	This.activeCategory:=$cat
-	OBJECT SET STYLE SHEET(*; "btn_filter_all"; Choose($cat="all"; "btnFilterActive"; "btnFilterInactive"))
-	OBJECT SET STYLE SHEET(*; "btn_filter_catering"; Choose($cat="Catering"; "btnFilterActive"; "btnFilterInactive"))
-	OBJECT SET STYLE SHEET(*; "btn_filter_sound"; Choose($cat="Sound & AV"; "btnFilterActive"; "btnFilterInactive"))
-	OBJECT SET STYLE SHEET(*; "btn_filter_structures"; Choose($cat="Structures"; "btnFilterActive"; "btnFilterInactive"))
-	OBJECT SET STYLE SHEET(*; "btn_filter_decor"; Choose($cat="Furniture & Decor"; "btnFilterActive"; "btnFilterInactive"))
 	This._loadServices()
 
 Function _loadServices()

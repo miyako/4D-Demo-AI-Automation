@@ -1,821 +1,784 @@
 {
-  "rightMargin": 0,
-  "bottomMargin": 0,
-  "windowSizingX": "fixed",
-  "windowSizingY": "fixed",
-  "windowMinWidth": 1100,
-  "windowMinHeight": 800,
-  "pages": [
-    null,
-    {
-      "objects": {
-        "rect_bg": {
-          "type": "rectangle",
-          "left": 0,
-          "top": 0,
-          "width": 1100,
-          "height": 800,
-          "class": "bgForm"
-        },
-        "rect_header": {
-          "type": "rectangle",
-          "left": 0,
-          "top": 0,
-          "width": 1100,
-          "height": 64,
-          "class": "bgHeader"
-        },
-        "btn_back": {
-          "type": "button",
-          "left": 16,
-          "top": 16,
-          "width": 80,
-          "height": 32,
-          "text": "← Events",
-          "events": [
-            "onClick"
-          ],
-          "focusable": true,
-          "method": "objbtn_back.4dm",
-          "class": "btnBack",
-          "style": "flat"
-        },
-        "text_title": {
-          "type": "text",
-          "left": 196,
-          "top": 18,
-          "width": 400,
-          "height": 28,
-          "text": "Event Detail",
-          "class": "textTitle"
-        },
-        "text_ref": {
-          "type": "text",
-          "left": 196,
-          "top": 44,
-          "width": 300,
-          "height": 16,
-          "text": "",
-          "class": "textLabel"
-        },
-        "text_weather_badge": {
-          "type": "text",
-          "left": 870,
-          "top": 18,
-          "width": 200,
-          "height": 28,
-          "text": "",
-          "fontSize": 14,
-          "textAlign": "right"
-        },
-        "rect_main": {
-          "type": "rectangle",
-          "left": 0,
-          "top": 64,
-          "width": 760,
-          "height": 736,
-          "class": "bgForm"
-        },
-        "rect_info_card": {
-          "type": "rectangle",
-          "left": 16,
-          "top": 80,
-          "width": 728,
-          "height": 176,
-          "class": "bgCard"
-        },
-        "text_client_label": {
-          "type": "text",
-          "left": 32,
-          "top": 96,
-          "width": 80,
-          "height": 16,
-          "text": "CLIENT",
-          "class": "textLabel"
-        },
-        "text_client_val": {
-          "type": "text",
-          "left": 32,
-          "top": 112,
-          "width": 300,
-          "height": 20,
-          "text": "",
-          "class": "textSection"
-        },
-        "text_contact_val": {
-          "type": "text",
-          "left": 32,
-          "top": 134,
-          "width": 300,
-          "height": 16,
-          "text": "",
-          "class": "textMuted"
-        },
-        "text_date_label": {
-          "type": "text",
-          "left": 360,
-          "top": 96,
-          "width": 80,
-          "height": 16,
-          "text": "DATE",
-          "class": "textLabel"
-        },
-        "text_date_val": {
-          "type": "text",
-          "left": 360,
-          "top": 112,
-          "width": 200,
-          "height": 20,
-          "text": "",
-          "class": "textSection"
-        },
-        "text_guests_label": {
-          "type": "text",
-          "left": 32,
-          "top": 160,
-          "width": 100,
-          "height": 16,
-          "text": "GUESTS",
-          "class": "textLabel"
-        },
-        "text_guests_val": {
-          "type": "text",
-          "left": 32,
-          "top": 176,
-          "width": 100,
-          "height": 20,
-          "text": "",
-          "class": "textBody"
-        },
-        "text_venue_label": {
-          "type": "text",
-          "left": 180,
-          "top": 160,
-          "width": 100,
-          "height": 16,
-          "text": "VENUE",
-          "class": "textLabel"
-        },
-        "text_venue_val": {
-          "type": "text",
-          "left": 180,
-          "top": 176,
-          "width": 370,
-          "height": 36,
-          "text": "",
-          "class": "textBody"
-        },
-        "text_status_label": {
-          "type": "text",
-          "left": 560,
-          "top": 160,
-          "width": 80,
-          "height": 16,
-          "text": "STATUS",
-          "class": "textLabel"
-        },
-        "text_status_val": {
-          "type": "text",
-          "left": 560,
-          "top": 176,
-          "width": 150,
-          "height": 20,
-          "text": "",
-          "class": "textSuccess"
-        },
-        "text_option_label": {
-          "type": "text",
-          "left": 560,
-          "top": 200,
-          "width": 140,
-          "height": 16,
-          "text": "OPTION",
-          "class": "textLabel"
-        },
-        "text_option_val": {
-          "type": "text",
-          "left": 560,
-          "top": 216,
-          "width": 180,
-          "height": 20,
-          "text": "",
-          "class": "textBody"
-        },
-        "text_services_header": {
-          "type": "text",
-          "left": 24,
-          "top": 256,
-          "width": 200,
-          "height": 20,
-          "text": "SERVICES BOOKED",
-          "class": "textLabel"
-        },
-        "listbox_lines": {
-          "type": "listbox",
-          "left": 16,
-          "top": 280,
-          "width": 728,
-          "height": 420,
-          "listboxType": "collection",
-          "dataSource": "Form.eventLines",
-          "headerHeight": "28px",
-          "showHeaders": true,
-          "rowHeight": "40px",
-          "columns": [
-            {
-              "header": {
-                "text": "SERVICE"
-              },
-              "dataSource": "This.serviceLabel",
-              "name": "col_service",
-              "width": 250,
-              "fontSize": 13,
-              "verticalAlign": "middle",
-              "class": "colPrimary"
-            },
-            {
-              "header": {
-                "text": "CATEGORY"
-              },
-              "dataSource": "This.category",
-              "name": "col_cat",
-              "width": 140,
-              "fontSize": 11,
-              "verticalAlign": "middle",
-              "class": "colMuted"
-            },
-            {
-              "header": {
-                "text": "QTY"
-              },
-              "dataSource": "This.quantityStr",
-              "name": "col_qty",
-              "width": 60,
-              "fontSize": 12,
-              "textAlign": "right",
-              "verticalAlign": "middle",
-              "class": "colDefault"
-            },
-            {
-              "header": {
-                "text": "UNIT PRICE"
-              },
-              "dataSource": "This.unitPriceStr",
-              "name": "col_price",
-              "width": 120,
-              "fontSize": 12,
-              "textAlign": "right",
-              "verticalAlign": "middle",
-              "class": "colDefault"
-            },
-            {
-              "header": {
-                "text": "TOTAL"
-              },
-              "dataSource": "This.totalStr",
-              "name": "col_total",
-              "width": 140,
-              "fontSize": 12,
-              "textAlign": "right",
-              "verticalAlign": "middle",
-              "class": "colPrimary"
-            }
-          ],
-          "class": "listbox",
-          "verticalAlign": "middle"
-        },
-        "text_total_label": {
-          "type": "text",
-          "left": 480,
-          "top": 750,
-          "width": 100,
-          "height": 20,
-          "text": "TOTAL EST.",
-          "class": "textLabel",
-          "textAlign": "right"
-        },
-        "rect_pricing_sep": {
-          "type": "rectangle",
-          "left": 0,
-          "top": 728,
-          "width": 760,
-          "height": 1,
-          "class": "bgContent"
-        },
-        "text_rental_val": {
-          "type": "text",
-          "left": 20,
-          "top": 750,
-          "width": 250,
-          "height": 20,
-          "text": "",
-          "class": "textMuted"
-        },
-        "text_total_val": {
-          "type": "text",
-          "left": 590,
-          "top": 750,
-          "width": 154,
-          "height": 20,
-          "text": "",
-          "textAlign": "right",
-          "class": "textSection"
-        },
-        "rect_ai_panel": {
-          "type": "rectangle",
-          "left": 760,
-          "top": 64,
-          "width": 340,
-          "height": 736,
-          "class": "bgSection"
-        },
-        "text_ai_title": {
-          "type": "text",
-          "left": 776,
-          "top": 80,
-          "width": 200,
-          "height": 20,
-          "text": "✦ AI Advisor",
-          "class": "textSection"
-        },
-        "btn_tab_weather": {
-          "type": "button",
-          "left": 776,
-          "top": 104,
-          "width": 148,
-          "height": 24,
-          "text": "🌤 Weather",
-          "events": [
-            "onClick"
-          ],
-          "focusable": true,
-          "method": "objbtn_tab_weather.4dm",
-          "class": "btnFilterActive",
-          "style": "flat"
-        },
-        "btn_tab_email": {
-          "type": "button",
-          "left": 936,
-          "top": 104,
-          "width": 148,
-          "height": 24,
-          "text": "📧 Email",
-          "events": [
-            "onClick"
-          ],
-          "focusable": true,
-          "visibility": "hidden",
-          "method": "objbtn_tab_email.4dm",
-          "class": "btnFilterInactive",
-          "style": "flat"
-        },
-        "rect_ai_divider": {
-          "type": "rectangle",
-          "left": 760,
-          "top": 134,
-          "width": 340,
-          "height": 1,
-          "class": "bgContent"
-        },
-        "text_ai_status": {
-          "type": "text",
-          "left": 776,
-          "top": 140,
-          "width": 308,
-          "height": 20,
-          "text": "",
-          "class": "textMuted"
-        },
-        "btn_ai_analyze": {
-          "type": "button",
-          "left": 776,
-          "top": 736,
-          "width": 308,
-          "height": 48,
-          "text": "⚡ Run AI Weather Analysis",
-          "events": [
-            "onClick"
-          ],
-          "focusable": true,
-          "method": "objbtn_ai_analyze.4dm",
-          "class": "btnPrimary",
-          "style": "flat"
-        },
-        "text_ai_context": {
-          "type": "text",
-          "left": 776,
-          "top": 168,
-          "width": 308,
-          "height": 44,
-          "text": "",
-          "class": "textMuted"
-        },
-        "text_ai_setup": {
-          "type": "text",
-          "left": 776,
-          "top": 218,
-          "width": 308,
-          "height": 36,
-          "text": "",
-          "class": "textLabel"
-        },
-        "text_ai_explanation": {
-          "type": "text",
-          "left": 776,
-          "top": 260,
-          "width": 308,
-          "height": 210,
-          "text": "",
-          "class": "textBody"
-        },
-        "btn_ai_action1": {
-          "type": "button",
-          "left": 776,
-          "top": 482,
-          "width": 308,
-          "height": 48,
-          "text": "",
-          "visibility": "hidden",
-          "events": [
-            "onClick"
-          ],
-          "focusable": true,
-          "method": "objbtn_ai_action1.4dm",
-          "class": "btnTemplateGreen",
-          "style": "flat"
-        },
-        "btn_ai_action2": {
-          "type": "button",
-          "left": 776,
-          "top": 536,
-          "width": 308,
-          "height": 48,
-          "text": "",
-          "visibility": "hidden",
-          "events": [
-            "onClick"
-          ],
-          "focusable": true,
-          "method": "objbtn_ai_action2.4dm",
-          "class": "btnTemplateRed",
-          "style": "flat"
-        },
-        "btn_ai_action3": {
-          "type": "button",
-          "left": 776,
-          "top": 590,
-          "width": 308,
-          "height": 48,
-          "text": "",
-          "visibility": "hidden",
-          "events": [
-            "onClick"
-          ],
-          "focusable": true,
-          "method": "objbtn_ai_action3.4dm",
-          "class": "btnTemplateBlue",
-          "style": "flat"
-        },
-        "btn_ai_action4": {
-          "type": "button",
-          "left": 776,
-          "top": 644,
-          "width": 308,
-          "height": 48,
-          "text": "",
-          "visibility": "hidden",
-          "events": [
-            "onClick"
-          ],
-          "focusable": true,
-          "method": "objbtn_ai_action4.4dm",
-          "class": "btnTemplateAmber",
-          "style": "flat"
-        },
-        "text_ai_validation_badge": {
-          "type": "text",
-          "left": 776,
-          "top": 700,
-          "width": 308,
-          "height": 30,
-          "text": "",
-          "textAlign": "center",
-          "class": "textSuccess"
-        },
-        "btn_prev": {
-          "type": "button",
-          "left": 110,
-          "top": 16,
-          "width": 32,
-          "height": 32,
-          "text": "◀",
-          "events": [
-            "onClick"
-          ],
-          "focusable": true,
-          "method": "objbtn_prev.4dm",
-          "class": "btnBack",
-          "style": "flat"
-        },
-        "btn_next": {
-          "type": "button",
-          "left": 148,
-          "top": 16,
-          "width": 32,
-          "height": 32,
-          "text": "▶",
-          "events": [
-            "onClick"
-          ],
-          "focusable": true,
-          "method": "objbtn_next.4dm",
-          "class": "btnBack",
-          "style": "flat"
-        },
-        "text_email_meta": {
-          "type": "text",
-          "left": 776,
-          "top": 148,
-          "width": 308,
-          "height": 32,
-          "text": "",
-          "class": "textLabel",
-          "visibility": "hidden"
-        },
-        "text_email_subject": {
-          "type": "text",
-          "left": 776,
-          "top": 184,
-          "width": 308,
-          "height": 20,
-          "text": "",
-          "class": "textSection",
-          "visibility": "hidden"
-        },
-        "input_email_body": {
-          "type": "input",
-          "left": 776,
-          "top": 210,
-          "width": 308,
-          "height": 248,
-          "enterable": false,
-          "multiline": true,
-          "wordwrap": true,
-          "scrollbarVertical": "automatic",
-          "text": "",
-          "class": "textBody",
-          "visibility": "hidden"
-        },
-        "text_email_ai_status": {
-          "type": "text",
-          "left": 776,
-          "top": 466,
-          "width": 308,
-          "height": 20,
-          "text": "",
-          "class": "textMuted",
-          "visibility": "hidden"
-        },
-        "text_email_ai_result": {
-          "type": "text",
-          "left": 776,
-          "top": 490,
-          "width": 308,
-          "height": 200,
-          "text": "",
-          "class": "textBody",
-          "visibility": "hidden",
-          "wordwrap": true
-        },
-        "btn_email_analyze": {
-          "type": "button",
-          "left": 776,
-          "top": 736,
-          "width": 308,
-          "height": 48,
-          "text": "📧 Analyze Email with AI",
-          "events": [
-            "onClick"
-          ],
-          "focusable": true,
-          "visibility": "hidden",
-          "method": "objbtn_email_analyze.4dm",
-          "class": "btnPrimary",
-          "style": "flat"
-        },
-        "rect_confirm_header_bg": {
-          "type": "rectangle",
-          "left": 1100,
-          "top": 0,
-          "width": 360,
-          "height": 64,
-          "class": "bgHeader",
-          "visibility": "hidden"
-        },
-        "rect_confirm_sep": {
-          "type": "rectangle",
-          "left": 1100,
-          "top": 64,
-          "width": 2,
-          "height": 736,
-          "class": "bgContent",
-          "visibility": "hidden"
-        },
-        "rect_confirm_bg": {
-          "type": "rectangle",
-          "left": 1102,
-          "top": 64,
-          "width": 358,
-          "height": 736,
-          "class": "bgSection",
-          "visibility": "hidden"
-        },
-        "text_confirm_header": {
-          "type": "text",
-          "left": 1118,
-          "top": 80,
-          "width": 324,
-          "height": 16,
-          "text": "PROPOSED CHANGES",
-          "class": "textLabel",
-          "visibility": "hidden"
-        },
-        "text_confirm_title": {
-          "type": "text",
-          "left": 1118,
-          "top": 100,
-          "width": 324,
-          "height": 20,
-          "text": "",
-          "class": "textSection",
-          "visibility": "hidden"
-        },
-        "text_confirm_summary": {
-          "type": "text",
-          "left": 1118,
-          "top": 126,
-          "width": 324,
-          "height": 100,
-          "text": "",
-          "class": "textMuted",
-          "wordwrap": true,
-          "visibility": "hidden"
-        },
-        "rect_confirm_divider": {
-          "type": "rectangle",
-          "left": 1102,
-          "top": 234,
-          "width": 358,
-          "height": 1,
-          "class": "bgContent",
-          "visibility": "hidden"
-        },
-        "listbox_confirm": {
-          "type": "listbox",
-          "left": 1118,
-          "top": 244,
-          "width": 324,
-          "height": 200,
-          "listboxType": "collection",
-          "dataSource": "Form.confirmLines",
-          "class": "lbStandard",
-          "movableRows": false,
-          "sortable": false,
-          "selectionMode": "none",
-          "headerHeight": "28px",
-          "rowHeight": "28px",
-          "visibility": "hidden",
-          "events": [],
-          "columns": [
-            {
-              "header": {
-                "text": "",
-                "class": "lbHeaderCell"
-              },
-              "name": "col_confirm_delta",
-              "width": 28,
-              "dataSource": "This.deltaIcon",
-              "class": "lbCell"
-            },
-            {
-              "header": {
-                "text": "Service",
-                "class": "lbHeaderCell"
-              },
-              "name": "col_confirm_label",
-              "width": 210,
-              "dataSource": "This.label",
-              "class": "lbCell"
-            },
-            {
-              "header": {
-                "text": "Qté",
-                "class": "lbHeaderCell"
-              },
-              "name": "col_confirm_qty",
-              "width": 26,
-              "dataSource": "This.quantity",
-              "class": "lbCellRight"
-            },
-            {
-              "header": {
-                "text": "Total",
-                "class": "lbHeaderCell"
-              },
-              "name": "col_confirm_total",
-              "width": 60,
-              "dataSource": "This.lineTotalDisplay",
-              "class": "lbCellRight"
-            }
-          ]
-        },
-        "rect_confirm_footer_sep": {
-          "type": "rectangle",
-          "left": 1102,
-          "top": 728,
-          "width": 358,
-          "height": 1,
-          "class": "bgContent",
-          "visibility": "hidden"
-        },
-        "text_confirm_impact_lbl": {
-          "type": "text",
-          "left": 1118,
-          "top": 460,
-          "width": 120,
-          "height": 20,
-          "text": "Impact total :",
-          "class": "textLabel",
-          "visibility": "hidden"
-        },
-        "text_confirm_impact_val": {
-          "type": "text",
-          "left": 1242,
-          "top": 460,
-          "width": 200,
-          "height": 20,
-          "text": "",
-          "class": "textSection",
-          "visibility": "hidden"
-        },
-        "text_confirm_newtotal_lbl": {
-          "type": "text",
-          "left": 1118,
-          "top": 484,
-          "width": 120,
-          "height": 20,
-          "text": "Nouveau total :",
-          "class": "textLabel",
-          "visibility": "hidden"
-        },
-        "text_confirm_newtotal_val": {
-          "type": "text",
-          "left": 1242,
-          "top": 484,
-          "width": 200,
-          "height": 20,
-          "text": "",
-          "class": "textSection",
-          "visibility": "hidden"
-        },
-        "btn_cancel_confirm": {
-          "type": "button",
-          "left": 1118,
-          "top": 736,
-          "width": 148,
-          "height": 48,
-          "text": "Annuler",
-          "events": [
-            "onClick"
-          ],
-          "focusable": true,
-          "method": "objbtn_cancel_confirm.4dm",
-          "class": "btnSecondary",
-          "style": "flat",
-          "visibility": "hidden"
-        },
-        "btn_confirm_action": {
-          "type": "button",
-          "left": 1274,
-          "top": 736,
-          "width": 168,
-          "height": 48,
-          "text": "✓ Confirmer",
-          "style": "flat",
-          "class": "btnPrimary",
-          "events": [
-            "onClick"
-          ],
-          "focusable": true,
-          "method": "objbtn_confirm_action.4dm",
-          "visibility": "hidden"
-        }
-      }
-    }
-  ],
-  "events": [
-    "onLoad",
-    "onClick"
-  ],
-  "method": "method.4dm"
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed",
+	"windowMinWidth": 1100,
+	"windowMinHeight": 800,
+	"pages": [
+		null,
+		{
+			"objects": {
+				"rect_bg": {
+					"type": "rectangle",
+					"left": 0,
+					"top": 0,
+					"width": 1100,
+					"height": 800,
+					"class": "bgForm"
+				},
+				"rect_header": {
+					"type": "rectangle",
+					"left": 0,
+					"top": 0,
+					"width": 1100,
+					"height": 64,
+					"class": "bgHeader"
+				},
+				"btn_back": {
+					"type": "button",
+					"left": 16,
+					"top": 16,
+					"width": 80,
+					"height": 32,
+					"text": "← Events",
+					"events": [
+						"onClick"
+					],
+					"focusable": true,
+					"method": "objbtn_back.4dm",
+					"class": "btnBack",
+					"style": "flat"
+				},
+				"text_title": {
+					"type": "text",
+					"left": 196,
+					"top": 18,
+					"width": 400,
+					"height": 28,
+					"text": "Event Detail",
+					"class": "textTitle"
+				},
+				"text_ref": {
+					"type": "text",
+					"left": 196,
+					"top": 44,
+					"width": 300,
+					"height": 16,
+					"text": "",
+					"class": "textLabel"
+				},
+				"text_weather_badge": {
+					"type": "text",
+					"left": 870,
+					"top": 18,
+					"width": 200,
+					"height": 28,
+					"text": "",
+					"fontSize": 14,
+					"textAlign": "right"
+				},
+				"rect_main": {
+					"type": "rectangle",
+					"left": 0,
+					"top": 64,
+					"width": 760,
+					"height": 736,
+					"class": "bgForm"
+				},
+				"rect_info_card": {
+					"type": "rectangle",
+					"left": 16,
+					"top": 80,
+					"width": 728,
+					"height": 176,
+					"class": "bgCard"
+				},
+				"text_client_label": {
+					"type": "text",
+					"left": 32,
+					"top": 96,
+					"width": 80,
+					"height": 16,
+					"text": "CLIENT",
+					"class": "textLabel"
+				},
+				"text_client_val": {
+					"type": "text",
+					"left": 32,
+					"top": 112,
+					"width": 300,
+					"height": 20,
+					"text": "",
+					"class": "textSection"
+				},
+				"text_contact_val": {
+					"type": "text",
+					"left": 32,
+					"top": 134,
+					"width": 300,
+					"height": 16,
+					"text": "",
+					"class": "textMuted"
+				},
+				"text_date_label": {
+					"type": "text",
+					"left": 360,
+					"top": 96,
+					"width": 80,
+					"height": 16,
+					"text": "DATE",
+					"class": "textLabel"
+				},
+				"text_date_val": {
+					"type": "text",
+					"left": 360,
+					"top": 112,
+					"width": 200,
+					"height": 20,
+					"text": "",
+					"class": "textSection"
+				},
+				"text_guests_label": {
+					"type": "text",
+					"left": 32,
+					"top": 160,
+					"width": 100,
+					"height": 16,
+					"text": "GUESTS",
+					"class": "textLabel"
+				},
+				"text_guests_val": {
+					"type": "text",
+					"left": 32,
+					"top": 176,
+					"width": 100,
+					"height": 20,
+					"text": "",
+					"class": "textBody"
+				},
+				"text_venue_label": {
+					"type": "text",
+					"left": 180,
+					"top": 160,
+					"width": 100,
+					"height": 16,
+					"text": "VENUE",
+					"class": "textLabel"
+				},
+				"text_venue_val": {
+					"type": "text",
+					"left": 180,
+					"top": 176,
+					"width": 370,
+					"height": 36,
+					"text": "",
+					"class": "textBody"
+				},
+				"text_status_label": {
+					"type": "text",
+					"left": 560,
+					"top": 160,
+					"width": 80,
+					"height": 16,
+					"text": "STATUS",
+					"class": "textLabel"
+				},
+				"text_status_val": {
+					"type": "text",
+					"left": 560,
+					"top": 176,
+					"width": 150,
+					"height": 20,
+					"text": "",
+					"class": "textSuccess"
+				},
+				"text_option_label": {
+					"type": "text",
+					"left": 560,
+					"top": 200,
+					"width": 140,
+					"height": 16,
+					"text": "OPTION",
+					"class": "textLabel"
+				},
+				"text_option_val": {
+					"type": "text",
+					"left": 560,
+					"top": 216,
+					"width": 180,
+					"height": 20,
+					"text": "",
+					"class": "textBody"
+				},
+				"text_services_header": {
+					"type": "text",
+					"left": 32,
+					"top": 264,
+					"width": 200,
+					"height": 20,
+					"text": "SERVICES BOOKED",
+					"class": "textLabel"
+				},
+				"listbox_lines": {
+					"type": "listbox",
+					"left": 16,
+					"top": 286,
+					"width": 728,
+					"height": 432,
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.eventLines",
+					"headerHeight": "28px",
+					"showHeaders": true,
+					"rowHeight": "40px",
+					"class": "listbox",
+					"verticalAlign": "middle",
+					"columns": [
+						{
+							"header": {
+								"text": "SERVICE",
+								"name": "Entête1"
+							},
+							"dataSource": "This:C1470.serviceLabel",
+							"name": "col_service",
+							"width": 250,
+							"fontSize": 13,
+							"verticalAlign": "middle",
+							"class": "colPrimary",
+							"footer": {
+								"name": "Pied1"
+							}
+						},
+						{
+							"header": {
+								"text": "CATEGORY",
+								"name": "Entête2"
+							},
+							"dataSource": "This:C1470.category",
+							"name": "col_cat",
+							"width": 140,
+							"fontSize": 11,
+							"verticalAlign": "middle",
+							"class": "colMuted",
+							"footer": {
+								"name": "Pied2"
+							}
+						},
+						{
+							"header": {
+								"text": "QTY",
+								"name": "Entête3"
+							},
+							"dataSource": "This:C1470.quantityStr",
+							"name": "col_qty",
+							"width": 60,
+							"fontSize": 12,
+							"textAlign": "right",
+							"verticalAlign": "middle",
+							"class": "colDefault",
+							"footer": {
+								"name": "Pied3"
+							}
+						},
+						{
+							"header": {
+								"text": "UNIT PRICE",
+								"name": "Entête4"
+							},
+							"dataSource": "This:C1470.unitPriceStr",
+							"name": "col_price",
+							"width": 120,
+							"fontSize": 12,
+							"textAlign": "right",
+							"verticalAlign": "middle",
+							"class": "colDefault",
+							"footer": {
+								"name": "Pied4"
+							}
+						},
+						{
+							"header": {
+								"text": "TOTAL",
+								"name": "Entête5"
+							},
+							"dataSource": "This:C1470.totalStr",
+							"name": "col_total",
+							"width": 140,
+							"fontSize": 12,
+							"textAlign": "right",
+							"verticalAlign": "middle",
+							"class": "colPrimary",
+							"footer": {
+								"name": "Pied5"
+							}
+						}
+					]
+				},
+				"text_total_label": {
+					"type": "text",
+					"left": 480,
+					"top": 750,
+					"width": 100,
+					"height": 20,
+					"text": "TOTAL EST.",
+					"class": "textLabel",
+					"textAlign": "right"
+				},
+				"rect_pricing_sep": {
+					"type": "rectangle",
+					"left": 0,
+					"top": 728,
+					"width": 760,
+					"height": 1,
+					"class": "bgContent"
+				},
+				"text_total_val": {
+					"type": "text",
+					"left": 590,
+					"top": 750,
+					"width": 154,
+					"height": 20,
+					"text": "",
+					"textAlign": "right",
+					"class": "textSection"
+				},
+				"rect_ai_panel": {
+					"type": "rectangle",
+					"left": 760,
+					"top": 64,
+					"width": 340,
+					"height": 736,
+					"class": "bgSection"
+				},
+				"text_ai_title": {
+					"type": "text",
+					"left": 776,
+					"top": 80,
+					"width": 200,
+					"height": 20,
+					"text": "✦ AI Advisor",
+					"class": "textSection"
+				},
+				"rect_ai_divider": {
+					"type": "rectangle",
+					"left": 760,
+					"top": 134,
+					"width": 340,
+					"height": 1,
+					"class": "bgContent"
+				},
+				"text_ai_status": {
+					"type": "text",
+					"left": 776,
+					"top": 136,
+					"width": 308,
+					"height": 20,
+					"text": "",
+					"class": "textMuted",
+					"textAlign": "left"
+				},
+				"btn_ai_analyze": {
+					"type": "button",
+					"left": 776,
+					"top": 736,
+					"width": 308,
+					"height": 48,
+					"text": "⚡ Run AI Weather Analysis",
+					"events": [
+						"onClick"
+					],
+					"focusable": true,
+					"method": "objbtn_ai_analyze.4dm",
+					"class": "btnPrimary",
+					"style": "flat"
+				},
+				"text_ai_context": {
+					"type": "text",
+					"left": 776,
+					"top": 204,
+					"width": 308,
+					"height": 44,
+					"text": "",
+					"class": "textMuted",
+					"visibility": "hidden"
+				},
+				"text_ai_setup": {
+					"type": "text",
+					"left": 776,
+					"top": 160,
+					"width": 308,
+					"height": 40,
+					"text": "",
+					"class": "textLabel"
+				},
+				"text_ai_explanation": {
+					"type": "text",
+					"left": 776,
+					"top": 252,
+					"width": 308,
+					"height": 316,
+					"text": "",
+					"class": "textBody"
+				},
+				"btn_ai_action1": {
+					"type": "button",
+					"left": 776,
+					"top": 512,
+					"width": 308,
+					"height": 48,
+					"text": "",
+					"visibility": "hidden",
+					"events": [
+						"onClick"
+					],
+					"focusable": true,
+					"method": "objbtn_ai_action1.4dm",
+					"class": "btnTemplateGreen",
+					"style": "flat"
+				},
+				"btn_ai_action2": {
+					"type": "button",
+					"left": 776,
+					"top": 568,
+					"width": 308,
+					"height": 48,
+					"text": "",
+					"visibility": "hidden",
+					"events": [
+						"onClick"
+					],
+					"focusable": true,
+					"method": "objbtn_ai_action2.4dm",
+					"class": "btnTemplateRed",
+					"style": "flat"
+				},
+				"btn_ai_action3": {
+					"type": "button",
+					"left": 776,
+					"top": 624,
+					"width": 308,
+					"height": 48,
+					"text": "",
+					"visibility": "hidden",
+					"events": [
+						"onClick"
+					],
+					"focusable": true,
+					"method": "objbtn_ai_action3.4dm",
+					"class": "btnTemplateBlue",
+					"style": "flat"
+				},
+				"btn_ai_action4": {
+					"type": "button",
+					"left": 776,
+					"top": 680,
+					"width": 308,
+					"height": 48,
+					"text": "",
+					"visibility": "hidden",
+					"events": [
+						"onClick"
+					],
+					"focusable": true,
+					"method": "objbtn_ai_action4.4dm",
+					"class": "btnTemplateAmber",
+					"style": "flat"
+				},
+				"text_ai_validation_badge": {
+					"type": "text",
+					"left": 776,
+					"top": 700,
+					"width": 308,
+					"height": 30,
+					"text": "",
+					"textAlign": "center",
+					"class": "textSuccess",
+					"visibility": "hidden"
+				},
+				"btn_prev": {
+					"type": "button",
+					"left": 110,
+					"top": 16,
+					"width": 32,
+					"height": 32,
+					"text": "◀",
+					"events": [
+						"onClick"
+					],
+					"focusable": true,
+					"method": "objbtn_prev.4dm",
+					"class": "btnBack",
+					"style": "flat"
+				},
+				"btn_next": {
+					"type": "button",
+					"left": 148,
+					"top": 16,
+					"width": 32,
+					"height": 32,
+					"text": "▶",
+					"events": [
+						"onClick"
+					],
+					"focusable": true,
+					"method": "objbtn_next.4dm",
+					"class": "btnBack",
+					"style": "flat"
+				},
+				"text_email_meta": {
+					"type": "text",
+					"left": 776,
+					"top": 158,
+					"width": 308,
+					"height": 48,
+					"text": "",
+					"class": "textLabel",
+					"visibility": "hidden",
+					"fontSize": 11,
+					"bold": false
+				},
+				"input_email_body": {
+					"type": "input",
+					"left": 776,
+					"top": 210,
+					"width": 289,
+					"height": 100,
+					"enterable": false,
+					"multiline": true,
+					"wordwrap": true,
+					"scrollbarVertical": "automatic",
+					"text": "",
+					"class": "textBody",
+					"visibility": "hidden"
+				},
+				"text_email_ai_result": {
+					"type": "text",
+					"left": 776,
+					"top": 318,
+					"width": 308,
+					"height": 330,
+					"text": "",
+					"class": "textBody",
+					"visibility": "hidden",
+					"wordwrap": true
+				},
+				"btn_email_analyze": {
+					"type": "button",
+					"left": 776,
+					"top": 736,
+					"width": 308,
+					"height": 48,
+					"text": "📧 Analyze Email with AI",
+					"events": [
+						"onClick"
+					],
+					"focusable": true,
+					"visibility": "hidden",
+					"method": "objbtn_email_analyze.4dm",
+					"class": "btnPrimary",
+					"style": "flat"
+				},
+				"rect_confirm_header_bg": {
+					"type": "rectangle",
+					"left": 1100,
+					"top": 0,
+					"width": 360,
+					"height": 64,
+					"class": "bgHeader",
+					"visibility": "hidden"
+				},
+				"rect_confirm_sep": {
+					"type": "rectangle",
+					"left": 1100,
+					"top": 64,
+					"width": 2,
+					"height": 736,
+					"class": "bgContent",
+					"visibility": "hidden"
+				},
+				"rect_confirm_bg": {
+					"type": "rectangle",
+					"left": 1102,
+					"top": 64,
+					"width": 358,
+					"height": 736,
+					"class": "bgSection",
+					"visibility": "hidden"
+				},
+				"text_confirm_header": {
+					"type": "text",
+					"left": 1118,
+					"top": 80,
+					"width": 324,
+					"height": 16,
+					"text": "PROPOSED CHANGES",
+					"class": "textLabel",
+					"visibility": "hidden"
+				},
+				"text_confirm_title": {
+					"type": "text",
+					"left": 1118,
+					"top": 100,
+					"width": 324,
+					"height": 20,
+					"text": "",
+					"class": "textSection",
+					"visibility": "hidden"
+				},
+				"text_confirm_summary": {
+					"type": "text",
+					"left": 1118,
+					"top": 126,
+					"width": 324,
+					"height": 142,
+					"text": "",
+					"class": "textMuted",
+					"wordwrap": true,
+					"visibility": "hidden"
+				},
+				"rect_confirm_divider": {
+					"type": "rectangle",
+					"left": 1102,
+					"top": 277,
+					"width": 358,
+					"height": 1,
+					"class": "bgContent",
+					"visibility": "hidden"
+				},
+				"rect_confirm_footer_sep": {
+					"type": "rectangle",
+					"left": 1102,
+					"top": 728,
+					"width": 358,
+					"height": 1,
+					"class": "bgContent",
+					"visibility": "hidden"
+				},
+				"btn_cancel_confirm": {
+					"type": "button",
+					"left": 1118,
+					"top": 736,
+					"width": 88,
+					"height": 48,
+					"text": "Annuler",
+					"events": [
+						"onClick"
+					],
+					"focusable": true,
+					"method": "objbtn_cancel_confirm.4dm",
+					"class": "btnSecondary",
+					"style": "flat",
+					"visibility": "hidden"
+				},
+				"btn_confirm_action": {
+					"type": "button",
+					"left": 1330,
+					"top": 736,
+					"width": 114,
+					"height": 48,
+					"text": "✓ Confirmer",
+					"style": "flat",
+					"class": "btnPrimary",
+					"events": [
+						"onClick"
+					],
+					"focusable": true,
+					"method": "objbtn_confirm_action.4dm",
+					"visibility": "hidden"
+				},
+				"input_confirm_draft": {
+					"type": "input",
+					"left": 1118,
+					"top": 286,
+					"width": 309,
+					"height": 196,
+					"enterable": false,
+					"multiline": true,
+					"wordwrap": true,
+					"scrollbarVertical": "automatic",
+					"text": "",
+					"class": "textBody",
+					"visibility": "hidden"
+				},
+				"rect_confirm_email_sep": {
+					"type": "rectangle",
+					"left": 1102,
+					"top": 492,
+					"width": 358,
+					"height": 1,
+					"class": "bgContent",
+					"visibility": "hidden"
+				},
+				"text_confirm_email_lbl": {
+					"type": "text",
+					"left": 1118,
+					"top": 499,
+					"width": 324,
+					"height": 14,
+					"text": "EMAIL DRAFT TO CLIENT",
+					"class": "textLabel",
+					"visibility": "hidden"
+				},
+				"input_confirm_email_draft": {
+					"type": "input",
+					"left": 1118,
+					"top": 514,
+					"width": 309,
+					"height": 200,
+					"enterable": true,
+					"multiline": true,
+					"wordwrap": true,
+					"scrollbarVertical": "automatic",
+					"text": "",
+					"class": "textBody",
+					"visibility": "hidden"
+				},
+				"btn_draft_email": {
+					"type": "button",
+					"left": 1214,
+					"top": 736,
+					"width": 108,
+					"height": 48,
+					"text": "📧 Draft email",
+					"events": [
+						"onClick"
+					],
+					"focusable": true,
+					"method": "objbtn_draft_email.4dm",
+					"class": "btnSecondary",
+					"style": "flat",
+					"visibility": "hidden"
+				},
+				"advisor_tabs": {
+					"type": "tab",
+					"left": 760,
+					"top": 104,
+					"width": 340,
+					"height": 24,
+					"dataSource": "Form.tabControl",
+					"visibility": "visible",
+					"method": "objadvisor_tabs.4dm",
+					"events": [
+						"onClick"
+					],
+					"expressionType": "object"
+				}
+			}
+		}
+	],
+	"events": [
+		"onLoad",
+		"onClick"
+	],
+	"method": "method.4dm",
+	"geometryStamp": 306,
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	},
+	"editor": {
+		"activeView": "Email",
+		"defaultView": "default",
+		"views": {
+			"Email": {
+				"objects": [
+					"input_email_body",
+					"text_email_ai_result",
+					"btn_email_analyze"
+				]
+			},
+			"Weather": {},
+			"default": {}
+		}
+	}
 }

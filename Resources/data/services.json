@@ -4,371 +4,424 @@
     "label": "Dinner cocktail – classic formula",
     "unit": "pers",
     "unitPrice": 85.0,
-    "available": true
+    "available": true,
+    "description": "Standing cocktail dinner with hot and cold finger food, canapés, and chef-attended stations. Ideal for networking events and elegant evening receptions. Includes service staff."
   },
   {
     "category": "Catering",
     "label": "Dinner cocktail – premium formula",
     "unit": "pers",
     "unitPrice": 120.0,
-    "available": true
+    "available": true,
+    "description": "Upscale standing cocktail dinner featuring premium canapés, seafood platters, carved meats, and sommelier-selected wines. Suitable for luxury galas and VIP receptions."
   },
   {
     "category": "Catering",
     "label": "Seated dinner – 3 courses",
     "unit": "pers",
     "unitPrice": 145.0,
-    "available": true
+    "available": true,
+    "description": "Full plated seated dinner service with starter, main course, and dessert. Includes table service, sommelier assistance, and full tableware for indoor dining rooms or marquee tents."
   },
   {
     "category": "Catering",
     "label": "Seated dinner – 5-course gastronomic",
     "unit": "pers",
     "unitPrice": 220.0,
-    "available": true
+    "available": true,
+    "description": "Gastronomic tasting menu with five plated courses, amuse-bouche, and paired wines. Chef-executed, ideal for award dinners, corporate galas, and prestige indoor events."
   },
   {
     "category": "Catering",
     "label": "Buffet lunch",
     "unit": "pers",
     "unitPrice": 65.0,
-    "available": true
+    "available": true,
+    "description": "Self-service buffet lunch with hot and cold dishes, salads, and desserts. Flexible setup for corporate seminars, team events, and outdoor garden parties."
   },
   {
     "category": "Catering",
     "label": "Prestige brunch",
     "unit": "pers",
     "unitPrice": 95.0,
-    "available": true
+    "available": true,
+    "description": "Elegant late-morning brunch with hot dishes, pastries, fresh juices, champagne, and live cooking station. Perfect for weekend celebrations and morning corporate events."
   },
   {
     "category": "Catering",
     "label": "Food trucks (truck included)",
     "unit": "day",
     "unitPrice": 1800.0,
-    "available": true
+    "available": true,
+    "description": "Mobile food truck with chef team serving street food specialties on-site. Great for outdoor festivals, company picnics, and casual outdoor events. Truck operates rain or shine."
   },
   {
     "category": "Catering",
     "label": "Welcome reception – 1h",
     "unit": "pers",
     "unitPrice": 35.0,
-    "available": true
+    "available": true,
+    "description": "One-hour standing welcome reception with drinks (juice, water, sparkling wine) and light canapés. Ideal aperitif before a seated dinner or conference opening."
   },
   {
     "category": "Catering",
     "label": "Welcome reception – 2h",
     "unit": "pers",
     "unitPrice": 55.0,
-    "available": true
+    "available": true,
+    "description": "Two-hour welcome reception with flowing drinks, canapés, and mini bites. Suitable for event openings, networking cocktails, and pre-dinner receptions."
   },
   {
     "category": "Catering",
     "label": "Full vegetarian menu",
     "unit": "pers",
     "unitPrice": 75.0,
-    "available": true
+    "available": true,
+    "description": "100% vegetarian catering menu featuring plant-based starters, mains, and desserts. No meat or fish. Tailored for guests with dietary preferences or ethical requirements."
   },
   {
     "category": "Catering",
     "label": "Full vegan menu",
     "unit": "pers",
     "unitPrice": 80.0,
-    "available": true
+    "available": true,
+    "description": "Fully vegan menu with no animal products: plant-based starters, mains, and desserts. Certified vegan ingredients. Suitable for health-conscious and ethically motivated guests."
   },
   {
     "category": "Catering",
     "label": "Certified halal menu",
     "unit": "pers",
     "unitPrice": 70.0,
-    "available": true
+    "available": true,
+    "description": "Halal-certified full menu prepared according to Islamic dietary laws. Includes certified halal meats, starters, and desserts. Suitable for diverse international guest lists."
   },
   {
     "category": "Catering",
     "label": "Certified kosher menu",
     "unit": "pers",
     "unitPrice": 90.0,
-    "available": true
+    "available": true,
+    "description": "Fully kosher-certified catering service supervised by a mashgiach. Separate meat and dairy options, certified ingredients. Required for Jewish community events and international galas."
   },
   {
     "category": "Catering",
     "label": "Cheese & wine bar",
     "unit": "pers",
     "unitPrice": 45.0,
-    "available": true
+    "available": true,
+    "description": "Curated cheese board station with artisan cheeses, charcuterie, condiments, and paired wines or craft beers. Ideal as a reception extra or standalone networking station."
   },
   {
     "category": "Catering",
     "label": "Sushi & tartare station",
     "unit": "hour",
     "unitPrice": 950.0,
-    "available": true
+    "available": true,
+    "description": "Live sushi and fish tartare chef station with fresh preparations per hour. Visual and gastronomic highlight for premium receptions, corporate events, and luxury weddings."
   },
   {
     "category": "Catering",
     "label": "Candy bar & desserts",
     "unit": "pers",
     "unitPrice": 28.0,
-    "available": true
+    "available": true,
+    "description": "Sweet candy bar with macarons, éclairs, mini desserts, and seasonal sweets. Adds a festive sweet corner to events, ideal for weddings, birthdays, and children's parties."
   },
   {
     "category": "Catering",
     "label": "Custom wedding/event cake",
     "unit": "unit",
     "unitPrice": 650.0,
-    "available": true
+    "available": true,
+    "description": "Custom-designed celebration cake crafted by a pastry chef for weddings, anniversaries, or corporate milestones. Available in multiple tiers with personalized decoration."
   },
   {
     "category": "Catering",
     "label": "VIP meal box",
     "unit": "unit",
     "unitPrice": 55.0,
-    "available": true
+    "available": true,
+    "description": "Premium individually boxed meal for VIP guests, artists, or staff. Contains a main course, dessert, snack, and beverage. Ideal for backstage catering and green room hospitality."
   },
   {
     "category": "Catering",
     "label": "Cocktail bar animation",
     "unit": "hour",
     "unitPrice": 750.0,
-    "available": true
+    "available": true,
+    "description": "Professional mixologist performing cocktail-making shows and serving custom cocktails per hour. Entertaining and interactive bar service for receptions, parties, and galas."
   },
   {
     "category": "Catering",
     "label": "Continental breakfast service",
     "unit": "pers",
     "unitPrice": 22.0,
-    "available": true
+    "available": true,
+    "description": "Morning breakfast service with pastries, bread, butter, jam, yogurt, fruit, juices, coffee, and tea. Suitable for early-morning seminars, hotel room service, or team kick-off meetings."
   },
   {
     "category": "Sound & AV",
     "label": "Indoor sound system <300 pax",
     "unit": "day",
     "unitPrice": 1200.0,
-    "available": true
+    "available": true,
+    "description": "Complete indoor PA sound system for up to 300 guests: speakers, amplifiers, mixer, and cabling. Suitable for conferences, corporate dinners, and indoor concerts in halls or ballrooms."
   },
   {
     "category": "Sound & AV",
     "label": "Indoor sound system 300–1000 pax",
     "unit": "day",
     "unitPrice": 2800.0,
-    "available": true
+    "available": true,
+    "description": "Professional line-array indoor sound system for 300 to 1000 guests. Covers large ballrooms, exhibition halls, and conventions with even audio distribution and subwoofers."
   },
   {
     "category": "Sound & AV",
     "label": "Indoor sound system >1000 pax",
     "unit": "day",
     "unitPrice": 5500.0,
-    "available": true
+    "available": true,
+    "description": "Large-format indoor line-array PA system for events exceeding 1000 guests. Designed for arena-style events, large concerts, and major corporate conventions indoors."
   },
   {
     "category": "Sound & AV",
     "label": "Outdoor sound system – medium",
     "unit": "day",
     "unitPrice": 3500.0,
-    "available": true
+    "available": true,
+    "description": "Weatherproof outdoor PA sound system for medium outdoor events (500–2000 pax). Includes ground-stacked line arrays, subwoofers, and stage monitoring. Rain-resistant equipment."
   },
   {
     "category": "Sound & AV",
     "label": "Outdoor sound system – large stage",
     "unit": "day",
     "unitPrice": 8000.0,
-    "available": true
+    "available": true,
+    "description": "Festival-grade outdoor sound system for large stages and open-air concerts. Flying line-array clusters, extensive subwoofer arrays, and full front-of-house mixing position."
   },
   {
     "category": "Sound & AV",
     "label": "Indoor LED screen – 6x3m",
     "unit": "day",
     "unitPrice": 2200.0,
-    "available": true
+    "available": true,
+    "description": "High-resolution indoor LED video wall 6x3 meters for conferences, concerts, and presentations. Fine pixel pitch for close viewing. Includes controller, rigging, and technician."
   },
   {
     "category": "Sound & AV",
     "label": "Outdoor LED screen – 9x5m",
     "unit": "day",
     "unitPrice": 4500.0,
-    "available": true
+    "available": true,
+    "description": "Large outdoor LED screen 9x5 meters, weatherproof, high brightness for daylight viewing. Ideal for outdoor concerts, sports events, and open-air ceremonies. Rain-resistant."
   },
   {
     "category": "Sound & AV",
     "label": "HD projector + screen",
     "unit": "day",
     "unitPrice": 600.0,
-    "available": true
+    "available": true,
+    "description": "High-definition projector with 120-inch projection screen for conferences, training sessions, and indoor presentations. Simple setup with HDMI/wireless connectivity."
   },
   {
     "category": "Sound & AV",
     "label": "4K projector + video mapping",
     "unit": "day",
     "unitPrice": 3200.0,
-    "available": true
+    "available": true,
+    "description": "Ultra-high-definition 4K projector with video mapping software for immersive indoor projections on architecture, stages, or custom surfaces. Creative visual storytelling for galas."
   },
   {
     "category": "Sound & AV",
     "label": "Simultaneous interpretation system (4 languages)",
     "unit": "day",
     "unitPrice": 2500.0,
-    "available": true
+    "available": true,
+    "description": "Wireless simultaneous interpretation system for 4 language channels with interpreter booths, delegate receivers, and headsets. Essential for international conferences and summits."
   },
   {
     "category": "Sound & AV",
     "label": "Wireless microphones (set of 4)",
     "unit": "day",
     "unitPrice": 350.0,
-    "available": true
+    "available": true,
+    "description": "Set of 4 professional wireless handheld and lapel microphones. Suitable for speeches, panel discussions, conferences, and live events. Includes receiver and charging dock."
   },
   {
     "category": "Sound & AV",
     "label": "Lectern",
     "unit": "unit",
     "unitPrice": 180.0,
-    "available": true
+    "available": true,
+    "description": "Professional podium lectern for speakers at conferences, award ceremonies, and corporate events. Includes gooseneck microphone, reading light, and logo panel option."
   },
   {
     "category": "Sound & AV",
     "label": "HD audio-video recording",
     "unit": "day",
     "unitPrice": 1800.0,
-    "available": true
+    "available": true,
+    "description": "Full HD multi-camera audio and video recording of the event. Includes post-production edit for highlights. Ideal for conferences, concerts, and corporate events archiving."
   },
   {
     "category": "Sound & AV",
     "label": "Live streaming",
     "unit": "day",
     "unitPrice": 2200.0,
-    "available": true
+    "available": true,
+    "description": "Professional live streaming service to broadcast events online via YouTube, Teams, or custom CDN. Includes encoder, bandwidth, camera operator, and graphics overlay."
   },
   {
     "category": "Sound & AV",
     "label": "Sound/lighting technician",
     "unit": "day",
     "unitPrice": 500.0,
-    "available": true
+    "available": true,
+    "description": "Experienced AV technician managing sound and lighting systems on-site throughout the event. Ensures quality, handles technical issues, and supports performers and speakers."
   },
   {
     "category": "Lighting",
     "label": "Indoor stage lighting",
     "unit": "day",
     "unitPrice": 1500.0,
-    "available": true
+    "available": true,
+    "description": "Complete indoor stage lighting rig with front wash, back lighting, and key lights for performers and speakers. Ideal for gala dinners, award ceremonies, and indoor concerts."
   },
   {
     "category": "Lighting",
     "label": "Outdoor architectural lighting",
     "unit": "day",
     "unitPrice": 2200.0,
-    "available": true
+    "available": true,
+    "description": "Outdoor uplighting and architectural illumination of facades, trees, and grounds. Creates dramatic visual ambiance for evening outdoor events, garden parties, and open-air ceremonies."
   },
   {
     "category": "Lighting",
     "label": "Facade video mapping",
     "unit": "soirée",
     "unitPrice": 4800.0,
-    "available": true
+    "available": true,
+    "description": "Immersive video projection mapped onto building facades or large outdoor surfaces. Custom animated content for gala openings, product launches, and spectacular evening shows."
   },
   {
     "category": "Lighting",
     "label": "LED string light decoration",
     "unit": "package",
     "unitPrice": 800.0,
-    "available": true
+    "available": true,
+    "description": "Warm-white LED festoon string lights for decorative canopy or pergola illumination. Creates cosy atmosphere for outdoor terraces, garden weddings, and evening receptions."
   },
   {
     "category": "Lighting",
     "label": "Colour wash spotlights (set of 8)",
     "unit": "day",
     "unitPrice": 600.0,
-    "available": true
+    "available": true,
+    "description": "Set of 8 RGB LED colour wash spotlights for accent lighting, stage colour, and event branding. Controllable via DMX for dynamic colour changes during indoor or outdoor events."
   },
   {
     "category": "Lighting",
     "label": "Moving head lights (set of 4)",
     "unit": "day",
     "unitPrice": 1200.0,
-    "available": true
+    "available": true,
+    "description": "Set of 4 professional moving head beam and wash lights. Creates dynamic, programmable light shows for concerts, nightclub-style parties, galas, and entertainment events."
   },
   {
     "category": "Lighting",
     "label": "Laser show",
     "unit": "soirée",
     "unitPrice": 2800.0,
-    "available": true
+    "available": true,
+    "description": "Multi-colour laser light show with programmed sequences and live operator. Spectacular visual effect for concerts, new year events, product launches, and premium evening events."
   },
   {
     "category": "Lighting",
     "label": "DMX lighting controller",
     "unit": "day",
     "unitPrice": 400.0,
-    "available": true
+    "available": true,
+    "description": "Professional DMX 512 lighting controller console for managing all stage and decorative lights. Required for programming and live control of moving heads, washes, and LED fixtures."
   },
   {
     "category": "Structures",
     "label": "Pagoda tent 5x5m",
     "unit": "day",
     "unitPrice": 350.0,
-    "available": true
+    "available": true,
+    "description": "Small outdoor pagoda tent 5x5 meters providing weather protection and shade. Suitable for market stalls, outdoor bars, small garden parties, and reception entry points. Waterproof canopy."
   },
   {
     "category": "Structures",
     "label": "Semi-closed tent 10x20m",
     "unit": "day",
     "unitPrice": 1800.0,
-    "available": true
+    "available": true,
+    "description": "Medium-size semi-enclosed outdoor tent 10x20 meters with optional side walls and flooring. Weather-protected space for outdoor dining, product exhibitions, and garden events."
   },
   {
     "category": "Structures",
     "label": "Stretch clear-span tent 20x40m",
     "unit": "day",
     "unitPrice": 5500.0,
-    "available": true
+    "available": true,
+    "description": "Large clear-span tent 20x40 meters with no internal poles, fully weatherproof walls and roof. Suitable for outdoor weddings, conferences, and gala dinners requiring enclosed outdoor space."
   },
   {
     "category": "Structures",
     "label": "Prestige marquee 30x50m",
     "unit": "day",
     "unitPrice": 12000.0,
-    "available": true
+    "available": true,
+    "description": "Premium prestige marquee 30x50 meters with interior lining, chandeliers, wooden flooring, and climate control. Transforms any outdoor site into an elegant, weather-protected event venue."
   },
   {
     "category": "Structures",
     "label": "Stage/podium 6x4m",
     "unit": "day",
     "unitPrice": 800.0,
-    "available": true
+    "available": true,
+    "description": "Modular outdoor or indoor stage platform 6x4 meters with guardrails and steps. Suitable for presentations, award ceremonies, small concerts, and speaking events."
   },
   {
     "category": "Structures",
     "label": "Stage/podium 12x8m",
     "unit": "day",
     "unitPrice": 2200.0,
-    "available": true
+    "available": true,
+    "description": "Large performance stage 12x8 meters with heavy-duty structure, guardrails, and access stairs. Designed for concerts, large ceremonies, and festival main stages."
   },
   {
     "category": "Structures",
     "label": "Modular raised platform",
     "unit": "m²",
     "unitPrice": 45.0,
-    "available": true
+    "available": true,
+    "description": "Adjustable height modular raised platform per square meter for VIP areas, podiums, or dance floors. Configurable for indoor halls and outdoor settings."
   },
   {
     "category": "Structures",
     "label": "Dance floor",
     "unit": "m²",
     "unitPrice": 25.0,
-    "available": true
+    "available": true,
+    "description": "Portable dance floor panels per square meter, available in black, white, or parquet finish. Suitable for indoor and outdoor events. Protective covering for ground and grass."
   },
   {
     "category": "Structures",
     "label": "Crowd control barriers",
     "unit": "metre",
     "unitPrice": 12.0,
-    "available": true
+    "available": true,
+    "description": "Metal crowd control barriers per linear meter for queue management, perimeter security, and stage front protection at outdoor concerts and public events."
   },
   {
     "category": "Structures",
     "label": "Stage fencing",
     "unit": "metre",
     "unitPrice": 20.0,
-    "available": true
+    "available": true,
+    "description": "Heavy-duty stage fencing per meter to secure stage perimeter and backstage areas at concerts and outdoor festivals. Prevents unauthorized access and improves crowd flow."
   },
   {
     "category": "Structures",
@@ -376,482 +429,566 @@
     "unit": "m²",
     "unitPrice": 18.0,
     "available": true,
-    "description": "Heavy-duty waterproof interlocking floor panels, suitable for outdoor events on grass or wet ground."
+    "description": "Heavy-duty waterproof interlocking floor panels per square meter. Protects guests from wet muddy ground during rain at outdoor events, festivals, and garden parties. Rain-proof surface."
   },
   {
     "category": "Furniture & Decor",
     "label": "Round tables 180cm (10 pax)",
     "unit": "unit",
     "unitPrice": 35.0,
-    "available": true
+    "available": true,
+    "description": "Round banquet table 180cm diameter seating 10 guests. Standard for seated dinners, galas, weddings, and indoor receptions. Includes setup and positioning."
   },
   {
     "category": "Furniture & Decor",
     "label": "Gold Chiavari chairs",
     "unit": "unit",
     "unitPrice": 8.0,
-    "available": true
+    "available": true,
+    "description": "Elegant gold Chiavari banquet chairs for upscale events, weddings, galas, and award dinners. Classic Italian design with cushion seat. Suitable for indoor seated events."
   },
   {
     "category": "Furniture & Decor",
     "label": "White Napoleon chairs",
     "unit": "unit",
     "unitPrice": 7.0,
-    "available": true
+    "available": true,
+    "description": "White Napoleon ghost-style chairs for modern event aesthetics. Lightweight, stackable, and suitable for both indoor and outdoor ceremonies and receptions."
   },
   {
     "category": "Furniture & Decor",
     "label": "Lounge furniture set",
     "unit": "unit",
     "unitPrice": 280.0,
-    "available": true
+    "available": true,
+    "description": "Designer lounge seating set including sofa, armchairs, and coffee table. Creates relaxed VIP lounge areas at galas, festivals, corporate events, and wedding receptions."
   },
   {
     "category": "Furniture & Decor",
     "label": "High bar tables (standing)",
     "unit": "unit",
     "unitPrice": 45.0,
-    "available": true
+    "available": true,
+    "description": "Tall standing bar-height tables for cocktail receptions, networking events, and outdoor standing parties. Available with linen covers in black or white."
   },
   {
     "category": "Furniture & Decor",
     "label": "Floral centrepiece decoration",
     "unit": "unit",
     "unitPrice": 120.0,
-    "available": true
+    "available": true,
+    "description": "Fresh flower table centrepiece arrangement for banquet and dining tables. Custom seasonal flowers. Elevates the visual decor of galas, weddings, and corporate dinners."
   },
   {
     "category": "Furniture & Decor",
     "label": "Floral entrance arch",
     "unit": "unit",
     "unitPrice": 650.0,
-    "available": true
+    "available": true,
+    "description": "Large floral arch at event entrance, made with fresh flowers and greenery. Creates a stunning visual feature for weddings, brand events, and VIP photo opportunities."
   },
   {
     "category": "Furniture & Decor",
     "label": "Printed photo backdrop 3x2m",
     "unit": "unit",
     "unitPrice": 380.0,
-    "available": true
+    "available": true,
+    "description": "Custom printed fabric or vinyl photo backdrop 3x2 meters with branded or decorative motif. Used for photo stations, media walls, and brand visibility at corporate events."
   },
   {
     "category": "Furniture & Decor",
     "label": "Interactive photo booth",
     "unit": "day",
     "unitPrice": 850.0,
-    "available": true
+    "available": true,
+    "description": "Digital interactive photo booth with props, instant printing, and social media sharing. Entertaining guest activity for indoor parties, weddings, galas, and brand events."
   },
   {
     "category": "Furniture & Decor",
     "label": "Room draping & fabric decor",
     "unit": "package",
     "unitPrice": 1200.0,
-    "available": true
+    "available": true,
+    "description": "Full ceiling and wall draping with chiffon or organza fabric to transform indoor event venues. Creates an elegant, intimate atmosphere for galas, weddings, and themed events."
   },
   {
     "category": "Furniture & Decor",
     "label": "Directional signage",
     "unit": "package",
     "unitPrice": 450.0,
-    "available": true
+    "available": true,
+    "description": "Complete event directional signage package including arrows, room signs, and information boards. Essential for multi-zone venues, conferences, and outdoor festival sites."
   },
   {
     "category": "Furniture & Decor",
     "label": "White table linen",
     "unit": "table",
     "unitPrice": 18.0,
-    "available": true
+    "available": true,
+    "description": "Crisp white tablecloth covering per table for banquets, dinners, and receptions. Available in standard and round table sizes. Pressed and stain-treated."
   },
   {
     "category": "Furniture & Decor",
     "label": "Porcelain tableware (full set)",
     "unit": "pers",
     "unitPrice": 12.0,
-    "available": true
+    "available": true,
+    "description": "Complete porcelain tableware set per guest: dinner plate, side plate, soup bowl, and cutlery. Required for seated dinners, galas, and catering at indoor venues."
   },
   {
     "category": "Furniture & Decor",
     "label": "Crystal glassware",
     "unit": "pers",
     "unitPrice": 8.0,
-    "available": true
-  },
-  {
-    "category": "Security",
-    "label": "Security guard",
-    "unit": "poste/nuit",
-    "unitPrice": 280.0,
-    "available": true
-  },
-  {
-    "category": "Security",
-    "label": "Dog handler",
-    "unit": "poste/nuit",
-    "unitPrice": 380.0,
-    "available": true
-  },
-  {
-    "category": "Security",
-    "label": "Security gate/arch",
-    "unit": "unit",
-    "unitPrice": 250.0,
-    "available": true
-  },
-  {
-    "category": "Security",
-    "label": "Security coordinator",
-    "unit": "day",
-    "unitPrice": 650.0,
-    "available": true
-  },
-  {
-    "category": "Security",
-    "label": "RFID badge system",
-    "unit": "package",
-    "unitPrice": 1800.0,
-    "available": true
-  },
-  {
-    "category": "Entertainment",
-    "label": "Professional DJ",
-    "unit": "soirée",
-    "unitPrice": 1500.0,
-    "available": true
-  },
-  {
-    "category": "Entertainment",
-    "label": "Jazz orchestra – 5 musicians",
-    "unit": "soirée",
-    "unitPrice": 3200.0,
-    "available": true
-  },
-  {
-    "category": "Entertainment",
-    "label": "Chamber orchestra – 12 musicians",
-    "unit": "soirée",
-    "unitPrice": 6500.0,
-    "available": true
-  },
-  {
-    "category": "Entertainment",
-    "label": "Live music band",
-    "unit": "soirée",
-    "unitPrice": 2800.0,
-    "available": true
-  },
-  {
-    "category": "Entertainment",
-    "label": "Circus artist",
-    "unit": "soirée",
-    "unitPrice": 1800.0,
-    "available": true
-  },
-  {
-    "category": "Entertainment",
-    "label": "Close-up magician",
-    "unit": "hour",
-    "unitPrice": 750.0,
-    "available": true
-  },
-  {
-    "category": "Entertainment",
-    "label": "Event host/MC",
-    "unit": "day",
-    "unitPrice": 1800.0,
-    "available": true
-  },
-  {
-    "category": "Entertainment",
-    "label": "Fireworks show",
-    "unit": "package",
-    "unitPrice": 8500.0,
-    "available": true
-  },
-  {
-    "category": "Entertainment",
-    "label": "Dance performance",
-    "unit": "soirée",
-    "unitPrice": 2200.0,
-    "available": true
-  },
-  {
-    "category": "Entertainment",
-    "label": "Corporate escape game",
-    "unit": "package",
-    "unitPrice": 3500.0,
-    "available": true
-  },
-  {
-    "category": "Entertainment",
-    "label": "Cooking competition (MasterChef style)",
-    "unit": "package",
-    "unitPrice": 4200.0,
-    "available": true
-  },
-  {
-    "category": "Entertainment",
-    "label": "Hosted wine tasting",
-    "unit": "hour",
-    "unitPrice": 950.0,
-    "available": true
-  },
-  {
-    "category": "Photography & Film",
-    "label": "Event photographer",
-    "unit": "day",
-    "unitPrice": 1200.0,
-    "available": true
-  },
-  {
-    "category": "Photography & Film",
-    "label": "Photographer + videographer",
-    "unit": "day",
-    "unitPrice": 2200.0,
-    "available": true
-  },
-  {
-    "category": "Photography & Film",
-    "label": "3-minute after-movie",
-    "unit": "package",
-    "unitPrice": 3800.0,
-    "available": true
-  },
-  {
-    "category": "Photography & Film",
-    "label": "Cinematic drone",
-    "unit": "demi-journée",
-    "unitPrice": 1500.0,
-    "available": true
-  },
-  {
-    "category": "Photography & Film",
-    "label": "Photographer with same-day editing",
-    "unit": "day",
-    "unitPrice": 1800.0,
-    "available": true
-  },
-  {
-    "category": "Transport",
-    "label": "Minibus shuttle 16 seats",
-    "unit": "day",
-    "unitPrice": 650.0,
-    "available": true
-  },
-  {
-    "category": "Transport",
-    "label": "Coach bus 50 seats",
-    "unit": "day",
-    "unitPrice": 1200.0,
-    "available": true
-  },
-  {
-    "category": "Transport",
-    "label": "VIP limousine (up to 4 pax)",
-    "unit": "day",
-    "unitPrice": 950.0,
-    "available": true
-  },
-  {
-    "category": "Transport",
-    "label": "VIP airport transfer (sedan)",
-    "unit": "trajet",
-    "unitPrice": 180.0,
-    "available": true
-  },
-  {
-    "category": "Transport",
-    "label": "Valet parking",
-    "unit": "day",
-    "unitPrice": 450.0,
-    "available": true
-  },
-  {
-    "category": "Transport",
-    "label": "Secured parking",
-    "unit": "day",
-    "unitPrice": 600.0,
-    "available": true
-  },
-  {
-    "category": "Accommodation",
-    "label": "Standard room – group rate",
-    "unit": "nuit/chambre",
-    "unitPrice": 150.0,
-    "available": true
-  },
-  {
-    "category": "Accommodation",
-    "label": "Superior room – group rate",
-    "unit": "nuit/chambre",
-    "unitPrice": 220.0,
-    "available": true
-  },
-  {
-    "category": "Accommodation",
-    "label": "Junior suite (1 night)",
-    "unit": "night",
-    "unitPrice": 450.0,
-    "available": true
-  },
-  {
-    "category": "Communication",
-    "label": "Custom printed invitations (100 copies)",
-    "unit": "set",
-    "unitPrice": 380.0,
-    "available": true
-  },
-  {
-    "category": "Communication",
-    "label": "Event mobile app",
-    "unit": "package",
-    "unitPrice": 3500.0,
-    "available": true
-  },
-  {
-    "category": "Communication",
-    "label": "Event website",
-    "unit": "package",
-    "unitPrice": 2200.0,
-    "available": true
-  },
-  {
-    "category": "Communication",
-    "label": "Live social media wall",
-    "unit": "day",
-    "unitPrice": 1200.0,
-    "available": true
-  },
-  {
-    "category": "Communication",
-    "label": "Translation & interpreting",
-    "unit": "day",
-    "unitPrice": 800.0,
-    "available": true
-  },
-  {
-    "category": "Technical",
-    "label": "Generator 100 kVA",
-    "unit": "day",
-    "unitPrice": 850.0,
-    "available": true
-  },
-  {
-    "category": "Technical",
-    "label": "Generator 250 kVA",
-    "unit": "day",
-    "unitPrice": 1800.0,
-    "available": true
-  },
-  {
-    "category": "Technical",
-    "label": "Mobile air conditioning unit",
-    "unit": "day",
-    "unitPrice": 380.0,
-    "available": true
-  },
-  {
-    "category": "Technical",
-    "label": "Mobile hot air heater",
-    "unit": "day",
-    "unitPrice": 650.0,
-    "available": true
-  },
-  {
-    "category": "Technical",
-    "label": "High-density Wi-Fi (dedicated network)",
-    "unit": "day",
-    "unitPrice": 1200.0,
-    "available": true
-  },
-  {
-    "category": "Technical",
-    "label": "Mobile charging stations",
-    "unit": "unité/journée",
-    "unitPrice": 85.0,
-    "available": true
-  },
-  {
-    "category": "Health & Safety",
-    "label": "First-aider/paramedic",
-    "unit": "day",
-    "unitPrice": 480.0,
-    "available": true
-  },
-  {
-    "category": "Health & Safety",
-    "label": "Standby ambulance",
-    "unit": "day",
-    "unitPrice": 1500.0,
-    "available": true
-  },
-  {
-    "category": "Health & Safety",
-    "label": "Emergency safety plan & coordination",
-    "unit": "package",
-    "unitPrice": 950.0,
-    "available": true
-  },
-  {
-    "category": "Coordination",
-    "label": "Event project manager",
-    "unit": "day",
-    "unitPrice": 850.0,
-    "available": true
-  },
-  {
-    "category": "Coordination",
-    "label": "Logistics assistant",
-    "unit": "day",
-    "unitPrice": 380.0,
-    "available": true
-  },
-  {
-    "category": "Coordination",
-    "label": "Reception host",
-    "unit": "day",
-    "unitPrice": 280.0,
-    "available": true
-  },
-  {
-    "category": "Coordination",
-    "label": "General stage manager",
-    "unit": "day",
-    "unitPrice": 950.0,
-    "available": true
+    "available": true,
+    "description": "Crystal glassware set per guest including water glass, red wine, white wine, and champagne flute. Elevates table presentation at premium indoor galas and corporate dinners."
   },
   {
     "category": "Furniture & Decor",
     "label": "Custom branded umbrella",
     "unit": "unit",
     "unitPrice": 12.0,
-    "available": true
+    "available": true,
+    "description": "Large printed branded umbrella for outdoor event guests. Provides rain protection and acts as a branded keepsake. Ideal for outdoor events when rain is forecast. Weatherproof."
   },
   {
     "category": "Furniture & Decor",
     "label": "Disposable rain poncho (pack of 50)",
     "unit": "set",
     "unitPrice": 45.0,
-    "available": true
+    "available": true,
+    "description": "Pack of 50 disposable waterproof rain ponchos for outdoor guests during wet weather. Lightweight, one-size-fits-all, available in branded or generic colors. Essential rainy day outdoor protection."
   },
   {
     "category": "Furniture & Decor",
     "label": "Outdoor patio heater",
     "unit": "unit",
     "unitPrice": 180.0,
-    "available": true
+    "available": true,
+    "description": "Free-standing outdoor infrared or gas patio heater for outdoor terraces and garden events in cold weather. Provides warmth for guests at outdoor standing receptions and evening events."
+  },
+  {
+    "category": "Security",
+    "label": "Security guard",
+    "unit": "poste/nuit",
+    "unitPrice": 280.0,
+    "available": true,
+    "description": "Professional uniformed security guard per post per night. Access control, patrol, and perimeter monitoring. Required for large events, concerts, and VIP gatherings."
+  },
+  {
+    "category": "Security",
+    "label": "Dog handler",
+    "unit": "poste/nuit",
+    "unitPrice": 380.0,
+    "available": true,
+    "description": "Security dog handler team per post per night for enhanced perimeter security, explosive or narcotics detection. Used at high-security corporate events and VIP venues."
+  },
+  {
+    "category": "Security",
+    "label": "Security gate/arch",
+    "unit": "unit",
+    "unitPrice": 250.0,
+    "available": true,
+    "description": "Walk-through metal detection security arch for guest screening at event entrances. Required at concerts, public events, and high-security corporate gatherings."
+  },
+  {
+    "category": "Security",
+    "label": "Security coordinator",
+    "unit": "day",
+    "unitPrice": 650.0,
+    "available": true,
+    "description": "Senior security coordinator managing all safety and security operations for the event. Coordinates security personnel, liaises with police, and implements emergency procedures."
+  },
+  {
+    "category": "Security",
+    "label": "RFID badge system",
+    "unit": "package",
+    "unitPrice": 1800.0,
+    "available": true,
+    "description": "Full RFID access control badge system for events with restricted zones. Includes badge printers, readers at entry points, and real-time attendance tracking software."
+  },
+  {
+    "category": "Entertainment",
+    "label": "Professional DJ",
+    "unit": "soirée",
+    "unitPrice": 1500.0,
+    "available": true,
+    "description": "Professional DJ with full sound equipment for evening events, parties, galas, and clubs. Sets curated to event style: lounge, dance, corporate, or wedding. Includes setup and teardown."
+  },
+  {
+    "category": "Entertainment",
+    "label": "Jazz orchestra – 5 musicians",
+    "unit": "soirée",
+    "unitPrice": 3200.0,
+    "available": true,
+    "description": "Live jazz ensemble of 5 musicians (piano, bass, drums, trumpet, saxophone) for elegant evening receptions, galas, and outdoor summer events. Performs jazz standards and bossa nova."
+  },
+  {
+    "category": "Entertainment",
+    "label": "Chamber orchestra – 12 musicians",
+    "unit": "soirée",
+    "unitPrice": 6500.0,
+    "available": true,
+    "description": "Classical chamber orchestra of 12 musicians for prestigious indoor concerts, award galas, and cultural events. Performs classical repertoire and contemporary arrangements."
+  },
+  {
+    "category": "Entertainment",
+    "label": "Live music band",
+    "unit": "soirée",
+    "unitPrice": 2800.0,
+    "available": true,
+    "description": "Professional live music band for corporate events, weddings, and outdoor festivals. Covers pop, rock, soul, or variety setlist. Includes PA system and stage monitoring."
+  },
+  {
+    "category": "Entertainment",
+    "label": "Circus artist",
+    "unit": "soirée",
+    "unitPrice": 1800.0,
+    "available": true,
+    "description": "Circus and variety performance artist for event entertainment. Includes acrobats, jugglers, stilt walkers, or fire performers. Suitable for outdoor festivals and indoor galas."
+  },
+  {
+    "category": "Entertainment",
+    "label": "Close-up magician",
+    "unit": "hour",
+    "unitPrice": 750.0,
+    "available": true,
+    "description": "Close-up table magician performing interactive card tricks, mind reading, and sleight of hand per hour. Ideal for cocktail receptions, corporate dinners, and wedding parties."
+  },
+  {
+    "category": "Entertainment",
+    "label": "Event host/MC",
+    "unit": "day",
+    "unitPrice": 1800.0,
+    "available": true,
+    "description": "Professional event host and master of ceremonies for conferences, galas, award shows, and corporate events. Bilingual options available. Keeps program on schedule and energizes audience."
+  },
+  {
+    "category": "Entertainment",
+    "label": "Fireworks show",
+    "unit": "package",
+    "unitPrice": 8500.0,
+    "available": true,
+    "description": "Professional outdoor fireworks display show with licensed pyrotechnician. Synchronized to music for new year events, outdoor celebrations, wedding finales, and grand openings."
+  },
+  {
+    "category": "Entertainment",
+    "label": "Dance performance",
+    "unit": "soirée",
+    "unitPrice": 2200.0,
+    "available": true,
+    "description": "Professional dance troupe performance including ballet, contemporary, flamenco, or street dance. Live performance for galas, cultural events, opening ceremonies, and award shows."
+  },
+  {
+    "category": "Entertainment",
+    "label": "Corporate escape game",
+    "unit": "package",
+    "unitPrice": 3500.0,
+    "available": true,
+    "description": "Mobile corporate escape room experience delivered on-site. Team-building activity using puzzles, riddles, and challenges. Suitable for indoor and outdoor corporate events."
+  },
+  {
+    "category": "Entertainment",
+    "label": "Cooking competition (MasterChef style)",
+    "unit": "package",
+    "unitPrice": 4200.0,
+    "available": true,
+    "description": "Facilitated MasterChef-style cooking competition team-building event with ingredients, chef coaches, and judging. High engagement activity for indoor corporate events and team retreats."
+  },
+  {
+    "category": "Entertainment",
+    "label": "Hosted wine tasting",
+    "unit": "hour",
+    "unitPrice": 950.0,
+    "available": true,
+    "description": "Expert-led wine tasting session per hour with sommelier, tasting notes, and curated wine selection. Educational and entertaining experience for corporate receptions and gala dinners."
+  },
+  {
+    "category": "Photography & Film",
+    "label": "Event photographer",
+    "unit": "day",
+    "unitPrice": 1200.0,
+    "available": true,
+    "description": "Professional event photographer capturing the full day's highlights, portraits, and candid moments. Full-day coverage with post-production editing and digital gallery delivery."
+  },
+  {
+    "category": "Photography & Film",
+    "label": "Photographer + videographer",
+    "unit": "day",
+    "unitPrice": 2200.0,
+    "available": true,
+    "description": "Combined full-day photography and videography team. Provides both high-resolution photo gallery and highlight video. Ideal for weddings, galas, and corporate events."
+  },
+  {
+    "category": "Photography & Film",
+    "label": "3-minute after-movie",
+    "unit": "package",
+    "unitPrice": 3800.0,
+    "available": true,
+    "description": "Professionally edited 3-minute event after-movie with cinematic footage, music, color grading, and motion graphics. Perfect for sharing on social media and internal communication."
+  },
+  {
+    "category": "Photography & Film",
+    "label": "Cinematic drone",
+    "unit": "demi-journée",
+    "unitPrice": 1500.0,
+    "available": true,
+    "description": "Licensed drone operator capturing aerial cinematography per half-day. Stunning overhead views of outdoor venues, festivals, and estate events. Subject to airspace regulations."
+  },
+  {
+    "category": "Photography & Film",
+    "label": "Photographer with same-day editing",
+    "unit": "day",
+    "unitPrice": 1800.0,
+    "available": true,
+    "description": "Event photographer delivering edited photos the same day during the event, ideal for slideshows at galas and award ceremonies. Fast turnaround with on-site editing workstation."
+  },
+  {
+    "category": "Transport",
+    "label": "Minibus shuttle 16 seats",
+    "unit": "day",
+    "unitPrice": 650.0,
+    "available": true,
+    "description": "Minibus shuttle service with driver, 16-seat capacity, for guest transportation between venue and hotels or stations. Ideal for corporate events, weddings, and conference shuttles."
+  },
+  {
+    "category": "Transport",
+    "label": "Coach bus 50 seats",
+    "unit": "day",
+    "unitPrice": 1200.0,
+    "available": true,
+    "description": "Full-size 50-seat coach bus with driver for group transfers and transport for large corporate events, conferences, and wedding guest shuttles."
+  },
+  {
+    "category": "Transport",
+    "label": "VIP limousine (up to 4 pax)",
+    "unit": "day",
+    "unitPrice": 950.0,
+    "available": true,
+    "description": "Luxury limousine or executive sedan for VIP guest transportation. Full-day availability for up to 4 passengers. Ideal for VIP arrivals, speakers, and keynote guests."
+  },
+  {
+    "category": "Transport",
+    "label": "VIP airport transfer (sedan)",
+    "unit": "trajet",
+    "unitPrice": 180.0,
+    "available": true,
+    "description": "Single VIP airport transfer per journey in luxury executive sedan with professional driver. Meet-and-greet service at arrivals. For individual VIP guests or speakers."
+  },
+  {
+    "category": "Transport",
+    "label": "Valet parking",
+    "unit": "day",
+    "unitPrice": 450.0,
+    "available": true,
+    "description": "Professional valet parking service for event guests. Valets manage car flow, parking, and retrieval. Reduces congestion at venue entry and provides luxury guest experience."
+  },
+  {
+    "category": "Transport",
+    "label": "Secured parking",
+    "unit": "day",
+    "unitPrice": 600.0,
+    "available": true,
+    "description": "Dedicated secured and guarded parking area for event guests and staff vehicles. Includes security supervision and access control. Suitable for large outdoor events."
+  },
+  {
+    "category": "Accommodation",
+    "label": "Standard room – group rate",
+    "unit": "nuit/chambre",
+    "unitPrice": 150.0,
+    "available": true,
+    "description": "Standard hotel room at negotiated group rate per night per room. Booked for guests and speakers staying overnight at multi-day conferences, weddings, and corporate retreats."
+  },
+  {
+    "category": "Accommodation",
+    "label": "Superior room – group rate",
+    "unit": "nuit/chambre",
+    "unitPrice": 220.0,
+    "available": true,
+    "description": "Superior hotel room at group rate per night. Larger room with enhanced amenities for senior guests, VIP participants, and speakers at multi-day events and conventions."
+  },
+  {
+    "category": "Accommodation",
+    "label": "Junior suite (1 night)",
+    "unit": "night",
+    "unitPrice": 450.0,
+    "available": true,
+    "description": "Junior hotel suite for one night for VIP guests, keynote speakers, or wedding couples. Includes lounge area, premium amenities, and priority service."
+  },
+  {
+    "category": "Communication",
+    "label": "Custom printed invitations (100 copies)",
+    "unit": "set",
+    "unitPrice": 380.0,
+    "available": true,
+    "description": "Set of 100 custom-designed and professionally printed event invitations with envelopes. Includes graphic design, proofing, and premium paper stock for corporate and private events."
+  },
+  {
+    "category": "Communication",
+    "label": "Event mobile app",
+    "unit": "package",
+    "unitPrice": 3500.0,
+    "available": true,
+    "description": "Custom event mobile app for guests: program, agenda, maps, networking, and push notifications. Available for iOS and Android. Enhances attendee experience at conferences and multi-day events."
+  },
+  {
+    "category": "Communication",
+    "label": "Event website",
+    "unit": "package",
+    "unitPrice": 2200.0,
+    "available": true,
+    "description": "Custom event landing page or microsite with registration, agenda, speakers, venue info, and countdown. Includes hosting and technical support during the event."
+  },
+  {
+    "category": "Communication",
+    "label": "Live social media wall",
+    "unit": "day",
+    "unitPrice": 1200.0,
+    "available": true,
+    "description": "Real-time social media aggregation wall displayed on screens, showing guest posts and hashtag feeds from Instagram, X, and LinkedIn. Boosts social engagement at corporate events."
+  },
+  {
+    "category": "Communication",
+    "label": "Translation & interpreting",
+    "unit": "day",
+    "unitPrice": 800.0,
+    "available": true,
+    "description": "Professional translator and interpreter for written and spoken communication at international events, conferences, and negotiations. Available in major European and Asian languages."
+  },
+  {
+    "category": "Technical",
+    "label": "Generator 100 kVA",
+    "unit": "day",
+    "unitPrice": 850.0,
+    "available": true,
+    "description": "100 kVA diesel generator for outdoor power supply at events without mains electricity. Powers sound, lighting, catering equipment, and temporary structures. Essential for outdoor events."
+  },
+  {
+    "category": "Technical",
+    "label": "Generator 250 kVA",
+    "unit": "day",
+    "unitPrice": 1800.0,
+    "available": true,
+    "description": "250 kVA heavy-duty diesel generator providing high-power supply for large outdoor events. Supports full concert production, large tents with climate control, and multi-zone outdoor festivals."
+  },
+  {
+    "category": "Technical",
+    "label": "Mobile air conditioning unit",
+    "unit": "day",
+    "unitPrice": 380.0,
+    "available": true,
+    "description": "Portable mobile air conditioning unit for cooling tents, marquees, and indoor spaces during hot weather events. Reduces heat discomfort for guests in enclosed event spaces."
+  },
+  {
+    "category": "Technical",
+    "label": "Mobile hot air heater",
+    "unit": "day",
+    "unitPrice": 650.0,
+    "available": true,
+    "description": "Large-capacity mobile hot air blower heater for heating marquees, tents, and outdoor structures in cold or rainy weather. Keeps guests comfortable at cold outdoor events."
+  },
+  {
+    "category": "Technical",
+    "label": "High-density Wi-Fi (dedicated network)",
+    "unit": "day",
+    "unitPrice": 1200.0,
+    "available": true,
+    "description": "Dedicated high-density Wi-Fi network for events with many simultaneous users. Includes access points, network management, and a private SSID for guest connectivity."
+  },
+  {
+    "category": "Technical",
+    "label": "Mobile charging stations",
+    "unit": "unité/journée",
+    "unitPrice": 85.0,
+    "available": true,
+    "description": "Mobile device charging station per unit per day with multiple USB and fast-charge ports. Keeps attendees connected at conferences, outdoor festivals, and multi-day events."
   },
   {
     "category": "Technical",
     "label": "Electric space heater (indoor)",
     "unit": "unit/day",
     "unitPrice": 120.0,
-    "available": true
+    "available": true,
+    "description": "Electric infrared or convection space heater per unit per day for indoor spaces. Provides supplemental warmth in halls, marquees, and indoor venues during cold weather events."
   },
   {
     "category": "Technical",
     "label": "Mobile gas heater",
     "unit": "unit/day",
     "unitPrice": 95.0,
-    "available": true
+    "available": true,
+    "description": "Portable propane or natural gas heater per unit per day for outdoor terraces, tented spaces, and semi-open areas. Fast heating for cold or rainy outdoor event conditions."
+  },
+  {
+    "category": "Health & Safety",
+    "label": "First-aider/paramedic",
+    "unit": "day",
+    "unitPrice": 480.0,
+    "available": true,
+    "description": "Qualified first-aider or paramedic on standby throughout the event. Handles medical emergencies, minor injuries, and health incidents. Required for events above 300 guests."
+  },
+  {
+    "category": "Health & Safety",
+    "label": "Standby ambulance",
+    "unit": "day",
+    "unitPrice": 1500.0,
+    "available": true,
+    "description": "Standby ambulance with EMT crew available on-site for immediate medical response. Required for large outdoor events, concerts, and sports gatherings. Ensures rapid emergency intervention."
+  },
+  {
+    "category": "Health & Safety",
+    "label": "Emergency safety plan & coordination",
+    "unit": "package",
+    "unitPrice": 950.0,
+    "available": true,
+    "description": "Comprehensive event safety plan including risk assessment, emergency procedures, evacuation map, and on-site safety coordinator. Required for public events and large venue bookings."
+  },
+  {
+    "category": "Coordination",
+    "label": "Event project manager",
+    "unit": "day",
+    "unitPrice": 850.0,
+    "available": true,
+    "description": "Experienced event project manager overseeing all logistics, supplier coordination, and on-site operations. Ensures smooth execution of the full event program from setup to teardown."
+  },
+  {
+    "category": "Coordination",
+    "label": "Logistics assistant",
+    "unit": "day",
+    "unitPrice": 380.0,
+    "available": true,
+    "description": "On-site logistics assistant supporting setup, supplier reception, material handling, and general operational tasks throughout the event day. Works under the event project manager."
+  },
+  {
+    "category": "Coordination",
+    "label": "Reception host",
+    "unit": "day",
+    "unitPrice": 280.0,
+    "available": true,
+    "description": "Professional reception and welcome host greeting guests at the event entrance, managing registration, distributing badges, and directing attendees to their areas."
+  },
+  {
+    "category": "Coordination",
+    "label": "General stage manager",
+    "unit": "day",
+    "unitPrice": 950.0,
+    "available": true,
+    "description": "Stage manager coordinating all on-stage activity: cues, speaker order, technical transitions, and performer logistics. Ensures smooth show flow at concerts, award shows, and galas."
+  },
+  {
+    "category": "Venue",
+    "label": "Outdoor venue rental",
+    "unit": "event",
+    "unitPrice": 0.0,
+    "available": true,
+    "description": "Rental of the outdoor event space for the full event day. Price set per venue. Includes access to grounds, outdoor facilities, and site infrastructure. Subject to weather conditions."
+  },
+  {
+    "category": "Venue",
+    "label": "Indoor venue rental",
+    "unit": "event",
+    "unitPrice": 0.0,
+    "available": true,
+    "description": "Rental of the indoor event hall or room for the full event day. Price set per venue. Provides weather-protected enclosed space with heating, air conditioning, and indoor facilities."
   }
 ]

@@ -1,6 +1,17 @@
 {
   "type": "object",
-  "required": ["eventID", "confidenceScore", "modificationSummary", "impacts", "totalExtraCost", "requiresAvenant", "deadlineForValidation", "draftAvenantMessage", "candidateEvents", "executionActions"],
+  "required": [
+    "eventID",
+    "confidenceScore",
+    "modificationSummary",
+    "impacts",
+    "totalExtraCost",
+    "requiresAvenant",
+    "deadlineForValidation",
+    "draftAvenantMessage",
+    "candidateEvents",
+    "executionActions"
+  ],
   "additionalProperties": false,
   "properties": {
     "eventID": {
@@ -19,12 +30,33 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["impactType", "label", "costDelta", "impactStatus", "serviceID", "serviceLabel", "quantityChange", "requiresClientValidation", "note"],
+        "required": [
+          "impactType",
+          "label",
+          "costDelta",
+          "impactStatus",
+          "serviceID",
+          "serviceLabel",
+          "quantityChange",
+          "requiresClientValidation",
+          "note"
+        ],
         "additionalProperties": false,
         "properties": {
           "impactType": {
             "type": "string",
-            "enum": ["add_service", "remove_service", "update_quantity", "update_price", "date_change", "venue_change", "guest_count_change", "catering_change", "av_change", "other"]
+            "enum": [
+              "add_service",
+              "remove_service",
+              "update_quantity",
+              "update_price",
+              "date_change",
+              "venue_change",
+              "guest_count_change",
+              "catering_change",
+              "av_change",
+              "other"
+            ]
           },
           "label": {
             "type": "string",
@@ -36,18 +68,43 @@
           },
           "impactStatus": {
             "type": "string",
-            "enum": ["confirmed", "pending", "to_confirm"]
+            "enum": [
+              "confirmed",
+              "pending",
+              "to_confirm"
+            ]
           },
           "serviceID": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "description": "ID du service en base de données (si applicable)."
           },
           "serviceLabel": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "description": "Libellé du service catalogue correspondant."
           },
           "quantityChange": {
-            "anyOf": [{ "type": "number" }, { "type": "null" }],
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "description": "Variation de quantité."
           },
           "requiresClientValidation": {
@@ -55,7 +112,14 @@
             "description": "True si cette ligne nécessite une validation explicite du client."
           },
           "note": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "description": "Note ou avertissement associé à cet impact."
           }
         }
@@ -70,11 +134,25 @@
       "description": "True si les modifications impliquent un avenant contractuel."
     },
     "deadlineForValidation": {
-      "anyOf": [{ "type": "string" }, { "type": "null" }],
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
       "description": "Date limite YYYY-MM-DD pour que le client valide l'avenant, ou null."
     },
     "draftAvenantMessage": {
-      "anyOf": [{ "type": "string" }, { "type": "null" }],
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
       "description": "Brouillon de message pour envoyer l'avenant au client, ou null."
     },
     "candidateEvents": {
@@ -83,19 +161,48 @@
           "type": "array",
           "items": {
             "type": "object",
-            "required": ["eventID", "eventDate", "venueName", "guestCount", "contractRef", "confidenceScore"],
+            "required": [
+              "eventID",
+              "eventDate",
+              "venueName",
+              "guestCount",
+              "contractRef",
+              "confidenceScore"
+            ],
             "additionalProperties": false,
             "properties": {
-              "eventID": { "type": "string" },
-              "eventDate": { "type": "string", "description": "Format YYYY-MM-DD." },
-              "venueName": { "type": "string" },
-              "guestCount": { "type": "integer" },
-              "contractRef": { "anyOf": [{ "type": "string" }, { "type": "null" }] },
-              "confidenceScore": { "type": "number" }
+              "eventID": {
+                "type": "string"
+              },
+              "eventDate": {
+                "type": "string",
+                "description": "Format YYYY-MM-DD."
+              },
+              "venueName": {
+                "type": "string"
+              },
+              "guestCount": {
+                "type": "integer"
+              },
+              "contractRef": {
+                "anyOf": [
+                  {
+                    "type": "string"
+                  },
+                  {
+                    "type": "null"
+                  }
+                ]
+              },
+              "confidenceScore": {
+                "type": "number"
+              }
             }
           }
         },
-        { "type": "null" }
+        {
+          "type": "null"
+        }
       ],
       "description": "Présent seulement en cas d'ambiguïté – liste des événements candidats, ou null."
     },
@@ -103,12 +210,20 @@
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["actionType", "label", "priority", "icon", "hiddenPrompt"],
+        "required": [
+          "actionType",
+          "label",
+          "priority",
+          "icon",
+          "hiddenPrompt"
+        ],
         "additionalProperties": false,
         "properties": {
           "actionType": {
             "type": "string",
-            "enum": ["calculate_impact", "send_avenant", "draft_reply"]
+            "enum": [
+              "calculate_impact"
+            ]
           },
           "label": {
             "type": "string",
@@ -116,15 +231,27 @@
           },
           "priority": {
             "type": "string",
-            "enum": ["critical", "high", "medium", "low"]
+            "enum": [
+              "critical",
+              "high",
+              "medium",
+              "low"
+            ]
           },
           "icon": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "description": "Emoji ou nom d'icône."
           },
           "hiddenPrompt": {
             "type": "string",
-            "description": "Prompt caché décrivant les modifications à appliquer : services à ajouter/retirer/modifier, quantités, contraintes. Sera envoyé à l'IA lors de l'exécution avec un outil de recherche de services."
+            "description": "Describes exactly what service changes to apply: which services to REMOVE (use exact label from existing services) and which services to SEARCH and ADD (only if available in standard event catalog)."
           }
         }
       },

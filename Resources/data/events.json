@@ -453,7 +453,14 @@
     "clientIndex": 66,
     "venueIndex": 124,
     "guestCount": 136,
-    "notes": "Graduation ceremony – Budapest"
+    "notes": "Graduation ceremony – Budapest",
+    "forcedServices": [
+      {
+        "category": "Photography & Film",
+        "label": "Photographer + videographer",
+        "qty": 1
+      }
+    ]
   },
   {
     "clientIndex": 34,
@@ -693,7 +700,14 @@
     "clientIndex": 69,
     "venueIndex": 57,
     "guestCount": 47,
-    "notes": "Cocktail d'inauguration – Jodhpur"
+    "notes": "Cocktail d'inauguration – Jodhpur",
+    "forcedServices": [
+      {
+        "category": "Entertainment",
+        "label": "Jazz orchestra – 5 musicians",
+        "qty": 1
+      }
+    ]
   },
   {
     "clientIndex": 21,
@@ -1023,7 +1037,19 @@
     "clientIndex": 16,
     "venueIndex": 107,
     "guestCount": 987,
-    "notes": "Exhibition artistique corporate – Dublin"
+    "notes": "Exhibition artistique corporate – Dublin",
+    "forcedServices": [
+      {
+        "category": "Entertainment",
+        "label": "Live music band",
+        "qty": 1
+      },
+      {
+        "category": "Entertainment",
+        "label": "Professional DJ",
+        "qty": 1
+      }
+    ]
   },
   {
     "clientIndex": 46,
@@ -1173,7 +1199,14 @@
     "clientIndex": 58,
     "venueIndex": 19,
     "guestCount": 914,
-    "notes": "Corporate festival – Barcelona"
+    "notes": "Corporate festival – Barcelona",
+    "forcedServices": [
+      {
+        "category": "Entertainment",
+        "label": "Professional DJ",
+        "qty": 1
+      }
+    ]
   },
   {
     "clientIndex": 37,

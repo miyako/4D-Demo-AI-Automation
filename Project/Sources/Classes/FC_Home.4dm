@@ -56,6 +56,14 @@ Function _onLoad()
 		This.statusText:="⚠ No AI Provider configured"
 	End if 
 	OBJECT SET TITLE(*; "text_status"; This.statusText)
+	
+	// Build "Powered by" footer from model aliases
+	var $aliases : Collection:=$providers.modelAliases()
+	var $chatEntry : Object:=$aliases.query("name = :1"; "chat").first()
+	var $embeddingEntry : Object:=$aliases.query("name = :1"; "embedding").first()
+	var $chatLabel : Text:=Choose($chatEntry#Null; $chatEntry.model; "?")
+	var $embedLabel : Text:=Choose($embeddingEntry#Null; $embeddingEntry.model; "?")
+	OBJECT SET TITLE(*; "text_footer"; "Powered by "+$chatLabel+" (chat) · "+$embedLabel+" (embedding) · Open-Meteo")
 
 Function _openEvents()
 	var $w : Integer:=Open form window("EventList"; Plain form window)

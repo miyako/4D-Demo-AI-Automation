@@ -54,10 +54,6 @@ Function _onLoad()
 
 Function _setFilter($filter : Text)
 	This.activeFilter:=$filter
-	OBJECT SET STYLE SHEET(*; "btn_filter_all"; Choose($filter="all"; "btnFilterActive"; "btnFilterInactive"))
-	OBJECT SET STYLE SHEET(*; "btn_filter_both"; Choose($filter="both"; "btnFilterActive"; "btnFilterInactive"))
-	OBJECT SET STYLE SHEET(*; "btn_filter_indoor"; Choose($filter="indoor"; "btnFilterActive"; "btnFilterInactive"))
-	OBJECT SET STYLE SHEET(*; "btn_filter_outdoor"; Choose($filter="outdoor"; "btnFilterActive"; "btnFilterInactive"))
 	This._loadVenues()
 
 Function _loadVenues()

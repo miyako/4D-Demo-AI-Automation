@@ -130,13 +130,9 @@ Function analyzeWeatherRiskAsync($event : cs.EventEntity; $weatherData : Object;
 	$system:=$system+"4) If forecast is BETTER than planned (e.g., planned rain but sunny forecast): propose removing now-unnecessary rain services and replacing them with fair-weather upgrades\n"
 	$system:=$system+"5) If forecast matches the plan: propose service optimizations (upgrade quality, add comfort services matching the weather, adjust quantities). Do NOT suggest monitoring.\n"
 	$system:=$system+"6) For indoor/indifferent venues: only flag extreme conditions (storms, extreme heat/cold) and propose relevant services (extra heating, cooling, guest transport cover)\n"
-	$system:=$system+"7) If the event is outdoor and an indoor alternative is available at the same venue, propose 'switch_venue' as one action\n"
-	$system:=$system+"   NEVER propose 'switch_venue' if the event venueOption is already 'indoor'.\n\n"
+	$system:=$system+"7) If the event is outdoor and an indoor alternative is available at the same venue, propose 'switch_venue' as one action\n\n"
 	$system:=$system+"For each action, include a 'hiddenPrompt' describing what contingency services to search for, quantities needed, and weather-specific requirements. "
 	$system:=$system+"Example hiddenPrompt: 'Search for weather protection structures: large tent or pagoda for 150 guests, waterproof flooring, portable heating units x2.'\n"
-	$system:=$system+"CRITICAL for 'replace_services' actions: the hiddenPrompt MUST contain two explicit sections:\n"
-	$system:=$system+"  Section REMOVE: list exact labels of existing services to remove (copy them verbatim from the event's services list), e.g. 'REMOVE: Poncho pluie jetable (lot de 50) x3, Parapluie personnalisé événement x43'\n"
-	$system:=$system+"  Section SEARCH: describe what replacement services to search in the catalog, e.g. 'SEARCH: outdoor lounge furniture for 86 guests, comfort seating'\n"
 	$system:=$system+"Respond ONLY with a valid JSON object matching the weather_actions schema. No markdown, no explanation."
 
 	var $user : Text:="Event ID: "+$event.ID+"\n"
@@ -245,61 +241,12 @@ Function _onModificationChatDone($chatResult : Object; $callback : 4D.Function)
 	$result.ambiguous:=($parsed.candidateEvents#Null) && ($parsed.candidateEvents.length>1)
 	$callback.call(Null; $result)
 
-// ─── Scénario 3b : Email de modification lié directement à un événement connu ──
-// L'événement est déjà identifié — pas besoin de disambiguïser.
-// $callback reçoit {success; impacts; validationError}
-Function analyzeLinkedEmailAsync($email : cs.EmailEntity; $event : cs.EventEntity; $eventLines : Collection; $callback : 4D.Function)
-	var $schemaImpacts : Object:=This._loadSchema("schema_modification_impacts.json")
-	If ($schemaImpacts=Null)
-		$callback.call(Null; {success: False; impacts: Null; validationError: "Cannot load schema_modification_impacts.json"})
-		return 
-	End if 
-
-	var $venue : cs.VenueEntity:=$event.venue
-	var $eventText : Text:="Contract: "+$event.contractRef
-	$eventText:=$eventText+" | Date: "+String($event.eventDate; "yyyy-MM-dd")
-	$eventText:=$eventText+" | Venue: "+Choose($venue#Null; $venue.name; "?")
-	$eventText:=$eventText+" | Guests: "+String($event.guestCount)
-
-	var $linesText : Text:=""
-	var $line : Object
-	For each ($line; $eventLines)
-		$linesText:=$linesText+"- [ID:"+String($line.serviceID)+"] "+$line.serviceLabel+" × "+String($line.quantity)+" @ "+String($line.unitPrice)+"€/u\n"
-	End for each 
-
-	var $system : Text:="You are a contract specialist for Event Pulse. "
-	$system:=$system+"A client has sent a modification request for a confirmed event. The event is already identified. "
-	$system:=$system+"Analyze the request and propose executionActions (max 3) that can be applied to the event. "
-	$system:=$system+"For each executionAction, include a 'hiddenPrompt' describing exactly what services to search/add/remove with quantities.\n"
-	$system:=$system+"Set selectedEventID to the event ID provided. Do not populate candidateEvents.\n"
-	$system:=$system+"Respond ONLY with a valid JSON object matching the modification_impacts schema. No markdown."
-
-	var $user : Text:="From: "+$email.sender+" <"+$email.senderEmail+">"
-	$user:=$user+"\nSubject: "+$email.subject+"\n\n"
-	$user:=$user+"Body:\n"+$email.body+"\n\n"
-	$user:=$user+"Event: "+$eventText+"\n"
-	If ($eventLines.length>0)
-		$user:=$user+"\nCurrent services:\n"+$linesText
-	End if 
-
-	var $self : Object:=This
-	var $cb : 4D.Function:=$callback
-	This._chat:=This._createChat($system; $schemaImpacts; "modification_impacts"; Formula($self._onModificationChatDone($1; $cb)))
-	This._chat.prompt($user)
-
 // ─── Temps 2 : Exécution avec tool calling (ChatHelper + registerTools) ──────
 // $callback reçoit {success; proposedLines; summary; totalImpact; error}
 Function executeActionAsync($hiddenPrompt : Text; $context : Object; $callback : 4D.Function)
 	var $system : Text:="You are an event planning execution assistant for Event Pulse. "
 	$system:=$system+"You have access to a search_services tool to find services in our catalog. "
-	$system:=$system+"Based on the task description, build the list of proposed service changes for this event.\n\n"
-	$system:=$system+"The 'delta' field on each line controls what happens:\n"
-	$system:=$system+"- 'add': a new service found via search_services to add to the event\n"
-	$system:=$system+"- 'remove': an EXISTING service to remove — do NOT search for it, take label/quantity/unitPrice directly from the existing services list in context\n"
-	$system:=$system+"- 'update': change the quantity of an existing service\n\n"
-	$system:=$system+"For 'replace_services' tasks: you must produce BOTH 'remove' lines (for existing services listed under REMOVE:) AND 'add' lines (found via search_services for items listed under SEARCH:). "
-	$system:=$system+"Do NOT search for services that are listed under REMOVE — just emit them with delta:'remove'. "
-	$system:=$system+"CRITICAL: Never add a service (delta:'add') if you are also removing a service with the same or equivalent label. A service cannot be both removed and added in the same proposal.\n\n"
+	$system:=$system+"Based on the task description, search for appropriate services, then return a structured JSON with the proposed service lines.\n\n"
 	$system:=$system+"Context:\n"
 	If ($context.eventID#Null)
 		$system:=$system+"- Event ID: "+$context.eventID+"\n"
@@ -317,16 +264,12 @@ Function executeActionAsync($hiddenPrompt : Text; $context : Object; $callback :
 		$system:=$system+"\nExisting services on this event:\n"
 		var $el : Object
 		For each ($el; $context.existingLines)
-			$system:=$system+"- [ID:"+String($el.serviceID)+"] "+$el.serviceLabel+" × "+String($el.quantity)+" @ "+String($el.unitPrice)+"€\n"
+			$system:=$system+"- "+$el.serviceLabel+" × "+String($el.quantity)+" @ "+String($el.unitPrice)+"€\n"
 		End for each 
 	End if 
-	$system:=$system+"\nFor 'add' lines: ONLY propose services that were actually returned by the search_services tool. "
-	$system:=$system+"CRITICAL: If search_services returns no results, return an EMPTY proposedLines array. "
-	$system:=$system+"If search_services returns results but none are appropriate, return empty proposedLines AND set summary to explain clearly why each result was rejected (e.g. 'Found: X, Y, Z — rejected because task requires indoor heating and all results are outdoor equipment'). "
-	$system:=$system+"NEVER emit 'remove' lines for an 'add_services' task — only emit removes for 'remove_services' or 'replace_services' tasks. "
-	$system:=$system+"For 'remove' lines: use the exact label, serviceID and unitPrice from the existing services list above — do NOT search for them. The serviceID for removes MUST be the [ID:xxx] value from the existing services list. "
-	$system:=$system+"Return a JSON with: proposedLines (array of {serviceID, label, category, quantity, unitPrice, delta}), summary (text), totalImpact (number in euros). "
-	$system:=$system+"totalImpact = sum of add lines minus sum of remove lines."
+	$system:=$system+"\nIMPORTANT: Use the search_services tool to find real services from our catalog. "
+	$system:=$system+"Only propose services that were returned by the tool. "
+	$system:=$system+"Return a JSON with: proposedLines (array of {serviceID, label, category, quantity, unitPrice, delta}), summary (text), totalImpact (number in euros)."
 
 	var $execSchema : Object:=This._loadSchema("schema_action_execution.json")
 	var $self : Object:=This
@@ -346,11 +289,6 @@ Function _onExecutionChatDone($chatResult : Object; $callback : 4D.Function)
 	End if 
 	var $result : Object:={success: False; proposedLines: Null; summary: ""; totalImpact: 0; error: ""}
 	var $parsed : Object:=This._extractParsedResponse($chatResult)
-
-	// Debug: log full parsed result
-	var $logFile : 4D.File:=Folder(fk logs folder).file("execution_result.json")
-	$logFile.setText(JSON Stringify({parsed: $parsed; choice: $chatResult.choice}; *))
-
 	If ($parsed=Null)
 		$result.error:=This._extractError($chatResult)
 		$callback.call(Null; $result)

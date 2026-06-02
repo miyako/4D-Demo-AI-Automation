@@ -2,9 +2,10 @@
 // Amorce la base avec les données JSON si elle est vide
 // Appelé au démarrage de l'application (On Startup / Home form On Load)
 
-singleton Class constructor()
 property _weatherTemplates : Object
 property _seededEventIDs : Collection
+
+singleton Class constructor()
 
 // ─── Point d'entrée principal ─────────────────────────────────────────────────
 Function seedIfEmpty()
@@ -106,6 +107,7 @@ Function _seedServices()
 		$e.unit:=$item.unit
 		$e.unitPrice:=$item.unitPrice
 		$e.available:=$item.available
+		$e.description:=$item.description
 		$e.save()
 	End for each
 
@@ -199,6 +201,25 @@ Function _generateEventLines($evt : cs.EventEntity; $item : Object; $svcByCatego
 		End if 
 	End for each 
 
+	// Apply forced services (override randomness for events with email references)
+	If ($item.forcedServices#Null)
+		var $forced : Object
+		For each ($forced; $item.forcedServices)
+			This._addServiceByLabel($evt; $svcByCategory; $forced.category; $forced.label; Num($forced.qty); $lineStatus)
+		End for each 
+	End if 
+
+	// Add venue rental as a service line (price from venue option, not catalog)
+	var $rentalLabel : Text:=Choose($venueOption="indoor"; "Indoor venue rental"; "Outdoor venue rental")
+	var $rentalPrice : Real:=Num($item.venueRentalPrice)
+	var $venueRentalList : Collection:=$svcByCategory["Venue"]
+	If (($rentalPrice>0) && ($venueRentalList#Null))
+		var $rsvc : Object:=$venueRentalList.query("label = :1"; $rentalLabel).first()
+		If ($rsvc#Null)
+			This._addLineWithPrice($evt; $rsvc; 1; $lineStatus; $rentalPrice)
+		End if 
+	End if 
+
 // ─── Ajoute un service aléatoire d'une catégorie donnée ──────────────────────
 Function _addRandomService($evt : cs.EventEntity; $svcByCategory : Object; $category : Text; $qty : Integer; $lineStatus : Text)
 	var $list : Collection:=$svcByCategory[$category]
@@ -234,11 +255,14 @@ Function _addServiceByLabel($evt : cs.EventEntity; $svcByCategory : Object; $cat
 
 // ─── Ajoute une ligne de commande ─────────────────────────────────────────────
 Function _addLine($evt : cs.EventEntity; $svc : Object; $qty : Integer; $status : Text)
+	This._addLineWithPrice($evt; $svc; $qty; $status; $svc.unitPrice)
+
+Function _addLineWithPrice($evt : cs.EventEntity; $svc : Object; $qty : Integer; $status : Text; $price : Real)
 	var $line : cs.EventLineEntity:=ds.EventLine.new()
 	$line.eventID:=$evt.ID
 	$line.serviceID:=$svc.id
 	$line.quantity:=$qty
-	$line.unitPrice:=$svc.unitPrice
+	$line.unitPrice:=$price
 	$line.lineStatus:=$status
 	$line.save()
 
@@ -377,20 +401,22 @@ Function regenerateEvents()
 		End if 
 		$evt.venueOption:=$venueOption
 
-		// Assign rental price from venue option
+		// Compute rental price from venue option (stored for reference, line added in _generateEventLines)
+		var $venueRentalPrice : Real
 		If ($venueOption="indoor")
 			If ($venueEnt.indoorOption#Null)
-				$evt.venueRentalPrice:=$venueEnt.indoorOption.rentalPrice
+				$venueRentalPrice:=Num($venueEnt.indoorOption.rentalPrice)
 			Else 
-				$evt.venueRentalPrice:=2000
+				$venueRentalPrice:=2000
 			End if 
 		Else 
 			If ($venueEnt.outdoorOption#Null)
-				$evt.venueRentalPrice:=$venueEnt.outdoorOption.rentalPrice
+				$venueRentalPrice:=Num($venueEnt.outdoorOption.rentalPrice)
 			Else 
-				$evt.venueRentalPrice:=1500
+				$venueRentalPrice:=1500
 			End if 
 		End if 
+		$evt.venueRentalPrice:=$venueRentalPrice  // keep field as reference for venue switch
 
 		// Assigner le weatherSetup en fonction du type choisi
 		$evt.weatherSetup:=This._assignWeatherSetup($venueOption)
@@ -400,8 +426,8 @@ Function regenerateEvents()
 
 		$evt.save()
 
-		// Generate event lines
-		var $fakeItem : Object:={guestCount: $evt.guestCount; status: $status}
+		// Generate event lines (pass forcedServices + venueRentalPrice for venue rental line)
+		var $fakeItem : Object:={guestCount: $evt.guestCount; status: $status; forcedServices: $item.forcedServices; venueRentalPrice: $venueRentalPrice}
 		This._generateEventLines($evt; $fakeItem; $svcByCategory)
 	End for
 

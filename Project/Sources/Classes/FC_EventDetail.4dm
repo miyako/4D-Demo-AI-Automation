@@ -10,11 +10,10 @@ property _eventIDs : Collection
 property _currentIndex : Integer
 property _pendingExecResult : Object
 property _pendingAction : Object
-property _pendingActionIndex : Integer
-property _pendingVenueSwitchData : Object
 property activeAdvisorTab : Text
 property linkedEmail : cs.EmailEntity
 property hasEmail : Boolean
+property tabControl : Object
 
 Class constructor($event : cs.EventEntity; $eventIDs : Collection)
 	This.event:=$event
@@ -24,11 +23,10 @@ Class constructor($event : cs.EventEntity; $eventIDs : Collection)
 	This.running:=False
 	This._pendingExecResult:=Null
 	This._pendingAction:=Null
-	This._pendingActionIndex:=-1
-	This._pendingVenueSwitchData:=Null
 	This.activeAdvisorTab:="weather"
 	This.linkedEmail:=Null
 	This.hasEmail:=False
+	This.tabControl:=New object("values"; New collection("⛅ Weather"; "✉ Email"); "index"; 0)
 	If ($eventIDs#Null)
 		This._eventIDs:=$eventIDs
 	Else 
@@ -91,22 +89,14 @@ Function btnAiAction4EventHandler($formEventCode : Integer)
 			This._executeAction(3)
 	End case 
 
-Function btnTabWeatherEventHandler($formEventCode : Integer)
+Function advisorTabsEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
-			This._setAdvisorTab("weather")
-	End case 
-
-Function btnTabEmailEventHandler($formEventCode : Integer)
-	Case of 
-		: ($formEventCode=On Clicked)
-			This._setAdvisorTab("email")
-	End case 
-
-Function btnEmailAnalyzeEventHandler($formEventCode : Integer)
-	Case of 
-		: ($formEventCode=On Clicked)
-			This._runEmailAnalysis()
+			If (Form.tabControl.index=0)
+				This._setAdvisorTab("weather")
+			Else 
+				This._setAdvisorTab("email")
+			End if 
 	End case 
 
 //MARK: - Private
@@ -114,13 +104,7 @@ Function _onLoad()
 	This._resizeWindow(1100)
 	This._populateHeader()
 	This._loadEventLines()
-	// Check for linked unread email
-	var $emails : cs.EmailSelection:=ds.Email.query("linkedEventID = :1 AND emailStatus = :2"; String(This.event.ID); "unread")
-	If ($emails.length>0)
-		This.linkedEmail:=$emails.first()
-		This.hasEmail:=True
-		OBJECT SET VISIBLE(*; "btn_tab_email"; True)
-	End if 
+	This._checkLinkedEmail()
 	This._renderAIPanel(Null)
 	This._updateNavButtons()
 	This._applyReadOnlyIfDone()
@@ -137,11 +121,10 @@ Function _populateHeader()
 	OBJECT SET TITLE(*; "text_date_val"; String($evt.eventDate; "EEEE dd MMMM yyyy"))
 	OBJECT SET TITLE(*; "text_guests_val"; String($evt.guestCount)+" guests")
 
-	// Venue with separate indoor/outdoor indicator
+	// Venue with indoor/outdoor indicator
 	var $venueLabel : Text:=Choose($venue#Null; $venue.name+" – "+$venue.city+", "+$venue.country; "—")
-	OBJECT SET TITLE(*; "text_venue_val"; $venueLabel)
-	var $optionIcon : Text:=Choose($evt.venueOption="indoor"; "🏢 Indoor"; "🌳 Outdoor")
-	OBJECT SET TITLE(*; "text_option_val"; $optionIcon)
+	var $optionLabel : Text:=Choose($evt.venueOption="indoor"; " 🏢"; " 🌳")
+	OBJECT SET TITLE(*; "text_venue_val"; $venueLabel+$optionLabel)
 	OBJECT SET TITLE(*; "text_status_val"; This._statusLabel($evt.status))
 	OBJECT SET TITLE(*; "text_weather_badge"; This._weatherBadge($evt.weatherAlertLevel))
 
@@ -227,97 +210,6 @@ Function _renderAIPanel($weatherResult : Object)
 	cs.UIHelpers.me.showActionButtons($actions)
 	This.aiActions:=$actions
 
-// ─── Tab management ───────────────────────────────────────────────────────────
-Function _setAdvisorTab($tab : Text)
-	This.activeAdvisorTab:=$tab
-	cs.UIHelpers.me.resetActionButtons()
-	This.aiActions:=[]
-
-	var $isWeather : Boolean:=($tab="weather")
-	// Weather tab controls
-	OBJECT SET VISIBLE(*; "text_ai_status"; $isWeather)
-	OBJECT SET VISIBLE(*; "text_ai_context"; $isWeather)
-	OBJECT SET VISIBLE(*; "text_ai_setup"; $isWeather)
-	OBJECT SET VISIBLE(*; "text_ai_explanation"; $isWeather)
-	OBJECT SET VISIBLE(*; "btn_ai_analyze"; $isWeather)
-	OBJECT SET VISIBLE(*; "text_ai_validation_badge"; $isWeather)
-	// Email tab controls
-	OBJECT SET VISIBLE(*; "text_email_meta"; Not($isWeather))
-	OBJECT SET VISIBLE(*; "text_email_subject"; Not($isWeather))
-	OBJECT SET VISIBLE(*; "input_email_body"; Not($isWeather))
-	OBJECT SET VISIBLE(*; "text_email_ai_status"; Not($isWeather))
-	OBJECT SET VISIBLE(*; "text_email_ai_result"; Not($isWeather))
-	OBJECT SET VISIBLE(*; "btn_email_analyze"; Not($isWeather))
-	// Tab button styles
-	OBJECT SET STYLE SHEET(*; "btn_tab_weather"; Choose($isWeather; "btnFilterActive"; "btnFilterInactive"))
-	OBJECT SET STYLE SHEET(*; "btn_tab_email"; Choose(Not($isWeather); "btnFilterActive"; "btnFilterInactive"))
-	// Load email content if switching to email tab
-	If (Not($isWeather) && (This.linkedEmail#Null))
-		This._loadEmailTab()
-	End if 
-
-Function _loadEmailTab()
-	var $e : cs.EmailEntity:=This.linkedEmail
-	If ($e=Null)
-		return 
-	End if 
-	var $meta : Text:="From: "+$e.sender+" <"+$e.senderEmail+">"
-	$meta:=$meta+"\nReceived: "+String($e.receivedAt; "dd MMM yyyy")
-	OBJECT SET TITLE(*; "text_email_meta"; $meta)
-	OBJECT SET TITLE(*; "text_email_subject"; $e.subject)
-	OBJECT SET VALUE("input_email_body"; $e.body)
-	OBJECT SET TITLE(*; "text_email_ai_status"; "Click 'Analyze Email with AI' to process this request.")
-	OBJECT SET TITLE(*; "text_email_ai_result"; "")
-
-// ─── Email AI analysis ────────────────────────────────────────────────────────
-Function _runEmailAnalysis()
-	If (This.linkedEmail=Null)
-		return 
-	End if 
-	This.running:=True
-	OBJECT SET TITLE(*; "btn_email_analyze"; "⏳ Analyzing...")
-	OBJECT SET TITLE(*; "text_email_ai_status"; "Analyzing modification request...")
-
-	var $advisor : cs.AIAdvisor:=cs.AIAdvisor.new()
-	var $self : Object:=This
-	$advisor.analyzeLinkedEmailAsync(This.linkedEmail; This.event; This.eventLines; Formula($self._onEmailAnalysisDone($1)))
-
-Function _onEmailAnalysisDone($result : Object)
-	If (Form=Null)
-		return 
-	End if 
-	This.running:=False
-	OBJECT SET TITLE(*; "btn_email_analyze"; "📧 Analyze Email with AI")
-
-	If (Not($result.success))
-		OBJECT SET TITLE(*; "text_email_ai_status"; "❌ Analysis failed")
-		OBJECT SET TITLE(*; "text_email_ai_result"; $result.validationError)
-		return 
-	End if 
-
-	var $impacts : Object:=$result.impacts
-	OBJECT SET TITLE(*; "text_email_ai_status"; "✓ Modification request analyzed")
-
-	// Build summary text
-	var $summary : Text:=""
-	If (($impacts.summary#Null) && ($impacts.summary#""))
-		$summary:=$impacts.summary+"\n\n"
-	End if 
-	If (($impacts.impacts#Null) && ($impacts.impacts.length>0))
-		$summary:=$summary+"Service changes:\n"
-		var $imp : Object
-		For each ($imp; $impacts.impacts)
-			$summary:=$summary+"• "+String($imp.description)+"\n"
-		End for each 
-	End if 
-	OBJECT SET TITLE(*; "text_email_ai_result"; $summary)
-
-	// Show execution actions
-	If (($impacts.executionActions#Null) && ($impacts.executionActions.length>0))
-		cs.UIHelpers.me.showActionButtons($impacts.executionActions)
-		This.aiActions:=$impacts.executionActions
-	End if 
-
 Function _runWeatherAnalysis()
 	This.running:=True
 	OBJECT SET TITLE(*; "btn_ai_analyze"; "⏳ Analyzing...")
@@ -353,19 +245,118 @@ Function _onWeatherAnalysisDone($aiResult : Object; $weatherFetch : Object)
 	OBJECT SET TITLE(*; "btn_ai_analyze"; "⚡ Run AI Weather Analysis")
 	This._renderAIPanel($aiResult)
 
+// ─── Tab management ───────────────────────────────────────────────────────────
+Function _checkLinkedEmail()
+	var $emails : cs.EmailSelection:=ds.Email.query("linkedEventID = :1 AND emailStatus = :2"; String(This.event.ID); "unread")
+	If ($emails.length>0)
+		This.linkedEmail:=$emails.first()
+		This.hasEmail:=True
+	End if 
+
+Function _setAdvisorTab($tab : Text)
+	This.activeAdvisorTab:=$tab
+	cs.UIHelpers.me.resetActionButtons()
+	This.aiActions:=[]
+
+	var $isWeather : Boolean:=($tab="weather")
+	// Weather tab controls
+	OBJECT SET VISIBLE(*; "text_ai_status"; $isWeather)
+	OBJECT SET VISIBLE(*; "text_ai_context"; $isWeather)
+	OBJECT SET VISIBLE(*; "text_ai_setup"; $isWeather)
+	OBJECT SET VISIBLE(*; "text_ai_explanation"; $isWeather)
+	OBJECT SET VISIBLE(*; "btn_ai_analyze"; $isWeather)
+	OBJECT SET VISIBLE(*; "text_ai_validation_badge"; $isWeather)
+	// Email tab controls
+	OBJECT SET VISIBLE(*; "text_email_meta"; Not($isWeather))
+	OBJECT SET VISIBLE(*; "input_email_body"; Not($isWeather))
+	OBJECT SET VISIBLE(*; "text_email_ai_result"; Not($isWeather))
+	OBJECT SET VISIBLE(*; "btn_email_analyze"; Not($isWeather))
+	// Reset or reload tab content
+	If ($isWeather)
+		This._renderAIPanel(Null)
+	Else 
+		If (This.linkedEmail#Null)
+			This._loadEmailTab()
+		End if 
+	End if 
+
+Function _loadEmailTab()
+	var $e : cs.EmailEntity:=This.linkedEmail
+	If ($e=Null)
+		return 
+	End if 
+	var $meta : Text:="Subject: "+$e.subject+"\nFrom: "+$e.sender+" <"+$e.senderEmail+">\nReceived: "+String($e.receivedAt; "dd MMM yyyy")
+	OBJECT SET TITLE(*; "text_email_meta"; $meta)
+	OBJECT SET VALUE("input_email_body"; $e.body)
+	OBJECT SET TITLE(*; "text_email_ai_result"; "Click '📧 Analyze Email with AI' to process this request.")
+
+// ─── Email AI analysis ────────────────────────────────────────────────────────
+Function btnEmailAnalyzeEventHandler($formEventCode : Integer)
+	Case of 
+		: ($formEventCode=On Clicked)
+			This._runEmailAnalysis()
+	End case 
+
+Function _runEmailAnalysis()
+	If (This.linkedEmail=Null)
+		return 
+	End if 
+	This.running:=True
+	OBJECT SET TITLE(*; "btn_email_analyze"; "⏳ Analyzing...")
+	OBJECT SET TITLE(*; "text_email_ai_result"; "Analyzing modification request...")
+
+	var $evt : cs.EventEntity:=This.event
+	var $candidateEvents : Collection:=[{ \
+		eventID: String($evt.ID); \
+		contractRef: $evt.contractRef; \
+		eventDate: String($evt.eventDate; "dd/MM/yyyy"); \
+		venueName: $evt.venue.name; \
+		guestCount: $evt.guestCount \
+		}]
+
+	var $advisor : cs.AIAdvisor:=cs.AIAdvisor.new()
+	var $self : Object:=This
+	$advisor.analyzeModificationEmailAsync(This.linkedEmail; $candidateEvents; This.eventLines; Formula($self._onEmailAnalysisDone($1)))
+
+Function _onEmailAnalysisDone($result : Object)
+	If (Form=Null)
+		return 
+	End if 
+	This.running:=False
+	OBJECT SET TITLE(*; "btn_email_analyze"; "📧 Analyze Email with AI")
+
+	If (Not($result.success))
+		OBJECT SET TITLE(*; "text_email_ai_result"; "❌ "+Choose($result.validationError#Null; $result.validationError; "Analysis failed"))
+		return 
+	End if 
+
+	var $impacts : Object:=$result.impacts
+	OBJECT SET TITLE(*; "text_email_ai_result"; "✓ Modification request analyzed")
+
+	var $summary : Text:=""
+	If (($impacts.summary#Null) && ($impacts.summary#""))
+		$summary:=$impacts.summary+"\n\n"
+	End if 
+	If (($impacts.impacts#Null) && ($impacts.impacts.length>0))
+		$summary:=$summary+"Service changes:\n"
+		var $imp : Object
+		For each ($imp; $impacts.impacts)
+			$summary:=$summary+"• "+String($imp.description)+"\n"
+		End for each 
+	End if 
+	OBJECT SET TITLE(*; "text_email_ai_result"; $summary)
+
+	If (($impacts.executionActions#Null) && ($impacts.executionActions.length>0))
+		cs.UIHelpers.me.showActionButtons($impacts.executionActions)
+		This.aiActions:=$impacts.executionActions
+	End if 
+
 Function _executeAction($index : Integer)
 	If ($index>=This.aiActions.length)
 		return 
 	End if 
 	var $action : Object:=This.aiActions[$index]
 	var $type : Text:=$action.actionType
-	This._pendingActionIndex:=$index
-
-	// switch_venue is handled locally — no AI tool calling needed
-	If ($type="switch_venue")
-		This._executeSwitchVenue($action)
-		return 
-	End if 
 
 	// Si l'action a un hiddenPrompt, utiliser le Temps 2 (tool calling)
 	If (($action.hiddenPrompt#Null) && ($action.hiddenPrompt#""))
@@ -401,7 +392,6 @@ Function _executeWithToolCalling($action : Object)
 	var $line : Object
 	For each ($line; This.eventLines)
 		$context.existingLines.push({ \
-			serviceID: $line.serviceID; \
 			serviceLabel: $line.serviceLabel; \
 			quantity: $line.quantity; \
 			unitPrice: $line.unitPrice \
@@ -424,76 +414,11 @@ Function _onExecutionDone($execResult : Object; $action : Object)
 	End if 
 
 	If (($execResult.proposedLines=Null) || ($execResult.proposedLines.length=0))
-		var $reason : Text:=Choose(($execResult.summary#Null) && ($execResult.summary#""); $execResult.summary; "No matching service found in catalog.")
-		OBJECT SET TITLE(*; "text_ai_status"; "⚠ "+$reason)
+		OBJECT SET TITLE(*; "text_ai_status"; "No services proposed.")
 		return 
-	End if 
-
-	// Safety: if ALL lines are 'remove' with no 'add' lines → hallucination, abort
-	var $hasAdd : Boolean:=False
-	var $hasNonRemove : Boolean:=False
-	var $pl2 : Object
-	For each ($pl2; $execResult.proposedLines)
-		If ($pl2.delta="add") | ($pl2.delta="update")
-			$hasAdd:=True
-			$hasNonRemove:=True
-		End if 
-	End for each 
-	If (Not($hasAdd))
-		// Only removes proposed for what was supposed to be an add/replace — abort
-		If ($action.actionType="add_services")
-			var $reason2 : Text:=Choose(($execResult.summary#Null) && ($execResult.summary#""); $execResult.summary; "Service not available in catalog.")
-			OBJECT SET TITLE(*; "text_ai_status"; "⚠ "+$reason2)
-			return 
-		End if 
-	End if 
-
-	// Safety: remove any 'add' lines whose label also appears in a 'remove' line
-	var $removeLabels : Collection:=[]
-	var $pl : Object
-	For each ($pl; $execResult.proposedLines)
-		If ($pl.delta="remove")
-			$removeLabels.push(Lowercase($pl.label))
-		End if 
-	End for each 
-	If ($removeLabels.length>0)
-		var $cleanLines : Collection:=[]
-		For each ($pl; $execResult.proposedLines)
-			If (Not(($pl.delta="add") && $removeLabels.includes(Lowercase($pl.label))))
-				$cleanLines.push($pl)
-			End if 
-		End for each 
-		$execResult.proposedLines:=$cleanLines
 	End if 
 
 	OBJECT SET TITLE(*; "text_ai_status"; "")
-	This._showConfirmPanel($action; $execResult)
-
-// ─── switch_venue : handled locally, no AI needed ────────────────────────────
-Function _executeSwitchVenue($action : Object)
-	var $venue : cs.VenueEntity:=This.event.venue
-	If (($venue=Null) || ($venue.indoorOption=Null))
-		OBJECT SET TITLE(*; "text_ai_status"; "❌ No indoor option available at this venue.")
-		return 
-	End if 
-	var $oldRental : Real:=This.event.venueRentalPrice
-	var $newRental : Real:=Num($venue.indoorOption.rentalPrice)
-	var $rentalDelta : Real:=$newRental-$oldRental
-	// Store for commit in btnConfirmActionEventHandler
-	This._pendingVenueSwitchData:={ \
-		newOption: "indoor"; \
-		newRentalPrice: $newRental; \
-		oldRentalPrice: $oldRental; \
-		venueName: $venue.indoorOption.name \
-	}
-	// Build synthetic execResult for the confirm panel
-	var $execResult : Object:={proposedLines: []; summary: "Switch to indoor venue '"+$venue.indoorOption.name+"' (capacity: "+String(Num($venue.indoorOption.capacity))+"). Weather risk will be eliminated."}
-	$execResult.proposedLines.push({ \
-		label: "Switch to indoor: "+$venue.indoorOption.name; \
-		quantity: 1; \
-		unitPrice: $rentalDelta; \
-		delta: "venue_switch" \
-	})
 	This._showConfirmPanel($action; $execResult)
 
 Function _showConfirmPanel($action : Object; $execResult : Object)
@@ -518,9 +443,6 @@ Function _showConfirmPanel($action : Object; $execResult : Object)
 			: ($line.delta="update")
 				$deltaIcon:="✏"
 				$impact:=$impact+$lineTotal
-			: ($line.delta="venue_switch")
-				$deltaIcon:="🏢"
-				$impact:=$impact+$lineTotal
 		End case 
 		This.confirmLines.push({ \
 			label: $line.label; \
@@ -543,8 +465,6 @@ Function _hideConfirmPanel()
 	This._resizeWindow(1100)
 	This._pendingExecResult:=Null
 	This._pendingAction:=Null
-	This._pendingActionIndex:=-1
-	This._pendingVenueSwitchData:=Null
 
 Function _resizeWindow($width : Integer)
 	var $curL; $curT; $curR; $curB : Integer
@@ -600,31 +520,13 @@ Function _setConfirmPanelVisible($visible : Boolean)
 Function btnConfirmActionEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
-			// Route venue switch separately
-			If (This._pendingVenueSwitchData#Null)
-				This._applyVenueSwitch()
-				return 
-			End if 
 			If (This._pendingExecResult=Null)
 				return 
 			End if 
-			// 1. Remember which action index was confirmed before hide clears it
-			var $confirmedIndex : Integer:=This._pendingActionIndex
-			// 2. Apply service changes to DB
 			cs.EventLineService.me.applyProposedChanges(This.event.ID; This._pendingExecResult.proposedLines)
-			// 3. Hide panel and reload lines
 			This._hideConfirmPanel()
 			This._loadEventLines()
-			// 4. Re-assess effective planned weather from updated service list
-			This._reassessEventSetup()
-			// 5. Remove the confirmed action button from the action list
-			If (($confirmedIndex>=0) && ($confirmedIndex<This.aiActions.length))
-				This.aiActions.remove($confirmedIndex; 1)
-			End if 
-			// 6. Re-render remaining action buttons
-			cs.UIHelpers.me.resetActionButtons()
-			cs.UIHelpers.me.showActionButtons(This.aiActions)
-			OBJECT SET TITLE(*; "text_ai_status"; "✅ Action applied. Event setup re-assessed.")
+			OBJECT SET TITLE(*; "text_ai_status"; "✅ Action applied successfully.")
 	End case 
 
 Function btnCancelConfirmEventHandler($formEventCode : Integer)
@@ -634,120 +536,7 @@ Function btnCancelConfirmEventHandler($formEventCode : Integer)
 			OBJECT SET TITLE(*; "text_ai_status"; "Action cancelled.")
 	End case 
 
-// Re-assess the event's effective planned weatherSetup based on current service lines.
-// Updates weatherSetup.conditions, recomputes alertLevel, saves, and refreshes UI.
-Function _reassessEventSetup()
-	var $setup : Object:=This.event.weatherSetup
-	If ($setup=Null)
-		return 
-	End if 
-	var $weather : cs.WeatherService:=cs.WeatherService.me
-	var $newConditions : Text:=$weather.assessSetupFromLines(This.eventLines; $setup.conditions)
-	If ($newConditions="")
-		return  // indoor/indifferent: no change
-	End if 
-	If ($setup.conditions=$newConditions)
-		return  // already correct
-	End if 
-	// Update conditions in the stored setup object
-	$setup.conditions:=$newConditions
-	This.event.weatherSetup:=$setup
-	// Recompute alert level against current forecast
-	If (This.event.weatherForecast#Null)
-		This.event.weatherAlertLevel:=$weather.compareWeather($setup; This.event.weatherForecast; This.event.venueOption)
-	Else 
-		This.event.weatherAlertLevel:="none"
-	End if 
-	This.event.save()
-	// Refresh header badge and setup/forecast display
-	OBJECT SET TITLE(*; "text_weather_badge"; This._weatherBadge(This.event.weatherAlertLevel))
-	This._updateSetupDisplay()
-
-// Refresh only the planned/forecast labels in the AI panel (without clearing explanation/actions).
-Function _updateSetupDisplay()
-	var $setup : Object:=This.event.weatherSetup
-	var $forecast : Object:=This.event.weatherForecast
-	var $setupStr : Text:=""
-	If ($setup#Null)
-		$setupStr:="Planned: "+This._setupLabel($setup)
-	End if 
-	If ($forecast#Null)
-		$setupStr:=$setupStr+"\nForecast: "+This._forecastLabel($forecast)
-	End if 
-	OBJECT SET TITLE(*; "text_ai_setup"; $setupStr)
-
-// Apply the pending venue switch: updates event entity and refreshes UI.
-Function _applyVenueSwitch()
-	var $data : Object:=This._pendingVenueSwitchData
-	var $confirmedIndex : Integer:=This._pendingActionIndex
-	// Update event fields
-	This.event.venueOption:="indoor"
-	This.event.venueRentalPrice:=$data.newRentalPrice
-	// Indoor event: weather becomes indifferent, no alert
-	var $setup : Object:=This.event.weatherSetup
-	If ($setup#Null)
-		$setup.conditions:="indifferent"
-		$setup.temperature:="normal"
-		This.event.weatherSetup:=$setup
-	End if 
-	This.event.weatherAlertLevel:="none"
-	This.event.save()
-
-	// Remove outdoor-specific services no longer needed indoors
-	This._removeOutdoorServicesAfterIndoorSwitch()
-
-	// Hide confirm panel (resets _pendingVenueSwitchData and _pendingActionIndex)
-	This._hideConfirmPanel()
-	// Refresh UI
-	This._populateHeader()
-	This._loadEventLines()
-	This._updateSetupDisplay()
-	OBJECT SET TITLE(*; "text_weather_badge"; This._weatherBadge("none"))
-	// Remove confirmed action button
-	If (($confirmedIndex>=0) && ($confirmedIndex<This.aiActions.length))
-		This.aiActions.remove($confirmedIndex; 1)
-	End if 
-	cs.UIHelpers.me.resetActionButtons()
-	cs.UIHelpers.me.showActionButtons(This.aiActions)
-	OBJECT SET TITLE(*; "text_ai_status"; "✅ Switched to indoor venue. Outdoor services removed.")
-
-// ─── Remove outdoor-specific services after an indoor venue switch ────────────
-Function _removeOutdoorServicesAfterIndoorSwitch()
-	// Categories and label patterns that are only needed outdoors
-	var $outdoorCategories : Collection:=["Structures"]
-	var $outdoorLabelPatterns : Collection:=[\
-		"extérieure"; "outdoor"; "tent"; "marquee"; "pagoda"; "stretch"; \
-		"patio heater"; "umbrella"; "poncho"; "air conditioning"; "hot air heater"; \
-		"generator"; "outdoor sound"\
-	]
-
-	var $lines : cs.EventLineSelection:=ds.EventLine.query("eventID = :1"; This.event.ID)
-	var $line : cs.EventLineEntity
-	For each ($line; $lines)
-		var $svc : cs.ServiceEntity:=ds.Service.get($line.serviceID)
-		If ($svc#Null)
-			var $shouldRemove : Boolean:=False
-			// Remove all Structures (tents, stages are outdoor only)
-			If ($outdoorCategories.indexOf($svc.category)>=0)
-				$shouldRemove:=True
-			End if 
-			// Remove by label pattern
-			If (Not($shouldRemove))
-				var $lbl : Text:=Lowercase($svc.label)
-				var $pattern : Text
-				For each ($pattern; $outdoorLabelPatterns)
-					If (Position($pattern; $lbl)>0)
-						$shouldRemove:=True
-					End if 
-				End for each 
-			End if 
-			If ($shouldRemove)
-				$line.drop()
-			End if 
-		End if 
-	End for each 
-
-
+//MARK: - Helpers
 Function _weatherBadge($level : Text) : Text
 	Case of 
 		: ($level="critical")
