@@ -217,18 +217,6 @@
     fontSize: 12;
 }
 
-/* Warning text */
-.textWarning {
-    stroke: #FF9F0A;
-    fontSize: 12;
-}
-
-/* Accent text (counts, links) */
-.textAccent {
-    stroke: #3B5FCC;
-    fontSize: 12;
-}
-
 /* Footer text */
 .textFooter {
     stroke: #444444;
@@ -239,27 +227,6 @@
     stroke: #AAAAAA;
     fontSize: 28;
     fontWeight: bold;
-}
-
-/* --------------------------------------------------------------------------
-   INPUTS
-   -------------------------------------------------------------------------- */
-
-/* Standard text input */
-.inputField {
-    fill: #1A1A1A;
-    stroke: #FFFFFF;
-    borderStyle: solid;
-    borderRadius: 8;
-    fontSize: 12;
-}
-
-/* Readonly / display input */
-.inputReadonly {
-    fill: #1A1A1A;
-    stroke: #CCCCCC;
-    borderStyle: none;
-    fontSize: 12;
 }
 
 /* --------------------------------------------------------------------------
@@ -414,31 +381,12 @@
         stroke: #2E7D32;
     }
 
-    .textWarning {
-        stroke: #E65100;
-    }
-
-    .textAccent {
-        stroke: #3B5FCC;
-    }
-
     .textFooter {
         stroke: #AAAAAA;
     }
 
     .spinnerText {
         stroke: #666666;
-    }
-
-    /* Inputs */
-    .inputField {
-        fill: #FFFFFF;
-        stroke: #333333;
-    }
-
-    .inputReadonly {
-        fill: #FAFAFA;
-        stroke: #333333;
     }
 
     /* Listbox */
