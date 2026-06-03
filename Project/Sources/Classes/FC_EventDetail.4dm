@@ -142,8 +142,7 @@ Function _onLoad()
 	This._resizeWindow(1100)
 	This._loadEventLines()
 	This._checkLinkedEmail()
-	This._renderAIPanel(Null)
-	OBJECT SET TITLE(*; "text_email_ai_result"; "")
+	This._renderCurrentTab()
 	This._updateNavButtons()
 	This._applyReadOnlyIfDone()
 	
@@ -167,13 +166,34 @@ Function _loadEventLines()
 	End if 
 	OBJECT SET TITLE(*; "text_total_val"; String($total; "### ### ##0 €"))
 	
-Function _renderAIPanel($weatherResult : Object)
+Function _clearAIPanel()
 	cs.UIHelpers.me.resetActionButtons()
+	This.aiActions:=[]
+	This._lastValidationData:=Null
 	OBJECT SET TITLE(*; "text_ai_context"; "")
+	OBJECT SET TITLE(*; "text_ai_status"; "")
 	OBJECT SET TITLE(*; "text_weather_ai_explanation"; "")
+	OBJECT SET TITLE(*; "text_email_ai_result"; "")
 	OBJECT SET VISIBLE(*; "text_ai_validation_badge"; False)
+	// Hide all tab-specific controls
+	OBJECT SET VISIBLE(*; "btn_ai_analyze"; False)
+	OBJECT SET VISIBLE(*; "text_weather_ai_explanation"; False)
+	OBJECT SET VISIBLE(*; "input_email_body"; False)
+	OBJECT SET VISIBLE(*; "text_email_ai_result"; False)
+	OBJECT SET VISIBLE(*; "btn_email_analyze"; False)
+
+Function _renderCurrentTab()
+	This._clearAIPanel()
+	If (This.activeAdvisorTab="email")
+		This._renderEmailTab()
+	Else 
+		This._renderWeatherTab(Null)
+	End if 
+
+Function _renderWeatherTab($weatherResult : Object)
+	OBJECT SET VISIBLE(*; "text_weather_ai_explanation"; True)
 	
-	// Show contracted and forecast weather
+	// Show contracted and forecast weather in context
 	var $setup : Object:=This.event.weatherSetup
 	var $forecast : Object:=This.event.weatherForecast
 	var $setupStr : Text:=""
@@ -204,10 +224,8 @@ Function _renderAIPanel($weatherResult : Object)
 	End if 
 	
 	var $wa : Object:=$weatherResult.weatherActions
-	// Use entity computed riskLabel (weatherAlertLevel is updated by WeatherService before this call)
 	OBJECT SET TITLE(*; "text_ai_status"; This.event.riskLabel)
 	
-	// Afficher l'explication IA
 	If (($wa.explanation#Null) && ($wa.explanation#""))
 		OBJECT SET TITLE(*; "text_weather_ai_explanation"; $wa.explanation)
 	End if 
@@ -221,6 +239,23 @@ Function _renderAIPanel($weatherResult : Object)
 	var $actions : Collection:=$wa.actions
 	This._actionMap:=cs.UIHelpers.me.showActionButtons($actions)
 	This.aiActions:=$actions
+
+Function _renderEmailTab()
+	var $hasEmail : Boolean:=(This.linkedEmail#Null)
+	OBJECT SET VISIBLE(*; "text_email_ai_result"; True)
+	OBJECT SET VISIBLE(*; "input_email_body"; $hasEmail)
+	OBJECT SET VISIBLE(*; "btn_email_analyze"; $hasEmail)
+	If ($hasEmail)
+		var $e : cs.EmailEntity:=This.linkedEmail
+		var $meta : Text:="Subject: "+$e.subject+"\nFrom: "+$e.sender+" <"+$e.senderEmail+">\nReceived: "+String($e.receivedAt; "dd MMM yyyy")
+		OBJECT SET TITLE(*; "text_ai_context"; $meta)
+		OBJECT SET VALUE("input_email_body"; $e.body)
+		OBJECT SET TITLE(*; "text_email_ai_result"; "")
+		OBJECT SET TITLE(*; "text_ai_status"; "📧 Email pending")
+	Else 
+		OBJECT SET TITLE(*; "text_ai_context"; "No pending email for this event.")
+		OBJECT SET TITLE(*; "text_ai_status"; "No email to process.")
+	End if 
 	
 Function _runWeatherAnalysis()
 	This.running:=True
@@ -255,7 +290,9 @@ Function _onWeatherAnalysisDone($aiResult : Object; $weatherFetch : Object)
 	End if 
 	This.running:=False
 	OBJECT SET TITLE(*; "btn_ai_analyze"; "⚡ Run AI Weather Analysis")
-	This._renderAIPanel($aiResult)
+	This._clearAIPanel()
+	OBJECT SET VISIBLE(*; "text_weather_ai_explanation"; True)
+	This._renderWeatherTab($aiResult)
 	
 	// ─── Tab management ───────────────────────────────────────────────────────────
 Function _checkLinkedEmail()
@@ -263,45 +300,14 @@ Function _checkLinkedEmail()
 	If ($emails.length>0)
 		This.linkedEmail:=$emails.first()
 		This.hasEmail:=True
+	Else 
+		This.linkedEmail:=Null
+		This.hasEmail:=False
 	End if 
 	
 Function _setAdvisorTab($tab : Text)
 	This.activeAdvisorTab:=$tab
-	cs.UIHelpers.me.resetActionButtons()
-	This.aiActions:=[]
-	
-	var $isWeather : Boolean:=($tab="weather")
-	// Weather tab controls
-	OBJECT SET VISIBLE(*; "text_weather_ai_explanation"; $isWeather)
-	OBJECT SET VISIBLE(*; "btn_ai_analyze"; $isWeather)
-	// Email tab controls
-	var $hasEmail : Boolean:=(This.linkedEmail#Null)
-	OBJECT SET VISIBLE(*; "input_email_body"; Not($isWeather) && $hasEmail)
-	OBJECT SET VISIBLE(*; "text_email_ai_result"; Not($isWeather))
-	OBJECT SET VISIBLE(*; "btn_email_analyze"; Not($isWeather) && $hasEmail)
-	// Reset or reload tab content
-	If ($isWeather)
-		This._renderAIPanel(Null)
-	Else 
-		If ($hasEmail)
-			This._loadEmailTab()
-		Else 
-			OBJECT SET TITLE(*; "text_ai_context"; "No pending email for this event.")
-			OBJECT SET TITLE(*; "text_ai_status"; "No email to process.")
-			OBJECT SET TITLE(*; "text_email_ai_result"; "")
-		End if 
-	End if 
-	
-Function _loadEmailTab()
-	var $e : cs.EmailEntity:=This.linkedEmail
-	If ($e=Null)
-		return 
-	End if 
-	var $meta : Text:="Subject: "+$e.subject+"\nFrom: "+$e.sender+" <"+$e.senderEmail+">\nReceived: "+String($e.receivedAt; "dd MMM yyyy")
-	OBJECT SET TITLE(*; "text_ai_context"; $meta)
-	OBJECT SET VALUE("input_email_body"; $e.body)
-	OBJECT SET TITLE(*; "text_email_ai_result"; "")
-	OBJECT SET TITLE(*; "text_ai_status"; "📧 Email pending")
+	This._renderCurrentTab()
 	
 	// ─── Email AI analysis ────────────────────────────────────────────────────────
 Function btnEmailAnalyzeEventHandler($formEventCode : Integer)
@@ -695,12 +701,12 @@ Function _navigate($direction : Integer)
 	End if 
 	var $newEvent : cs.EventEntity:=This._selection[$newPos]
 	This.event:=$newEvent
-	This.aiActions:=[]
 	If (This._pendingExecResult#Null)
 		This._hideConfirmPanel()
 	End if 
 	This._loadEventLines()
-	This._renderAIPanel(Null)
+	This._checkLinkedEmail()
+	This._renderCurrentTab()
 	This._updateNavButtons()
 	This._applyReadOnlyIfDone()
 	// Sync selection in events list via CALL FORM
