@@ -98,13 +98,13 @@
     textAlign: center;
 }
 
-/* JSON validation badge button — subtle clickable indicator */
+/* JSON validation badge button — invisible, white text only */
 .btnValidationBadge {
-    fill: #1A2B1A;
-    stroke: #4CAF50;
+    fill: transparent;
+    stroke: #FFFFFF;
     fontSize: 11;
-    borderStyle: solid;
-    borderRadius: 6;
+    borderStyle: none;
+    borderRadius: 0;
     textAlign: left;
 }
 

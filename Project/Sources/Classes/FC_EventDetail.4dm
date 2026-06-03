@@ -230,7 +230,7 @@ Function _renderWeatherTab($weatherResult : Object)
 		OBJECT SET TITLE(*; "text_weather_ai_explanation"; $wa.explanation)
 	End if 
 	
-	OBJECT SET TITLE(*; "text_ai_validation_badge"; "✓ schema_weather_actions")
+	OBJECT SET TITLE(*; "text_ai_validation_badge"; "✓ JSON Validate: schema_weather_actions")
 	OBJECT SET VISIBLE(*; "text_ai_validation_badge"; True)
 	This._lastValidationData:=New object(\
 		"schema"; "schema_weather_actions.json"; \
