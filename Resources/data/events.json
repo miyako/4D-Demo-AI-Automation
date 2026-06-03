@@ -1,457 +1,530 @@
 [
   {
-    "clientIndex": 81,
-    "venueIndex": 28,
     "guestCount": 115,
-    "notes": "Product launch – Dubai"
+    "notes": "Product launch – Dubai",
+    "seedIndex": 0,
+    "clientSeedIndex": 81,
+    "venueSeedIndex": 28
   },
   {
-    "clientIndex": 94,
-    "venueIndex": 26,
     "guestCount": 35,
-    "notes": "Staff party – Milan"
+    "notes": "Staff party – Milan",
+    "seedIndex": 1,
+    "clientSeedIndex": 94,
+    "venueSeedIndex": 26
   },
   {
-    "clientIndex": 11,
-    "venueIndex": 55,
     "guestCount": 157,
-    "notes": "Networking afterwork – Mumbai"
+    "notes": "Networking afterwork – Mumbai",
+    "seedIndex": 2,
+    "clientSeedIndex": 11,
+    "venueSeedIndex": 55
   },
   {
-    "clientIndex": 91,
-    "venueIndex": 107,
     "guestCount": 155,
-    "notes": "Networking afterwork – Dublin"
+    "notes": "Networking afterwork – Dublin",
+    "seedIndex": 3,
+    "clientSeedIndex": 91,
+    "venueSeedIndex": 107
   },
   {
-    "clientIndex": 89,
-    "venueIndex": 108,
     "guestCount": 47,
-    "notes": "Roadshow commercial – Dublin"
+    "notes": "Roadshow commercial – Dublin",
+    "seedIndex": 4,
+    "clientSeedIndex": 89,
+    "venueSeedIndex": 108
   },
   {
-    "clientIndex": 11,
-    "venueIndex": 97,
     "guestCount": 376,
-    "notes": "Open day – Prague"
+    "notes": "Open day – Prague",
+    "seedIndex": 5,
+    "clientSeedIndex": 11,
+    "venueSeedIndex": 97
   },
   {
-    "clientIndex": 5,
-    "venueIndex": 117,
     "guestCount": 393,
-    "notes": "Staff party – Carthage"
+    "notes": "Staff party – Carthage",
+    "seedIndex": 6,
+    "clientSeedIndex": 5,
+    "venueSeedIndex": 117
   },
   {
-    "clientIndex": 80,
-    "venueIndex": 92,
     "guestCount": 170,
-    "notes": "Atelier design thinking – Nairobi"
+    "notes": "Atelier design thinking – Nairobi",
+    "seedIndex": 7,
+    "clientSeedIndex": 80,
+    "venueSeedIndex": 92
   },
   {
-    "clientIndex": 37,
-    "venueIndex": 20,
     "guestCount": 342,
-    "notes": "Networking afterwork – Seville"
+    "notes": "Networking afterwork – Seville",
+    "seedIndex": 8,
+    "clientSeedIndex": 37,
+    "venueSeedIndex": 20
   },
   {
-    "clientIndex": 20,
-    "venueIndex": 94,
     "guestCount": 43,
-    "notes": "Summit leadership – Hanoi"
+    "notes": "Summit leadership – Hanoi",
+    "seedIndex": 9,
+    "clientSeedIndex": 20,
+    "venueSeedIndex": 94
   },
   {
-    "clientIndex": 77,
-    "venueIndex": 43,
     "guestCount": 973,
-    "notes": "Staff party – Marrakech"
+    "notes": "Staff party – Marrakech",
+    "seedIndex": 10,
+    "clientSeedIndex": 77,
+    "venueSeedIndex": 43
   },
   {
-    "clientIndex": 34,
-    "venueIndex": 56,
     "guestCount": 79,
-    "notes": "Corporate festival – Hyderabad"
+    "notes": "Corporate festival – Hyderabad",
+    "seedIndex": 11,
+    "clientSeedIndex": 34,
+    "venueSeedIndex": 56
   },
   {
-    "clientIndex": 40,
-    "venueIndex": 102,
     "guestCount": 107,
-    "notes": "Hackathon corporate – Oslo"
+    "notes": "Hackathon corporate – Oslo",
+    "seedIndex": 12,
+    "clientSeedIndex": 40,
+    "venueSeedIndex": 102
   },
   {
-    "clientIndex": 83,
-    "venueIndex": 127,
     "guestCount": 138,
-    "notes": "Investor presentation – Muscat"
+    "notes": "Investor presentation – Muscat",
+    "seedIndex": 13,
+    "clientSeedIndex": 83,
+    "venueSeedIndex": 127
   },
   {
-    "clientIndex": 31,
-    "venueIndex": 67,
     "guestCount": 498,
-    "notes": "Partners convention – Geneva"
+    "notes": "Partners convention – Geneva",
+    "seedIndex": 14,
+    "clientSeedIndex": 31,
+    "venueSeedIndex": 67
   },
   {
-    "clientIndex": 28,
-    "venueIndex": 35,
     "guestCount": 91,
-    "notes": "Tournoi sportif inter-entreprises – New York"
+    "notes": "Tournoi sportif inter-entreprises – New York",
+    "seedIndex": 15,
+    "clientSeedIndex": 28,
+    "venueSeedIndex": 35
   },
   {
-    "clientIndex": 80,
-    "venueIndex": 40,
     "guestCount": 890,
-    "notes": "R&D seminar – Singapore"
+    "notes": "R&D seminar – Singapore",
+    "seedIndex": 16,
+    "clientSeedIndex": 80,
+    "venueSeedIndex": 40
   },
   {
-    "clientIndex": 67,
-    "venueIndex": 64,
     "guestCount": 258,
-    "notes": "Day event RSE – Seoul"
+    "notes": "Day event RSE – Seoul",
+    "seedIndex": 17,
+    "clientSeedIndex": 67,
+    "venueSeedIndex": 64
   },
   {
-    "clientIndex": 82,
-    "venueIndex": 87,
     "guestCount": 48,
-    "notes": "Incentive voyage – Krakow"
+    "notes": "Incentive voyage – Krakow",
+    "seedIndex": 18,
+    "clientSeedIndex": 82,
+    "venueSeedIndex": 87
   },
   {
-    "clientIndex": 92,
-    "venueIndex": 67,
     "guestCount": 459,
-    "notes": "Tournoi sportif inter-entreprises – Geneva"
+    "notes": "Tournoi sportif inter-entreprises – Geneva",
+    "seedIndex": 19,
+    "clientSeedIndex": 92,
+    "venueSeedIndex": 67
   },
   {
-    "clientIndex": 81,
-    "venueIndex": 129,
     "guestCount": 42,
-    "notes": "Evening event VIP clients – Kuwait City"
+    "notes": "Evening event VIP clients – Kuwait City",
+    "seedIndex": 20,
+    "clientSeedIndex": 81,
+    "venueSeedIndex": 129
   },
   {
-    "clientIndex": 76,
-    "venueIndex": 82,
     "guestCount": 94,
-    "notes": "Ceremony d'ouverture – Istanbul"
+    "notes": "Ceremony d'ouverture – Istanbul",
+    "seedIndex": 21,
+    "clientSeedIndex": 76,
+    "venueSeedIndex": 82
   },
   {
-    "clientIndex": 7,
-    "venueIndex": 61,
     "guestCount": 90,
-    "notes": "Atelier design thinking – Mexico City"
+    "notes": "Atelier design thinking – Mexico City",
+    "seedIndex": 22,
+    "clientSeedIndex": 7,
+    "venueSeedIndex": 61
   },
   {
-    "clientIndex": 16,
-    "venueIndex": 121,
     "guestCount": 1121,
-    "notes": "Day event RSE – Dakar"
+    "notes": "Day event RSE – Dakar",
+    "seedIndex": 23,
+    "clientSeedIndex": 16,
+    "venueSeedIndex": 121
   },
   {
-    "clientIndex": 27,
-    "venueIndex": 51,
     "guestCount": 948,
-    "notes": "Dinner –– Rio de Janeiro"
+    "notes": "Dinner –– Rio de Janeiro",
+    "seedIndex": 24,
+    "clientSeedIndex": 27,
+    "venueSeedIndex": 51
   },
   {
-    "clientIndex": 15,
-    "venueIndex": 63,
     "guestCount": 123,
-    "notes": "Networking afterwork – Seoul"
+    "notes": "Networking afterwork – Seoul",
+    "seedIndex": 25,
+    "clientSeedIndex": 15,
+    "venueSeedIndex": 63
   },
   {
-    "clientIndex": 75,
-    "venueIndex": 56,
     "guestCount": 34,
-    "notes": "Annual seminar – Hyderabad"
+    "notes": "Annual seminar – Hyderabad",
+    "seedIndex": 26,
+    "clientSeedIndex": 75,
+    "venueSeedIndex": 56
   },
   {
-    "clientIndex": 4,
-    "venueIndex": 84,
     "guestCount": 1185,
-    "notes": "Awards ceremony – La Hulpe"
+    "notes": "Awards ceremony – La Hulpe",
+    "seedIndex": 27,
+    "clientSeedIndex": 4,
+    "venueSeedIndex": 84
   },
   {
-    "clientIndex": 27,
-    "venueIndex": 33,
     "guestCount": 984,
-    "notes": "Atelier design thinking – Himeji"
+    "notes": "Atelier design thinking – Himeji",
+    "seedIndex": 28,
+    "clientSeedIndex": 27,
+    "venueSeedIndex": 33
   },
   {
-    "clientIndex": 24,
-    "venueIndex": 24,
     "guestCount": 933,
-    "notes": "Open day – Rome"
+    "notes": "Open day – Rome",
+    "seedIndex": 29,
+    "clientSeedIndex": 24,
+    "venueSeedIndex": 24
   },
   {
-    "clientIndex": 59,
-    "venueIndex": 13,
     "guestCount": 131,
-    "notes": "Open day – Edinburgh"
+    "notes": "Open day – Edinburgh",
+    "seedIndex": 30,
+    "clientSeedIndex": 59,
+    "venueSeedIndex": 13
   },
   {
-    "clientIndex": 24,
-    "venueIndex": 48,
     "guestCount": 416,
-    "notes": "Staff party – Melbourne"
+    "notes": "Staff party – Melbourne",
+    "seedIndex": 31,
+    "clientSeedIndex": 24,
+    "venueSeedIndex": 48
   },
   {
-    "clientIndex": 59,
-    "venueIndex": 63,
     "guestCount": 58,
-    "notes": "Awards ceremony – Seoul"
+    "notes": "Awards ceremony – Seoul",
+    "seedIndex": 32,
+    "clientSeedIndex": 59,
+    "venueSeedIndex": 63
   },
   {
-    "clientIndex": 83,
-    "venueIndex": 3,
     "guestCount": 670,
-    "notes": "Year-end gala – Paris"
+    "notes": "Year-end gala – Paris",
+    "seedIndex": 33,
+    "clientSeedIndex": 83,
+    "venueSeedIndex": 3
   },
   {
-    "clientIndex": 62,
-    "venueIndex": 123,
     "guestCount": 668,
-    "notes": "Industry congress – Split"
+    "notes": "Industry congress – Split",
+    "seedIndex": 34,
+    "clientSeedIndex": 62,
+    "venueSeedIndex": 123
   },
   {
-    "clientIndex": 0,
-    "venueIndex": 99,
     "guestCount": 792,
-    "notes": "Salon professionnel – Copenhagen"
+    "notes": "Salon professionnel – Copenhagen",
+    "seedIndex": 35,
+    "clientSeedIndex": 0,
+    "venueSeedIndex": 99
   },
   {
-    "clientIndex": 89,
-    "venueIndex": 124,
     "guestCount": 42,
-    "notes": "Cocktail d'inauguration – Budapest"
+    "notes": "Cocktail d'inauguration – Budapest",
+    "seedIndex": 36,
+    "clientSeedIndex": 89,
+    "venueSeedIndex": 124
   },
   {
-    "clientIndex": 95,
-    "venueIndex": 80,
     "guestCount": 154,
-    "notes": "Convention commerciale – Wellington"
+    "notes": "Convention commerciale – Wellington",
+    "seedIndex": 37,
+    "clientSeedIndex": 95,
+    "venueSeedIndex": 80
   },
   {
-    "clientIndex": 7,
-    "venueIndex": 130,
     "guestCount": 88,
-    "notes": "Year-end gala – Luxembourg City"
+    "notes": "Year-end gala – Luxembourg City",
+    "seedIndex": 38,
+    "clientSeedIndex": 7,
+    "venueSeedIndex": 130
   },
   {
-    "clientIndex": 51,
-    "venueIndex": 30,
     "guestCount": 45,
-    "notes": "Atelier design thinking – Abu Dhabi"
+    "notes": "Atelier design thinking – Abu Dhabi",
+    "seedIndex": 39,
+    "clientSeedIndex": 51,
+    "venueSeedIndex": 30
   },
   {
-    "clientIndex": 53,
-    "venueIndex": 80,
     "guestCount": 360,
-    "notes": "Salon professionnel – Wellington"
+    "notes": "Salon professionnel – Wellington",
+    "seedIndex": 40,
+    "clientSeedIndex": 53,
+    "venueSeedIndex": 80
   },
   {
-    "clientIndex": 50,
-    "venueIndex": 33,
     "guestCount": 509,
-    "notes": "Dinner –– Himeji"
+    "notes": "Dinner –– Himeji",
+    "seedIndex": 41,
+    "clientSeedIndex": 50,
+    "venueSeedIndex": 33
   },
   {
-    "clientIndex": 79,
-    "venueIndex": 25,
     "guestCount": 107,
-    "notes": "Awards ceremony – Venice"
+    "notes": "Awards ceremony – Venice",
+    "seedIndex": 42,
+    "clientSeedIndex": 79,
+    "venueSeedIndex": 25
   },
   {
-    "clientIndex": 44,
-    "venueIndex": 17,
     "guestCount": 280,
-    "notes": "Graduation ceremony – Hamburg"
+    "notes": "Graduation ceremony – Hamburg",
+    "seedIndex": 43,
+    "clientSeedIndex": 44,
+    "venueSeedIndex": 17
   },
   {
-    "clientIndex": 78,
-    "venueIndex": 2,
     "guestCount": 253,
-    "notes": "Day event RSE – Saint-Denis"
+    "notes": "Day event RSE – Saint-Denis",
+    "seedIndex": 44,
+    "clientSeedIndex": 78,
+    "venueSeedIndex": 2
   },
   {
-    "clientIndex": 14,
-    "venueIndex": 27,
     "guestCount": 114,
-    "notes": "Day event RSE – Dubai"
+    "notes": "Day event RSE – Dubai",
+    "seedIndex": 45,
+    "clientSeedIndex": 14,
+    "venueSeedIndex": 27
   },
   {
-    "clientIndex": 91,
-    "venueIndex": 87,
     "guestCount": 1017,
-    "notes": "Industry congress – Krakow"
+    "notes": "Industry congress – Krakow",
+    "seedIndex": 46,
+    "clientSeedIndex": 91,
+    "venueSeedIndex": 87
   },
   {
-    "clientIndex": 32,
-    "venueIndex": 13,
     "guestCount": 70,
-    "notes": "Year-end gala – Edinburgh"
+    "notes": "Year-end gala – Edinburgh",
+    "seedIndex": 47,
+    "clientSeedIndex": 32,
+    "venueSeedIndex": 13
   },
   {
-    "clientIndex": 42,
-    "venueIndex": 33,
     "guestCount": 1064,
-    "notes": "Salon professionnel – Himeji"
+    "notes": "Salon professionnel – Himeji",
+    "seedIndex": 48,
+    "clientSeedIndex": 42,
+    "venueSeedIndex": 33
   },
   {
-    "clientIndex": 71,
-    "venueIndex": 2,
     "guestCount": 34,
-    "notes": "Incentive voyage – Saint-Denis"
+    "notes": "Incentive voyage – Saint-Denis",
+    "seedIndex": 49,
+    "clientSeedIndex": 71,
+    "venueSeedIndex": 2
   },
   {
-    "clientIndex": 47,
-    "venueIndex": 37,
     "guestCount": 38,
-    "notes": "R&D seminar – Chicago"
+    "notes": "R&D seminar – Chicago",
+    "seedIndex": 50,
+    "clientSeedIndex": 47,
+    "venueSeedIndex": 37
   },
   {
-    "clientIndex": 45,
-    "venueIndex": 53,
     "guestCount": 1073,
-    "notes": "Graduation ceremony – Cape Town"
+    "notes": "Graduation ceremony – Cape Town",
+    "seedIndex": 51,
+    "clientSeedIndex": 45,
+    "venueSeedIndex": 53
   },
   {
-    "clientIndex": 79,
-    "venueIndex": 39,
     "guestCount": 40,
-    "notes": "Graduation ceremony – Los Angeles"
+    "notes": "Graduation ceremony – Los Angeles",
+    "seedIndex": 52,
+    "clientSeedIndex": 79,
+    "venueSeedIndex": 39
   },
   {
-    "clientIndex": 22,
-    "venueIndex": 6,
     "guestCount": 300,
-    "notes": "Partners evening – Dubai"
+    "notes": "Partners evening – Dubai",
+    "seedIndex": 53,
+    "clientSeedIndex": 22,
+    "venueSeedIndex": 6
   },
   {
-    "clientIndex": 89,
-    "venueIndex": 27,
     "guestCount": 189,
-    "notes": "Anniversary celebration – Dubai"
+    "notes": "Anniversary celebration – Dubai",
+    "seedIndex": 54,
+    "clientSeedIndex": 89,
+    "venueSeedIndex": 27
   },
   {
-    "clientIndex": 58,
-    "venueIndex": 89,
     "guestCount": 80,
-    "notes": "Dinner –– Saint Petersburg"
+    "notes": "Dinner –– Saint Petersburg",
+    "seedIndex": 55,
+    "clientSeedIndex": 58,
+    "venueSeedIndex": 89
   },
   {
-    "clientIndex": 84,
-    "venueIndex": 49,
     "guestCount": 235,
-    "notes": "Investor presentation – Rio de Janeiro"
+    "notes": "Investor presentation – Rio de Janeiro",
+    "seedIndex": 56,
+    "clientSeedIndex": 84,
+    "venueSeedIndex": 49
   },
   {
-    "clientIndex": 82,
-    "venueIndex": 130,
     "guestCount": 73,
-    "notes": "Investor presentation – Luxembourg City"
+    "notes": "Investor presentation – Luxembourg City",
+    "seedIndex": 57,
+    "clientSeedIndex": 82,
+    "venueSeedIndex": 130
   },
   {
-    "clientIndex": 14,
-    "venueIndex": 66,
     "guestCount": 611,
-    "notes": "Innovation forum – Amsterdam"
+    "notes": "Innovation forum – Amsterdam",
+    "seedIndex": 58,
+    "clientSeedIndex": 14,
+    "venueSeedIndex": 66
   },
   {
-    "clientIndex": 44,
-    "venueIndex": 80,
     "guestCount": 145,
-    "notes": "R&D seminar – Wellington"
+    "notes": "R&D seminar – Wellington",
+    "seedIndex": 59,
+    "clientSeedIndex": 44,
+    "venueSeedIndex": 80
   },
   {
-    "clientIndex": 32,
-    "venueIndex": 11,
     "guestCount": 146,
-    "notes": "R&D seminar – Woodstock"
+    "notes": "R&D seminar – Woodstock",
+    "seedIndex": 60,
+    "clientSeedIndex": 32,
+    "venueSeedIndex": 11
   },
   {
-    "clientIndex": 46,
-    "venueIndex": 110,
     "guestCount": 369,
-    "notes": "Awards ceremony – Reykjavik"
+    "notes": "Awards ceremony – Reykjavik",
+    "seedIndex": 61,
+    "clientSeedIndex": 46,
+    "venueSeedIndex": 110
   },
   {
-    "clientIndex": 84,
-    "venueIndex": 31,
     "guestCount": 834,
-    "notes": "Dinner –– Tokyo"
+    "notes": "Dinner –– Tokyo",
+    "seedIndex": 62,
+    "clientSeedIndex": 84,
+    "venueSeedIndex": 31
   },
   {
-    "clientIndex": 89,
-    "venueIndex": 75,
     "guestCount": 1180,
-    "notes": "Day event RSE – Cairo"
+    "notes": "Day event RSE – Cairo",
+    "seedIndex": 63,
+    "clientSeedIndex": 89,
+    "venueSeedIndex": 75
   },
   {
-    "clientIndex": 86,
-    "venueIndex": 44,
     "guestCount": 66,
-    "notes": "Digital marathon – Marrakech"
+    "notes": "Digital marathon – Marrakech",
+    "seedIndex": 64,
+    "clientSeedIndex": 86,
+    "venueSeedIndex": 44
   },
   {
-    "clientIndex": 38,
-    "venueIndex": 73,
     "guestCount": 496,
-    "notes": "Industry congress – Bangkok"
+    "notes": "Industry congress – Bangkok",
+    "seedIndex": 65,
+    "clientSeedIndex": 38,
+    "venueSeedIndex": 73
   },
   {
-    "clientIndex": 59,
-    "venueIndex": 113,
     "guestCount": 107,
-    "notes": "Kick-off projet – Hong Kong"
+    "notes": "Kick-off projet – Hong Kong",
+    "seedIndex": 66,
+    "clientSeedIndex": 59,
+    "venueSeedIndex": 113
   },
   {
-    "clientIndex": 84,
-    "venueIndex": 21,
     "guestCount": 164,
-    "notes": "Creative workshop – Madrid"
+    "notes": "Creative workshop – Madrid",
+    "seedIndex": 67,
+    "clientSeedIndex": 84,
+    "venueSeedIndex": 21
   },
   {
-    "clientIndex": 86,
-    "venueIndex": 79,
     "guestCount": 98,
-    "notes": "Networking afterwork – Auckland"
+    "notes": "Networking afterwork – Auckland",
+    "seedIndex": 68,
+    "clientSeedIndex": 86,
+    "venueSeedIndex": 79
   },
   {
-    "clientIndex": 60,
-    "venueIndex": 18,
     "guestCount": 699,
-    "notes": "Business lunch – Cologne"
+    "notes": "Business lunch – Cologne",
+    "seedIndex": 69,
+    "clientSeedIndex": 60,
+    "venueSeedIndex": 18
   },
   {
-    "clientIndex": 63,
-    "venueIndex": 102,
     "guestCount": 609,
-    "notes": "Graduation ceremony – Oslo"
+    "notes": "Graduation ceremony – Oslo",
+    "seedIndex": 70,
+    "clientSeedIndex": 63,
+    "venueSeedIndex": 102
   },
   {
-    "clientIndex": 28,
-    "venueIndex": 45,
     "guestCount": 59,
-    "notes": "Exhibition artistique corporate – Casablanca"
+    "notes": "Exhibition artistique corporate – Casablanca",
+    "seedIndex": 71,
+    "clientSeedIndex": 28,
+    "venueSeedIndex": 45
   },
   {
-    "clientIndex": 58,
-    "venueIndex": 34,
     "guestCount": 486,
-    "notes": "Business lunch – Washington DC"
+    "notes": "Business lunch – Washington DC",
+    "seedIndex": 72,
+    "clientSeedIndex": 58,
+    "venueSeedIndex": 34
   },
   {
-    "clientIndex": 96,
-    "venueIndex": 113,
     "guestCount": 936,
-    "notes": "Digital marathon – Hong Kong"
+    "notes": "Digital marathon – Hong Kong",
+    "seedIndex": 73,
+    "clientSeedIndex": 96,
+    "venueSeedIndex": 113
   },
   {
-    "clientIndex": 20,
-    "venueIndex": 121,
     "guestCount": 326,
-    "notes": "Kick-off projet – Dakar"
+    "notes": "Kick-off projet – Dakar",
+    "seedIndex": 74,
+    "clientSeedIndex": 20,
+    "venueSeedIndex": 121
   },
   {
-    "clientIndex": 66,
-    "venueIndex": 124,
     "guestCount": 136,
     "notes": "Graduation ceremony – Budapest",
     "forcedServices": [
@@ -460,245 +533,285 @@
         "label": "Photographer + videographer",
         "qty": 1
       }
-    ]
+    ],
+    "seedIndex": 75,
+    "clientSeedIndex": 66,
+    "venueSeedIndex": 124
   },
   {
-    "clientIndex": 34,
-    "venueIndex": 85,
     "guestCount": 90,
-    "notes": "Corporate festival – Stockholm"
+    "notes": "Corporate festival – Stockholm",
+    "seedIndex": 76,
+    "clientSeedIndex": 34,
+    "venueSeedIndex": 85
   },
   {
-    "clientIndex": 49,
-    "venueIndex": 39,
     "guestCount": 838,
-    "notes": "Industry congress – Los Angeles"
+    "notes": "Industry congress – Los Angeles",
+    "seedIndex": 77,
+    "clientSeedIndex": 49,
+    "venueSeedIndex": 39
   },
   {
-    "clientIndex": 53,
-    "venueIndex": 15,
     "guestCount": 520,
-    "notes": "Industry congress – Munich"
+    "notes": "Industry congress – Munich",
+    "seedIndex": 78,
+    "clientSeedIndex": 53,
+    "venueSeedIndex": 15
   },
   {
-    "clientIndex": 61,
-    "venueIndex": 1,
     "guestCount": 176,
-    "notes": "Summit leadership – Maincy"
+    "notes": "Summit leadership – Maincy",
+    "seedIndex": 79,
+    "clientSeedIndex": 61,
+    "venueSeedIndex": 1
   },
   {
-    "clientIndex": 62,
-    "venueIndex": 56,
     "guestCount": 214,
-    "notes": "Hackathon corporate – Hyderabad"
+    "notes": "Hackathon corporate – Hyderabad",
+    "seedIndex": 80,
+    "clientSeedIndex": 62,
+    "venueSeedIndex": 56
   },
   {
-    "clientIndex": 85,
-    "venueIndex": 103,
     "guestCount": 59,
-    "notes": "General assembly – Helsinki"
+    "notes": "General assembly – Helsinki",
+    "seedIndex": 81,
+    "clientSeedIndex": 85,
+    "venueSeedIndex": 103
   },
   {
-    "clientIndex": 50,
-    "venueIndex": 6,
     "guestCount": 134,
-    "notes": "Year-end gala – Marseille"
+    "notes": "Year-end gala – Marseille",
+    "seedIndex": 82,
+    "clientSeedIndex": 50,
+    "venueSeedIndex": 6
   },
   {
-    "clientIndex": 6,
-    "venueIndex": 66,
     "guestCount": 432,
-    "notes": "Anniversary celebration – Amsterdam"
+    "notes": "Anniversary celebration – Amsterdam",
+    "seedIndex": 83,
+    "clientSeedIndex": 6,
+    "venueSeedIndex": 66
   },
   {
-    "clientIndex": 48,
-    "venueIndex": 71,
     "guestCount": 46,
-    "notes": "Training day – Lisbon"
+    "notes": "Training day – Lisbon",
+    "seedIndex": 84,
+    "clientSeedIndex": 48,
+    "venueSeedIndex": 71
   },
   {
-    "clientIndex": 95,
-    "venueIndex": 13,
     "guestCount": 44,
-    "notes": "Summit leadership – Edinburgh"
+    "notes": "Summit leadership – Edinburgh",
+    "seedIndex": 85,
+    "clientSeedIndex": 95,
+    "venueSeedIndex": 13
   },
   {
-    "clientIndex": 96,
-    "venueIndex": 7,
     "guestCount": 187,
-    "notes": "Graduation ceremony – Paris"
+    "notes": "Graduation ceremony – Paris",
+    "seedIndex": 86,
+    "clientSeedIndex": 96,
+    "venueSeedIndex": 7
   },
   {
-    "clientIndex": 30,
-    "venueIndex": 32,
     "guestCount": 723,
-    "notes": "Industry roundtable – Kyoto"
+    "notes": "Industry roundtable – Kyoto",
+    "seedIndex": 87,
+    "clientSeedIndex": 30,
+    "venueSeedIndex": 32
   },
   {
-    "clientIndex": 89,
-    "venueIndex": 65,
     "guestCount": 258,
-    "notes": "Strategy meeting – Amsterdam"
+    "notes": "Strategy meeting – Amsterdam",
+    "seedIndex": 88,
+    "clientSeedIndex": 89,
+    "venueSeedIndex": 65
   },
   {
-    "clientIndex": 13,
-    "venueIndex": 6,
     "guestCount": 166,
-    "notes": "Dinner –– Marseille"
+    "notes": "Dinner –– Marseille",
+    "seedIndex": 89,
+    "clientSeedIndex": 13,
+    "venueSeedIndex": 6
   },
   {
-    "clientIndex": 9,
-    "venueIndex": 62,
     "guestCount": 74,
-    "notes": "Open day – Playa del Carmen"
+    "notes": "Open day – Playa del Carmen",
+    "seedIndex": 90,
+    "clientSeedIndex": 9,
+    "venueSeedIndex": 62
   },
   {
-    "clientIndex": 72,
-    "venueIndex": 10,
     "guestCount": 389,
-    "notes": "Summit leadership – London"
+    "notes": "Summit leadership – London",
+    "seedIndex": 91,
+    "clientSeedIndex": 72,
+    "venueSeedIndex": 10
   },
   {
-    "clientIndex": 1,
-    "venueIndex": 107,
     "guestCount": 1150,
-    "notes": "Ceremony d'ouverture – Dublin"
+    "notes": "Ceremony d'ouverture – Dublin",
+    "seedIndex": 92,
+    "clientSeedIndex": 1,
+    "venueSeedIndex": 107
   },
   {
-    "clientIndex": 90,
-    "venueIndex": 39,
     "guestCount": 467,
-    "notes": "R&D seminar – Los Angeles"
+    "notes": "R&D seminar – Los Angeles",
+    "seedIndex": 93,
+    "clientSeedIndex": 90,
+    "venueSeedIndex": 39
   },
   {
-    "clientIndex": 78,
-    "venueIndex": 123,
     "guestCount": 185,
-    "notes": "Business lunch – Split"
+    "notes": "Business lunch – Split",
+    "seedIndex": 94,
+    "clientSeedIndex": 78,
+    "venueSeedIndex": 123
   },
   {
-    "clientIndex": 11,
-    "venueIndex": 71,
     "guestCount": 1083,
-    "notes": "Kick-off projet – Lisbon"
+    "notes": "Kick-off projet – Lisbon",
+    "seedIndex": 95,
+    "clientSeedIndex": 11,
+    "venueSeedIndex": 71
   },
   {
-    "clientIndex": 43,
-    "venueIndex": 7,
     "guestCount": 449,
-    "notes": "Ceremony d'ouverture – Paris"
+    "notes": "Ceremony d'ouverture – Paris",
+    "seedIndex": 96,
+    "clientSeedIndex": 43,
+    "venueSeedIndex": 7
   },
   {
-    "clientIndex": 33,
-    "venueIndex": 87,
     "guestCount": 68,
-    "notes": "Hackathon corporate – Krakow"
+    "notes": "Hackathon corporate – Krakow",
+    "seedIndex": 97,
+    "clientSeedIndex": 33,
+    "venueSeedIndex": 87
   },
   {
-    "clientIndex": 66,
-    "venueIndex": 48,
     "guestCount": 172,
-    "notes": "Year-end gala – Melbourne"
+    "notes": "Year-end gala – Melbourne",
+    "seedIndex": 98,
+    "clientSeedIndex": 66,
+    "venueSeedIndex": 48
   },
   {
-    "clientIndex": 88,
-    "venueIndex": 121,
     "guestCount": 208,
-    "notes": "Ceremony d'ouverture – Dakar"
+    "notes": "Ceremony d'ouverture – Dakar",
+    "seedIndex": 99,
+    "clientSeedIndex": 88,
+    "venueSeedIndex": 121
   },
   {
-    "clientIndex": 28,
-    "venueIndex": 103,
     "guestCount": 877,
-    "notes": "Graduation ceremony – Helsinki"
+    "notes": "Graduation ceremony – Helsinki",
+    "seedIndex": 100,
+    "clientSeedIndex": 28,
+    "venueSeedIndex": 103
   },
   {
-    "clientIndex": 70,
-    "venueIndex": 88,
     "guestCount": 860,
-    "notes": "R&D seminar – Warsaw"
+    "notes": "R&D seminar – Warsaw",
+    "seedIndex": 101,
+    "clientSeedIndex": 70,
+    "venueSeedIndex": 88
   },
   {
-    "clientIndex": 34,
-    "venueIndex": 78,
     "guestCount": 44,
-    "notes": "Salon professionnel – Doha"
+    "notes": "Salon professionnel – Doha",
+    "seedIndex": 102,
+    "clientSeedIndex": 34,
+    "venueSeedIndex": 78
   },
   {
-    "clientIndex": 95,
-    "venueIndex": 47,
     "guestCount": 447,
-    "notes": "Gala evening – Sydney"
+    "notes": "Gala evening – Sydney",
+    "seedIndex": 103,
+    "clientSeedIndex": 95,
+    "venueSeedIndex": 47
   },
   {
-    "clientIndex": 12,
-    "venueIndex": 49,
     "guestCount": 44,
-    "notes": "Creative workshop – Rio de Janeiro"
+    "notes": "Creative workshop – Rio de Janeiro",
+    "seedIndex": 104,
+    "clientSeedIndex": 12,
+    "venueSeedIndex": 49
   },
   {
-    "clientIndex": 90,
-    "venueIndex": 32,
     "guestCount": 86,
-    "notes": "Hackathon corporate – Kyoto"
+    "notes": "Hackathon corporate – Kyoto",
+    "seedIndex": 105,
+    "clientSeedIndex": 90,
+    "venueSeedIndex": 32
   },
   {
-    "clientIndex": 81,
-    "venueIndex": 125,
     "guestCount": 980,
-    "notes": "Open day – Budapest"
+    "notes": "Open day – Budapest",
+    "seedIndex": 106,
+    "clientSeedIndex": 81,
+    "venueSeedIndex": 125
   },
   {
-    "clientIndex": 56,
-    "venueIndex": 87,
     "guestCount": 33,
-    "notes": "Innovation forum – Krakow"
+    "notes": "Innovation forum – Krakow",
+    "seedIndex": 107,
+    "clientSeedIndex": 56,
+    "venueSeedIndex": 87
   },
   {
-    "clientIndex": 51,
-    "venueIndex": 125,
     "guestCount": 160,
-    "notes": "Awards ceremony – Budapest"
+    "notes": "Awards ceremony – Budapest",
+    "seedIndex": 108,
+    "clientSeedIndex": 51,
+    "venueSeedIndex": 125
   },
   {
-    "clientIndex": 72,
-    "venueIndex": 77,
     "guestCount": 95,
-    "notes": "Year-end gala – Doha"
+    "notes": "Year-end gala – Doha",
+    "seedIndex": 109,
+    "clientSeedIndex": 72,
+    "venueSeedIndex": 77
   },
   {
-    "clientIndex": 66,
-    "venueIndex": 97,
     "guestCount": 58,
-    "notes": "Kick-off projet – Prague"
+    "notes": "Kick-off projet – Prague",
+    "seedIndex": 110,
+    "clientSeedIndex": 66,
+    "venueSeedIndex": 97
   },
   {
-    "clientIndex": 78,
-    "venueIndex": 25,
     "guestCount": 70,
-    "notes": "Industry congress – Venice"
+    "notes": "Industry congress – Venice",
+    "seedIndex": 111,
+    "clientSeedIndex": 78,
+    "venueSeedIndex": 25
   },
   {
-    "clientIndex": 20,
-    "venueIndex": 61,
     "guestCount": 502,
-    "notes": "Innovation forum – Mexico City"
+    "notes": "Innovation forum – Mexico City",
+    "seedIndex": 112,
+    "clientSeedIndex": 20,
+    "venueSeedIndex": 61
   },
   {
-    "clientIndex": 57,
-    "venueIndex": 120,
     "guestCount": 789,
-    "notes": "Creative workshop – Diamniadio"
+    "notes": "Creative workshop – Diamniadio",
+    "seedIndex": 113,
+    "clientSeedIndex": 57,
+    "venueSeedIndex": 120
   },
   {
-    "clientIndex": 9,
-    "venueIndex": 59,
     "guestCount": 80,
-    "notes": "Salon professionnel – Banff"
+    "notes": "Salon professionnel – Banff",
+    "seedIndex": 114,
+    "clientSeedIndex": 9,
+    "venueSeedIndex": 59
   },
   {
-    "clientIndex": 69,
-    "venueIndex": 57,
     "guestCount": 47,
     "notes": "Cocktail d'inauguration – Jodhpur",
     "forcedServices": [
@@ -707,335 +820,390 @@
         "label": "Jazz orchestra – 5 musicians",
         "qty": 1
       }
-    ]
+    ],
+    "seedIndex": 115,
+    "clientSeedIndex": 69,
+    "venueSeedIndex": 57
   },
   {
-    "clientIndex": 21,
-    "venueIndex": 78,
     "guestCount": 795,
-    "notes": "Evening event VIP clients – Doha"
+    "notes": "Evening event VIP clients – Doha",
+    "seedIndex": 116,
+    "clientSeedIndex": 21,
+    "venueSeedIndex": 78
   },
   {
-    "clientIndex": 15,
-    "venueIndex": 119,
     "guestCount": 1012,
-    "notes": "Dinner –– Al-Ula"
+    "notes": "Dinner –– Al-Ula",
+    "seedIndex": 117,
+    "clientSeedIndex": 15,
+    "venueSeedIndex": 119
   },
   {
-    "clientIndex": 56,
-    "venueIndex": 20,
     "guestCount": 421,
-    "notes": "Evening event VIP clients – Seville"
+    "notes": "Evening event VIP clients – Seville",
+    "seedIndex": 118,
+    "clientSeedIndex": 56,
+    "venueSeedIndex": 20
   },
   {
-    "clientIndex": 3,
-    "venueIndex": 23,
     "guestCount": 73,
-    "notes": "Networking afterwork – Cernobbio"
+    "notes": "Networking afterwork – Cernobbio",
+    "seedIndex": 119,
+    "clientSeedIndex": 3,
+    "venueSeedIndex": 23
   },
   {
-    "clientIndex": 86,
-    "venueIndex": 68,
     "guestCount": 981,
-    "notes": "Atelier design thinking – Zurich"
+    "notes": "Atelier design thinking – Zurich",
+    "seedIndex": 120,
+    "clientSeedIndex": 86,
+    "venueSeedIndex": 68
   },
   {
-    "clientIndex": 35,
-    "venueIndex": 46,
     "guestCount": 593,
-    "notes": "Partners convention – Sydney"
+    "notes": "Partners convention – Sydney",
+    "seedIndex": 121,
+    "clientSeedIndex": 35,
+    "venueSeedIndex": 46
   },
   {
-    "clientIndex": 44,
-    "venueIndex": 104,
     "guestCount": 253,
-    "notes": "Roadshow commercial – Helsinki"
+    "notes": "Roadshow commercial – Helsinki",
+    "seedIndex": 122,
+    "clientSeedIndex": 44,
+    "venueSeedIndex": 104
   },
   {
-    "clientIndex": 52,
-    "venueIndex": 126,
     "guestCount": 72,
-    "notes": "Creative workshop – Accra"
+    "notes": "Creative workshop – Accra",
+    "seedIndex": 123,
+    "clientSeedIndex": 52,
+    "venueSeedIndex": 126
   },
   {
-    "clientIndex": 58,
-    "venueIndex": 22,
     "guestCount": 46,
-    "notes": "Corporate festival – Granada"
+    "notes": "Corporate festival – Granada",
+    "seedIndex": 124,
+    "clientSeedIndex": 58,
+    "venueSeedIndex": 22
   },
   {
-    "clientIndex": 84,
-    "venueIndex": 118,
     "guestCount": 870,
-    "notes": "Training day – Riyadh"
+    "notes": "Training day – Riyadh",
+    "seedIndex": 125,
+    "clientSeedIndex": 84,
+    "venueSeedIndex": 118
   },
   {
-    "clientIndex": 80,
-    "venueIndex": 113,
     "guestCount": 481,
-    "notes": "Convention commerciale – Hong Kong"
+    "notes": "Convention commerciale – Hong Kong",
+    "seedIndex": 126,
+    "clientSeedIndex": 80,
+    "venueSeedIndex": 113
   },
   {
-    "clientIndex": 56,
-    "venueIndex": 124,
     "guestCount": 322,
-    "notes": "Incentive voyage – Budapest"
+    "notes": "Incentive voyage – Budapest",
+    "seedIndex": 127,
+    "clientSeedIndex": 56,
+    "venueSeedIndex": 124
   },
   {
-    "clientIndex": 70,
-    "venueIndex": 3,
     "guestCount": 616,
-    "notes": "Day event RSE – Paris"
+    "notes": "Day event RSE – Paris",
+    "seedIndex": 128,
+    "clientSeedIndex": 70,
+    "venueSeedIndex": 3
   },
   {
-    "clientIndex": 15,
-    "venueIndex": 39,
     "guestCount": 779,
-    "notes": "Ceremony d'ouverture – Los Angeles"
+    "notes": "Ceremony d'ouverture – Los Angeles",
+    "seedIndex": 129,
+    "clientSeedIndex": 15,
+    "venueSeedIndex": 39
   },
   {
-    "clientIndex": 61,
-    "venueIndex": 120,
     "guestCount": 150,
-    "notes": "Graduation ceremony – Diamniadio"
+    "notes": "Graduation ceremony – Diamniadio",
+    "seedIndex": 130,
+    "clientSeedIndex": 61,
+    "venueSeedIndex": 120
   },
   {
-    "clientIndex": 76,
-    "venueIndex": 130,
     "guestCount": 412,
-    "notes": "Outdoor team building – Luxembourg City"
+    "notes": "Outdoor team building – Luxembourg City",
+    "seedIndex": 131,
+    "clientSeedIndex": 76,
+    "venueSeedIndex": 130
   },
   {
-    "clientIndex": 0,
-    "venueIndex": 72,
     "guestCount": 652,
-    "notes": "Dinner –– Queluz"
+    "notes": "Dinner –– Queluz",
+    "seedIndex": 132,
+    "clientSeedIndex": 0,
+    "venueSeedIndex": 72
   },
   {
-    "clientIndex": 68,
-    "venueIndex": 123,
     "guestCount": 886,
-    "notes": "Summit leadership – Split"
+    "notes": "Summit leadership – Split",
+    "seedIndex": 133,
+    "clientSeedIndex": 68,
+    "venueSeedIndex": 123
   },
   {
-    "clientIndex": 41,
-    "venueIndex": 48,
     "guestCount": 66,
-    "notes": "Graduation ceremony – Melbourne"
+    "notes": "Graduation ceremony – Melbourne",
+    "seedIndex": 134,
+    "clientSeedIndex": 41,
+    "venueSeedIndex": 48
   },
   {
-    "clientIndex": 40,
-    "venueIndex": 121,
     "guestCount": 54,
-    "notes": "Anniversary celebration – Dakar"
+    "notes": "Anniversary celebration – Dakar",
+    "seedIndex": 135,
+    "clientSeedIndex": 40,
+    "venueSeedIndex": 121
   },
   {
-    "clientIndex": 16,
-    "venueIndex": 128,
     "guestCount": 51,
-    "notes": "Partners convention – Muscat"
+    "notes": "Partners convention – Muscat",
+    "seedIndex": 136,
+    "clientSeedIndex": 16,
+    "venueSeedIndex": 128
   },
   {
-    "clientIndex": 67,
-    "venueIndex": 116,
     "guestCount": 98,
-    "notes": "Annual seminar – Tunis"
+    "notes": "Annual seminar – Tunis",
+    "seedIndex": 137,
+    "clientSeedIndex": 67,
+    "venueSeedIndex": 116
   },
   {
-    "clientIndex": 9,
-    "venueIndex": 120,
     "guestCount": 51,
-    "notes": "Salon professionnel – Diamniadio"
+    "notes": "Salon professionnel – Diamniadio",
+    "seedIndex": 138,
+    "clientSeedIndex": 9,
+    "venueSeedIndex": 120
   },
   {
-    "clientIndex": 42,
-    "venueIndex": 97,
     "guestCount": 70,
-    "notes": "Corporate festival – Prague"
+    "notes": "Corporate festival – Prague",
+    "seedIndex": 139,
+    "clientSeedIndex": 42,
+    "venueSeedIndex": 97
   },
   {
-    "clientIndex": 79,
-    "venueIndex": 17,
     "guestCount": 70,
-    "notes": "Graduation ceremony – Hamburg"
+    "notes": "Graduation ceremony – Hamburg",
+    "seedIndex": 140,
+    "clientSeedIndex": 79,
+    "venueSeedIndex": 17
   },
   {
-    "clientIndex": 55,
-    "venueIndex": 25,
     "guestCount": 58,
-    "notes": "Open day – Venice"
+    "notes": "Open day – Venice",
+    "seedIndex": 141,
+    "clientSeedIndex": 55,
+    "venueSeedIndex": 25
   },
   {
-    "clientIndex": 41,
-    "venueIndex": 14,
     "guestCount": 127,
-    "notes": "Creative workshop – London"
+    "notes": "Creative workshop – London",
+    "seedIndex": 142,
+    "clientSeedIndex": 41,
+    "venueSeedIndex": 14
   },
   {
-    "clientIndex": 67,
-    "venueIndex": 105,
     "guestCount": 181,
-    "notes": "Atelier design thinking – Vienna"
+    "notes": "Atelier design thinking – Vienna",
+    "seedIndex": 143,
+    "clientSeedIndex": 67,
+    "venueSeedIndex": 105
   },
   {
-    "clientIndex": 10,
-    "venueIndex": 97,
     "guestCount": 110,
-    "notes": "Digital marathon – Prague"
+    "notes": "Digital marathon – Prague",
+    "seedIndex": 144,
+    "clientSeedIndex": 10,
+    "venueSeedIndex": 97
   },
   {
-    "clientIndex": 29,
-    "venueIndex": 118,
     "guestCount": 204,
-    "notes": "Salon professionnel – Riyadh"
+    "notes": "Salon professionnel – Riyadh",
+    "seedIndex": 145,
+    "clientSeedIndex": 29,
+    "venueSeedIndex": 118
   },
   {
-    "clientIndex": 86,
-    "venueIndex": 40,
     "guestCount": 376,
-    "notes": "Awards ceremony – Singapore"
+    "notes": "Awards ceremony – Singapore",
+    "seedIndex": 146,
+    "clientSeedIndex": 86,
+    "venueSeedIndex": 40
   },
   {
-    "clientIndex": 81,
-    "venueIndex": 108,
     "guestCount": 703,
-    "notes": "Salon professionnel – Dublin"
+    "notes": "Salon professionnel – Dublin",
+    "seedIndex": 147,
+    "clientSeedIndex": 81,
+    "venueSeedIndex": 108
   },
   {
-    "clientIndex": 61,
-    "venueIndex": 27,
     "guestCount": 383,
-    "notes": "Graduation ceremony – Dubai"
+    "notes": "Graduation ceremony – Dubai",
+    "seedIndex": 148,
+    "clientSeedIndex": 61,
+    "venueSeedIndex": 27
   },
   {
-    "clientIndex": 89,
-    "venueIndex": 75,
     "guestCount": 72,
-    "notes": "Product launch – Cairo"
+    "notes": "Product launch – Cairo",
+    "seedIndex": 149,
+    "clientSeedIndex": 89,
+    "venueSeedIndex": 75
   },
   {
-    "clientIndex": 77,
-    "venueIndex": 127,
     "guestCount": 317,
-    "notes": "Creative workshop – Muscat"
+    "notes": "Creative workshop – Muscat",
+    "seedIndex": 150,
+    "clientSeedIndex": 77,
+    "venueSeedIndex": 127
   },
   {
-    "clientIndex": 28,
-    "venueIndex": 48,
     "guestCount": 46,
-    "notes": "Digital marathon – Melbourne"
+    "notes": "Digital marathon – Melbourne",
+    "seedIndex": 151,
+    "clientSeedIndex": 28,
+    "venueSeedIndex": 48
   },
   {
-    "clientIndex": 80,
-    "venueIndex": 10,
     "guestCount": 217,
-    "notes": "Dinner –– London"
+    "notes": "Dinner –– London",
+    "seedIndex": 152,
+    "clientSeedIndex": 80,
+    "venueSeedIndex": 10
   },
   {
-    "clientIndex": 93,
-    "venueIndex": 33,
     "guestCount": 121,
-    "notes": "Year-end gala – Himeji"
+    "notes": "Year-end gala – Himeji",
+    "seedIndex": 153,
+    "clientSeedIndex": 93,
+    "venueSeedIndex": 33
   },
   {
-    "clientIndex": 16,
-    "venueIndex": 93,
     "guestCount": 339,
-    "notes": "Exhibition artistique corporate – Ho Chi Minh City"
+    "notes": "Exhibition artistique corporate – Ho Chi Minh City",
+    "seedIndex": 154,
+    "clientSeedIndex": 16,
+    "venueSeedIndex": 93
   },
   {
-    "clientIndex": 61,
-    "venueIndex": 75,
     "guestCount": 139,
-    "notes": "Roadshow commercial – Cairo"
+    "notes": "Roadshow commercial – Cairo",
+    "seedIndex": 155,
+    "clientSeedIndex": 61,
+    "venueSeedIndex": 75
   },
   {
-    "clientIndex": 86,
-    "venueIndex": 101,
     "guestCount": 402,
-    "notes": "Day event RSE – Oslo"
+    "notes": "Day event RSE – Oslo",
+    "seedIndex": 156,
+    "clientSeedIndex": 86,
+    "venueSeedIndex": 101
   },
   {
-    "clientIndex": 68,
-    "venueIndex": 31,
     "guestCount": 1098,
-    "notes": "Business lunch – Tokyo"
+    "notes": "Business lunch – Tokyo",
+    "seedIndex": 157,
+    "clientSeedIndex": 68,
+    "venueSeedIndex": 31
   },
   {
-    "clientIndex": 81,
-    "venueIndex": 95,
     "guestCount": 441,
-    "notes": "Open day – Lagos"
+    "notes": "Open day – Lagos",
+    "seedIndex": 158,
+    "clientSeedIndex": 81,
+    "venueSeedIndex": 95
   },
   {
-    "clientIndex": 78,
-    "venueIndex": 56,
     "guestCount": 809,
-    "notes": "Awards ceremony – Hyderabad"
+    "notes": "Awards ceremony – Hyderabad",
+    "seedIndex": 159,
+    "clientSeedIndex": 78,
+    "venueSeedIndex": 56
   },
   {
-    "clientIndex": 14,
-    "venueIndex": 35,
     "guestCount": 32,
-    "notes": "International conference – New York"
+    "notes": "International conference – New York",
+    "seedIndex": 160,
+    "clientSeedIndex": 14,
+    "venueSeedIndex": 35
   },
   {
-    "clientIndex": 30,
-    "venueIndex": 34,
     "guestCount": 127,
-    "notes": "Anniversary celebration – Washington DC"
+    "notes": "Anniversary celebration – Washington DC",
+    "seedIndex": 161,
+    "clientSeedIndex": 30,
+    "venueSeedIndex": 34
   },
   {
-    "clientIndex": 53,
-    "venueIndex": 25,
     "guestCount": 343,
-    "notes": "Ceremony d'ouverture – Venice"
+    "notes": "Ceremony d'ouverture – Venice",
+    "seedIndex": 162,
+    "clientSeedIndex": 53,
+    "venueSeedIndex": 25
   },
   {
-    "clientIndex": 27,
-    "venueIndex": 113,
     "guestCount": 385,
-    "notes": "Kick-off projet – Hong Kong"
+    "notes": "Kick-off projet – Hong Kong",
+    "seedIndex": 163,
+    "clientSeedIndex": 27,
+    "venueSeedIndex": 113
   },
   {
-    "clientIndex": 69,
-    "venueIndex": 91,
     "guestCount": 625,
-    "notes": "Convention commerciale – Nairobi"
+    "notes": "Convention commerciale – Nairobi",
+    "seedIndex": 164,
+    "clientSeedIndex": 69,
+    "venueSeedIndex": 91
   },
   {
-    "clientIndex": 11,
-    "venueIndex": 54,
     "guestCount": 86,
-    "notes": "Evening event VIP clients – Sun City"
+    "notes": "Evening event VIP clients – Sun City",
+    "seedIndex": 165,
+    "clientSeedIndex": 11,
+    "venueSeedIndex": 54
   },
   {
-    "clientIndex": 72,
-    "venueIndex": 52,
     "guestCount": 150,
-    "notes": "Awards ceremony – Cape Town"
+    "notes": "Awards ceremony – Cape Town",
+    "seedIndex": 166,
+    "clientSeedIndex": 72,
+    "venueSeedIndex": 52
   },
   {
-    "clientIndex": 29,
-    "venueIndex": 84,
     "guestCount": 195,
-    "notes": "Cocktail d'inauguration – La Hulpe"
+    "notes": "Cocktail d'inauguration – La Hulpe",
+    "seedIndex": 167,
+    "clientSeedIndex": 29,
+    "venueSeedIndex": 84
   },
   {
-    "clientIndex": 16,
-    "venueIndex": 64,
     "guestCount": 37,
-    "notes": "Innovation forum – Seoul"
+    "notes": "Innovation forum – Seoul",
+    "seedIndex": 168,
+    "clientSeedIndex": 16,
+    "venueSeedIndex": 64
   },
   {
-    "clientIndex": 45,
-    "venueIndex": 60,
     "guestCount": 50,
-    "notes": "Partners convention – Vancouver"
+    "notes": "Partners convention – Vancouver",
+    "seedIndex": 169,
+    "clientSeedIndex": 45,
+    "venueSeedIndex": 60
   },
   {
-    "clientIndex": 16,
-    "venueIndex": 107,
     "guestCount": 987,
     "notes": "Exhibition artistique corporate – Dublin",
     "forcedServices": [
@@ -1049,155 +1217,180 @@
         "label": "Professional DJ",
         "qty": 1
       }
-    ]
+    ],
+    "seedIndex": 170,
+    "clientSeedIndex": 16,
+    "venueSeedIndex": 107
   },
   {
-    "clientIndex": 46,
-    "venueIndex": 131,
     "guestCount": 36,
-    "notes": "Partners convention – Bourglinster"
+    "notes": "Partners convention – Bourglinster",
+    "seedIndex": 171,
+    "clientSeedIndex": 46,
+    "venueSeedIndex": 131
   },
   {
-    "clientIndex": 93,
-    "venueIndex": 77,
     "guestCount": 990,
-    "notes": "Business lunch – Doha"
+    "notes": "Business lunch – Doha",
+    "seedIndex": 172,
+    "clientSeedIndex": 93,
+    "venueSeedIndex": 77
   },
   {
-    "clientIndex": 54,
-    "venueIndex": 27,
     "guestCount": 75,
-    "notes": "Ceremony d'ouverture – Dubai"
+    "notes": "Ceremony d'ouverture – Dubai",
+    "seedIndex": 173,
+    "clientSeedIndex": 54,
+    "venueSeedIndex": 27
   },
   {
-    "clientIndex": 41,
-    "venueIndex": 37,
     "guestCount": 499,
-    "notes": "Awards ceremony – Chicago"
+    "notes": "Awards ceremony – Chicago",
+    "seedIndex": 174,
+    "clientSeedIndex": 41,
+    "venueSeedIndex": 37
   },
   {
-    "clientIndex": 48,
-    "venueIndex": 75,
     "guestCount": 62,
-    "notes": "Business lunch – Cairo"
+    "notes": "Business lunch – Cairo",
+    "seedIndex": 175,
+    "clientSeedIndex": 48,
+    "venueSeedIndex": 75
   },
   {
-    "clientIndex": 83,
-    "venueIndex": 55,
     "guestCount": 316,
-    "notes": "R&D seminar – Mumbai"
+    "notes": "R&D seminar – Mumbai",
+    "seedIndex": 176,
+    "clientSeedIndex": 83,
+    "venueSeedIndex": 55
   },
   {
-    "clientIndex": 58,
-    "venueIndex": 102,
     "guestCount": 360,
-    "notes": "Training day – Oslo"
+    "notes": "Training day – Oslo",
+    "seedIndex": 177,
+    "clientSeedIndex": 58,
+    "venueSeedIndex": 102
   },
   {
-    "clientIndex": 85,
-    "venueIndex": 65,
     "guestCount": 39,
-    "notes": "Strategy meeting – Amsterdam"
+    "notes": "Strategy meeting – Amsterdam",
+    "seedIndex": 178,
+    "clientSeedIndex": 85,
+    "venueSeedIndex": 65
   },
   {
-    "clientIndex": 10,
-    "venueIndex": 23,
     "guestCount": 36,
-    "notes": "R&D seminar – Cernobbio"
+    "notes": "R&D seminar – Cernobbio",
+    "seedIndex": 179,
+    "clientSeedIndex": 10,
+    "venueSeedIndex": 23
   },
   {
-    "clientIndex": 75,
-    "venueIndex": 84,
     "guestCount": 416,
-    "notes": "Incentive voyage – La Hulpe"
+    "notes": "Incentive voyage – La Hulpe",
+    "seedIndex": 180,
+    "clientSeedIndex": 75,
+    "venueSeedIndex": 84
   },
   {
-    "clientIndex": 76,
-    "venueIndex": 79,
     "guestCount": 153,
-    "notes": "Summit leadership – Auckland"
+    "notes": "Summit leadership – Auckland",
+    "seedIndex": 181,
+    "clientSeedIndex": 76,
+    "venueSeedIndex": 79
   },
   {
-    "clientIndex": 84,
-    "venueIndex": 123,
     "guestCount": 36,
-    "notes": "Networking afterwork – Split"
+    "notes": "Networking afterwork – Split",
+    "seedIndex": 182,
+    "clientSeedIndex": 84,
+    "venueSeedIndex": 123
   },
   {
-    "clientIndex": 35,
-    "venueIndex": 57,
     "guestCount": 485,
-    "notes": "R&D seminar – Jodhpur"
+    "notes": "R&D seminar – Jodhpur",
+    "seedIndex": 183,
+    "clientSeedIndex": 35,
+    "venueSeedIndex": 57
   },
   {
-    "clientIndex": 3,
-    "venueIndex": 46,
     "guestCount": 358,
-    "notes": "Hackathon corporate – Sydney"
+    "notes": "Hackathon corporate – Sydney",
+    "seedIndex": 184,
+    "clientSeedIndex": 3,
+    "venueSeedIndex": 46
   },
   {
-    "clientIndex": 0,
-    "venueIndex": 46,
     "guestCount": 164,
-    "notes": "Cocktail d'inauguration – Sydney"
+    "notes": "Cocktail d'inauguration – Sydney",
+    "seedIndex": 185,
+    "clientSeedIndex": 0,
+    "venueSeedIndex": 46
   },
   {
-    "clientIndex": 94,
-    "venueIndex": 7,
     "guestCount": 885,
-    "notes": "Year-end gala – Paris"
+    "notes": "Year-end gala – Paris",
+    "seedIndex": 186,
+    "clientSeedIndex": 94,
+    "venueSeedIndex": 7
   },
   {
-    "clientIndex": 58,
-    "venueIndex": 87,
     "guestCount": 53,
-    "notes": "General assembly – Krakow"
+    "notes": "General assembly – Krakow",
+    "seedIndex": 187,
+    "clientSeedIndex": 58,
+    "venueSeedIndex": 87
   },
   {
-    "clientIndex": 6,
-    "venueIndex": 39,
     "guestCount": 78,
-    "notes": "General assembly – Los Angeles"
+    "notes": "General assembly – Los Angeles",
+    "seedIndex": 188,
+    "clientSeedIndex": 6,
+    "venueSeedIndex": 39
   },
   {
-    "clientIndex": 34,
-    "venueIndex": 113,
     "guestCount": 426,
-    "notes": "R&D seminar – Hong Kong"
+    "notes": "R&D seminar – Hong Kong",
+    "seedIndex": 189,
+    "clientSeedIndex": 34,
+    "venueSeedIndex": 113
   },
   {
-    "clientIndex": 27,
-    "venueIndex": 131,
     "guestCount": 790,
-    "notes": "Incentive voyage – Bourglinster"
+    "notes": "Incentive voyage – Bourglinster",
+    "seedIndex": 190,
+    "clientSeedIndex": 27,
+    "venueSeedIndex": 131
   },
   {
-    "clientIndex": 67,
-    "venueIndex": 78,
     "guestCount": 130,
-    "notes": "International conference – Doha"
+    "notes": "International conference – Doha",
+    "seedIndex": 191,
+    "clientSeedIndex": 67,
+    "venueSeedIndex": 78
   },
   {
-    "clientIndex": 38,
-    "venueIndex": 54,
     "guestCount": 78,
-    "notes": "Outdoor team building – Sun City"
+    "notes": "Outdoor team building – Sun City",
+    "seedIndex": 192,
+    "clientSeedIndex": 38,
+    "venueSeedIndex": 54
   },
   {
-    "clientIndex": 0,
-    "venueIndex": 127,
     "guestCount": 96,
-    "notes": "R&D seminar – Muscat"
+    "notes": "R&D seminar – Muscat",
+    "seedIndex": 193,
+    "clientSeedIndex": 0,
+    "venueSeedIndex": 127
   },
   {
-    "clientIndex": 64,
-    "venueIndex": 90,
     "guestCount": 55,
-    "notes": "Awards ceremony – Moscow"
+    "notes": "Awards ceremony – Moscow",
+    "seedIndex": 194,
+    "clientSeedIndex": 64,
+    "venueSeedIndex": 90
   },
   {
-    "clientIndex": 58,
-    "venueIndex": 19,
     "guestCount": 914,
     "notes": "Corporate festival – Barcelona",
     "forcedServices": [
@@ -1206,630 +1399,737 @@
         "label": "Professional DJ",
         "qty": 1
       }
-    ]
+    ],
+    "seedIndex": 195,
+    "clientSeedIndex": 58,
+    "venueSeedIndex": 19
   },
   {
-    "clientIndex": 37,
-    "venueIndex": 29,
     "guestCount": 1132,
-    "notes": "Investor presentation – Dubai"
+    "notes": "Investor presentation – Dubai",
+    "seedIndex": 196,
+    "clientSeedIndex": 37,
+    "venueSeedIndex": 29
   },
   {
-    "clientIndex": 88,
-    "venueIndex": 92,
     "guestCount": 749,
-    "notes": "Year-end gala – Nairobi"
+    "notes": "Year-end gala – Nairobi",
+    "seedIndex": 197,
+    "clientSeedIndex": 88,
+    "venueSeedIndex": 92
   },
   {
-    "clientIndex": 75,
-    "venueIndex": 102,
     "guestCount": 130,
-    "notes": "Exhibition artistique corporate – Oslo"
+    "notes": "Exhibition artistique corporate – Oslo",
+    "seedIndex": 198,
+    "clientSeedIndex": 75,
+    "venueSeedIndex": 102
   },
   {
-    "clientIndex": 42,
-    "venueIndex": 43,
     "guestCount": 161,
-    "notes": "Awards ceremony – Marrakech"
+    "notes": "Awards ceremony – Marrakech",
+    "seedIndex": 199,
+    "clientSeedIndex": 42,
+    "venueSeedIndex": 43
   },
   {
-    "clientIndex": 44,
-    "venueIndex": 89,
     "guestCount": 93,
-    "notes": "Cocktail d'inauguration – Saint Petersburg"
+    "notes": "Cocktail d'inauguration – Saint Petersburg",
+    "seedIndex": 200,
+    "clientSeedIndex": 44,
+    "venueSeedIndex": 89
   },
   {
-    "clientIndex": 22,
-    "venueIndex": 39,
     "guestCount": 975,
-    "notes": "Awards ceremony – Los Angeles"
+    "notes": "Awards ceremony – Los Angeles",
+    "seedIndex": 201,
+    "clientSeedIndex": 22,
+    "venueSeedIndex": 39
   },
   {
-    "clientIndex": 87,
-    "venueIndex": 82,
     "guestCount": 980,
-    "notes": "Corporate festival – Istanbul"
+    "notes": "Corporate festival – Istanbul",
+    "seedIndex": 202,
+    "clientSeedIndex": 87,
+    "venueSeedIndex": 82
   },
   {
-    "clientIndex": 80,
-    "venueIndex": 77,
     "guestCount": 67,
-    "notes": "Hackathon corporate – Doha"
+    "notes": "Hackathon corporate – Doha",
+    "seedIndex": 203,
+    "clientSeedIndex": 80,
+    "venueSeedIndex": 77
   },
   {
-    "clientIndex": 39,
-    "venueIndex": 118,
     "guestCount": 32,
-    "notes": "Kick-off projet – Riyadh"
+    "notes": "Kick-off projet – Riyadh",
+    "seedIndex": 204,
+    "clientSeedIndex": 39,
+    "venueSeedIndex": 118
   },
   {
-    "clientIndex": 82,
-    "venueIndex": 23,
     "guestCount": 68,
-    "notes": "Digital marathon – Cernobbio"
+    "notes": "Digital marathon – Cernobbio",
+    "seedIndex": 205,
+    "clientSeedIndex": 82,
+    "venueSeedIndex": 23
   },
   {
-    "clientIndex": 57,
-    "venueIndex": 48,
     "guestCount": 68,
-    "notes": "Corporate festival – Melbourne"
+    "notes": "Corporate festival – Melbourne",
+    "seedIndex": 206,
+    "clientSeedIndex": 57,
+    "venueSeedIndex": 48
   },
   {
-    "clientIndex": 57,
-    "venueIndex": 26,
     "guestCount": 90,
-    "notes": "Roadshow commercial – Milan"
+    "notes": "Roadshow commercial – Milan",
+    "seedIndex": 207,
+    "clientSeedIndex": 57,
+    "venueSeedIndex": 26
   },
   {
-    "clientIndex": 5,
-    "venueIndex": 63,
     "guestCount": 147,
-    "notes": "Kick-off projet – Seoul"
+    "notes": "Kick-off projet – Seoul",
+    "seedIndex": 208,
+    "clientSeedIndex": 5,
+    "venueSeedIndex": 63
   },
   {
-    "clientIndex": 46,
-    "venueIndex": 95,
     "guestCount": 54,
-    "notes": "Creative workshop – Lagos"
+    "notes": "Creative workshop – Lagos",
+    "seedIndex": 209,
+    "clientSeedIndex": 46,
+    "venueSeedIndex": 95
   },
   {
-    "clientIndex": 80,
-    "venueIndex": 85,
     "guestCount": 1194,
-    "notes": "Awards ceremony – Stockholm"
+    "notes": "Awards ceremony – Stockholm",
+    "seedIndex": 210,
+    "clientSeedIndex": 80,
+    "venueSeedIndex": 85
   },
   {
-    "clientIndex": 36,
-    "venueIndex": 64,
     "guestCount": 122,
-    "notes": "Evening event VIP clients – Seoul"
+    "notes": "Evening event VIP clients – Seoul",
+    "seedIndex": 211,
+    "clientSeedIndex": 36,
+    "venueSeedIndex": 64
   },
   {
-    "clientIndex": 44,
-    "venueIndex": 79,
     "guestCount": 817,
-    "notes": "Investor presentation – Auckland"
+    "notes": "Investor presentation – Auckland",
+    "seedIndex": 212,
+    "clientSeedIndex": 44,
+    "venueSeedIndex": 79
   },
   {
-    "clientIndex": 82,
-    "venueIndex": 84,
     "guestCount": 595,
-    "notes": "Outdoor team building – La Hulpe"
+    "notes": "Outdoor team building – La Hulpe",
+    "seedIndex": 213,
+    "clientSeedIndex": 82,
+    "venueSeedIndex": 84
   },
   {
-    "clientIndex": 65,
-    "venueIndex": 92,
     "guestCount": 292,
-    "notes": "Product launch – Nairobi"
+    "notes": "Product launch – Nairobi",
+    "seedIndex": 214,
+    "clientSeedIndex": 65,
+    "venueSeedIndex": 92
   },
   {
-    "clientIndex": 62,
-    "venueIndex": 49,
     "guestCount": 38,
-    "notes": "Networking afterwork – Rio de Janeiro"
+    "notes": "Networking afterwork – Rio de Janeiro",
+    "seedIndex": 215,
+    "clientSeedIndex": 62,
+    "venueSeedIndex": 49
   },
   {
-    "clientIndex": 64,
-    "venueIndex": 9,
     "guestCount": 1111,
-    "notes": "Roadshow commercial – Villeurbanne"
+    "notes": "Roadshow commercial – Villeurbanne",
+    "seedIndex": 216,
+    "clientSeedIndex": 64,
+    "venueSeedIndex": 9
   },
   {
-    "clientIndex": 19,
-    "venueIndex": 41,
     "guestCount": 74,
-    "notes": "Innovation forum – Singapore"
+    "notes": "Innovation forum – Singapore",
+    "seedIndex": 217,
+    "clientSeedIndex": 19,
+    "venueSeedIndex": 41
   },
   {
-    "clientIndex": 52,
-    "venueIndex": 93,
     "guestCount": 158,
-    "notes": "Graduation ceremony – Ho Chi Minh City"
+    "notes": "Graduation ceremony – Ho Chi Minh City",
+    "seedIndex": 218,
+    "clientSeedIndex": 52,
+    "venueSeedIndex": 93
   },
   {
-    "clientIndex": 68,
-    "venueIndex": 61,
     "guestCount": 876,
-    "notes": "Dinner –– Mexico City"
+    "notes": "Dinner –– Mexico City",
+    "seedIndex": 219,
+    "clientSeedIndex": 68,
+    "venueSeedIndex": 61
   },
   {
-    "clientIndex": 59,
-    "venueIndex": 72,
     "guestCount": 147,
-    "notes": "Anniversary celebration – Queluz"
+    "notes": "Anniversary celebration – Queluz",
+    "seedIndex": 220,
+    "clientSeedIndex": 59,
+    "venueSeedIndex": 72
   },
   {
-    "clientIndex": 77,
-    "venueIndex": 35,
     "guestCount": 33,
-    "notes": "Salon professionnel – New York"
+    "notes": "Salon professionnel – New York",
+    "seedIndex": 221,
+    "clientSeedIndex": 77,
+    "venueSeedIndex": 35
   },
   {
-    "clientIndex": 91,
-    "venueIndex": 31,
     "guestCount": 779,
-    "notes": "Creative workshop – Tokyo"
+    "notes": "Creative workshop – Tokyo",
+    "seedIndex": 222,
+    "clientSeedIndex": 91,
+    "venueSeedIndex": 31
   },
   {
-    "clientIndex": 65,
-    "venueIndex": 37,
     "guestCount": 313,
-    "notes": "R&D seminar – Chicago"
+    "notes": "R&D seminar – Chicago",
+    "seedIndex": 223,
+    "clientSeedIndex": 65,
+    "venueSeedIndex": 37
   },
   {
-    "clientIndex": 3,
-    "venueIndex": 106,
     "guestCount": 741,
-    "notes": "Convention commerciale – Vienna"
+    "notes": "Convention commerciale – Vienna",
+    "seedIndex": 224,
+    "clientSeedIndex": 3,
+    "venueSeedIndex": 106
   },
   {
-    "clientIndex": 10,
-    "venueIndex": 95,
     "guestCount": 250,
-    "notes": "Networking afterwork – Lagos"
+    "notes": "Networking afterwork – Lagos",
+    "seedIndex": 225,
+    "clientSeedIndex": 10,
+    "venueSeedIndex": 95
   },
   {
-    "clientIndex": 18,
-    "venueIndex": 35,
     "guestCount": 642,
-    "notes": "International conference – New York"
+    "notes": "International conference – New York",
+    "seedIndex": 226,
+    "clientSeedIndex": 18,
+    "venueSeedIndex": 35
   },
   {
-    "clientIndex": 57,
-    "venueIndex": 1,
     "guestCount": 653,
-    "notes": "Year-end gala – Maincy"
+    "notes": "Year-end gala – Maincy",
+    "seedIndex": 227,
+    "clientSeedIndex": 57,
+    "venueSeedIndex": 1
   },
   {
-    "clientIndex": 14,
-    "venueIndex": 73,
     "guestCount": 744,
-    "notes": "Graduation ceremony – Bangkok"
+    "notes": "Graduation ceremony – Bangkok",
+    "seedIndex": 228,
+    "clientSeedIndex": 14,
+    "venueSeedIndex": 73
   },
   {
-    "clientIndex": 81,
-    "venueIndex": 117,
     "guestCount": 37,
-    "notes": "Awards ceremony – Carthage"
+    "notes": "Awards ceremony – Carthage",
+    "seedIndex": 229,
+    "clientSeedIndex": 81,
+    "venueSeedIndex": 117
   },
   {
-    "clientIndex": 80,
-    "venueIndex": 131,
     "guestCount": 798,
-    "notes": "Atelier design thinking – Bourglinster"
+    "notes": "Atelier design thinking – Bourglinster",
+    "seedIndex": 230,
+    "clientSeedIndex": 80,
+    "venueSeedIndex": 131
   },
   {
-    "clientIndex": 0,
-    "venueIndex": 90,
     "guestCount": 66,
-    "notes": "Graduation ceremony – Moscow"
+    "notes": "Graduation ceremony – Moscow",
+    "seedIndex": 231,
+    "clientSeedIndex": 0,
+    "venueSeedIndex": 90
   },
   {
-    "clientIndex": 67,
-    "venueIndex": 92,
     "guestCount": 63,
-    "notes": "Awards ceremony – Nairobi"
+    "notes": "Awards ceremony – Nairobi",
+    "seedIndex": 232,
+    "clientSeedIndex": 67,
+    "venueSeedIndex": 92
   },
   {
-    "clientIndex": 49,
-    "venueIndex": 120,
     "guestCount": 70,
-    "notes": "International conference – Diamniadio"
+    "notes": "International conference – Diamniadio",
+    "seedIndex": 233,
+    "clientSeedIndex": 49,
+    "venueSeedIndex": 120
   },
   {
-    "clientIndex": 45,
-    "venueIndex": 17,
     "guestCount": 253,
-    "notes": "Summit leadership – Hamburg"
+    "notes": "Summit leadership – Hamburg",
+    "seedIndex": 234,
+    "clientSeedIndex": 45,
+    "venueSeedIndex": 17
   },
   {
-    "clientIndex": 17,
-    "venueIndex": 11,
     "guestCount": 975,
-    "notes": "Summit leadership – Woodstock"
+    "notes": "Summit leadership – Woodstock",
+    "seedIndex": 235,
+    "clientSeedIndex": 17,
+    "venueSeedIndex": 11
   },
   {
-    "clientIndex": 80,
-    "venueIndex": 46,
     "guestCount": 434,
-    "notes": "Outdoor team building – Sydney"
+    "notes": "Outdoor team building – Sydney",
+    "seedIndex": 236,
+    "clientSeedIndex": 80,
+    "venueSeedIndex": 46
   },
   {
-    "clientIndex": 25,
-    "venueIndex": 11,
     "guestCount": 1027,
-    "notes": "Gala evening – Woodstock"
+    "notes": "Gala evening – Woodstock",
+    "seedIndex": 237,
+    "clientSeedIndex": 25,
+    "venueSeedIndex": 11
   },
   {
-    "clientIndex": 69,
-    "venueIndex": 121,
     "guestCount": 297,
-    "notes": "Salon professionnel – Dakar"
+    "notes": "Salon professionnel – Dakar",
+    "seedIndex": 238,
+    "clientSeedIndex": 69,
+    "venueSeedIndex": 121
   },
   {
-    "clientIndex": 6,
-    "venueIndex": 84,
     "guestCount": 947,
-    "notes": "Hackathon corporate – La Hulpe"
+    "notes": "Hackathon corporate – La Hulpe",
+    "seedIndex": 239,
+    "clientSeedIndex": 6,
+    "venueSeedIndex": 84
   },
   {
-    "clientIndex": 95,
-    "venueIndex": 112,
     "guestCount": 454,
-    "notes": "Anniversary celebration – Hong Kong"
+    "notes": "Anniversary celebration – Hong Kong",
+    "seedIndex": 240,
+    "clientSeedIndex": 95,
+    "venueSeedIndex": 112
   },
   {
-    "clientIndex": 66,
-    "venueIndex": 68,
     "guestCount": 134,
-    "notes": "Year-end gala – Zurich"
+    "notes": "Year-end gala – Zurich",
+    "seedIndex": 241,
+    "clientSeedIndex": 66,
+    "venueSeedIndex": 68
   },
   {
-    "clientIndex": 69,
-    "venueIndex": 75,
     "guestCount": 367,
-    "notes": "Corporate festival – Cairo"
+    "notes": "Corporate festival – Cairo",
+    "seedIndex": 242,
+    "clientSeedIndex": 69,
+    "venueSeedIndex": 75
   },
   {
-    "clientIndex": 39,
-    "venueIndex": 114,
     "guestCount": 285,
-    "notes": "Evening event VIP clients – Bucharest"
+    "notes": "Evening event VIP clients – Bucharest",
+    "seedIndex": 243,
+    "clientSeedIndex": 39,
+    "venueSeedIndex": 114
   },
   {
-    "clientIndex": 57,
-    "venueIndex": 10,
     "guestCount": 69,
-    "notes": "Summit leadership – London"
+    "notes": "Summit leadership – London",
+    "seedIndex": 244,
+    "clientSeedIndex": 57,
+    "venueSeedIndex": 10
   },
   {
-    "clientIndex": 9,
-    "venueIndex": 103,
     "guestCount": 182,
-    "notes": "Strategy meeting – Helsinki"
+    "notes": "Strategy meeting – Helsinki",
+    "seedIndex": 245,
+    "clientSeedIndex": 9,
+    "venueSeedIndex": 103
   },
   {
-    "clientIndex": 77,
-    "venueIndex": 112,
     "guestCount": 320,
-    "notes": "International conference – Hong Kong"
+    "notes": "International conference – Hong Kong",
+    "seedIndex": 246,
+    "clientSeedIndex": 77,
+    "venueSeedIndex": 112
   },
   {
-    "clientIndex": 46,
-    "venueIndex": 98,
     "guestCount": 1195,
-    "notes": "Atelier design thinking – Prague"
+    "notes": "Atelier design thinking – Prague",
+    "seedIndex": 247,
+    "clientSeedIndex": 46,
+    "venueSeedIndex": 98
   },
   {
-    "clientIndex": 47,
-    "venueIndex": 95,
     "guestCount": 493,
-    "notes": "Kick-off projet – Lagos"
+    "notes": "Kick-off projet – Lagos",
+    "seedIndex": 248,
+    "clientSeedIndex": 47,
+    "venueSeedIndex": 95
   },
   {
-    "clientIndex": 50,
-    "venueIndex": 80,
     "guestCount": 690,
-    "notes": "Hackathon corporate – Wellington"
+    "notes": "Hackathon corporate – Wellington",
+    "seedIndex": 249,
+    "clientSeedIndex": 50,
+    "venueSeedIndex": 80
   },
   {
-    "clientIndex": 66,
-    "venueIndex": 99,
     "guestCount": 113,
-    "notes": "Day event RSE – Copenhagen"
+    "notes": "Day event RSE – Copenhagen",
+    "seedIndex": 250,
+    "clientSeedIndex": 66,
+    "venueSeedIndex": 99
   },
   {
-    "clientIndex": 78,
-    "venueIndex": 73,
     "guestCount": 575,
-    "notes": "Ceremony d'ouverture – Bangkok"
+    "notes": "Ceremony d'ouverture – Bangkok",
+    "seedIndex": 251,
+    "clientSeedIndex": 78,
+    "venueSeedIndex": 73
   },
   {
-    "clientIndex": 22,
-    "venueIndex": 113,
     "guestCount": 363,
-    "notes": "Year-end gala – Hong Kong"
+    "notes": "Year-end gala – Hong Kong",
+    "seedIndex": 252,
+    "clientSeedIndex": 22,
+    "venueSeedIndex": 113
   },
   {
-    "clientIndex": 90,
-    "venueIndex": 16,
     "guestCount": 117,
-    "notes": "Day event RSE – Berlin"
+    "notes": "Day event RSE – Berlin",
+    "seedIndex": 253,
+    "clientSeedIndex": 90,
+    "venueSeedIndex": 16
   },
   {
-    "clientIndex": 46,
-    "venueIndex": 130,
     "guestCount": 742,
-    "notes": "Networking afterwork – Luxembourg City"
+    "notes": "Networking afterwork – Luxembourg City",
+    "seedIndex": 254,
+    "clientSeedIndex": 46,
+    "venueSeedIndex": 130
   },
   {
-    "clientIndex": 3,
-    "venueIndex": 92,
     "guestCount": 127,
-    "notes": "Day event RSE – Nairobi"
+    "notes": "Day event RSE – Nairobi",
+    "seedIndex": 255,
+    "clientSeedIndex": 3,
+    "venueSeedIndex": 92
   },
   {
-    "clientIndex": 78,
-    "venueIndex": 22,
     "guestCount": 1038,
-    "notes": "Awards ceremony – Granada"
+    "notes": "Awards ceremony – Granada",
+    "seedIndex": 256,
+    "clientSeedIndex": 78,
+    "venueSeedIndex": 22
   },
   {
-    "clientIndex": 52,
-    "venueIndex": 18,
     "guestCount": 960,
-    "notes": "Outdoor team building – Cologne"
+    "notes": "Outdoor team building – Cologne",
+    "seedIndex": 257,
+    "clientSeedIndex": 52,
+    "venueSeedIndex": 18
   },
   {
-    "clientIndex": 87,
-    "venueIndex": 88,
     "guestCount": 150,
-    "notes": "Outdoor team building – Warsaw"
+    "notes": "Outdoor team building – Warsaw",
+    "seedIndex": 258,
+    "clientSeedIndex": 87,
+    "venueSeedIndex": 88
   },
   {
-    "clientIndex": 55,
-    "venueIndex": 128,
     "guestCount": 146,
-    "notes": "Convention commerciale – Muscat"
+    "notes": "Convention commerciale – Muscat",
+    "seedIndex": 259,
+    "clientSeedIndex": 55,
+    "venueSeedIndex": 128
   },
   {
-    "clientIndex": 20,
-    "venueIndex": 82,
     "guestCount": 52,
-    "notes": "Networking afterwork – Istanbul"
+    "notes": "Networking afterwork – Istanbul",
+    "seedIndex": 260,
+    "clientSeedIndex": 20,
+    "venueSeedIndex": 82
   },
   {
-    "clientIndex": 32,
-    "venueIndex": 50,
     "guestCount": 47,
-    "notes": "Day event RSE – São Paulo"
+    "notes": "Day event RSE – São Paulo",
+    "seedIndex": 261,
+    "clientSeedIndex": 32,
+    "venueSeedIndex": 50
   },
   {
-    "clientIndex": 64,
-    "venueIndex": 43,
     "guestCount": 287,
-    "notes": "Partners convention – Marrakech"
+    "notes": "Partners convention – Marrakech",
+    "seedIndex": 262,
+    "clientSeedIndex": 64,
+    "venueSeedIndex": 43
   },
   {
-    "clientIndex": 72,
-    "venueIndex": 10,
     "guestCount": 85,
-    "notes": "Product launch – London"
+    "notes": "Product launch – London",
+    "seedIndex": 263,
+    "clientSeedIndex": 72,
+    "venueSeedIndex": 10
   },
   {
-    "clientIndex": 73,
-    "venueIndex": 106,
     "guestCount": 454,
-    "notes": "Digital marathon – Vienna"
+    "notes": "Digital marathon – Vienna",
+    "seedIndex": 264,
+    "clientSeedIndex": 73,
+    "venueSeedIndex": 106
   },
   {
-    "clientIndex": 82,
-    "venueIndex": 77,
     "guestCount": 804,
-    "notes": "Industry roundtable – Doha"
+    "notes": "Industry roundtable – Doha",
+    "seedIndex": 265,
+    "clientSeedIndex": 82,
+    "venueSeedIndex": 77
   },
   {
-    "clientIndex": 9,
-    "venueIndex": 15,
     "guestCount": 133,
-    "notes": "General assembly – Munich"
+    "notes": "General assembly – Munich",
+    "seedIndex": 266,
+    "clientSeedIndex": 9,
+    "venueSeedIndex": 15
   },
   {
-    "clientIndex": 43,
-    "venueIndex": 36,
     "guestCount": 120,
-    "notes": "Corporate festival – Los Angeles"
+    "notes": "Corporate festival – Los Angeles",
+    "seedIndex": 267,
+    "clientSeedIndex": 43,
+    "venueSeedIndex": 36
   },
   {
-    "clientIndex": 47,
-    "venueIndex": 131,
     "guestCount": 36,
-    "notes": "Day event RSE – Bourglinster"
+    "notes": "Day event RSE – Bourglinster",
+    "seedIndex": 268,
+    "clientSeedIndex": 47,
+    "venueSeedIndex": 131
   },
   {
-    "clientIndex": 34,
-    "venueIndex": 115,
     "guestCount": 797,
-    "notes": "Graduation ceremony – Sinaia"
+    "notes": "Graduation ceremony – Sinaia",
+    "seedIndex": 269,
+    "clientSeedIndex": 34,
+    "venueSeedIndex": 115
   },
   {
-    "clientIndex": 78,
-    "venueIndex": 107,
     "guestCount": 367,
-    "notes": "Graduation ceremony – Dublin"
+    "notes": "Graduation ceremony – Dublin",
+    "seedIndex": 270,
+    "clientSeedIndex": 78,
+    "venueSeedIndex": 107
   },
   {
-    "clientIndex": 24,
-    "venueIndex": 40,
     "guestCount": 815,
-    "notes": "Ceremony d'ouverture – Singapore"
+    "notes": "Ceremony d'ouverture – Singapore",
+    "seedIndex": 271,
+    "clientSeedIndex": 24,
+    "venueSeedIndex": 40
   },
   {
-    "clientIndex": 2,
-    "venueIndex": 23,
     "guestCount": 323,
-    "notes": "Investor presentation – Cernobbio"
+    "notes": "Investor presentation – Cernobbio",
+    "seedIndex": 272,
+    "clientSeedIndex": 2,
+    "venueSeedIndex": 23
   },
   {
-    "clientIndex": 6,
-    "venueIndex": 12,
     "guestCount": 61,
-    "notes": "Creative workshop – London"
+    "notes": "Creative workshop – London",
+    "seedIndex": 273,
+    "clientSeedIndex": 6,
+    "venueSeedIndex": 12
   },
   {
-    "clientIndex": 13,
-    "venueIndex": 110,
     "guestCount": 387,
-    "notes": "Outdoor team building – Reykjavik"
+    "notes": "Outdoor team building – Reykjavik",
+    "seedIndex": 274,
+    "clientSeedIndex": 13,
+    "venueSeedIndex": 110
   },
   {
-    "clientIndex": 5,
-    "venueIndex": 102,
     "guestCount": 299,
-    "notes": "Convention commerciale – Oslo"
+    "notes": "Convention commerciale – Oslo",
+    "seedIndex": 275,
+    "clientSeedIndex": 5,
+    "venueSeedIndex": 102
   },
   {
-    "clientIndex": 9,
-    "venueIndex": 98,
     "guestCount": 58,
-    "notes": "Tournoi sportif inter-entreprises – Prague"
+    "notes": "Tournoi sportif inter-entreprises – Prague",
+    "seedIndex": 276,
+    "clientSeedIndex": 9,
+    "venueSeedIndex": 98
   },
   {
-    "clientIndex": 16,
-    "venueIndex": 24,
     "guestCount": 373,
-    "notes": "Investor presentation – Rome"
+    "notes": "Investor presentation – Rome",
+    "seedIndex": 277,
+    "clientSeedIndex": 16,
+    "venueSeedIndex": 24
   },
   {
-    "clientIndex": 96,
-    "venueIndex": 36,
     "guestCount": 68,
-    "notes": "Gala evening – Los Angeles"
+    "notes": "Gala evening – Los Angeles",
+    "seedIndex": 278,
+    "clientSeedIndex": 96,
+    "venueSeedIndex": 36
   },
   {
-    "clientIndex": 5,
-    "venueIndex": 9,
     "guestCount": 1031,
-    "notes": "Outdoor team building – Villeurbanne"
+    "notes": "Outdoor team building – Villeurbanne",
+    "seedIndex": 279,
+    "clientSeedIndex": 5,
+    "venueSeedIndex": 9
   },
   {
-    "clientIndex": 19,
-    "venueIndex": 131,
     "guestCount": 666,
-    "notes": "Outdoor team building – Bourglinster"
+    "notes": "Outdoor team building – Bourglinster",
+    "seedIndex": 280,
+    "clientSeedIndex": 19,
+    "venueSeedIndex": 131
   },
   {
-    "clientIndex": 78,
-    "venueIndex": 76,
     "guestCount": 1045,
-    "notes": "Partners convention – Giza"
+    "notes": "Partners convention – Giza",
+    "seedIndex": 281,
+    "clientSeedIndex": 78,
+    "venueSeedIndex": 76
   },
   {
-    "clientIndex": 90,
-    "venueIndex": 76,
     "guestCount": 31,
-    "notes": "Industry roundtable – Giza"
+    "notes": "Industry roundtable – Giza",
+    "seedIndex": 282,
+    "clientSeedIndex": 90,
+    "venueSeedIndex": 76
   },
   {
-    "clientIndex": 53,
-    "venueIndex": 78,
     "guestCount": 140,
-    "notes": "Product launch – Doha"
+    "notes": "Product launch – Doha",
+    "seedIndex": 283,
+    "clientSeedIndex": 53,
+    "venueSeedIndex": 78
   },
   {
-    "clientIndex": 92,
-    "venueIndex": 13,
     "guestCount": 1144,
-    "notes": "Partners convention – Edinburgh"
+    "notes": "Partners convention – Edinburgh",
+    "seedIndex": 284,
+    "clientSeedIndex": 92,
+    "venueSeedIndex": 13
   },
   {
-    "clientIndex": 22,
-    "venueIndex": 31,
     "guestCount": 500,
-    "notes": "Desert gala – Dubai"
+    "notes": "Desert gala – Dubai",
+    "seedIndex": 285,
+    "clientSeedIndex": 22,
+    "venueSeedIndex": 31
   },
   {
-    "clientIndex": 56,
-    "venueIndex": 80,
     "guestCount": 920,
-    "notes": "Training day – Wellington"
+    "notes": "Training day – Wellington",
+    "seedIndex": 286,
+    "clientSeedIndex": 56,
+    "venueSeedIndex": 80
   },
   {
-    "clientIndex": 94,
-    "venueIndex": 15,
     "guestCount": 832,
-    "notes": "Outdoor team building – Munich"
+    "notes": "Outdoor team building – Munich",
+    "seedIndex": 287,
+    "clientSeedIndex": 94,
+    "venueSeedIndex": 15
   },
   {
-    "clientIndex": 67,
-    "venueIndex": 96,
     "guestCount": 472,
-    "notes": "Corporate festival – Abuja"
+    "notes": "Corporate festival – Abuja",
+    "seedIndex": 288,
+    "clientSeedIndex": 67,
+    "venueSeedIndex": 96
   },
   {
-    "clientIndex": 86,
-    "venueIndex": 67,
     "guestCount": 326,
-    "notes": "Digital marathon – Geneva"
+    "notes": "Digital marathon – Geneva",
+    "seedIndex": 289,
+    "clientSeedIndex": 86,
+    "venueSeedIndex": 67
   },
   {
-    "clientIndex": 28,
-    "venueIndex": 76,
     "guestCount": 824,
-    "notes": "Creative workshop – Giza"
+    "notes": "Creative workshop – Giza",
+    "seedIndex": 290,
+    "clientSeedIndex": 28,
+    "venueSeedIndex": 76
   },
   {
-    "clientIndex": 44,
-    "venueIndex": 70,
     "guestCount": 888,
-    "notes": "Creative workshop – Buenos Aires"
+    "notes": "Creative workshop – Buenos Aires",
+    "seedIndex": 291,
+    "clientSeedIndex": 44,
+    "venueSeedIndex": 70
   },
   {
-    "clientIndex": 44,
-    "venueIndex": 37,
     "guestCount": 854,
-    "notes": "Creative workshop – Chicago"
+    "notes": "Creative workshop – Chicago",
+    "seedIndex": 292,
+    "clientSeedIndex": 44,
+    "venueSeedIndex": 37
   },
   {
-    "clientIndex": 83,
-    "venueIndex": 65,
     "guestCount": 475,
-    "notes": "Industry roundtable – Amsterdam"
+    "notes": "Industry roundtable – Amsterdam",
+    "seedIndex": 293,
+    "clientSeedIndex": 83,
+    "venueSeedIndex": 65
   },
   {
-    "clientIndex": 17,
-    "venueIndex": 27,
     "guestCount": 77,
-    "notes": "Digital marathon – Dubai"
+    "notes": "Digital marathon – Dubai",
+    "seedIndex": 294,
+    "clientSeedIndex": 17,
+    "venueSeedIndex": 27
   },
   {
-    "clientIndex": 85,
-    "venueIndex": 57,
     "guestCount": 838,
-    "notes": "Networking afterwork – Jodhpur"
+    "notes": "Networking afterwork – Jodhpur",
+    "seedIndex": 295,
+    "clientSeedIndex": 85,
+    "venueSeedIndex": 57
   },
   {
-    "clientIndex": 12,
-    "venueIndex": 35,
     "guestCount": 916,
-    "notes": "Annual seminar – New York"
+    "notes": "Annual seminar – New York",
+    "seedIndex": 296,
+    "clientSeedIndex": 12,
+    "venueSeedIndex": 35
   },
   {
-    "clientIndex": 61,
-    "venueIndex": 51,
     "guestCount": 116,
-    "notes": "Creative workshop – Rio de Janeiro"
+    "notes": "Creative workshop – Rio de Janeiro",
+    "seedIndex": 297,
+    "clientSeedIndex": 61,
+    "venueSeedIndex": 51
   },
   {
-    "clientIndex": 68,
-    "venueIndex": 9,
     "guestCount": 537,
-    "notes": "Innovation forum – Villeurbanne"
+    "notes": "Innovation forum – Villeurbanne",
+    "seedIndex": 298,
+    "clientSeedIndex": 68,
+    "venueSeedIndex": 9
   },
   {
-    "clientIndex": 63,
-    "venueIndex": 47,
     "guestCount": 32,
-    "notes": "Creative workshop – Sydney"
+    "notes": "Creative workshop – Sydney",
+    "seedIndex": 299,
+    "clientSeedIndex": 63,
+    "venueSeedIndex": 47
   }
 ]

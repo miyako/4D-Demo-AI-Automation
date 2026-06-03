@@ -14,7 +14,8 @@
       "capacity": 3700,
       "rentalPrice": 15000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 0
   },
   {
     "name": "Château de Vaux-le-Vicomte",
@@ -31,7 +32,8 @@
       "capacity": 2000,
       "rentalPrice": 6000
     },
-    "indoorOption": null
+    "indoorOption": null,
+    "seedIndex": 1
   },
   {
     "name": "Stade de France – Espace Prestige",
@@ -48,7 +50,8 @@
       "capacity": 5000,
       "rentalPrice": 20000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 2
   },
   {
     "name": "Musée d'Orsay – Grande Nef",
@@ -69,7 +72,8 @@
       "name": "Terrasse extérieure",
       "capacity": 266,
       "rentalPrice": 500
-    }
+    },
+    "seedIndex": 3
   },
   {
     "name": "Domaine de Chantilly",
@@ -90,7 +94,8 @@
       "name": "Espace extérieur",
       "capacity": 1500,
       "rentalPrice": 4500
-    }
+    },
+    "seedIndex": 4
   },
   {
     "name": "Le Grand Palais Éphémère",
@@ -107,7 +112,8 @@
       "capacity": 4000,
       "rentalPrice": 16000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 5
   },
   {
     "name": "Palais du Pharo",
@@ -128,7 +134,8 @@
       "name": "Espace extérieur",
       "capacity": 1200,
       "rentalPrice": 3500
-    }
+    },
+    "seedIndex": 6
   },
   {
     "name": "Parc Floral de Paris",
@@ -145,7 +152,8 @@
       "capacity": 3000,
       "rentalPrice": 12000
     },
-    "indoorOption": null
+    "indoorOption": null,
+    "seedIndex": 7
   },
   {
     "name": "Château Cos d'Estournel",
@@ -166,7 +174,8 @@
       "name": "Reception hall",
       "capacity": 100,
       "rentalPrice": 500
-    }
+    },
+    "seedIndex": 8
   },
   {
     "name": "Zénith de Lyon",
@@ -183,7 +192,8 @@
       "capacity": 6000,
       "rentalPrice": 30000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 9
   },
   {
     "name": "The Shard – Shangri-La Ballroom",
@@ -204,7 +214,8 @@
       "name": "Jardin",
       "capacity": 166,
       "rentalPrice": 500
-    }
+    },
+    "seedIndex": 10
   },
   {
     "name": "Blenheim Palace",
@@ -225,7 +236,8 @@
       "name": "Espace extérieur",
       "capacity": 2500,
       "rentalPrice": 10000
-    }
+    },
+    "seedIndex": 11
   },
   {
     "name": "The O2 Arena – Indigo",
@@ -242,7 +254,8 @@
       "capacity": 2350,
       "rentalPrice": 9500
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 12
   },
   {
     "name": "Edinburgh Castle – Esplanade",
@@ -263,7 +276,8 @@
       "name": "Reception hall",
       "capacity": 375,
       "rentalPrice": 1500
-    }
+    },
+    "seedIndex": 13
   },
   {
     "name": "Kensington Palace – Orangery",
@@ -280,7 +294,8 @@
       "capacity": 250,
       "rentalPrice": 1000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 14
   },
   {
     "name": "BMW Welt",
@@ -301,7 +316,8 @@
       "name": "Terrasse extérieure",
       "capacity": 833,
       "rentalPrice": 2000
-    }
+    },
+    "seedIndex": 15
   },
   {
     "name": "Potsdamer Platz – Event Hall",
@@ -322,7 +338,8 @@
       "name": "Terrasse extérieure",
       "capacity": 600,
       "rentalPrice": 1500
-    }
+    },
+    "seedIndex": 16
   },
   {
     "name": "Hamburgische Staatsoper",
@@ -343,7 +360,8 @@
       "name": "Terrasse extérieure",
       "capacity": 558,
       "rentalPrice": 1500
-    }
+    },
+    "seedIndex": 17
   },
   {
     "name": "Rhine Riverbank Pavilion",
@@ -364,7 +382,8 @@
       "name": "Reception hall",
       "capacity": 300,
       "rentalPrice": 1000
-    }
+    },
+    "seedIndex": 18
   },
   {
     "name": "Palau de la Música Catalana",
@@ -385,7 +404,8 @@
       "name": "Jardin",
       "capacity": 733,
       "rentalPrice": 2000
-    }
+    },
+    "seedIndex": 19
   },
   {
     "name": "Real Alcázar de Sevilla – Jardines",
@@ -402,7 +422,8 @@
       "capacity": 800,
       "rentalPrice": 2500
     },
-    "indoorOption": null
+    "indoorOption": null,
+    "seedIndex": 20
   },
   {
     "name": "IFEMA Madrid – Pabellón de Cristal",
@@ -423,7 +444,8 @@
       "name": "Espace extérieur",
       "capacity": 5000,
       "rentalPrice": 20000
-    }
+    },
+    "seedIndex": 21
   },
   {
     "name": "Alhambra – Patio de los Leones",
@@ -444,7 +466,8 @@
       "name": "Reception hall",
       "capacity": 150,
       "rentalPrice": 500
-    }
+    },
+    "seedIndex": 22
   },
   {
     "name": "Villa d'Este – Terrace Garden",
@@ -465,7 +488,8 @@
       "name": "Reception hall",
       "capacity": 175,
       "rentalPrice": 500
-    }
+    },
+    "seedIndex": 23
   },
   {
     "name": "Colosseo – Area Esterna",
@@ -482,7 +506,8 @@
       "capacity": 1000,
       "rentalPrice": 3000
     },
-    "indoorOption": null
+    "indoorOption": null,
+    "seedIndex": 24
   },
   {
     "name": "Palazzo Ducale – Sala del Maggior Consiglio",
@@ -503,7 +528,8 @@
       "name": "Jardin",
       "capacity": 400,
       "rentalPrice": 1000
-    }
+    },
+    "seedIndex": 25
   },
   {
     "name": "Teatro alla Scala",
@@ -520,7 +546,8 @@
       "capacity": 2030,
       "rentalPrice": 8000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 26
   },
   {
     "name": "Atlantis The Palm – Grand Ballroom",
@@ -537,7 +564,8 @@
       "capacity": 3000,
       "rentalPrice": 12000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 27
   },
   {
     "name": "Burj Al Arab – Al Falak Ballroom",
@@ -554,7 +582,8 @@
       "capacity": 800,
       "rentalPrice": 2500
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 28
   },
   {
     "name": "Desert Safari Camp – Al Marmoom",
@@ -575,7 +604,8 @@
       "name": "Reception hall",
       "capacity": 125,
       "rentalPrice": 500
-    }
+    },
+    "seedIndex": 29
   },
   {
     "name": "Yas Island – Ferrari World Piazza",
@@ -596,7 +626,8 @@
       "name": "Reception hall",
       "capacity": 500,
       "rentalPrice": 2000
-    }
+    },
+    "seedIndex": 30
   },
   {
     "name": "Tokyo International Forum",
@@ -613,7 +644,8 @@
       "capacity": 5000,
       "rentalPrice": 20000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 31
   },
   {
     "name": "Kyoto International Conference Center",
@@ -630,7 +662,8 @@
       "capacity": 2000,
       "rentalPrice": 6000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 32
   },
   {
     "name": "Himeji Castle – Inner Bailey",
@@ -647,7 +680,8 @@
       "capacity": 600,
       "rentalPrice": 2000
     },
-    "indoorOption": null
+    "indoorOption": null,
+    "seedIndex": 33
   },
   {
     "name": "The Library of Congress – Great Hall",
@@ -664,7 +698,8 @@
       "capacity": 1200,
       "rentalPrice": 3500
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 34
   },
   {
     "name": "The Metropolitan Museum – Temple of Dendur",
@@ -681,7 +716,8 @@
       "capacity": 800,
       "rentalPrice": 2500
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 35
   },
   {
     "name": "Hollywood Bowl",
@@ -698,7 +734,8 @@
       "capacity": 17500,
       "rentalPrice": 87500
     },
-    "indoorOption": null
+    "indoorOption": null,
+    "seedIndex": 36
   },
   {
     "name": "Navy Pier – Grand Ballroom",
@@ -715,7 +752,8 @@
       "capacity": 2700,
       "rentalPrice": 11000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 37
   },
   {
     "name": "The Breakers – Ballroom",
@@ -736,7 +774,8 @@
       "name": "Jardin",
       "capacity": 300,
       "rentalPrice": 1000
-    }
+    },
+    "seedIndex": 38
   },
   {
     "name": "Dolby Theatre",
@@ -753,7 +792,8 @@
       "capacity": 3400,
       "rentalPrice": 13500
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 39
   },
   {
     "name": "Marina Bay Sands – Sands Expo",
@@ -774,7 +814,8 @@
       "name": "Jardin",
       "capacity": 15000,
       "rentalPrice": 37500
-    }
+    },
+    "seedIndex": 40
   },
   {
     "name": "Capella Singapore – Grand Ballroom",
@@ -791,7 +832,8 @@
       "capacity": 750,
       "rentalPrice": 2000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 41
   },
   {
     "name": "Gardens by the Bay – Supertree Grove",
@@ -808,7 +850,8 @@
       "capacity": 3000,
       "rentalPrice": 12000
     },
-    "indoorOption": null
+    "indoorOption": null,
+    "seedIndex": 42
   },
   {
     "name": "Palais Amani – Riad Gardens",
@@ -829,7 +872,8 @@
       "name": "Reception hall",
       "capacity": 75,
       "rentalPrice": 500
-    }
+    },
+    "seedIndex": 43
   },
   {
     "name": "Palmeraie Golf Palace – Marquise",
@@ -846,7 +890,8 @@
       "capacity": 1000,
       "rentalPrice": 3000
     },
-    "indoorOption": null
+    "indoorOption": null,
+    "seedIndex": 44
   },
   {
     "name": "Espace Sidi Mohammed Ben Abdallah",
@@ -863,7 +908,8 @@
       "capacity": 2500,
       "rentalPrice": 10000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 45
   },
   {
     "name": "Sydney Opera House – Concert Hall",
@@ -880,7 +926,8 @@
       "capacity": 2679,
       "rentalPrice": 10500
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 46
   },
   {
     "name": "Royal Botanic Garden – Mrs Macquaries Point",
@@ -901,7 +948,8 @@
       "name": "Reception hall",
       "capacity": 1250,
       "rentalPrice": 5000
-    }
+    },
+    "seedIndex": 47
   },
   {
     "name": "Crown Melbourne – Grand Ballroom",
@@ -918,7 +966,8 @@
       "capacity": 2000,
       "rentalPrice": 6000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 48
   },
   {
     "name": "Museu do Amanhã – Esplanada",
@@ -935,7 +984,8 @@
       "capacity": 3000,
       "rentalPrice": 12000
     },
-    "indoorOption": null
+    "indoorOption": null,
+    "seedIndex": 49
   },
   {
     "name": "Transamerica Expo Center",
@@ -952,7 +1002,8 @@
       "capacity": 15000,
       "rentalPrice": 75000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 50
   },
   {
     "name": "Copacabana Palace – Pérgola",
@@ -969,7 +1020,8 @@
       "capacity": 500,
       "rentalPrice": 1500
     },
-    "indoorOption": null
+    "indoorOption": null,
+    "seedIndex": 51
   },
   {
     "name": "Cape Town CTICC",
@@ -986,7 +1038,8 @@
       "capacity": 5000,
       "rentalPrice": 20000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 52
   },
   {
     "name": "Groot Constantia – Jonkershuis",
@@ -1007,7 +1060,8 @@
       "name": "Reception hall",
       "capacity": 100,
       "rentalPrice": 500
-    }
+    },
+    "seedIndex": 53
   },
   {
     "name": "Sun City – The Superbowl",
@@ -1028,7 +1082,8 @@
       "name": "Jardin",
       "capacity": 2000,
       "rentalPrice": 5000
-    }
+    },
+    "seedIndex": 54
   },
   {
     "name": "Taj Mahal Palace – Crystal Room",
@@ -1045,7 +1100,8 @@
       "capacity": 500,
       "rentalPrice": 1500
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 55
   },
   {
     "name": "Falaknuma Palace – Durbar Hall",
@@ -1066,7 +1122,8 @@
       "name": "Terrasse extérieure",
       "capacity": 200,
       "rentalPrice": 500
-    }
+    },
+    "seedIndex": 56
   },
   {
     "name": "Umaid Bhawan Palace – Peacock Courtyard",
@@ -1083,7 +1140,8 @@
       "capacity": 1000,
       "rentalPrice": 3000
     },
-    "indoorOption": null
+    "indoorOption": null,
+    "seedIndex": 57
   },
   {
     "name": "Palais des congrès de Montréal",
@@ -1100,7 +1158,8 @@
       "capacity": 5000,
       "rentalPrice": 20000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 58
   },
   {
     "name": "Banff Springs Hotel – Van Horne Ballroom",
@@ -1117,7 +1176,8 @@
       "capacity": 800,
       "rentalPrice": 2500
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 59
   },
   {
     "name": "Vancouver Convention Centre – West",
@@ -1134,7 +1194,8 @@
       "capacity": 10000,
       "rentalPrice": 50000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 60
   },
   {
     "name": "Palacio de Bellas Artes – Sala Principal",
@@ -1151,7 +1212,8 @@
       "capacity": 1800,
       "rentalPrice": 5500
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 61
   },
   {
     "name": "Xcaret – Teatro Gran Tlachco",
@@ -1168,7 +1230,8 @@
       "capacity": 6000,
       "rentalPrice": 30000
     },
-    "indoorOption": null
+    "indoorOption": null,
+    "seedIndex": 62
   },
   {
     "name": "COEX – Grand Ballroom",
@@ -1185,7 +1248,8 @@
       "capacity": 3000,
       "rentalPrice": 12000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 63
   },
   {
     "name": "Gyeongbokgung Palace – Heungnyemun",
@@ -1206,7 +1270,8 @@
       "name": "Reception hall",
       "capacity": 200,
       "rentalPrice": 1000
-    }
+    },
+    "seedIndex": 64
   },
   {
     "name": "Rijksmuseum – Great Hall",
@@ -1227,7 +1292,8 @@
       "name": "Terrasse extérieure",
       "capacity": 266,
       "rentalPrice": 500
-    }
+    },
+    "seedIndex": 65
   },
   {
     "name": "Ziggo Dome – Diamond Lounge",
@@ -1244,7 +1310,8 @@
       "capacity": 1500,
       "rentalPrice": 4500
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 66
   },
   {
     "name": "Palais des Nations – Salle des Assemblées",
@@ -1261,7 +1328,8 @@
       "capacity": 2000,
       "rentalPrice": 6000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 67
   },
   {
     "name": "Zürich Marriott – Grand Ballroom",
@@ -1282,7 +1350,8 @@
       "name": "Terrasse extérieure",
       "capacity": 400,
       "rentalPrice": 1000
-    }
+    },
+    "seedIndex": 68
   },
   {
     "name": "Teatro Colón – Sala Principal",
@@ -1299,7 +1368,8 @@
       "capacity": 2478,
       "rentalPrice": 10000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 69
   },
   {
     "name": "Puerto Madero – Faena Arts Center",
@@ -1320,7 +1390,8 @@
       "name": "Espace extérieur",
       "capacity": 1000,
       "rentalPrice": 3000
-    }
+    },
+    "seedIndex": 70
   },
   {
     "name": "Centro Cultural de Belém – Grande Auditório",
@@ -1337,7 +1408,8 @@
       "capacity": 1450,
       "rentalPrice": 4500
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 71
   },
   {
     "name": "Palácio de Queluz – Sala do Trono",
@@ -1354,7 +1426,8 @@
       "capacity": 600,
       "rentalPrice": 2000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 72
   },
   {
     "name": "BITEC – Hall 98",
@@ -1371,7 +1444,8 @@
       "capacity": 10000,
       "rentalPrice": 50000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 73
   },
   {
     "name": "Mandarin Oriental Bangkok – Authors Garden",
@@ -1388,7 +1462,8 @@
       "capacity": 400,
       "rentalPrice": 1000
     },
-    "indoorOption": null
+    "indoorOption": null,
+    "seedIndex": 74
   },
   {
     "name": "Cairo International Convention Centre",
@@ -1409,7 +1484,8 @@
       "name": "Jardin",
       "capacity": 1666,
       "rentalPrice": 4000
-    }
+    },
+    "seedIndex": 75
   },
   {
     "name": "Pyramids of Giza – Sound & Light Stage",
@@ -1430,7 +1506,8 @@
       "name": "Reception hall",
       "capacity": 500,
       "rentalPrice": 2000
-    }
+    },
+    "seedIndex": 76
   },
   {
     "name": "Qatar National Convention Centre",
@@ -1447,7 +1524,8 @@
       "capacity": 10000,
       "rentalPrice": 50000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 77
   },
   {
     "name": "Katara Cultural Village – Amphitheatre",
@@ -1464,7 +1542,8 @@
       "capacity": 5000,
       "rentalPrice": 20000
     },
-    "indoorOption": null
+    "indoorOption": null,
+    "seedIndex": 78
   },
   {
     "name": "Auckland War Memorial Museum – Winter Garden",
@@ -1481,7 +1560,8 @@
       "capacity": 800,
       "rentalPrice": 2500
     },
-    "indoorOption": null
+    "indoorOption": null,
+    "seedIndex": 79
   },
   {
     "name": "Te Papa – Soundings Theatre",
@@ -1502,7 +1582,8 @@
       "name": "Jardin",
       "capacity": 166,
       "rentalPrice": 500
-    }
+    },
+    "seedIndex": 80
   },
   {
     "name": "Çırağan Palace Kempinski – Ballroom",
@@ -1523,7 +1604,8 @@
       "name": "Jardin",
       "capacity": 266,
       "rentalPrice": 500
-    }
+    },
+    "seedIndex": 81
   },
   {
     "name": "Hagia Sophia – Outer Courtyard",
@@ -1540,7 +1622,8 @@
       "capacity": 1000,
       "rentalPrice": 3000
     },
-    "indoorOption": null
+    "indoorOption": null,
+    "seedIndex": 82
   },
   {
     "name": "Palais des Beaux-Arts (BOZAR)",
@@ -1561,7 +1644,8 @@
       "name": "Jardin",
       "capacity": 833,
       "rentalPrice": 2000
-    }
+    },
+    "seedIndex": 83
   },
   {
     "name": "Château de la Hulpe",
@@ -1582,7 +1666,8 @@
       "name": "Espace extérieur",
       "capacity": 600,
       "rentalPrice": 2000
-    }
+    },
+    "seedIndex": 84
   },
   {
     "name": "Stockholmsmässan – Stockholm Waterfront",
@@ -1603,7 +1688,8 @@
       "name": "Jardin",
       "capacity": 1000,
       "rentalPrice": 2500
-    }
+    },
+    "seedIndex": 85
   },
   {
     "name": "Drottningholm Palace – Garden Stage",
@@ -1620,7 +1706,8 @@
       "capacity": 1200,
       "rentalPrice": 3500
     },
-    "indoorOption": null
+    "indoorOption": null,
+    "seedIndex": 86
   },
   {
     "name": "ICE Kraków Congress Centre",
@@ -1637,7 +1724,8 @@
       "capacity": 2300,
       "rentalPrice": 9000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 87
   },
   {
     "name": "Warsaw Marriott – Crystal Hall",
@@ -1654,7 +1742,8 @@
       "capacity": 1500,
       "rentalPrice": 4500
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 88
   },
   {
     "name": "Hermitage Museum – St George Hall",
@@ -1671,7 +1760,8 @@
       "capacity": 1200,
       "rentalPrice": 3500
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 89
   },
   {
     "name": "Crocus City Hall",
@@ -1692,7 +1782,8 @@
       "name": "Terrasse extérieure",
       "capacity": 2500,
       "rentalPrice": 6000
-    }
+    },
+    "seedIndex": 90
   },
   {
     "name": "KICC – Tsavo Ballroom",
@@ -1709,7 +1800,8 @@
       "capacity": 1500,
       "rentalPrice": 4500
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 91
   },
   {
     "name": "Fairmont Norfolk – Garden Terrace",
@@ -1730,7 +1822,8 @@
       "name": "Reception hall",
       "capacity": 100,
       "rentalPrice": 500
-    }
+    },
+    "seedIndex": 92
   },
   {
     "name": "GEM Center",
@@ -1747,7 +1840,8 @@
       "capacity": 3000,
       "rentalPrice": 12000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 93
   },
   {
     "name": "JW Marriott Hanoi – Grand Ballroom",
@@ -1764,7 +1858,8 @@
       "capacity": 2000,
       "rentalPrice": 6000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 94
   },
   {
     "name": "Eko Convention Centre",
@@ -1781,7 +1876,8 @@
       "capacity": 5000,
       "rentalPrice": 20000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 95
   },
   {
     "name": "Abuja Transcorp Hilton – Grand Ballroom",
@@ -1802,7 +1898,8 @@
       "name": "Terrasse extérieure",
       "capacity": 400,
       "rentalPrice": 1000
-    }
+    },
+    "seedIndex": 96
   },
   {
     "name": "Prague Congress Centre",
@@ -1823,7 +1920,8 @@
       "name": "Terrasse extérieure",
       "capacity": 3100,
       "rentalPrice": 8000
-    }
+    },
+    "seedIndex": 97
   },
   {
     "name": "Lobkowicz Palace – Concert Hall",
@@ -1844,7 +1942,8 @@
       "name": "Jardin",
       "capacity": 66,
       "rentalPrice": 500
-    }
+    },
+    "seedIndex": 98
   },
   {
     "name": "Bella Center Copenhagen",
@@ -1861,7 +1960,8 @@
       "capacity": 10000,
       "rentalPrice": 50000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 99
   },
   {
     "name": "Kronborg Castle – Courtyard",
@@ -1882,7 +1982,8 @@
       "name": "Reception hall",
       "capacity": 500,
       "rentalPrice": 2000
-    }
+    },
+    "seedIndex": 100
   },
   {
     "name": "Oslo Spektrum",
@@ -1899,7 +2000,8 @@
       "capacity": 9500,
       "rentalPrice": 47500
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 101
   },
   {
     "name": "Akershus Fortress – Courtyard",
@@ -1920,7 +2022,8 @@
       "name": "Reception hall",
       "capacity": 750,
       "rentalPrice": 3000
-    }
+    },
+    "seedIndex": 102
   },
   {
     "name": "Messukeskus – Hall 7",
@@ -1941,7 +2044,8 @@
       "name": "Terrasse extérieure",
       "capacity": 4000,
       "rentalPrice": 10000
-    }
+    },
+    "seedIndex": 103
   },
   {
     "name": "Helsinki City Hall – Juhlasali",
@@ -1958,7 +2062,8 @@
       "capacity": 700,
       "rentalPrice": 2000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 104
   },
   {
     "name": "Hofburg Vienna – Imperial Hall",
@@ -1975,7 +2080,8 @@
       "capacity": 1200,
       "rentalPrice": 3500
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 105
   },
   {
     "name": "Schönbrunn Palace – Great Gallery",
@@ -1996,7 +2102,8 @@
       "name": "Jardin",
       "capacity": 200,
       "rentalPrice": 500
-    }
+    },
+    "seedIndex": 106
   },
   {
     "name": "Convention Centre Dublin",
@@ -2013,7 +2120,8 @@
       "capacity": 8000,
       "rentalPrice": 40000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 107
   },
   {
     "name": "Dublin Castle – State Apartments",
@@ -2030,7 +2138,8 @@
       "capacity": 800,
       "rentalPrice": 2500
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 108
   },
   {
     "name": "Kilkenny Castle – Great Hall",
@@ -2047,7 +2156,8 @@
       "capacity": 400,
       "rentalPrice": 1000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 109
   },
   {
     "name": "Harpa Concert Hall – Eldborg",
@@ -2064,7 +2174,8 @@
       "capacity": 1800,
       "rentalPrice": 5500
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 110
   },
   {
     "name": "Þingvellir National Park – Amphitheatre",
@@ -2081,7 +2192,8 @@
       "capacity": 5000,
       "rentalPrice": 20000
     },
-    "indoorOption": null
+    "indoorOption": null,
+    "seedIndex": 111
   },
   {
     "name": "Hong Kong Convention Centre – Hall 5",
@@ -2098,7 +2210,8 @@
       "capacity": 10000,
       "rentalPrice": 50000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 112
   },
   {
     "name": "Tai Kwun – JC Contemporary",
@@ -2115,7 +2228,8 @@
       "capacity": 500,
       "rentalPrice": 1500
     },
-    "indoorOption": null
+    "indoorOption": null,
+    "seedIndex": 113
   },
   {
     "name": "Romexpo – Pavilion B1",
@@ -2132,7 +2246,8 @@
       "capacity": 5000,
       "rentalPrice": 20000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 114
   },
   {
     "name": "Peles Castle – Terrace",
@@ -2153,7 +2268,8 @@
       "name": "Reception hall",
       "capacity": 75,
       "rentalPrice": 500
-    }
+    },
+    "seedIndex": 115
   },
   {
     "name": "Palais des Congrès de Tunis",
@@ -2174,7 +2290,8 @@
       "name": "Jardin",
       "capacity": 666,
       "rentalPrice": 1500
-    }
+    },
+    "seedIndex": 116
   },
   {
     "name": "Carthage Amphitheatre",
@@ -2195,7 +2312,8 @@
       "name": "Reception hall",
       "capacity": 1250,
       "rentalPrice": 5000
-    }
+    },
+    "seedIndex": 117
   },
   {
     "name": "King Abdulaziz ICC – Grand Hall",
@@ -2216,7 +2334,8 @@
       "name": "Jardin",
       "capacity": 1000,
       "rentalPrice": 2500
-    }
+    },
+    "seedIndex": 118
   },
   {
     "name": "Al-Ula Amphitheatre",
@@ -2233,7 +2352,8 @@
       "capacity": 2500,
       "rentalPrice": 10000
     },
-    "indoorOption": null
+    "indoorOption": null,
+    "seedIndex": 119
   },
   {
     "name": "CICC – Abdou Diouf",
@@ -2254,7 +2374,8 @@
       "name": "Jardin",
       "capacity": 666,
       "rentalPrice": 1500
-    }
+    },
+    "seedIndex": 120
   },
   {
     "name": "Île de Gorée – Place du Gouvernement",
@@ -2271,7 +2392,8 @@
       "capacity": 800,
       "rentalPrice": 2500
     },
-    "indoorOption": null
+    "indoorOption": null,
+    "seedIndex": 121
   },
   {
     "name": "Lisinski Concert Hall",
@@ -2288,7 +2410,8 @@
       "capacity": 1840,
       "rentalPrice": 5500
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 122
   },
   {
     "name": "Diocletian's Palace – Peristyle",
@@ -2305,7 +2428,8 @@
       "capacity": 500,
       "rentalPrice": 1500
     },
-    "indoorOption": null
+    "indoorOption": null,
+    "seedIndex": 123
   },
   {
     "name": "Papp László Budapest Sportaréna",
@@ -2326,7 +2450,8 @@
       "name": "Terrasse extérieure",
       "capacity": 4166,
       "rentalPrice": 10500
-    }
+    },
+    "seedIndex": 124
   },
   {
     "name": "Buda Castle – Ceremonial Hall",
@@ -2343,7 +2468,8 @@
       "capacity": 400,
       "rentalPrice": 1000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 125
   },
   {
     "name": "Accra International Conference Centre",
@@ -2360,7 +2486,8 @@
       "capacity": 2000,
       "rentalPrice": 6000
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 126
   },
   {
     "name": "Oman Convention & Exhibition Centre",
@@ -2381,7 +2508,8 @@
       "name": "Terrasse extérieure",
       "capacity": 1000,
       "rentalPrice": 2500
-    }
+    },
+    "seedIndex": 127
   },
   {
     "name": "Al Bustan Palace – Ballroom",
@@ -2398,7 +2526,8 @@
       "capacity": 800,
       "rentalPrice": 2500
     },
-    "outdoorOption": null
+    "outdoorOption": null,
+    "seedIndex": 128
   },
   {
     "name": "Kuwait International Fair – Hall 3",
@@ -2419,7 +2548,8 @@
       "name": "Jardin",
       "capacity": 1666,
       "rentalPrice": 4000
-    }
+    },
+    "seedIndex": 129
   },
   {
     "name": "Kirchberg Conference Centre",
@@ -2440,7 +2570,8 @@
       "name": "Jardin",
       "capacity": 266,
       "rentalPrice": 500
-    }
+    },
+    "seedIndex": 130
   },
   {
     "name": "Château de Bourglinster – Courtyard",
@@ -2461,6 +2592,7 @@
       "name": "Reception hall",
       "capacity": 100,
       "rentalPrice": 500
-    }
+    },
+    "seedIndex": 131
   }
 ]

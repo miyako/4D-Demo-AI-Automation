@@ -3,7 +3,6 @@
 // Appelé au démarrage de l'application (On Startup / Home form On Load)
 
 property _weatherTemplates : Object
-property _seededEventIDs : Collection
 
 singleton Class constructor()
 
@@ -40,7 +39,6 @@ Function resetAll()
 
 	// Reset cached templates so file is reloaded
 	This._weatherTemplates:=Null
-	This._seededEventIDs:=Null
 
 	// Ré-importer tout depuis les JSON
 	This._seedClients()
@@ -65,6 +63,7 @@ Function _seedClients()
 		$e.email:=$item.email
 		$e.phone:=$item.phone
 		$e.country:=$item.country
+		$e.seedIndex:=$item.seedIndex
 		$e.save()
 	End for each
 
@@ -85,6 +84,7 @@ Function _seedVenues()
 		$e.venueType:=$item.venueType
 		$e.capacity:=$item.capacity
 		$e.timezone:=$item.timezone
+		$e.seedIndex:=$item.seedIndex
 		If ($item.indoorOption#Null)
 			$e.indoorOption:=$item.indoorOption
 		End if 
@@ -108,6 +108,7 @@ Function _seedServices()
 		$e.unitPrice:=$item.unitPrice
 		$e.available:=$item.available
 		$e.description:=$item.description
+		$e.seedIndex:=$item.seedIndex
 		$e.save()
 	End for each
 
@@ -274,32 +275,6 @@ Function _seedEmails()
 	var $item : Object
 	var $e : cs.EmailEntity
 
-	// If _seededEventIDs not set (seedIfEmpty called after events already existed), rebuild from contractRef
-	If (This._seededEventIDs=Null)
-		// contractRef = "CTR-YYYY-NNN" where NNN = 100+originalIndex
-		// Split on "-" and parse last segment to recover original index
-		var $allEvts : cs.EventSelection:=ds.Event.all()
-		var $maxIdx : Integer:=0
-		var $tmpEvt : cs.EventEntity
-		var $parts : Collection
-		var $origIdx : Integer
-		For each ($tmpEvt; $allEvts)
-			$parts:=Split string($tmpEvt.contractRef; "-")
-			$origIdx:=Num($parts[$parts.length-1])-100
-			If ($origIdx>$maxIdx)
-				$maxIdx:=$origIdx
-			End if 
-		End for each 
-		This._seededEventIDs:=New collection($maxIdx+1)
-		For each ($tmpEvt; $allEvts)
-			$parts:=Split string($tmpEvt.contractRef; "-")
-			$origIdx:=Num($parts[$parts.length-1])-100
-			If (($origIdx>=0) && ($origIdx<=$maxIdx))
-				This._seededEventIDs[$origIdx]:={ID: $tmpEvt.ID}
-			End if 
-		End for each 
-	End if 
-
 	For each ($item; $data)
 		$e:=ds.Email.new()
 		$e.sender:=$item.sender
@@ -309,10 +284,10 @@ Function _seedEmails()
 		$e.receivedAt:=Date($item.receivedAt)
 		$e.emailStatus:="unread"
 		$e.emailType:="modification"
-		// Resolve linkedEventIndex → actual event ID
-		var $idx : Integer:=Num($item.linkedEventIndex)
-		If (($idx>=0) && ($idx<This._seededEventIDs.length))
-			$e.linkedEventID:=String(This._seededEventIDs[$idx].ID)
+		// Resolve linkedEventIndex → actual event by seedIndex lookup
+		var $linkedEvt : cs.EventEntity:=ds.Event.query("seedIndex = :1"; Num($item.linkedEventIndex)).first()
+		If ($linkedEvt#Null)
+			$e.linkedEventID:=String($linkedEvt.ID)
 		Else 
 			$e.linkedEventID:=""
 		End if 
@@ -333,9 +308,7 @@ Function regenerateEvents()
 	var $templates : Collection:=JSON Parse($file.getText())
 	var $total : Integer:=$templates.length
 
-	// Charger les références en base
-	var $clients : cs.ClientSelection:=ds.Client.all().orderBy("companyName ASC")
-	var $venues : cs.VenueSelection:=ds.Venue.all().orderBy("name ASC")
+	// Charger les références en base — no ordering needed, lookup by seedIndex
 	var $services : cs.ServiceSelection:=ds.Service.all()
 
 	// Cache services by category
@@ -367,8 +340,6 @@ Function regenerateEvents()
 	var $venueEnt : cs.VenueEntity
 	var $daysOffset : Integer
 	var $status : Text
-	// Track event IDs in insertion order for reliable email linking
-	var $orderedIDs : Collection:=[]
 
 	For ($i; 0; $total-1)
 		$item:=$templates[$i]
@@ -395,9 +366,9 @@ Function regenerateEvents()
 				$daysOffset:=(Random%185+181)
 		End case 
 
-		// Resolve client & venue
-		$clientEnt:=$clients[$item.clientIndex%$clients.length]
-		$venueEnt:=$venues[$item.venueIndex%$venues.length]
+		// Resolve client & venue by seedIndex
+		$clientEnt:=ds.Client.query("seedIndex = :1"; $item.clientSeedIndex).first()
+		$venueEnt:=ds.Venue.query("seedIndex = :1"; $item.venueSeedIndex).first()
 
 		$evt:=ds.Event.new()
 		$evt.clientID:=$clientEnt.ID
@@ -445,20 +416,17 @@ Function regenerateEvents()
 
 		// Les alertes météo seront calculées par le WeatherService
 		$evt.weatherAlertLevel:="none"
+		$evt.seedIndex:=$item.seedIndex
 		$evt.weatherForecast:=Null  // explicit NULL — avoids empty-string Object field on catalog migration
 		$evt.weatherAlertJson:=Null
 
 		$evt.save()
-		$orderedIDs.push({ID: $evt.ID})
 
 		// Generate event lines (pass forcedServices + venueRentalPrice for venue rental line)
 		var $fakeItem : Object:={guestCount: $evt.guestCount; status: $status; forcedServices: $item.forcedServices; venueRentalPrice: $venueRentalPrice}
 		This._generateEventLines($evt; $fakeItem; $svcByCategory)
 	End for
 
-	// Use insertion-order IDs for email linking (no sorting assumption)
-	This._seededEventIDs:=$orderedIDs
-	
 	// Re-seed emails so linkedEventID references match the new event UUIDs
 	ds.Email.all().drop()
 	This._seedEmails()
