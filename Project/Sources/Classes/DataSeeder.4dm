@@ -423,6 +423,8 @@ Function regenerateEvents()
 
 		// Les alertes météo seront calculées par le WeatherService
 		$evt.weatherAlertLevel:="none"
+		$evt.weatherForecast:=Null  // explicit NULL — avoids empty-string Object field on catalog migration
+		$evt.weatherAlertJson:=Null
 
 		$evt.save()
 

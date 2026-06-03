@@ -1,18 +1,20 @@
 // FC_EventList.4dm
 // Liste des événements avec indicateurs météo et filtres
 
-property events : Collection
+property events : cs.EventSelection
 property activeFilter : Text
 property running : Boolean
-property currentEvent : Object
+property currentEvent : cs.EventEntity
 property showPast : Boolean
+property _windowRef : Integer
 
 Class constructor()
-	This.events:=[]
+	This.events:=ds.Event.newSelection()
 	This.activeFilter:="all"
 	This.running:=False
 	This.currentEvent:=Null
 	This.showPast:=False
+	This._windowRef:=0
 
 //MARK: - Form & form objects event handlers
 Function formEventHandler($formEventCode : Integer)
@@ -73,19 +75,16 @@ Function btnTogglePastEventHandler($formEventCode : Integer)
 
 //MARK: - Private
 Function _onLoad()
+	This._windowRef:=Current form window
 	This._loadEvents("all")
 
 Function _onDoubleClicked()
 	If (This.currentEvent#Null)
-		var $evt : cs.EventEntity:=ds.Event.get(This.currentEvent.id)
-		If ($evt#Null)
-			var $ids : Collection:=This.events.extract("id")
-			var $fc : cs.FC_EventDetail:=cs.FC_EventDetail.new($evt; $ids)
-			var $w : Integer:=Open form window("EventDetail"; Plain form window)
-			DIALOG("EventDetail"; $fc)
-			CLOSE WINDOW($w)
-			This._loadEvents(This.activeFilter)
-		End if 
+		var $fc : cs.FC_EventDetail:=cs.FC_EventDetail.new(This.currentEvent; This.events; This)
+		var $w : Integer:=Open form window("EventDetail"; Plain form window)
+		DIALOG("EventDetail"; $fc)
+		CLOSE WINDOW($w)
+		This._loadEvents(This.activeFilter)
 	End if 
 
 Function _setFilter($filter : Text)
@@ -129,42 +128,8 @@ Function _loadEvents($filter : Text)
 			End if 
 	End case 
 
-	var $result : Collection:=[]
-	var $evt : cs.EventEntity
-	var $venue : cs.VenueEntity
-	var $client : cs.ClientEntity
-	var $item : Object
-
-	// Pre-compute which event IDs have unread emails (for icon column — avoids N+1 queries)
-	var $unreadEmailIDs : Collection:=ds.Email.query("emailStatus = :1 AND linkedEventID != :2"; "unread"; "").toCollection("linkedEventID").extract("linkedEventID")
-
-	For each ($evt; $selection)
-		$venue:=$evt.venue
-		$client:=$evt.client
-		$item:={id: $evt.ID}
-		$item.eventDateStr:=String($evt.eventDate; "dd/MM/yyyy")
-		$item.clientName:=Choose($client#Null; $client.companyName; "—")
-		$item.venueName:=Choose($venue#Null; $venue.name; "—")
-		$item.venueCity:=Choose($venue#Null; $venue.city; "—")
-		$item.guestCountStr:=String($evt.guestCount)
-		$item.contractRef:=$evt.contractRef
-		$item.status:=$evt.status
-		$item.weatherAlertLevel:=$evt.weatherAlertLevel
-		$item.statusBadge:=This._statusBadge($evt.status)
-		$item.weatherIcon:=This._weatherIcon($evt.weatherAlertLevel)
-		$item.emailIcon:=Choose($unreadEmailIDs.indexOf(String($evt.ID))>=0; "📧"; "")
-		$item.venueOption:=Choose($evt.venueOption="indoor"; "🏢"; "🌳")
-		$item.plannedWeather:=This._weatherLabel($evt.weatherSetup)
-		$item.forecastWeather:=This._weatherLabel($evt.weatherForecast)
-		$result.push($item)
-	End for each 
-
-	// Single assignment triggers listbox binding refresh (critical for CALL FORM context)
-	This.events:=$result
-
+	This.events:=$selection
 	OBJECT SET TITLE(*; "text_event_count"; String(This.events.length)+" events")
-
-	// Update filter button counts
 	This._updateFilterCounts()
 
 Function _updateFilterCounts()
@@ -206,55 +171,3 @@ Function _onWeatherDone()
 	This.running:=False
 	OBJECT SET TITLE(*; "btn_refresh"; "🌤 Refresh Weather")
 	This._loadEvents(This.activeFilter)
-
-Function _statusBadge($status : Text) : Text
-	Case of 
-		: ($status="confirmed")
-			return "Confirmed"
-		: ($status="quote")
-			return "Quote"
-		: ($status="completed")
-			return "Done"
-		: ($status="cancelled")
-			return "Cancelled"
-		Else 
-			return $status
-	End case 
-
-Function _weatherIcon($level : Text) : Text
-	Case of 
-		: ($level="warning")
-			return "⛈"
-		: ($level="watch")
-			return "🌧"
-		: ($level="critical")
-			return "🚨"
-		Else 
-			return ""
-	End case 
-
-Function _weatherLabel($setup : Object) : Text
-	If ($setup=Null)
-		return "—"
-	End if 
-	var $icon : Text
-	Case of 
-		: ($setup.conditions="indifferent")
-			return "🏢 Indoor"
-		: ($setup.conditions="rain")
-			$icon:="🌧"
-		: ($setup.conditions="sunny")
-			$icon:="☀"
-		Else 
-			$icon:="❓"
-	End case 
-	var $temp : Text
-	Case of 
-		: ($setup.temperature="hot")
-			$temp:="🔥"
-		: ($setup.temperature="cold")
-			$temp:="❄"
-		Else 
-			$temp:=""
-	End case 
-	return $icon+$temp

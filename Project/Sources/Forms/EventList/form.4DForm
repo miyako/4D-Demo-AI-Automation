@@ -59,7 +59,7 @@
           "width": 1280,
           "height": 524,
           "listboxType": "collection",
-          "dataSource": "Form.events",
+          "dataSource": "Form:C1466.events",
           "headerHeight": "30px",
           "showHeaders": true,
           "rowHeight": "52px",
@@ -67,147 +67,195 @@
             "onClick",
             "onDoubleClick"
           ],
+          "currentItemSource": "Form:C1466.currentEvent",
+          "verticalAlign": "middle",
+          "class": "listbox",
           "columns": [
             {
               "header": {
-                "text": ""
+                "text": "",
+                "name": "Entête1"
               },
-              "dataSource": "This.weatherIcon",
               "name": "col_weather",
               "width": 30,
               "fontSize": 16,
               "textAlign": "center",
-              "verticalAlign": "middle"
+              "verticalAlign": "middle",
+              "footer": {
+                "name": "Pied1"
+              },
+              "dataSource": "This.weatherIcon"
             },
             {
               "header": {
-                "text": ""
+                "text": "",
+                "name": "Entête2"
               },
-              "dataSource": "This.venueOption",
               "name": "col_venue_option",
               "width": 28,
               "fontSize": 14,
               "textAlign": "center",
-              "verticalAlign": "middle"
+              "verticalAlign": "middle",
+              "footer": {
+                "name": "Pied2"
+              },
+              "dataSource": "This.venueOptionIcon"
             },
             {
               "header": {
-                "text": ""
+                "text": "",
+                "name": "Entête3"
               },
-              "dataSource": "This.emailIcon",
               "name": "col_email",
               "width": 28,
               "fontSize": 14,
               "textAlign": "center",
-              "verticalAlign": "middle"
+              "verticalAlign": "middle",
+              "footer": {
+                "name": "Pied3"
+              },
+              "dataSource": "This.emailIcon"
             },
             {
               "header": {
-                "text": "DATE"
+                "text": "DATE",
+                "name": "Entête4"
               },
-              "dataSource": "This.eventDateStr",
               "name": "col_date",
               "width": 95,
               "fontSize": 12,
               "verticalAlign": "middle",
-              "class": "colDefault"
+              "class": "colDefault",
+              "footer": {
+                "name": "Pied4"
+              },
+              "dataSource": "This.eventDateStr"
             },
             {
               "header": {
-                "text": "CLIENT"
+                "text": "CLIENT",
+                "name": "Entête5"
               },
-              "dataSource": "This.clientName",
               "name": "col_client",
               "width": 210,
               "fontSize": 13,
               "verticalAlign": "middle",
-              "class": "colPrimary"
+              "class": "colPrimary",
+              "footer": {
+                "name": "Pied5"
+              },
+              "dataSource": "This.clientName"
             },
             {
               "header": {
-                "text": "VENUE"
+                "text": "VENUE",
+                "name": "Entête6"
               },
-              "dataSource": "This.venueName",
               "name": "col_venue",
               "width": 300,
               "fontSize": 12,
               "verticalAlign": "middle",
-              "class": "colDefault"
+              "class": "colDefault",
+              "footer": {
+                "name": "Pied6"
+              },
+              "dataSource": "This.venueName"
             },
             {
               "header": {
-                "text": "CITY"
+                "text": "CITY",
+                "name": "Entête7"
               },
-              "dataSource": "This.venueCity",
               "name": "col_city",
               "width": 110,
               "fontSize": 12,
               "verticalAlign": "middle",
-              "class": "colMuted"
+              "class": "colMuted",
+              "footer": {
+                "name": "Pied7"
+              },
+              "dataSource": "This.venueCity"
             },
             {
               "header": {
-                "text": "GUESTS"
+                "text": "GUESTS",
+                "name": "Entête8"
               },
-              "dataSource": "This.guestCountStr",
               "name": "col_guests",
               "width": 65,
               "fontSize": 12,
               "textAlign": "right",
               "verticalAlign": "middle",
-              "class": "colDefault"
+              "class": "colDefault",
+              "footer": {
+                "name": "Pied8"
+              },
+              "dataSource": "This.guestCountStr"
             },
             {
               "header": {
-                "text": "PLANNED"
+                "text": "PLANNED",
+                "name": "Entête9"
               },
-              "dataSource": "This.plannedWeather",
               "name": "col_planned",
               "width": 80,
               "fontSize": 13,
               "textAlign": "center",
               "verticalAlign": "middle",
-              "class": "colDefault"
+              "class": "colDefault",
+              "footer": {
+                "name": "Pied9"
+              },
+              "dataSource": "This.plannedWeather"
             },
             {
               "header": {
-                "text": "FORECAST"
+                "text": "FORECAST",
+                "name": "Entête10"
               },
-              "dataSource": "This.forecastWeather",
               "name": "col_forecast",
               "width": 90,
               "fontSize": 13,
               "textAlign": "center",
               "verticalAlign": "middle",
-              "class": "colDefault"
+              "class": "colDefault",
+              "footer": {
+                "name": "Pied10"
+              },
+              "dataSource": "This.forecastWeather"
             },
             {
               "header": {
-                "text": "STATUS"
+                "text": "STATUS",
+                "name": "Entête11"
               },
-              "dataSource": "This.statusBadge",
               "name": "col_status",
               "width": 90,
               "fontSize": 12,
               "textAlign": "center",
               "verticalAlign": "middle",
-              "class": "colPrimary"
+              "class": "colPrimary",
+              "footer": {
+                "name": "Pied11"
+              },
+              "dataSource": "This.statusBadge"
             },
             {
               "header": {
-                "text": "CONTRACT"
+                "text": "CONTRACT",
+                "name": "Entête12"
               },
-              "dataSource": "This.contractRef",
               "name": "col_ref",
               "width": 130,
               "fontSize": 11,
               "verticalAlign": "middle",
-              "class": "colMuted"
+              "class": "colMuted",
+              "footer": {
+                "name": "Pied12"
+              },
+              "dataSource": "This.contractRef"
             }
-          ],
-          "currentItemSource": "Form.currentEvent",
-          "verticalAlign": "middle",
-          "class": "listbox"
+          ]
         },
         "btn_refresh": {
           "type": "button",
@@ -323,5 +371,9 @@
     "onDoubleClick"
   ],
   "formClass": "FC_EventList",
-  "method": "method.4dm"
+  "method": "method.4dm",
+  "$4d": {
+    "version": "1",
+    "kind": "form"
+  }
 }

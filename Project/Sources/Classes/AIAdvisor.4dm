@@ -18,7 +18,6 @@ Function _createChat($systemPrompt : Text; $schema : Object; $schemaName : Text;
 	var $options:=cs.AIKit.OpenAIChatCompletionsParameters.new()
 	$options.model:=This._model
 	$options.max_completion_tokens:=2048
-	$options.reasoning_effort:="low"
 	$options.formula:=$formula
 	$options.response_format:={type: "json_schema"; json_schema: { \
 		name: $schemaName; \
@@ -402,8 +401,8 @@ Function generateDraftEmailAsync($event : cs.EventEntity; $action : Object; $pro
 		$user:=$user+" (contact: "+$contactName+")"
 	End if 
 	$user:=$user+"\n\n"
-	$user:=$user+"Reason for changes (action label): "+$action.label+"\n"
-	If ($action.description#Null)
+	$user:=$user+"Reason for changes (action label): "+String($action.label)+"\n"
+	If (($action.description#Null) && (Value type($action.description)=Is text))
 		$user:=$user+"Action description: "+$action.description+"\n"
 	End if 
 	$user:=$user+"\nProposed service changes:\n"+$linesText
@@ -460,7 +459,17 @@ Function _extractError($chatResult : Object) : Text
 	End if 
 	If (Not($chatResult.success))
 		If ($chatResult.errors#Null)
-			return JSON Stringify($chatResult.errors)
+			// Try to extract a human-readable message from the first error object
+			var $firstErr : Object:=$chatResult.errors[0]
+			If ($firstErr#Null)
+				If ($firstErr.message#Null)
+					return String($firstErr.message)
+				End if 
+				If ($firstErr.code#Null)
+					return "API error code: "+String($firstErr.code)
+				End if 
+			End if 
+			return "API call failed (no details)"
 		End if 
 		return "API call failed (success=false)"
 	End if 
