@@ -193,7 +193,7 @@ Function _renderAIPanel($weatherResult : Object)
 			OBJECT SET VISIBLE(*; "btn_ai_analyze"; True)
 		Else 
 			OBJECT SET TITLE(*; "text_ai_status"; "No weather alerts detected.")
-			OBJECT SET VISIBLE(*; "btn_ai_analyze"; True)
+			OBJECT SET VISIBLE(*; "btn_ai_analyze"; False)
 		End if 
 		return 
 	End if 
