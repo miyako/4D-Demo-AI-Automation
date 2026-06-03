@@ -190,9 +190,10 @@ Function _renderAIPanel($weatherResult : Object)
 		var $hasAlert : Boolean:=(($level#"none") && ($level#""))
 		If ($hasAlert)
 			OBJECT SET TITLE(*; "text_ai_status"; "⚠ Weather alert: "+$level)
+			OBJECT SET VISIBLE(*; "btn_ai_analyze"; True)
 		Else 
 			OBJECT SET TITLE(*; "text_ai_status"; "No weather alerts detected.")
-			OBJECT SET VISIBLE(*; "btn_ai_analyze"; False)
+			OBJECT SET VISIBLE(*; "btn_ai_analyze"; True)
 		End if 
 		return 
 	End if 
