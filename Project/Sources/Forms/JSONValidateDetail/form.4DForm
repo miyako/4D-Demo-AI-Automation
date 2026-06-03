@@ -51,7 +51,7 @@
 					"left": 20,
 					"top": 78,
 					"width": 520,
-					"height": 626,
+					"height": 601,
 					"dataSource": "Form:C1466.schemaContent",
 					"enterable": false,
 					"multiline": true,
@@ -74,7 +74,7 @@
 					"left": 560,
 					"top": 78,
 					"width": 520,
-					"height": 626,
+					"height": 601,
 					"dataSource": "Form:C1466.jsonContent",
 					"enterable": false,
 					"multiline": true,
@@ -100,5 +100,10 @@
 				}
 			}
 		}
-	]
+	],
+	"geometryStamp": 1,
+	"$4d": {
+		"version": "1",
+		"kind": "form"
+	}
 }
