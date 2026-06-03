@@ -1,13 +1,24 @@
 {
   "type": "object",
-  "required": ["proposedLines", "summary", "totalImpact"],
+  "required": [
+    "proposedLines",
+    "summary",
+    "totalImpact"
+  ],
   "additionalProperties": false,
   "properties": {
     "proposedLines": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["serviceID", "label", "category", "quantity", "unitPrice", "delta"],
+        "required": [
+          "serviceID",
+          "label",
+          "category",
+          "quantity",
+          "unitPrice",
+          "delta"
+        ],
         "additionalProperties": false,
         "properties": {
           "serviceID": {
@@ -32,7 +43,11 @@
           },
           "delta": {
             "type": "string",
-            "enum": ["add", "remove", "update"],
+            "enum": [
+              "add",
+              "remove",
+              "update"
+            ],
             "description": "Type de modification : add = nouvelle ligne, remove = suppression, update = changement de quantité."
           }
         }
@@ -41,7 +56,7 @@
     },
     "summary": {
       "type": "string",
-      "description": "Résumé en langage naturel de ce qui est proposé."
+      "description": "One-sentence summary (max 100 chars) of what is proposed."
     },
     "totalImpact": {
       "type": "number",

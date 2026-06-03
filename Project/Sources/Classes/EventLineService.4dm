@@ -49,6 +49,9 @@ Function applyProposedChanges($eventID : Text; $proposedLines : Collection)
 				If ($toUpdate.length>0)
 					var $existing : cs.EventLineEntity:=$toUpdate.first()
 					$existing.quantity:=$line.quantity
+					If ($line.unitPrice>0)
+						$existing.unitPrice:=$line.unitPrice
+					End if 
 					$existing.save()
 				End if 
 		End case 

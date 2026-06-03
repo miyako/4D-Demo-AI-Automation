@@ -225,6 +225,12 @@
     fontSize: 10;
 }
 
+.spinnerText {
+    stroke: #AAAAAA;
+    fontSize: 28;
+    fontWeight: bold;
+}
+
 /* --------------------------------------------------------------------------
    INPUTS
    -------------------------------------------------------------------------- */
@@ -408,6 +414,10 @@
 
     .textFooter {
         stroke: #AAAAAA;
+    }
+
+    .spinnerText {
+        stroke: #666666;
     }
 
     /* Inputs */

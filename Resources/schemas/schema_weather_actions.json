@@ -1,6 +1,16 @@
 {
   "type": "object",
-  "required": ["eventID", "riskLevel", "forecastDate", "weatherSummary", "explanation", "actions", "weatherData", "affectedServices", "draftClientMessage"],
+  "required": [
+    "eventID",
+    "riskLevel",
+    "forecastDate",
+    "weatherSummary",
+    "explanation",
+    "actions",
+    "weatherData",
+    "affectedServices",
+    "draftClientMessage"
+  ],
   "additionalProperties": false,
   "properties": {
     "eventID": {
@@ -9,7 +19,12 @@
     },
     "riskLevel": {
       "type": "string",
-      "enum": ["none", "watch", "warning", "critical"],
+      "enum": [
+        "none",
+        "watch",
+        "warning",
+        "critical"
+      ],
       "description": "Niveau de risque météo calculé par l'IA."
     },
     "forecastDate": {
@@ -29,61 +44,131 @@
         {
           "type": "object",
           "description": "Données brutes Open-Meteo résumées.",
-          "required": ["maxTemperature", "minTemperature", "precipitationMm", "windSpeedKmh", "weatherCode", "weatherDescription"],
+          "required": [
+            "maxTemperature",
+            "minTemperature",
+            "precipitationMm",
+            "windSpeedKmh",
+            "weatherCode",
+            "weatherDescription"
+          ],
           "additionalProperties": false,
           "properties": {
-            "maxTemperature": { "type": "number" },
-            "minTemperature": { "type": "number" },
-            "precipitationMm": { "type": "number" },
-            "windSpeedKmh": { "type": "number" },
-            "weatherCode": { "type": "integer" },
-            "weatherDescription": { "type": "string" }
+            "maxTemperature": {
+              "type": "number"
+            },
+            "minTemperature": {
+              "type": "number"
+            },
+            "precipitationMm": {
+              "type": "number"
+            },
+            "windSpeedKmh": {
+              "type": "number"
+            },
+            "weatherCode": {
+              "type": "integer"
+            },
+            "weatherDescription": {
+              "type": "string"
+            }
           }
         },
-        { "type": "null" }
+        {
+          "type": "null"
+        }
       ]
     },
     "affectedServices": {
       "type": "array",
-      "items": { "type": "string" },
+      "items": {
+        "type": "string"
+      },
       "description": "Services de l'événement potentiellement impactés."
     },
     "actions": {
       "type": "array",
       "items": {
         "type": "object",
-        "required": ["actionType", "label", "priority", "description", "deadlineToDecide", "estimatedExtraCost", "suggestedServices", "hiddenPrompt"],
+        "required": [
+          "actionType",
+          "label",
+          "priority",
+          "description",
+          "deadlineToDecide",
+          "estimatedExtraCost",
+          "suggestedServices",
+          "hiddenPrompt"
+        ],
         "additionalProperties": false,
         "properties": {
           "actionType": {
             "type": "string",
-            "enum": ["add_services", "remove_services", "replace_services", "switch_venue", "notify_client"],
-            "description": "Type d'action concrète: add_services (ajouter des prestations), remove_services (retirer des prestations inutiles), replace_services (remplacer des prestations), switch_venue (basculer indoor/outdoor), notify_client (envoyer un message au client)."
+            "enum": [
+              "add_services",
+              "replace_services",
+              "switch_venue",
+              "notify_client"
+            ],
+            "description": "Type d'action concrète: add_services (ajouter des prestations), replace_services (remplacer des prestations), switch_venue (basculer indoor/outdoor), notify_client (envoyer un message au client)."
           },
           "label": {
             "type": "string",
             "description": "Libellé court de l'action."
           },
           "description": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "description": "Description détaillée de l'action."
           },
           "priority": {
             "type": "string",
-            "enum": ["critical", "high", "medium", "low"]
+            "enum": [
+              "critical",
+              "high",
+              "medium",
+              "low"
+            ]
           },
           "deadlineToDecide": {
-            "anyOf": [{ "type": "string" }, { "type": "null" }],
+            "anyOf": [
+              {
+                "type": "string"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "description": "Date limite YYYY-MM-DD pour prendre cette décision, ou null."
           },
           "estimatedExtraCost": {
-            "anyOf": [{ "type": "number" }, { "type": "null" }],
+            "anyOf": [
+              {
+                "type": "number"
+              },
+              {
+                "type": "null"
+              }
+            ],
             "description": "Surcoût estimé en euros, ou null."
           },
           "suggestedServices": {
             "anyOf": [
-              { "type": "array", "items": { "type": "string" } },
-              { "type": "null" }
+              {
+                "type": "array",
+                "items": {
+                  "type": "string"
+                }
+              },
+              {
+                "type": "null"
+              }
             ],
             "description": "Prestations du catalogue à ajouter, ou null."
           },
@@ -95,7 +180,14 @@
       }
     },
     "draftClientMessage": {
-      "anyOf": [{ "type": "string" }, { "type": "null" }],
+      "anyOf": [
+        {
+          "type": "string"
+        },
+        {
+          "type": "null"
+        }
+      ],
       "description": "Brouillon de message client généré par l'IA."
     }
   }

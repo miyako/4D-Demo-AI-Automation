@@ -4,7 +4,13 @@
 property event : cs.EventEntity
 property eventLines : Collection
 property aiActions : Collection
+property confirmDraft : Text
+property confirmEmailDraft : Text
+property confirmLines : Collection
 property running : Boolean
+property _spinnerIndex : Integer
+property _spinnerFrames : Collection
+property _spinnerActive : Boolean
 property _eventIDs : Collection
 property _currentIndex : Integer
 property _pendingExecResult : Object
@@ -21,7 +27,13 @@ Class constructor($event : cs.EventEntity; $eventIDs : Collection)
 	This.event:=$event
 	This.eventLines:=[]
 	This.aiActions:=[]
+	This.confirmDraft:=""
+	This.confirmEmailDraft:=""
+	This.confirmLines:=[]
 	This.running:=False
+	This._spinnerIndex:=0
+	This._spinnerFrames:=["⠋"; "⠙"; "⠹"; "⠸"; "⠼"; "⠴"; "⠦"; "⠧"; "⠇"; "⠏"]
+	This._spinnerActive:=False
 	This._pendingExecResult:=Null
 	This._pendingAction:=Null
 	This.activeAdvisorTab:="weather"
@@ -43,6 +55,11 @@ Function formEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Load)
 			This._onLoad()
+		: ($formEventCode=On Timer)
+			If (This._spinnerActive)
+				This._spinnerIndex:=(This._spinnerIndex+1)%(This._spinnerFrames.length)
+				OBJECT SET TITLE(*; "text_ai_spinner"; This._spinnerFrames[This._spinnerIndex])
+			End if 
 	End case 
 
 Function btnBackEventHandler($formEventCode : Integer)
@@ -159,6 +176,7 @@ Function _loadEventLines()
 		$lineTotal:=$line.quantity*$line.unitPrice
 		$total:=$total+$lineTotal
 		This.eventLines.push({ \
+			serviceID: $line.serviceID; \
 			serviceLabel: Choose($service#Null; $service.label; "—"); \
 			category: Choose($service#Null; $service.category; "—"); \
 			quantity: $line.quantity; \
@@ -444,36 +462,71 @@ Function _showConfirmPanel($action : Object; $execResult : Object)
 	This._pendingAction:=$action
 	This._pendingExecResult:=$execResult
 
-	var $currentTotal : Real:=cs.EventLineService.me.calculateTotal(This.eventLines)
-	var $impact : Real:=0
-	var $changesText : Text:=""
+	// Build confirmLines collection for the listbox
+	var $lines : Collection:=[]
+	var $totalImpact : Real:=0
 	var $line : Object
 	For each ($line; $execResult.proposedLines)
 		var $lineTotal : Real:=$line.quantity*$line.unitPrice
+		var $icon : Text
+		var $impact : Real
 		Case of 
 			: ($line.delta="add")
-				$changesText:=$changesText+"+ "+$line.label+" x"+String($line.quantity)+" — "+String($lineTotal; "### ### ##0 €")+"\n"
-				$impact:=$impact+$lineTotal
+				$icon:="➕"
+				$impact:=$lineTotal
 			: ($line.delta="remove")
-				$changesText:=$changesText+"— "+$line.label+" x"+String($line.quantity)+" — −"+String($lineTotal; "### ### ##0 €")+"\n"
-				$impact:=$impact-$lineTotal
+				$icon:="🗑"
+				$impact:=-$lineTotal
 			: ($line.delta="update")
-				$changesText:=$changesText+"✏ "+$line.label+" x"+String($line.quantity)+" — "+String($lineTotal; "### ### ##0 €")+"\n"
-				$impact:=$impact+$lineTotal
+				$icon:="✏️"
+				// Impact = (newQty - oldQty) * unitPrice; look up old qty from eventLines
+				var $oldLine : Object:=This.eventLines.find(Formula($1.serviceID=$2); $line.serviceID)
+				var $oldQty : Integer:=Choose($oldLine#Null; $oldLine.quantity; 0)
+				$impact:=($line.quantity-$oldQty)*$line.unitPrice
+			Else 
+				$icon:="·"
+				$impact:=0
 		End case 
+		$totalImpact:=$totalImpact+$impact
+		var $costStr : Text
+		If ($impact>0)
+			$costStr:="+"+String($impact; "### ### ##0")+" €"
+		Else 
+			If ($impact<0)
+				$costStr:="−"+String(-$impact; "### ### ##0")+" €"
+			Else 
+				$costStr:="—"
+			End if 
+		End if 
+		$lines.push({ \
+			deltaIcon: $icon; \
+			label: $line.label; \
+			qtyStr: "×"+String($line.quantity); \
+			costImpactStr: $costStr \
+		})
 	End for each 
+	This.confirmLines:=$lines
 
-	var $prefix : Text:=Choose($impact>=0; "+"; "")
+	// Compute new total from current eventLines + impact
+	var $currentTotal : Real:=cs.EventLineService.me.calculateTotal(This.eventLines)
+	var $newTotal : Real:=$currentTotal+$totalImpact
+
+	var $impactStr : Text
+	If ($totalImpact>0)
+		$impactStr:="+"+String($totalImpact; "### ### ##0")+" €"
+	Else 
+		If ($totalImpact<0)
+			$impactStr:="−"+String(-$totalImpact; "### ### ##0")+" €"
+		Else 
+			$impactStr:="0 €"
+		End if 
+	End if 
+
 	OBJECT SET TITLE(*; "text_confirm_title"; $action.label)
 	OBJECT SET TITLE(*; "text_confirm_summary"; $execResult.summary)
-	OBJECT SET TITLE(*; "input_confirm_draft"; $changesText)
-	OBJECT SET TITLE(*; "text_confirm_before_lbl"; "Before:")
-	OBJECT SET TITLE(*; "text_confirm_before_val"; String($currentTotal; "### ### ##0 €"))
-	OBJECT SET TITLE(*; "text_confirm_impact_lbl"; "Impact:")
-	OBJECT SET TITLE(*; "text_confirm_impact_val"; $prefix+String($impact; "### ### ##0 €"))
-	OBJECT SET TITLE(*; "text_confirm_newtotal_lbl"; "New total:")
-	OBJECT SET TITLE(*; "text_confirm_newtotal_val"; String($currentTotal+$impact; "### ### ##0 €"))
-	OBJECT SET TITLE(*; "input_confirm_email_draft"; "")
+	OBJECT SET TITLE(*; "text_confirm_impact_val"; $impactStr)
+	OBJECT SET TITLE(*; "text_confirm_newtotal_val"; String($newTotal; "### ### ##0")+" €")
+	This.confirmEmailDraft:=""
 	This._setConfirmPanelVisible(True)
 	This._resizeWindow(1460)
 
@@ -525,13 +578,11 @@ Function _setConfirmPanelVisible($visible : Boolean)
 	OBJECT SET VISIBLE(*; "text_confirm_header"; $visible)
 	OBJECT SET VISIBLE(*; "text_confirm_title"; $visible)
 	OBJECT SET VISIBLE(*; "text_confirm_summary"; $visible)
-	OBJECT SET VISIBLE(*; "text_confirm_before_lbl"; $visible)
-	OBJECT SET VISIBLE(*; "text_confirm_before_val"; $visible)
+	OBJECT SET VISIBLE(*; "listbox_confirm_lines"; $visible)
 	OBJECT SET VISIBLE(*; "text_confirm_impact_lbl"; $visible)
 	OBJECT SET VISIBLE(*; "text_confirm_impact_val"; $visible)
 	OBJECT SET VISIBLE(*; "text_confirm_newtotal_lbl"; $visible)
 	OBJECT SET VISIBLE(*; "text_confirm_newtotal_val"; $visible)
-	OBJECT SET VISIBLE(*; "input_confirm_draft"; $visible)
 	OBJECT SET VISIBLE(*; "rect_confirm_email_sep"; $visible)
 	OBJECT SET VISIBLE(*; "text_confirm_email_lbl"; $visible)
 	OBJECT SET VISIBLE(*; "input_confirm_email_draft"; $visible)
@@ -546,11 +597,49 @@ Function btnConfirmActionEventHandler($formEventCode : Integer)
 			If (This._pendingExecResult=Null)
 				return 
 			End if 
+			var $appliedAction : Object:=This._pendingAction
 			cs.EventLineService.me.applyProposedChanges(This.event.ID; This._pendingExecResult.proposedLines)
 			This._hideConfirmPanel()
 			This._loadEventLines()
-			OBJECT SET TITLE(*; "text_ai_status"; "✅ Action applied successfully.")
+
+			// Remove the confirmed action from the list
+			var $remaining : Collection:=This.aiActions.query("label != :1"; $appliedAction.label)
+			This.aiActions:=$remaining
+
+			If ($remaining.length=0)
+				This._actionMap:=cs.UIHelpers.me.showActionButtons([])
+				cs.UIHelpers.me.resetActionButtons()
+				OBJECT SET TITLE(*; "text_ai_status"; "✅ All actions applied.")
+			Else 
+				// Reassess remaining actions with AI
+				This._startSpinner()
+				OBJECT SET TITLE(*; "text_ai_status"; "✅ Applied. Reassessing remaining actions...")
+				var $self : Object:=This
+				var $advisor : cs.AIAdvisor:=cs.AIAdvisor.new()
+				var $lbl : Text:=$appliedAction.label
+				var $lines : Collection:=This.eventLines
+				$advisor.reassessActionsAsync($remaining; $lbl; $lines; Formula($self._onReassessmentDone($1)))
+			End if 
 	End case 
+
+Function _onReassessmentDone($result : Object)
+	If (Form=Null)
+		return 
+	End if 
+	This._stopSpinner()
+	cs.UIHelpers.me.resetActionButtons()
+	If (Not($result.success))
+		This._actionMap:=cs.UIHelpers.me.showActionButtons(This.aiActions)
+		OBJECT SET TITLE(*; "text_ai_status"; "✅ Applied. (Reassessment failed: "+$result.validationError+")")
+		return 
+	End if 
+	This.aiActions:=$result.actions
+	This._actionMap:=cs.UIHelpers.me.showActionButtons($result.actions)
+	If ($result.actions.length=0)
+		OBJECT SET TITLE(*; "text_ai_status"; "✅ All actions resolved.")
+	Else 
+		OBJECT SET TITLE(*; "text_ai_status"; "✅ Applied. "+String($result.actions.length)+" action(s) remaining.")
+	End if 
 
 Function btnCancelConfirmEventHandler($formEventCode : Integer)
 	Case of 
@@ -562,16 +651,46 @@ Function btnCancelConfirmEventHandler($formEventCode : Integer)
 Function btnDraftEmailEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
-			var $draft : Text
-			If ((This._emailImpacts#Null) && (This._emailImpacts.draftAvenantMessage#Null))
-				$draft:=This._emailImpacts.draftAvenantMessage
-			Else 
-				$draft:="(No draft email available — run email analysis first.)"
+			If (This._pendingExecResult=Null)
+				This.confirmEmailDraft:="(No proposed changes to draft an email for.)"
+				return 
 			End if 
-			OBJECT SET TITLE(*; "input_confirm_email_draft"; $draft)
+			OBJECT SET TITLE(*; "text_ai_status"; "✉ Drafting confirmation email...")
+			var $self : Object:=This
+			var $advisor : cs.AIAdvisor:=cs.AIAdvisor.new()
+			var $evt : cs.EventEntity:=This.event
+			var $act : Object:=This._pendingAction
+			var $plines : Collection:=This._pendingExecResult.proposedLines
+			$advisor.generateDraftEmailAsync($evt; $act; $plines; Formula($self._onDraftEmailDone($1)))
 	End case 
 
+Function _onDraftEmailDone($result : Object)
+	If (Form=Null)
+		return 
+	End if 
+	If (Not($result.success))
+		OBJECT SET TITLE(*; "text_ai_status"; "❌ Email draft failed: "+$result.validationError)
+		This.confirmEmailDraft:="(Email generation failed.)"
+		return 
+	End if 
+	This.confirmEmailDraft:=$result.emailText
+	OBJECT SET TITLE(*; "text_ai_status"; "✉ Draft email ready")
+
 //MARK: - Helpers
+Function _startSpinner()
+	This._spinnerActive:=True
+	This._spinnerIndex:=0
+	OBJECT SET TITLE(*; "text_ai_spinner"; This._spinnerFrames[0])
+	OBJECT SET VISIBLE(*; "text_ai_spinner"; True)
+	// Hide action buttons during spinner
+	cs.UIHelpers.me.resetActionButtons()
+	SET TIMER(6)  // ~100ms per frame
+
+Function _stopSpinner()
+	This._spinnerActive:=False
+	SET TIMER(0)
+	OBJECT SET VISIBLE(*; "text_ai_spinner"; False)
+	OBJECT SET TITLE(*; "text_ai_spinner"; "")
 Function _riskLabel($level : Text) : Text
 	Case of 
 		: ($level="critical")

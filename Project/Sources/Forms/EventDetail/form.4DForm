@@ -14,7 +14,7 @@
 					"left": 0,
 					"top": 0,
 					"width": 1100,
-					"height": 800,
+					"height": 842,
 					"class": "bgForm"
 				},
 				"rect_header": {
@@ -71,7 +71,7 @@
 					"left": 16,
 					"top": 80,
 					"width": 728,
-					"height": 176,
+					"height": 146,
 					"class": "bgCard"
 				},
 				"text_client_label": {
@@ -114,8 +114,8 @@
 					"type": "text",
 					"left": 360,
 					"top": 112,
-					"width": 200,
-					"height": 20,
+					"width": 190,
+					"height": 17,
 					"text": "",
 					"class": "textSection"
 				},
@@ -176,7 +176,7 @@
 				"text_option_label": {
 					"type": "text",
 					"left": 560,
-					"top": 200,
+					"top": 96,
 					"width": 140,
 					"height": 16,
 					"text": "OPTION",
@@ -185,7 +185,7 @@
 				"text_option_val": {
 					"type": "text",
 					"left": 560,
-					"top": 216,
+					"top": 112,
 					"width": 180,
 					"height": 20,
 					"text": "",
@@ -194,7 +194,7 @@
 				"text_services_header": {
 					"type": "text",
 					"left": 32,
-					"top": 264,
+					"top": 232,
 					"width": 200,
 					"height": 20,
 					"text": "SERVICES BOOKED",
@@ -203,9 +203,9 @@
 				"listbox_lines": {
 					"type": "listbox",
 					"left": 16,
-					"top": 286,
+					"top": 256,
 					"width": 728,
-					"height": 432,
+					"height": 462,
 					"listboxType": "collection",
 					"dataSource": "Form:C1466.eventLines",
 					"headerHeight": "28px",
@@ -347,16 +347,6 @@
 					"height": 1,
 					"class": "bgContent"
 				},
-				"text_ai_status": {
-					"type": "text",
-					"left": 776,
-					"top": 136,
-					"width": 308,
-					"height": 20,
-					"text": "text_ai_status",
-					"class": "textMuted",
-					"textAlign": "left"
-				},
 				"btn_ai_analyze": {
 					"type": "button",
 					"left": 776,
@@ -436,21 +426,6 @@
 					"class": "btnTemplateAmber",
 					"style": "flat"
 				},
-				"text_ai_validation_badge": {
-					"type": "text",
-					"left": 876,
-					"top": 73,
-					"width": 208,
-					"height": 29,
-					"text": "",
-					"textAlign": "center",
-					"class": "textSuccess",
-					"visibility": "hidden",
-					"method": "objvalidation_badge.4dm",
-					"events": [
-						"onClick"
-					]
-				},
 				"btn_prev": {
 					"type": "button",
 					"left": 110,
@@ -484,9 +459,9 @@
 				"input_email_body": {
 					"type": "input",
 					"left": 776,
-					"top": 210,
+					"top": 200,
 					"width": 289,
-					"height": 100,
+					"height": 106,
 					"enterable": false,
 					"multiline": true,
 					"wordwrap": true,
@@ -574,7 +549,7 @@
 					"left": 1118,
 					"top": 126,
 					"width": 324,
-					"height": 100,
+					"height": 60,
 					"text": "",
 					"class": "textMuted",
 					"wordwrap": true,
@@ -583,7 +558,7 @@
 				"rect_confirm_divider": {
 					"type": "rectangle",
 					"left": 1102,
-					"top": 277,
+					"top": 194,
 					"width": 358,
 					"height": 1,
 					"class": "bgContent",
@@ -630,24 +605,10 @@
 					"method": "objbtn_confirm_action.4dm",
 					"visibility": "hidden"
 				},
-				"input_confirm_draft": {
-					"type": "input",
-					"left": 1118,
-					"top": 286,
-					"width": 309,
-					"height": 196,
-					"enterable": false,
-					"multiline": true,
-					"wordwrap": true,
-					"scrollbarVertical": "automatic",
-					"text": "",
-					"class": "textBody",
-					"visibility": "hidden"
-				},
 				"rect_confirm_email_sep": {
 					"type": "rectangle",
 					"left": 1102,
-					"top": 492,
+					"top": 418,
 					"width": 358,
 					"height": 1,
 					"class": "bgContent",
@@ -656,7 +617,7 @@
 				"text_confirm_email_lbl": {
 					"type": "text",
 					"left": 1118,
-					"top": 499,
+					"top": 425,
 					"width": 324,
 					"height": 14,
 					"text": "EMAIL DRAFT TO CLIENT",
@@ -666,7 +627,7 @@
 				"input_confirm_email_draft": {
 					"type": "input",
 					"left": 1118,
-					"top": 514,
+					"top": 444,
 					"width": 309,
 					"height": 200,
 					"enterable": true,
@@ -675,7 +636,8 @@
 					"scrollbarVertical": "automatic",
 					"text": "",
 					"class": "textBody",
-					"visibility": "hidden"
+					"visibility": "hidden",
+					"dataSource": "Form:C1466.confirmEmailDraft"
 				},
 				"btn_draft_email": {
 					"type": "button",
@@ -719,7 +681,7 @@
 				"text_ai_context": {
 					"type": "text",
 					"left": 776,
-					"top": 158,
+					"top": 142,
 					"width": 308,
 					"height": 48,
 					"text": "Context...",
@@ -728,67 +690,191 @@
 					"fontSize": 11,
 					"bold": false
 				},
-				"text_confirm_before_lbl": {
-					"type": "text",
-					"left": 1118,
-					"top": 232,
-					"width": 120,
-					"height": 14,
-					"text": "Before:",
-					"class": "textMuted",
-					"visibility": "hidden"
+				"rect_footer": {
+					"type": "rectangle",
+					"top": 800,
+					"left": 0,
+					"width": 1460,
+					"height": 53,
+					"stroke": "transparent",
+					"fill": "#191970"
 				},
-				"text_confirm_before_val": {
+				"text_ai_validation_badge": {
 					"type": "text",
-					"left": 1252,
-					"top": 232,
-					"width": 170,
-					"height": 14,
+					"left": 760,
+					"top": 819,
+					"width": 340,
+					"height": 29,
 					"text": "",
+					"textAlign": "center",
+					"class": "textSuccess",
+					"visibility": "hidden",
+					"method": "objvalidation_badge.4dm",
+					"events": [
+						"onClick"
+					],
+					"stroke": "#FFFFFF"
+				},
+				"text_ai_status": {
+					"type": "text",
+					"left": 16,
+					"top": 819,
+					"width": 744,
+					"height": 29,
+					"text": "text_ai_status",
 					"class": "textMuted",
-					"textAlign": "right",
-					"visibility": "hidden"
+					"textAlign": "left",
+					"stroke": "#FFFFFF"
+				},
+				"text_AI_Status_label": {
+					"type": "text",
+					"left": 16,
+					"top": 805,
+					"width": 355,
+					"height": 12,
+					"text": "AI STATUS",
+					"class": "textLabel",
+					"stroke": "#FFFFFF"
+				},
+				"text_JSON_Validate_label": {
+					"type": "text",
+					"left": 760,
+					"top": 805,
+					"width": 355,
+					"height": 12,
+					"text": "JSON Validate",
+					"class": "textLabel",
+					"stroke": "#FFFFFF"
+				},
+				"listbox_confirm_lines": {
+					"type": "listbox",
+					"left": 1118,
+					"top": 202,
+					"width": 324,
+					"height": 160,
+					"listboxType": "collection",
+					"dataSource": "Form:C1466.confirmLines",
+					"rowHeight": 24,
+					"headerHeight": 22,
+					"footerHeight": 0,
+					"scrollbarVertical": "automatic",
+					"scrollbarHorizontal": "hidden",
+					"class": "listboxCard",
+					"visibility": "hidden",
+					"columns": [
+						{
+							"name": "col_delta_icon",
+							"width": 28,
+							"header": {
+								"text": "",
+								"name": "Entête6"
+							},
+							"dataSource": "This:C1470.deltaIcon",
+							"type": "text",
+							"textAlign": "center",
+							"class": "colPrimary",
+							"footer": {
+								"name": "Pied6"
+							}
+						},
+						{
+							"name": "col_confirm_label",
+							"width": 176,
+							"header": {
+								"text": "Service",
+								"name": "Entête7"
+							},
+							"dataSource": "This:C1470.label",
+							"type": "text",
+							"class": "colDefault",
+							"footer": {
+								"name": "Pied7"
+							}
+						},
+						{
+							"name": "col_confirm_qty",
+							"width": 36,
+							"header": {
+								"text": "Qty",
+								"name": "Entête8"
+							},
+							"dataSource": "This:C1470.qtyStr",
+							"type": "text",
+							"textAlign": "right",
+							"class": "colMuted",
+							"footer": {
+								"name": "Pied8"
+							}
+						},
+						{
+							"name": "col_confirm_cost",
+							"width": 84,
+							"header": {
+								"text": "Impact",
+								"name": "Entête9"
+							},
+							"dataSource": "This:C1470.costImpactStr",
+							"type": "text",
+							"textAlign": "right",
+							"class": "colPrimary",
+							"footer": {
+								"name": "Pied9"
+							}
+						}
+					]
 				},
 				"text_confirm_impact_lbl": {
 					"type": "text",
 					"left": 1118,
-					"top": 250,
-					"width": 120,
-					"height": 14,
-					"text": "Impact:",
+					"top": 370,
+					"width": 200,
+					"height": 16,
+					"text": "Cost impact:",
 					"class": "textMuted",
 					"visibility": "hidden"
 				},
 				"text_confirm_impact_val": {
 					"type": "text",
-					"left": 1252,
-					"top": 250,
-					"width": 170,
-					"height": 14,
+					"left": 1118,
+					"top": 370,
+					"width": 324,
+					"height": 16,
 					"text": "",
-					"class": "textMuted",
+					"class": "textBody",
 					"textAlign": "right",
 					"visibility": "hidden"
 				},
 				"text_confirm_newtotal_lbl": {
 					"type": "text",
 					"left": 1118,
-					"top": 263,
-					"width": 120,
+					"top": 392,
+					"width": 200,
 					"height": 16,
-					"text": "New total:",
-					"class": "textSection",
+					"text": "New event total:",
+					"class": "textMuted",
 					"visibility": "hidden"
 				},
 				"text_confirm_newtotal_val": {
 					"type": "text",
-					"left": 1252,
-					"top": 263,
-					"width": 170,
+					"left": 1118,
+					"top": 392,
+					"width": 324,
 					"height": 16,
 					"text": "",
-					"class": "textSection",
+					"class": "textBody",
 					"textAlign": "right",
+					"visibility": "hidden"
+				},
+				"text_ai_spinner": {
+					"type": "text",
+					"left": 776,
+					"top": 512,
+					"width": 308,
+					"height": 224,
+					"text": "",
+					"class": "spinnerText",
+					"textAlign": "center",
+					"verticalAlign": "middle",
 					"visibility": "hidden"
 				}
 			}
@@ -796,10 +882,11 @@
 	],
 	"events": [
 		"onLoad",
-		"onClick"
+		"onClick",
+		"onTimer"
 	],
 	"method": "method.4dm",
-	"geometryStamp": 312,
+	"geometryStamp": 379,
 	"$4d": {
 		"version": "1",
 		"kind": "form"
@@ -815,12 +902,7 @@
 					"btn_email_analyze"
 				]
 			},
-			"Weather": {
-				"objects": [
-					"btn_ai_analyze",
-					"text_weather_ai_explanation"
-				]
-			},
+			"Weather": {},
 			"default": {}
 		}
 	}
