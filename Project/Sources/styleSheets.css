@@ -100,7 +100,7 @@
 
 /* JSON validation badge button — invisible, white text only */
 .btnValidationBadge {
-    fill: transparent;
+    fill: #111111;
     stroke: #FFFFFF;
     fontSize: 11;
     borderStyle: none;
