@@ -8,9 +8,6 @@ singleton Class constructor()
 
 // ─── Point d'entrée principal ─────────────────────────────────────────────────
 Function seedIfEmpty()
-	// Repair Object fields that may be "" due to catalog schema additions
-	This._repairObjectFields()
-
 	If (ds.Client.all().length=0)
 		This._seedClients()
 	End if 
@@ -296,16 +293,6 @@ Function _seedEmails()
 		End if 
 		$e.save()
 	End for each 
-
-// ─── Repair Object fields ("" → NULL) from catalog schema additions ───────────
-Function _repairObjectFields()
-	Begin SQL
-		UPDATE Event SET weatherSetup = NULL WHERE weatherSetup = '';
-		UPDATE Event SET weatherForecast = NULL WHERE weatherForecast = '';
-		UPDATE Event SET weatherAlertJson = NULL WHERE weatherAlertJson = '';
-		UPDATE Venue SET indoorOption = NULL WHERE indoorOption = '';
-		UPDATE Venue SET outdoorOption = NULL WHERE outdoorOption = '';
-	End SQL
 
 // ─── Régénération des events avec dates relatives ─────────────────────────────
 // Supprime tous les events + eventlines, puis recharge events.json avec des
