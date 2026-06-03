@@ -128,14 +128,8 @@ Function validationBadgeClicked()
 	End if 
 	var $d : Object:=This._lastValidationData
 	var $schemaFile : 4D.File:=Folder(fk resources folder).file("schemas/"+$d.schema)
-	var $schemaText : Text:=""
-	If ($schemaFile.exists)
-		$schemaText:=$schemaFile.getText()
-	End if 
-	var $msg : Text:="Schema: "+$d.schema
-	$msg:=$msg+"\n\n── Validated JSON ──\n"+JSON Stringify($d.json; *)
-	$msg:=$msg+"\n\n── Schema ──\n"+$schemaText
-	ALERT($msg)
+	var $fc : cs.FC_JSONValidateDetail:=cs.FC_JSONValidateDetail.new($d.schema; $schemaFile; $d.json)
+	DIALOG("JSONValidateDetail"; $fc)
 	
 Function _showValidationBadge($schemaName : Text; $validatedObject : Object)
 	var $label : Text:=Replace string($schemaName; ".json"; "")

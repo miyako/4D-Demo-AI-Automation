@@ -1,0 +1,104 @@
+{
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed",
+	"windowMinWidth": 900,
+	"windowMinHeight": 620,
+	"windowTitle": "JSON Validation",
+	"method": "method.4dm",
+	"pages": [
+		null,
+		{
+			"objects": {
+				"rect_bg": {
+					"type": "rectangle",
+					"left": 0,
+					"top": 0,
+					"width": 900,
+					"height": 620,
+					"class": "bgForm"
+				},
+				"rect_header": {
+					"type": "rectangle",
+					"left": 0,
+					"top": 0,
+					"width": 900,
+					"height": 50,
+					"class": "bgHeader"
+				},
+				"text_title": {
+					"type": "text",
+					"left": 20,
+					"top": 13,
+					"width": 860,
+					"height": 26,
+					"text": "JSON Validation",
+					"class": "textTitle"
+				},
+				"text_schema_label": {
+					"type": "text",
+					"left": 20,
+					"top": 58,
+					"width": 420,
+					"height": 16,
+					"text": "Schema",
+					"dataSource": "Form:C1466.schemaLabel",
+					"class": "textLabel"
+				},
+				"input_schema": {
+					"type": "input",
+					"left": 20,
+					"top": 78,
+					"width": 420,
+					"height": 490,
+					"dataSource": "Form:C1466.schemaContent",
+					"enterable": false,
+					"multiline": true,
+					"wordwrap": false,
+					"scrollbarVertical": "automatic",
+					"scrollbarHorizontal": "automatic",
+					"class": "textBody"
+				},
+				"text_json_label": {
+					"type": "text",
+					"left": 460,
+					"top": 58,
+					"width": 420,
+					"height": 16,
+					"text": "JSON received by AI",
+					"class": "textLabel"
+				},
+				"input_json": {
+					"type": "input",
+					"left": 460,
+					"top": 78,
+					"width": 420,
+					"height": 490,
+					"dataSource": "Form:C1466.jsonContent",
+					"enterable": false,
+					"multiline": true,
+					"wordwrap": false,
+					"scrollbarVertical": "automatic",
+					"scrollbarHorizontal": "automatic",
+					"class": "textBody"
+				},
+				"btn_close": {
+					"type": "button",
+					"left": 390,
+					"top": 578,
+					"width": 120,
+					"height": 32,
+					"text": "Close",
+					"events": [
+						"onClick"
+					],
+					"focusable": true,
+					"method": "objbtn_close.4dm",
+					"class": "btnPrimary",
+					"style": "flat"
+				}
+			}
+		}
+	]
+}
