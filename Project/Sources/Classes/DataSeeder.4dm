@@ -437,6 +437,10 @@ Function regenerateEvents()
 	// contractRef = "CTR-YYYY-1XX" where XX = index+100, so sort numerically via contractRef
 	var $allEvts : cs.EventSelection:=ds.Event.all().orderBy("contractRef ASC")
 	This._seededEventIDs:=$allEvts.toCollection("ID")
+	
+	// Re-seed emails so linkedEventID references match the new event UUIDs
+	ds.Email.all().drop()
+	This._seedEmails()
 
 // ─── Embeddings vectoriels des services ───────────────────────────────────────
 Function _buildServiceEmbeddings()
