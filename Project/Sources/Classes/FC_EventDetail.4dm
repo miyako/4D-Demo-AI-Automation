@@ -372,6 +372,8 @@ Function _onEmailAnalysisDone($result : Object)
 	If (($impacts.executionActions#Null) && ($impacts.executionActions.length>0))
 		This._actionMap:=cs.UIHelpers.me.showActionButtons($impacts.executionActions)
 		This.aiActions:=$impacts.executionActions
+		// Hide analyze button once actions are proposed — user cannot re-trigger analysis
+		OBJECT SET VISIBLE(*; "btn_email_analyze"; False)
 	End if 
 	
 Function _executeAction($slot : Integer)
