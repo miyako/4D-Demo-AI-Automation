@@ -533,6 +533,31 @@ Function _hideConfirmPanel()
 	This._resizeWindow(1100)
 	This._pendingExecResult:=Null
 	This._pendingAction:=Null
+
+// Called when all actions have been applied (directly or after reassessment).
+// Dismisses the weather alert or marks the pending email as processed,
+// then re-renders the AI panel to reflect the resolved state.
+Function _dismissAfterActions()
+	cs.UIHelpers.me.resetActionButtons()
+	This.aiActions:=[]
+	If (This.activeAdvisorTab="email")
+		// Mark linked email as read so it disappears from the email queue
+		If (This.linkedEmail#Null)
+			This.linkedEmail.emailStatus:="read"
+			This.linkedEmail.save()
+		End if 
+		This.linkedEmail:=Null
+		This.hasEmail:=False
+	Else 
+		// Dismiss weather alert on the event
+		This.event.weatherAlertLevel:="none"
+		This.event.save()
+	End if 
+	This._renderCurrentTab()
+	// Refresh the event list counts/icons if available
+	If (This._listFC#Null)
+		CALL FORM(This._listFC._windowRef; Formula(Form._loadEvents(Form.activeFilter)))
+	End if 
 	
 Function _resizeWindow($width : Integer)
 	var $curL; $curT; $curR; $curB : Integer
@@ -606,9 +631,7 @@ Function btnConfirmActionEventHandler($formEventCode : Integer)
 			This.aiActions:=$remaining
 			
 			If ($remaining.length=0)
-				This._actionMap:=cs.UIHelpers.me.showActionButtons([])
-				cs.UIHelpers.me.resetActionButtons()
-				OBJECT SET TITLE(*; "text_ai_status"; "✅ All actions applied.")
+				This._dismissAfterActions()
 			Else 
 				// Reassess remaining actions with AI
 				This._startSpinner()
@@ -633,10 +656,10 @@ Function _onReassessmentDone($result : Object)
 		return 
 	End if 
 	This.aiActions:=$result.actions
-	This._actionMap:=cs.UIHelpers.me.showActionButtons($result.actions)
 	If ($result.actions.length=0)
-		OBJECT SET TITLE(*; "text_ai_status"; "✅ All actions resolved.")
+		This._dismissAfterActions()
 	Else 
+		This._actionMap:=cs.UIHelpers.me.showActionButtons($result.actions)
 		OBJECT SET TITLE(*; "text_ai_status"; "✅ Applied. "+String($result.actions.length)+" action(s) remaining.")
 	End if 
 	
