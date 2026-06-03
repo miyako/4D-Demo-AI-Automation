@@ -274,6 +274,9 @@ Function executeActionAsync($hiddenPrompt : Text; $context : Object; $callback :
 	End if 
 	$system:=$system+"\nIMPORTANT: Use the search_services tool to find real services from our catalog. "
 	$system:=$system+"Only propose services that were returned by the tool. "
+	$system:=$system+"For 'replace_services' actions: you MUST propose BOTH removals (delta='remove') AND additions (delta='add'). "
+	$system:=$system+"If you cannot find replacement services, do NOT propose a removal-only result — keep searching with different keywords. "
+	$system:=$system+"Try multiple search_services calls with different keywords to find the best matches before giving up. "
 	$system:=$system+"The 'summary' field MUST be a single sentence of maximum 100 characters describing the proposed change. "
 	$system:=$system+"Return a JSON with: proposedLines (array of {serviceID, label, category, quantity, unitPrice, delta}), summary (text), totalImpact (number in euros)."
 
