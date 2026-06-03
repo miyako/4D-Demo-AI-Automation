@@ -323,19 +323,11 @@ Function _runEmailAnalysis()
 	OBJECT SET TITLE(*; "text_ai_status"; "⏳ Analyzing modification request...")
 	
 	var $evt : cs.EventEntity:=This.event
-	var $candidateEvents : Collection:=[{\
-		eventID: String($evt.ID); \
-		contractRef: $evt.contractRef; \
-		eventDate: String($evt.eventDate; "dd/MM/yyyy"); \
-		venueName: $evt.venue.name; \
-		guestCount: $evt.guestCount\
-		}]
-	
 	var $w : Integer:=Current form window
 	var $emailID : Text:=This.linkedEmail.ID
-	var $candJson : Text:=JSON Stringify($candidateEvents)
+	var $eventID : Text:=String($evt.ID)
 	var $linesJson : Text:=JSON Stringify(This._linesAsCollection())
-	CALL WORKER("aiAdvisorWorker_"+String($w); Formula(_aiEmailWorkerJob($w; $emailID; $candJson; $linesJson)))
+	CALL WORKER("aiAdvisorWorker_"+String($w); Formula(_aiEmailWorkerJob($w; $emailID; $eventID; $linesJson)))
 	
 Function _onEmailAnalysisDone($result : Object)
 	If (Form=Null)

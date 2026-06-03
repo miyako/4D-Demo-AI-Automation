@@ -200,75 +200,7 @@ Function _onWeatherChatDone($chatResult : Object; $callback : 4D.Function; $even
 	$result.weatherActions:=$parsed
 	$callback.call(Null; $result)
 
-// ─── Scenario 3: Client modification email ─────────────────────────────────────
-// $callback receives {success; ambiguous; impacts; validationError}
-Function analyzeModificationEmailAsync($email : cs.EmailEntity; $candidateEvents : Collection; $eventLines : Collection; $callback : 4D.Function)
-	var $schemaImpacts : Object:=This._loadSchema("schema_modification_impacts.json")
-	If ($schemaImpacts=Null)
-		$callback.call(Null; {success: False; ambiguous: False; impacts: Null; validationError: "Impossible de charger schema_modification_impacts.json"})
-		return 
-	End if 
-
-	var $candidatesText : Text:=""
-	var $c : Object
-	For each ($c; $candidateEvents)
-		$candidatesText:=$candidatesText+"- ID: "+$c.eventID+" | "+$c.contractRef+" | "+$c.eventDate+" | "+$c.venueName+" | "+String($c.guestCount)+" guests\n"
-	End for each 
-
-	var $linesText : Text:=""
-	var $line : Object
-	For each ($line; $eventLines)
-		$linesText:=$linesText+"- "+$line.serviceLabel+" × "+String($line.quantity)+" @ "+String($line.unitPrice)+"€/u\n"
-	End for each 
-
-	var $system : Text:="You are a contract specialist for Event Pulse. "
-	$system:=$system+"A client has sent a modification request. Your job is to:\n"
-	$system:=$system+"1) Identify which event they refer to (may be ambiguous)\n"
-	$system:=$system+"2) List all impacts (services added/removed, cost changes, etc.)\n"
-	$system:=$system+"3) Determine if an amendment ('avenant') is needed\n"
-	$system:=$system+"4) Propose executionActions: concrete actions the user can click to apply changes\n\n"
-	$system:=$system+"For each executionAction, include a 'hiddenPrompt' describing exactly what services to search/add/remove/update with quantities and constraints.\n"
-	$system:=$system+"Respond ONLY with a valid JSON object matching the modification_impacts schema. No markdown."
-
-	var $user : Text:="Client email subject: "+$email.subject+"\n"
-	$user:=$user+"From: "+$email.sender+"\n\n"
-	$user:=$user+"Body:\n"+$email.body+"\n\n"
-	$user:=$user+"Candidate events for this client:\n"+$candidatesText+"\n"
-	If ($eventLines.length>0)
-		$user:=$user+"Current services on most likely event:\n"+$linesText+"\n"
-	End if 
-	$user:=$user+"If multiple events could match, populate 'candidateEvents' and leave 'impacts' minimal. "
-	$user:=$user+"Otherwise populate 'impacts' fully."
-
-	var $self : Object:=This
-	var $cb : 4D.Function:=$callback
-	This._chat:=This._createChat($system; $schemaImpacts; "modification_impacts"; Formula($self._onModificationChatDone($1; $cb)))
-	This._chat.prompt($user)
-
-Function _onModificationChatDone($chatResult : Object; $callback : 4D.Function)
-	If (($chatResult#Null) && (Not($chatResult.terminated)))
-		return 
-	End if 
-	var $result : Object:={success: False; ambiguous: False; impacts: Null; validationError: ""; validation: Null}
-	var $parsed : Object:=This._extractParsedResponse($chatResult)
-	If ($parsed=Null)
-		$result.validationError:="schema_modification_impacts: "+This._extractError($chatResult)
-		$callback.call(Null; $result)
-		return 
-	End if 
-	// JSON Validate on the 4D side — post-AI safety net (blog pattern)
-	$result.validation:=This._validateResponse($parsed; "schema_modification_impacts.json")
-	If (Not($result.validation.success))
-		$result.validationError:="schema_modification_impacts: "+JSON Stringify($result.validation.errors)
-		$callback.call(Null; $result)
-		return 
-	End if 
-	$result.success:=True
-	$result.impacts:=$parsed
-	$result.ambiguous:=($parsed.candidateEvents#Null) && ($parsed.candidateEvents.length>1)
-	$callback.call(Null; $result)
-
-// ─── Scenario 3b: Modification email linked directly to a known event ──────────
+// ─── Scenario 3: Client modification email linked to a known event ──────────
 // The event is already identified — no need to disambiguate.
 // $callback receives {success; impacts; validationError}
 Function analyzeLinkedEmailAsync($email : cs.EmailEntity; $event : cs.EventEntity; $eventLines : Collection; $callback : 4D.Function)
