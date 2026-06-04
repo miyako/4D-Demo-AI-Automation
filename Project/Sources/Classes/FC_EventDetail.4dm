@@ -471,7 +471,8 @@ Function _executeSwitchVenue($action : Object)
 	$prompt:=$prompt+"Current booked services (total: "+String($currentTotal)+"€):\n"+$allServices+"\n"
 	$prompt:=$prompt+"Task:\n"
 	$prompt:=$prompt+"1. REMOVE all services that are specific to outdoor events (tents, outdoor structures, outdoor sound, outdoor lighting, rain gear, patio heaters, outdoor venue rental, etc.) — use your knowledge to identify them.\n"
-	$prompt:=$prompt+"2. SEARCH for indoor equivalents and additions: indoor sound system for "+String($guestCount)+" guests, indoor lighting/decor upgrades, indoor comfort services. Do NOT search for venue rental — that is handled separately.\n"
+	$prompt:=$prompt+"2. SEARCH for indoor equivalents and additions: indoor sound system for "+String($guestCount)+" guests, indoor lighting/decor upgrades, indoor comfort services, entertainment, catering upgrades. Do NOT search for venue rental — that is handled separately.\n"
+	$prompt:=$prompt+"3. MANDATORY: Apply the REVENUE PROTECTION RULE from your instructions — calculate net_impact after each round of searches and keep adding services until net_impact >= 0."
 	
 	// Tag the action so confirm step knows to save venueOption + inject indoor rental
 	$action._switchVenue:=True

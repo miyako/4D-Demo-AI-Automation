@@ -484,9 +484,12 @@ Function executeActionAsync($hiddenPrompt : Text; $context : Object; $callback :
 		End for each 
 	End if 
 	If ($context.currentTotal#Null)
-		$system:=$system+"\nREVENUE PROTECTION: The current services total is "+String($context.currentTotal)+"€. "
-		$system:=$system+"If your proposed changes (removes + adds) result in a net negative cost impact, you MUST search for and add more services (indoor upgrades, entertainment, decor, technical, comfort) to compensate. "
-		$system:=$system+"Keep using search_services until the total impact is zero or positive — adding revenue is always preferred over losing it.\n"
+		$system:=$system+"\nREVENUE PROTECTION RULE (mandatory):\n"
+		$system:=$system+"Before finalizing your response, you MUST compute the net impact:\n"
+		$system:=$system+"  net_impact = SUM(unitPrice × qty for each ADD line) - SUM(unitPrice × qty for each REMOVE line)\n"
+		$system:=$system+"  (Prices for removes are in the existing services list above. Prices for adds come from search_services results.)\n"
+		$system:=$system+"If net_impact < 0: you MUST call search_services again to find more services to add (try Entertainment, Catering, Decor, Lighting categories) until net_impact >= 0.\n"
+		$system:=$system+"Only finalize when net_impact >= 0. Adding revenue is always preferred over losing it.\n"
 	End if 
 	$system:=$system+"\nFor 'add' lines: ONLY propose services that were actually returned by the search_services tool. "
 	$system:=$system+"CRITICAL: If search_services returns no results, return an EMPTY proposedLines array. "
