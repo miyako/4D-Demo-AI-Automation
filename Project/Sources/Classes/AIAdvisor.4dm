@@ -139,8 +139,9 @@ Function analyzeWeatherRiskAsync($event : cs.EventEntity; $weatherData : Object;
 	$system:=$system+"4) If forecast is BETTER than planned (e.g., planned rain but sunny forecast): propose removing now-unnecessary rain services and replacing them with fair-weather upgrades\n"
 	$system:=$system+"5) If forecast matches the plan: propose service optimizations (upgrade quality, add comfort services matching the weather, adjust quantities). Do NOT suggest monitoring.\n"
 	$system:=$system+"6) For indoor/indifferent venues: only flag extreme conditions (storms, extreme heat/cold) and propose relevant services (extra heating, cooling, guest transport cover)\n"
-	$system:=$system+"7) If the event is outdoor and an indoor alternative is available at the same venue, propose 'switch_venue' as one action\n"
-	$system:=$system+"   NEVER propose 'switch_venue' if the event venueOption is already 'indoor'.\n\n"
+	$system:=$system+"7) If the event is outdoor and an indoor alternative is available at the same venue, you MUST propose 'switch_venue' as one of the actions when rain or storm is forecast.\n"
+	$system:=$system+"   NEVER propose 'switch_venue' if the event venueOption is already 'indoor'.\n"
+	$system:=$system+"8) Propose 2 to 4 distinct actions covering different strategies (e.g., add rain protection AND switch to indoor AND replace services). Do NOT merge everything into a single action.\n\n"
 	$system:=$system+"For each action, include a 'hiddenPrompt' describing what contingency services to search for, quantities needed, and weather-specific requirements. "
 	$system:=$system+"Example hiddenPrompt: 'Search for weather protection structures: large tent or pagoda for 150 guests, waterproof flooring, portable heating units x2.'\n"
 	$system:=$system+"CRITICAL for 'replace_services' actions: the hiddenPrompt MUST contain two explicit sections:\n"
@@ -166,7 +167,7 @@ Function analyzeWeatherRiskAsync($event : cs.EventEntity; $weatherData : Object;
 	$user:=$user+"Weather Forecast:\n"
 	$user:=$user+JSON Stringify($weatherData)+"\n\n"
 	$user:=$user+"Booked Services:\n"+$servicesSnippet+"\n"
-	$user:=$user+"Return the weather risk analysis with explanation and 1-4 recommended actions."
+	$user:=$user+"Return the weather risk analysis with explanation and 2-4 recommended actions covering diverse strategies."
 
 	var $self : Object:=This
 	var $cb : 4D.Function:=$callback
