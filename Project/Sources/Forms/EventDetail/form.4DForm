@@ -577,7 +577,7 @@
 					"left": 1118,
 					"top": 126,
 					"width": 324,
-					"height": 60,
+					"height": 142,
 					"text": "",
 					"class": "textMuted",
 					"wordwrap": true,
@@ -586,7 +586,7 @@
 				"rect_confirm_divider": {
 					"type": "rectangle",
 					"left": 1102,
-					"top": 194,
+					"top": 269,
 					"width": 358,
 					"height": 1,
 					"class": "bgContent",
@@ -636,7 +636,7 @@
 				"rect_confirm_email_sep": {
 					"type": "rectangle",
 					"left": 1102,
-					"top": 418,
+					"top": 493,
 					"width": 358,
 					"height": 1,
 					"class": "bgContent",
@@ -645,7 +645,7 @@
 				"text_confirm_email_lbl": {
 					"type": "text",
 					"left": 1118,
-					"top": 425,
+					"top": 500,
 					"width": 324,
 					"height": 14,
 					"text": "EMAIL DRAFT TO CLIENT",
@@ -655,7 +655,7 @@
 				"input_confirm_email_draft": {
 					"type": "input",
 					"left": 1118,
-					"top": 444,
+					"top": 519,
 					"width": 309,
 					"height": 200,
 					"enterable": true,
@@ -767,7 +767,7 @@
 				"listbox_confirm_lines": {
 					"type": "listbox",
 					"left": 1118,
-					"top": 202,
+					"top": 277,
 					"width": 324,
 					"height": 160,
 					"listboxType": "collection",
@@ -844,7 +844,7 @@
 				"text_confirm_impact_lbl": {
 					"type": "text",
 					"left": 1118,
-					"top": 370,
+					"top": 443,
 					"width": 200,
 					"height": 16,
 					"text": "Cost impact:",
@@ -854,7 +854,7 @@
 				"text_confirm_impact_val": {
 					"type": "text",
 					"left": 1118,
-					"top": 370,
+					"top": 445,
 					"width": 324,
 					"height": 16,
 					"text": "",
@@ -865,7 +865,7 @@
 				"text_confirm_newtotal_lbl": {
 					"type": "text",
 					"left": 1118,
-					"top": 392,
+					"top": 465,
 					"width": 200,
 					"height": 16,
 					"text": "New event total:",
@@ -875,7 +875,7 @@
 				"text_confirm_newtotal_val": {
 					"type": "text",
 					"left": 1118,
-					"top": 392,
+					"top": 467,
 					"width": 324,
 					"height": 16,
 					"text": "",
@@ -914,7 +914,7 @@
 		"onTimer"
 	],
 	"method": "method.4dm",
-	"geometryStamp": 464,
+	"geometryStamp": 621,
 	"$4d": {
 		"version": "1",
 		"kind": "form"

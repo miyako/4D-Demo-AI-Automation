@@ -481,6 +481,8 @@ Function _onExecutionDone($execResult : Object; $action : Object)
 	
 	// For switch_venue: inject the indoor venue rental as a guaranteed add line
 	// (AI may fail to find it; we always inject it from the venue's indoorOption.rentalPrice)
+	var $dbgFile : 4D.File:=Folder(fk logs folder).file("switch_venue_debug.json")
+	$dbgFile.setText(JSON Stringify({switchVenue: $action._switchVenue; indoorRental: $action._indoorRental; indoorName: $action._indoorName; actionKeys: OB Keys($action); proposedCount: $execResult.proposedLines.length}; *))
 	If ($action._switchVenue=True) && (Num($action._indoorRental)>0)
 		var $alreadyHasIndoor : Boolean:=$execResult.proposedLines.some(Formula(\
 			($1.value.delta="add") && (Position("indoor"; Lowercase($1.value.label))>0) && (Position("rental"; Lowercase($1.value.label))>0)\
