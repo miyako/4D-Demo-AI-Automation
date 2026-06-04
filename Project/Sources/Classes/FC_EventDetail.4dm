@@ -22,6 +22,7 @@ property tabControl : Object
 property _lastValidationData : Object
 property _actionMap : Collection
 property _emailImpacts : Object
+property _weatherExplanation : Text
 property _listFC : Object
 
 Class constructor($event : cs.EventEntity; $eventSelection : cs.EventSelection; $listFC : Object)
@@ -45,6 +46,7 @@ Class constructor($event : cs.EventEntity; $eventSelection : cs.EventSelection; 
 	This._lastValidationData:=Null
 	This._actionMap:=[-1; -1; -1; -1]
 	This._emailImpacts:=Null
+	This._weatherExplanation:=""
 	If ($eventSelection#Null)
 		This._selection:=$eventSelection
 	Else 
@@ -230,6 +232,7 @@ Function _renderWeatherTab($weatherResult : Object)
 	
 	If (($wa.explanation#Null) && ($wa.explanation#""))
 		OBJECT SET TITLE(*; "text_weather_ai_explanation"; $wa.explanation)
+		This._weatherExplanation:=$wa.explanation
 	End if 
 	
 	This._showValidationBadge("schema_weather_actions.json"; $weatherResult.weatherActions)
@@ -774,7 +777,15 @@ Function btnDraftEmailEventHandler($formEventCode : Integer)
 			var $evt : cs.EventEntity:=This.event
 			var $act : Object:=This._pendingAction
 			var $plines : Collection:=This._pendingExecResult.proposedLines
-			$advisor.generateDraftEmailAsync($evt; $act; $plines; Formula($self._onDraftEmailDone($1)))
+			// Build context: weather explanation and/or client email depending on active tab
+			var $ctx : Object:={}
+			If ((This._weatherExplanation#Null) && (This._weatherExplanation#""))
+				$ctx.weatherExplanation:=This._weatherExplanation
+			End if 
+			If (This.linkedEmail#Null)
+				$ctx.clientEmail:={sender: This.linkedEmail.sender; subject: This.linkedEmail.subject; body: This.linkedEmail.body}
+			End if 
+			$advisor.generateDraftEmailAsync($evt; $act; $plines; $ctx; Formula($self._onDraftEmailDone($1)))
 	End case 
 	
 Function _onDraftEmailDone($result : Object)

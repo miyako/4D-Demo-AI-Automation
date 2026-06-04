@@ -277,7 +277,8 @@ Function _onModificationChatDone($chatResult : Object; $callback : 4D.Function)
 
 // ─── generateDraftEmail: confirmation email after applying an action ──────────
 // $callback receives {success; emailText; validationError}
-Function generateDraftEmailAsync($event : cs.EventEntity; $action : Object; $proposedLines : Collection; $callback : 4D.Function)
+// $context: optional {weatherExplanation, weatherForecast, clientEmail: {subject, body, sender}}
+Function generateDraftEmailAsync($event : cs.EventEntity; $action : Object; $proposedLines : Collection; $context : Object; $callback : 4D.Function)
 	var $schemaDraft : Object:=This._loadSchema("schema_draft_email.json")
 	If ($schemaDraft=Null)
 		$callback.call(Null; {success: False; emailText: ""; validationError: "Cannot load schema_draft_email.json"})
@@ -305,10 +306,21 @@ Function generateDraftEmailAsync($event : cs.EventEntity; $action : Object; $pro
 
 	var $user : Text:="Client: "+$clientName+"\n"
 	$user:=$user+"Event: "+$event.contractRef+" — "+String($event.eventDate; "yyyy-MM-dd")+" at "+$venueInfo+" ("+String($event.guestCount)+" guests)\n\n"
+	If (($context#Null) && ($context.clientEmail#Null))
+		$user:=$user+"=== ORIGINAL CLIENT EMAIL ===\n"
+		$user:=$user+"From: "+String($context.clientEmail.sender)+"\n"
+		$user:=$user+"Subject: "+String($context.clientEmail.subject)+"\n"
+		$user:=$user+"Body:\n"+String($context.clientEmail.body)+"\n\n"
+	End if 
+	If (($context#Null) && ($context.weatherExplanation#Null))
+		$user:=$user+"=== WEATHER ALERT CONTEXT ===\n"
+		$user:=$user+String($context.weatherExplanation)+"\n\n"
+	End if 
 	If ($action#Null)
-		$user:=$user+"Proposed action: "+String($action.label)+"\n"
-		If ($action.description#Null)
-			$user:=$user+"Details: "+String($action.description)+"\n"
+		$user:=$user+"=== PROPOSED ACTION ===\n"
+		$user:=$user+"Action: "+String($action.label)+"\n"
+		If (($action.hiddenPrompt#Null) && ($action.hiddenPrompt#""))
+			$user:=$user+"Details: "+String($action.hiddenPrompt)+"\n"
 		End if 
 		$user:=$user+"\n"
 	End if 
