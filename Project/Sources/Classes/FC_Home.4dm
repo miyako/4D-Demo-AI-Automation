@@ -49,10 +49,10 @@ Function btnClearDataEventHandler($formEventCode : Integer)
 			This._clearData()
 	End case 
 
-Function btnAiSetupLinkEventHandler($formEventCode : Integer)
+Function btnAiSetupEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
-			OPEN URL("https://developer.4d.com/docs/settings/ai")
+			This._openAiSetupDocs()
 	End case 
 
 //MARK: - Private
@@ -64,13 +64,11 @@ Function _onLoad()
 	var $aiOk : Boolean:=($providerList.length>0) && ($chatEntry#Null) && ($chatEntry.model#"") && ($chatEntry.model#Null)
 	
 	If ($aiOk)
-		OBJECT SET TITLE(*; "text_status"; "● AI Connected")
-		OBJECT SET RGB COLORS(*; "text_status"; 0x002E7D32; -1; -1)
-		OBJECT SET VISIBLE(*; "btn_ai_setup_link"; False)
+		OBJECT SET VISIBLE(*; "btn_ai_connected"; True)
+		OBJECT SET VISIBLE(*; "btn_ai_setup"; False)
 	Else 
-		OBJECT SET TITLE(*; "text_status"; "⚠ Set up AI")
-		OBJECT SET RGB COLORS(*; "text_status"; 0x00E65100; -1; -1)
-		OBJECT SET VISIBLE(*; "btn_ai_setup_link"; True)
+		OBJECT SET VISIBLE(*; "btn_ai_connected"; False)
+		OBJECT SET VISIBLE(*; "btn_ai_setup"; True)
 	End if 
 	
 	// Build "Powered by" footer from model aliases
@@ -110,6 +108,9 @@ Function _rebuildEmbeddings()
 		cs.DataSeeder.me.rebuildEmbeddings()
 		ALERT("Service embeddings rebuilt successfully!")
 	End if 
+
+Function _openAiSetupDocs()
+	OPEN URL("https://developer.4d.com/docs/settings/ai")
 
 Function _clearData()
 	CONFIRM("Clear ALL data?\n\nThis will delete all records without re-importing.\nThe database will be empty — use 'Reset & Rebuild All' to re-seed.")

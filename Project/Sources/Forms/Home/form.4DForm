@@ -43,23 +43,6 @@
 					"text": "International Event Management · AI-Powered",
 					"class": "textMuted"
 				},
-				"rect_status": {
-					"type": "rectangle",
-					"left": 700,
-					"top": 30,
-					"width": 130,
-					"height": 30,
-					"class": "bgStatusBadge"
-				},
-				"text_status": {
-					"type": "text",
-					"left": 716,
-					"top": 36,
-					"width": 98,
-					"height": 18,
-					"text": "● AI Connected",
-					"class": "textSuccess"
-				},
 				"rect_card1": {
 					"type": "rectangle",
 					"left": 60,
@@ -274,20 +257,33 @@
 					"class": "btnSecondary",
 					"style": "flat"
 				},
-				"btn_ai_setup_link": {
+				"btn_ai_connected": {
 					"type": "button",
-					"left": 600,
-					"top": 64,
-					"width": 230,
-					"height": 16,
-					"text": "→ Set up provider and model",
+					"left": 700,
+					"top": 30,
+					"width": 130,
+					"height": 30,
+					"text": "● AI Connected",
+					"visible": true,
+					"events": [],
+					"focusable": false,
+					"class": "btnStatusGreen",
+					"style": "flat"
+				},
+				"btn_ai_setup": {
+					"type": "button",
+					"left": 610,
+					"top": 30,
+					"width": 220,
+					"height": 30,
+					"text": "⚠ Set up provider & model",
 					"visible": false,
 					"events": [
 						"onClick"
 					],
-					"focusable": false,
+					"focusable": true,
 					"method": "objbtn_ai_setup_link.4dm",
-					"class": "textMuted",
+					"class": "btnStatusWarning",
 					"style": "flat"
 				}
 			}

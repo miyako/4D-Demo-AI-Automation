@@ -1,1 +1,1 @@
-Form.btnAiSetupLinkEventHandler(FORM Event.code)
+Form.btnAiSetupEventHandler(FORM Event.code)

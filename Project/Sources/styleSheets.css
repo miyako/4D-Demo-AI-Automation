@@ -167,6 +167,26 @@
     borderRadius: 15;
 }
 
+.btnStatusGreen {
+    fill: #1A3320;
+    stroke: #2D6E41;
+    color: #4CAF50;
+    fontSize: 12;
+    borderStyle: solid;
+    borderRadius: 15;
+    textAlign: center;
+}
+
+.btnStatusWarning {
+    fill: #3E1F00;
+    stroke: #E65100;
+    color: #FF8C00;
+    fontSize: 12;
+    borderStyle: solid;
+    borderRadius: 15;
+    textAlign: center;
+}
+
 /* Inline content area */
 .bgContent {
     fill: #2D2D2D;
@@ -355,6 +375,18 @@
     .bgStatusBadge {
         fill: #E8F5E9;
         stroke: #4CAF50;
+    }
+
+    .btnStatusGreen {
+        fill: #E8F5E9;
+        stroke: #4CAF50;
+        color: #2E7D32;
+    }
+
+    .btnStatusWarning {
+        fill: #FFF3E0;
+        stroke: #E65100;
+        color: #BF360C;
     }
 
     .bgContent {
