@@ -262,7 +262,14 @@ Function _checkAiReady() : Boolean
 	var $aliases : Collection:=cs.AIKit.OpenAIProviders.new().modelAliases()
 	var $chatEntry : Object:=$aliases.query("name = :1"; "chat").first()
 	If (($chatEntry=Null) || ($chatEntry.model="") || ($chatEntry.model=Null))
-		ALERT("No chat model alias is configured.\n\nPlease set up a 'chat' model alias in the AI settings.\nSee: https://developer.4d.com/docs/settings/ai")
+		If (Application type=0)
+			CONFIRM("No 'chat' model alias is configured.\n\nOpen AI settings now?")
+			If (OK=1)
+				OPEN SETTINGS WINDOW("/Database/AI")
+			End if 
+		Else 
+			ALERT("No chat model alias is configured.\n\nPlease set up a 'chat' model alias in the AI settings.\nSee: https://developer.4d.com/docs/settings/ai")
+		End if 
 		return False
 	End if 
 	return True
@@ -270,7 +277,8 @@ Function _checkAiReady() : Boolean
 Function _runWeatherAnalysis()
 	If (Not(This._checkAiReady()))
 		return 
-	End if 	This.running:=True
+	End if 
+	This.running:=True
 	This._startSpinner()
 	OBJECT SET VISIBLE(*; "btn_ai_analyze"; False)
 	If (This._pendingExecResult#Null)

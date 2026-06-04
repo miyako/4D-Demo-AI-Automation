@@ -113,7 +113,14 @@ Function _checkEmbeddingReady() : Boolean
 	var $aliases : Collection:=cs.AIKit.OpenAIProviders.new().modelAliases()
 	var $e : Object:=$aliases.query("name = :1"; "embedding").first()
 	If (($e=Null) || ($e.model="") || ($e.model=Null))
-		ALERT("No embedding model alias is configured.\n\nPlease set up an 'embedding' model alias in the AI settings.\nSee: https://developer.4d.com/docs/settings/ai")
+		If (Application type=0)
+			CONFIRM("No 'embedding' model alias is configured.\n\nOpen AI settings now?")
+			If (OK=1)
+				OPEN SETTINGS WINDOW("/Database/AI")
+			End if 
+		Else 
+			ALERT("No embedding model alias is configured.\n\nPlease set up an 'embedding' model alias in the AI settings.\nSee: https://developer.4d.com/docs/settings/ai")
+		End if 
 		return False
 	End if 
 	return True
@@ -142,7 +149,13 @@ Function _rebuildEmbeddings()
 	End if 
 
 Function _openAiSetupDocs()
-	OPEN URL("https://developer.4d.com/docs/settings/ai")
+	// In development mode: open 4D project settings directly on AI page
+	// In other modes: open the web documentation
+	If (Application type=0)
+		OPEN SETTINGS WINDOW("/Database/AI")
+	Else 
+		OPEN URL("https://developer.4d.com/docs/settings/ai")
+	End if 
 
 Function _clearData()
 	CONFIRM("Clear ALL data?\n\nThis will delete all records without re-importing.\nThe database will be empty — use 'Reset & Rebuild All' to re-seed.")
