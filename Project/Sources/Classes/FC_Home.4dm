@@ -65,11 +65,11 @@ Function _onLoad()
 	
 	If ($aiOk)
 		OBJECT SET TITLE(*; "text_status"; "● AI Connected")
-		OBJECT SET STYLE SHEET(*; "text_status"; "textSuccess")
+		OBJECT SET RGB COLORS(*; "text_status"; 0x002E7D32; -1; -1)
 		OBJECT SET VISIBLE(*; "btn_ai_setup_link"; False)
 	Else 
 		OBJECT SET TITLE(*; "text_status"; "⚠ Set up AI")
-		OBJECT SET STYLE SHEET(*; "text_status"; "textWarning")
+		OBJECT SET RGB COLORS(*; "text_status"; 0x00E65100; -1; -1)
 		OBJECT SET VISIBLE(*; "btn_ai_setup_link"; True)
 	End if 
 	
