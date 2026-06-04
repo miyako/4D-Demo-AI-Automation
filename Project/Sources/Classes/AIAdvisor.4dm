@@ -451,14 +451,14 @@ Function _onReassessChatDone($chatResult : Object; $callback : 4D.Function)
 	$callback.call(Null; $result)
 
 // ─── Step 2: Execution with tool calling (ChatHelper + registerTools) ───────────
-// $callback receives {success; proposedLines; summary; totalImpact; error}
+// $callback receives {success; proposedLines; summary; error}
 Function executeActionAsync($hiddenPrompt : Text; $context : Object; $callback : 4D.Function)
 	var $system : Text:="You are an event planning execution assistant for Event Pulse. "
 	$system:=$system+"You have access to a search_services tool to find services in our catalog. "
 	$system:=$system+"Based on the task description, build the list of proposed service changes for this event.\n\n"
 	$system:=$system+"The 'delta' field on each line controls what happens:\n"
 	$system:=$system+"- 'add': a new service found via search_services to add to the event\n"
-	$system:=$system+"- 'remove': an EXISTING service to remove — do NOT search for it, take label/quantity/unitPrice directly from the existing services list in context\n"
+	$system:=$system+"- 'remove': an EXISTING service to remove — do NOT search for it, take serviceID and quantity directly from the existing services list in context\n"
 	$system:=$system+"- 'update': change the quantity of an existing service\n\n"
 	$system:=$system+"For 'replace_services' tasks: you must produce BOTH 'remove' lines (for existing services listed under REMOVE:) AND 'add' lines (found via search_services for items listed under SEARCH:). "
 	$system:=$system+"Do NOT search for services that are listed under REMOVE — just emit them with delta:'remove'. "
@@ -487,9 +487,9 @@ Function executeActionAsync($hiddenPrompt : Text; $context : Object; $callback :
 	$system:=$system+"CRITICAL: If search_services returns no results, return an EMPTY proposedLines array. "
 	$system:=$system+"If search_services returns results but none are appropriate, return empty proposedLines AND set summary to explain clearly why each result was rejected (e.g. 'Found: X, Y, Z — rejected because task requires indoor heating and all results are outdoor equipment'). "
 	$system:=$system+"NEVER emit 'remove' lines for an 'add_services' task — only emit removes for 'remove_services' or 'replace_services' tasks. "
-	$system:=$system+"For 'remove' lines: use the exact label, serviceID and unitPrice from the existing services list above — do NOT search for them. The serviceID for removes MUST be the [ID:xxx] value from the existing services list. "
-	$system:=$system+"Return a JSON with: proposedLines (array of {serviceID, label, category, quantity, unitPrice, delta}), summary (text), totalImpact (number in euros). "
-	$system:=$system+"totalImpact = sum of add lines minus sum of remove lines."
+	$system:=$system+"For 'remove' lines: use the exact serviceID from the existing services list above — do NOT search for them. The serviceID for removes MUST be the [ID:xxx] value from the existing services list. "
+	$system:=$system+"Return a JSON with: proposedLines (array of {serviceID, quantity, delta}), summary (text). "
+	$system:=$system+"Do NOT include label, category, unitPrice, or totalImpact — those are resolved server-side."
 
 	var $execSchema : Object:=This._loadSchema("schema_action_execution.json")
 	var $self : Object:=This
@@ -507,7 +507,7 @@ Function _onExecutionChatDone($chatResult : Object; $callback : 4D.Function)
 	If (($chatResult#Null) && (Not($chatResult.terminated)))
 		return 
 	End if 
-	var $result : Object:={success: False; proposedLines: Null; summary: ""; totalImpact: 0; error: ""; validation: Null}
+	var $result : Object:={success: False; proposedLines: Null; summary: ""; error: ""; validation: Null}
 	var $parsed : Object:=This._extractParsedResponse($chatResult)
 
 	// Debug: log full parsed result
@@ -527,14 +527,34 @@ Function _onExecutionChatDone($chatResult : Object; $callback : 4D.Function)
 		return 
 	End if 
 	$result.success:=True
-	$result.proposedLines:=$parsed.proposedLines
+	$result.proposedLines:=This._enrichProposedLines($parsed.proposedLines)
 	$result.summary:=$parsed.summary
-	$result.totalImpact:=$parsed.totalImpact
 	$callback.call(Null; $result)
 
 // ═══════════════════════════════════════════════════════════════════════════════
 // ─── HELPERS ──────────────────────────────────────────────────────────────────
 // ═══════════════════════════════════════════════════════════════════════════════
+
+// ─── Enriches proposed lines with label/category/unitPrice from the catalog ─────
+// Called after AI response — AI only returns {serviceID, quantity, delta}
+Function _enrichProposedLines($lines : Collection) : Collection
+	If ($lines=Null)
+		return []
+	End if 
+	var $line : Object
+	For each ($line; $lines)
+		var $svc : cs.ServiceEntity:=ds.Service.get($line.serviceID)
+		If ($svc#Null)
+			$line.label:=$svc.label
+			$line.category:=$svc.category
+			$line.unitPrice:=$svc.unitPrice
+		Else 
+			$line.label:="[unknown:"+String($line.serviceID)+"]"
+			$line.category:=""
+			$line.unitPrice:=0
+		End if 
+	End for each 
+	return $lines
 
 // ─── Extracts and parses JSON from the chat response ────────────────────────────
 Function _extractParsedResponse($chatResult : Object) : Object
