@@ -108,6 +108,13 @@ Function _keywordSearch($query : Text; $category : Text; $limit : Integer) : Col
 	return This._toResults($allHits; $limit)
 
 // ─── Converts a ServiceSelection to the standard result collection format ─────
+// toCollection signature: (filterString; options; begin; howMany)
+// options=0, begin=0, howMany=$limit → first $limit items
 Function _toResults($sel : cs.ServiceSelection; $limit : Integer) : Collection
-	return $sel.toCollection("ID, label, category, unitPrice, unit"; 0; $limit)\
-		.map(Formula({serviceID: $1.ID; label: $1.label; category: $1.category; unitPrice: $1.unitPrice; unit: $1.unit}))
+	var $raw : Collection:=$sel.toCollection("ID, label, category, unitPrice, unit"; 0; 0; $limit)
+	var $results : Collection:=[]
+	var $item : Object
+	For each ($item; $raw)
+		$results.push({serviceID: $item.ID; label: $item.label; category: $item.category; unitPrice: $item.unitPrice; unit: $item.unit})
+	End for each 
+	return $results
