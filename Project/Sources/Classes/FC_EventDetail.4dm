@@ -311,6 +311,7 @@ Function _checkLinkedEmail()
 	
 Function _setAdvisorTab($tab : Text)
 	This.activeAdvisorTab:=$tab
+	This._hideConfirmPanel()
 	This._renderCurrentTab()
 	
 	// ─── Email AI analysis ────────────────────────────────────────────────────────
