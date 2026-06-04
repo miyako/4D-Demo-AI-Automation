@@ -12,6 +12,8 @@ property running : Boolean
 property _spinnerIndex : Integer
 property _spinnerFrames : Collection
 property _spinnerActive : Boolean
+property _spinnerBtnSlot : Integer
+property _spinnerBtnLabel : Text
 property _selection : cs.EventSelection
 property _pendingExecResult : Object
 property _pendingAction : Object
@@ -37,6 +39,8 @@ Class constructor($event : cs.EventEntity; $eventSelection : cs.EventSelection; 
 	This._spinnerIndex:=0
 	This._spinnerFrames:=["⠋"; "⠙"; "⠹"; "⠸"; "⠼"; "⠴"; "⠦"; "⠧"; "⠇"; "⠏"]
 	This._spinnerActive:=False
+	This._spinnerBtnSlot:=-1
+	This._spinnerBtnLabel:=""
 	This._pendingExecResult:=Null
 	This._pendingAction:=Null
 	This.activeAdvisorTab:="weather"
@@ -60,9 +64,16 @@ Function formEventHandler($formEventCode : Integer)
 		: ($formEventCode=On Load)
 			This._onLoad()
 		: ($formEventCode=On Timer)
-			If (This._spinnerActive)
+			If (This._spinnerActive || (This._spinnerBtnSlot>=0))
 				This._spinnerIndex:=(This._spinnerIndex+1)%(This._spinnerFrames.length)
-				OBJECT SET TITLE(*; "text_ai_spinner"; This._spinnerFrames[This._spinnerIndex])
+				var $frame : Text:=This._spinnerFrames[This._spinnerIndex]
+				If (This._spinnerActive)
+					OBJECT SET TITLE(*; "text_ai_spinner"; $frame)
+				End if 
+				If (This._spinnerBtnSlot>=0)
+					var $btns : Collection:=["btn_ai_action1"; "btn_ai_action2"; "btn_ai_action3"; "btn_ai_action4"]
+					OBJECT SET TITLE(*; $btns[This._spinnerBtnSlot]; This._spinnerBtnLabel+"  "+$frame)
+				End if 
 			End if 
 	End case 
 	
@@ -411,12 +422,14 @@ Function _executeAction($slot : Integer)
 	
 	// switch_venue: update venueOption and rental price directly — no AI tool call needed
 	If ($type="switch_venue")
+		This._startButtonSpinner($slot; $action.label)
 		This._executeSwitchVenue($action)
 		return 
 	End if 
 	
 	// If the action has a hiddenPrompt, use tool calling (Step 2)
 	If (($action.hiddenPrompt#Null) && ($action.hiddenPrompt#""))
+		This._startButtonSpinner($slot; $action.label)
 		OBJECT SET TITLE(*; "text_ai_status"; "⏳ "+String($action.label)+"...")
 		This._executeWithToolCalling($action)
 		return 
@@ -510,6 +523,8 @@ Function _onExecutionDone($execResult : Object)
 	If (Form=Null)
 		return 
 	End if 
+	
+	This._stopButtonSpinner()
 	
 	// Retrieve and clear the stored action — no JSON round-trip needed
 	var $action : Object:=cs.AIWorkerContext.me.getAction(Current form window)
@@ -838,11 +853,32 @@ Function _startSpinner()
 	cs.UIHelpers.me.resetActionButtons()
 	SET TIMER(6)  // ~100ms per frame
 	
+Function _startButtonSpinner($slot : Integer; $label : Text)
+	This._spinnerBtnSlot:=$slot
+	This._spinnerBtnLabel:=$label
+	This._spinnerIndex:=0
+	If (Not(This._spinnerActive))
+		SET TIMER(6)
+	End if 
+	
+Function _stopButtonSpinner()
+	If (This._spinnerBtnSlot>=0)
+		var $btns : Collection:=["btn_ai_action1"; "btn_ai_action2"; "btn_ai_action3"; "btn_ai_action4"]
+		OBJECT SET TITLE(*; $btns[This._spinnerBtnSlot]; This._spinnerBtnLabel)
+		This._spinnerBtnSlot:=-1
+		This._spinnerBtnLabel:=""
+	End if 
+	If (Not(This._spinnerActive))
+		SET TIMER(0)
+	End if 
+	
 Function _stopSpinner()
 	This._spinnerActive:=False
-	SET TIMER(0)
 	OBJECT SET VISIBLE(*; "text_ai_spinner"; False)
 	OBJECT SET TITLE(*; "text_ai_spinner"; "")
+	If (This._spinnerBtnSlot<0)
+		SET TIMER(0)
+	End if 
 Function _navigate($direction : Integer)
 	var $pos : Integer:=This.event.indexOf(This._selection)
 	If ($pos<0)
