@@ -218,7 +218,7 @@
 					"top": 440,
 					"width": 180,
 					"height": 34,
-					"text": "🗑 Reset & Rebuild All",
+					"text": "🚀 Initialize Sample Data",
 					"events": [
 						"onClick"
 					],
