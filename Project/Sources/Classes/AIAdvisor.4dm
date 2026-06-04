@@ -425,7 +425,7 @@ Function reassessActionsAsync($remainingActions : Collection; $appliedLabel : Te
 	var $actionsSnippet : Text:=""
 	var $action : Object
 	For each ($action; $remainingActions)
-		$actionsSnippet:=$actionsSnippet+"- ["+$action.priority+"] "+$action.label+": "+$action.description+"\n"
+		$actionsSnippet:=$actionsSnippet+"- ["+$action.actionType+"] "+$action.label+"\n"
 	End for each 
 
 	var $system : Text:="You are a risk management specialist for Event Pulse. "
@@ -433,7 +433,7 @@ Function reassessActionsAsync($remainingActions : Collection; $appliedLabel : Te
 	$system:=$system+"For each remaining action, decide:\n"
 	$system:=$system+"- Keep it if it's still needed given the updated service list\n"
 	$system:=$system+"- Drop it if the applied action already resolves what it was targeting\n"
-	$system:=$system+"- Adjust its description or priority if the situation has changed\n\n"
+	$system:=$system+"- Adjust its hiddenPrompt if the situation has changed\n\n"
 	$system:=$system+"NEVER propose passive monitoring actions. Only concrete service operations.\n"
 	$system:=$system+"Return ONLY the actions that are still relevant. If all issues are resolved, return an empty actions array.\n"
 	$system:=$system+"Respond ONLY with a valid JSON object matching the reassess_actions schema."
