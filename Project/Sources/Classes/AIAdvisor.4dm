@@ -497,6 +497,8 @@ Function executeActionAsync($hiddenPrompt : Text; $context : Object; $callback :
 	var $execSchema : Object:=This._loadSchema("schema_action_execution.json")
 	var $self : Object:=This
 	var $cb : 4D.Function:=$callback
+	// Store existing lines so _enrichProposedLines can use actual booked prices for removes
+	This._existingLines:=($context.existingLines ? $context.existingLines : [])
 	This._chat:=This._createChat($system; $execSchema; "action_execution"; Formula($self._onExecutionChatDone($1; $cb)))
 	var $searchTool : cs.Tool_SearchServices:=cs.Tool_SearchServices.new()
 	var $td : Object
@@ -539,8 +541,9 @@ Function _onExecutionChatDone($chatResult : Object; $callback : 4D.Function)
 // ─── HELPERS ──────────────────────────────────────────────────────────────────
 // ═══════════════════════════════════════════════════════════════════════════════
 
-// ─── Enriches proposed lines with label/category/unitPrice from the catalog ─────
-// Called after AI response — AI only returns {serviceID, quantity, delta}
+// ─── Enriches proposed lines with label/category/unitPrice ──────────────────────
+// For 'remove' lines: use actual booked price from existing event lines (event-specific).
+// For 'add' lines: use catalog price from ds.Service.
 Function _enrichProposedLines($lines : Collection) : Collection
 	If ($lines=Null)
 		return []
@@ -551,7 +554,13 @@ Function _enrichProposedLines($lines : Collection) : Collection
 		If ($svc#Null)
 			$line.label:=$svc.label
 			$line.category:=$svc.category
-			$line.unitPrice:=$svc.unitPrice
+			// For removes, prefer actual booked price over catalog price
+			If ($line.delta="remove")
+				var $booked : Object:=This._existingLines.find(Formula($1.serviceID=$2); $line.serviceID)
+				$line.unitPrice:=($booked#Null) ? Num($booked.unitPrice) : $svc.unitPrice
+			Else 
+				$line.unitPrice:=$svc.unitPrice
+			End if 
 		Else 
 			$line.label:="[unknown:"+String($line.serviceID)+"]"
 			$line.category:=""
