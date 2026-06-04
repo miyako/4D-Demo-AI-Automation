@@ -134,7 +134,7 @@ Function analyzeWeatherRiskAsync($event : cs.EventEntity; $weatherData : Object;
 	$system:=$system+"- temperature: 'normal', 'cold' (cold-weather gear planned), 'hot' (heat management planned)\n\n"
 	$system:=$system+"IMPORTANT: Every action you propose MUST be a concrete operation on services or the venue setup. "
 	$system:=$system+"NEVER propose passive or monitoring actions ('monitor weather', 'watch updates', 'check again', etc.). "
-	$system:=$system+"Valid actionType values: 'add_services', 'remove_services', 'replace_services', 'switch_venue', 'notify_client'.\n\n"
+	$system:=$system+"Valid actionType values: 'add_services', 'remove_services', 'replace_services', 'switch_venue'.\n\n"
 	$system:=$system+"Your analysis MUST:\n"
 	$system:=$system+"1) Compare the forecast with the planned weatherSetup to assess if current services are adequate\n"
 	$system:=$system+"2) In the 'explanation' field, explain in 3-5 sentences: what weather was planned for, what's actually forecast, "

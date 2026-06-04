@@ -402,9 +402,6 @@ Function _executeAction($slot : Integer)
 	
 	// Fallback pour les actions sans hiddenPrompt
 	Case of 
-		: ($type="notify_client")
-			var $draft : Text:=$action.description || ""
-			ALERT("Draft message to client:\n\n"+$draft)
 		: ($type="monitor")
 			ALERT("Monitoring set. Weather will be re-checked automatically.")
 		Else 
