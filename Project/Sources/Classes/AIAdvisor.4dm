@@ -497,8 +497,7 @@ Function executeActionAsync($hiddenPrompt : Text; $context : Object; $callback :
 	var $execSchema : Object:=This._loadSchema("schema_action_execution.json")
 	var $self : Object:=This
 	var $cb : 4D.Function:=$callback
-	// Store existing lines so _enrichProposedLines can use actual booked prices for removes
-	This._existingLines:=($context.existingLines ? $context.existingLines : [])
+	This._windowID:=($context.windowID#Null) ? $context.windowID : 0
 	This._chat:=This._createChat($system; $execSchema; "action_execution"; Formula($self._onExecutionChatDone($1; $cb)))
 	var $searchTool : cs.Tool_SearchServices:=cs.Tool_SearchServices.new()
 	var $td : Object
@@ -542,12 +541,14 @@ Function _onExecutionChatDone($chatResult : Object; $callback : 4D.Function)
 // ═══════════════════════════════════════════════════════════════════════════════
 
 // ─── Enriches proposed lines with label/category/unitPrice ──────────────────────
-// For 'remove' lines: use actual booked price from existing event lines (event-specific).
+// For 'remove' lines: use actual booked price from session singleton (event-specific).
 // For 'add' lines: use catalog price from ds.Service.
 Function _enrichProposedLines($lines : Collection) : Collection
 	If ($lines=Null)
 		return []
 	End if 
+	// Retrieve existing event lines from session singleton (set by FC_EventDetail before worker call)
+	var $existingLines : Collection:=cs.AIWorkerContext.me.getExistingLines(This._windowID)
 	var $line : Object
 	For each ($line; $lines)
 		var $svc : cs.ServiceEntity:=ds.Service.get($line.serviceID)
@@ -558,7 +559,7 @@ Function _enrichProposedLines($lines : Collection) : Collection
 			If ($line.delta="remove")
 				var $booked : Object:=Null
 				var $el : Object
-				For each ($el; This._existingLines)
+				For each ($el; $existingLines)
 					If ($el.serviceID=$line.serviceID)
 						$booked:=$el
 						break

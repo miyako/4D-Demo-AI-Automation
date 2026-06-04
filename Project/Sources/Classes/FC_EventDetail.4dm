@@ -417,7 +417,9 @@ Function _executeWithToolCalling($action : Object; $promptOverride : Text)
 	OBJECT SET TITLE(*; "text_ai_status"; "⏳ Searching services...")
 	
 	// Event context — use _linesAsCollection() which includes serviceID (needed for removes)
+	var $w : Integer:=Current form window
 	var $context : Object:={\
+		windowID: $w; \
 		eventID: This.event.ID; \
 		eventDate: String(This.event.eventDate; "yyyy-MM-dd"); \
 		guestCount: This.event.guestCount; \
@@ -425,10 +427,10 @@ Function _executeWithToolCalling($action : Object; $promptOverride : Text)
 		existingLines: This._linesAsCollection()\
 		}
 	
-	var $w : Integer:=Current form window
 	var $hiddenPrompt : Text:=$promptOverride || String($action.hiddenPrompt)
-	// Store action in process singleton — avoids JSON round-trip through worker
+	// Store in session singleton — shared with worker process, no JSON round-trip
 	cs.AIWorkerContext.me.storeAction($w; $action)
+	cs.AIWorkerContext.me.storeExistingLines($w; This._linesAsCollection())
 	var $ctxJson : Text:=JSON Stringify($context)
 	CALL WORKER("aiAdvisorWorker_"+String($w); Formula(_aiExecuteWorkerJob($w; $hiddenPrompt; $ctxJson)))
 	
