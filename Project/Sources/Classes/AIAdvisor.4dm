@@ -154,7 +154,9 @@ Function analyzeWeatherRiskAsync($event : cs.EventEntity; $weatherData : Object;
 	$system:=$system+"CRITICAL for 'replace_services' actions: the hiddenPrompt MUST contain two explicit sections:\n"
 	$system:=$system+"  Section REMOVE: list exact labels of existing services to remove (copy them verbatim from the event's services list), e.g. 'REMOVE: Poncho pluie jetable (lot de 50) x3, Parapluie personnalisé événement x43'\n"
 	$system:=$system+"  Section SEARCH: describe what replacement services to search in the catalog, e.g. 'SEARCH: outdoor lounge furniture for 86 guests, comfort seating'\n"
-	$system:=$system+"Respond ONLY with a valid JSON object matching the weather_actions schema. No markdown, no explanation."
+	$system:=$system+"Respond ONLY with a valid JSON object: {\"explanation\": \"...\", \"actions\": [...]}. "
+	$system:=$system+"Do NOT include eventID, riskLevel, forecastDate, weatherSummary, weatherData, affectedServices, or draftClientMessage — those are handled server-side. "
+	$system:=$system+"Each action has only: actionType, label, hiddenPrompt. No description, priority, deadlineToDecide, estimatedExtraCost, or suggestedServices."
 
 	var $user : Text:="Event ID: "+$event.ID+"\n"
 	$user:=$user+"Event Date: "+String($event.eventDate; "yyyy-MM-dd")+"\n"
@@ -178,11 +180,10 @@ Function analyzeWeatherRiskAsync($event : cs.EventEntity; $weatherData : Object;
 
 	var $self : Object:=This
 	var $cb : 4D.Function:=$callback
-	var $evt : cs.EventEntity:=$event
-	This._chat:=This._createChat($system; $schemaWeather; "weather_actions"; Formula($self._onWeatherChatDone($1; $cb; $evt)))
+	This._chat:=This._createChat($system; $schemaWeather; "weather_actions"; Formula($self._onWeatherChatDone($1; $cb)))
 	This._chat.prompt($user)
 
-Function _onWeatherChatDone($chatResult : Object; $callback : 4D.Function; $event : cs.EventEntity)
+Function _onWeatherChatDone($chatResult : Object; $callback : 4D.Function)
 	If (($chatResult#Null) && (Not($chatResult.terminated)))
 		return 
 	End if 
@@ -193,10 +194,6 @@ Function _onWeatherChatDone($chatResult : Object; $callback : 4D.Function; $even
 		$callback.call(Null; $result)
 		return 
 	End if 
-	// Inject eventID si manquant (le LLM oublie parfois ce champ)
-	If (($parsed.eventID=Null) || ($parsed.eventID=""))
-		$parsed.eventID:=$event.ID
-	End if 
 	// JSON Validate on the 4D side — post-AI safety net (blog pattern)
 	$result.validation:=This._validateResponse($parsed; "schema_weather_actions.json")
 	If (Not($result.validation.success))
@@ -205,6 +202,7 @@ Function _onWeatherChatDone($chatResult : Object; $callback : 4D.Function; $even
 		return 
 	End if 
 	$result.success:=True
+	$result.rawAiResponse:=JSON Parse(JSON Stringify($parsed))
 	$result.weatherActions:=$parsed
 	$callback.call(Null; $result)
 
@@ -491,7 +489,7 @@ Function executeActionAsync($hiddenPrompt : Text; $context : Object; $callback :
 	$system:=$system+"NEVER emit 'remove' lines for an 'add_services' task — only emit removes for 'remove_services' or 'replace_services' tasks. "
 	$system:=$system+"For 'remove' lines: use the exact serviceID from the existing services list above — do NOT search for them. The serviceID for removes MUST be the [ID:xxx] value from the existing services list. "
 	$system:=$system+"Return a JSON with: proposedLines (array of {serviceID, quantity, delta}), summary (text). "
-	$system:=$system+"The summary must describe the proposed changes using conditional language (e.g. 'We propose to add...', 'We recommend removing...') — NOT past tense. These changes are proposals pending client approval."
+	$system:=$system+"The summary must be 1-2 sentences MAX using conditional language ('We propose...', 'We recommend...') — NOT past tense. Be concise."
 	$system:=$system+"Do NOT include label, category, unitPrice, or totalImpact — those are resolved server-side."
 
 	var $execSchema : Object:=This._loadSchema("schema_action_execution.json")
