@@ -31,12 +31,6 @@ Function btnVenuesEventHandler($formEventCode : Integer)
 			This._openVenues()
 	End case 
 
-Function btnRegenerateEventHandler($formEventCode : Integer)
-	Case of 
-		: ($formEventCode=On Clicked)
-			This._regenerateData()
-	End case 
-
 Function btnResetAllEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
@@ -79,10 +73,6 @@ Function _openVenues()
 	var $w : Integer:=Open form window("VenueBrowser"; Plain form window)
 	DIALOG("VenueBrowser")
 	CLOSE WINDOW($w)
-
-Function _regenerateData()
-	cs.DataSeeder.me.regenerateEvents()
-	ALERT("Events regenerated!\n300 events created with relative dates.\nWeather alerts: 2 pre-assigned.")
 
 Function _resetAll()
 	CONFIRM("Reset ALL data?\n\nThis will delete all records and re-import everything from JSON files, including re-building service embeddings.")

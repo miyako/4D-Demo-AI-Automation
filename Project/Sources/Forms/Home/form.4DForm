@@ -229,24 +229,9 @@
           "textAlign": "center",
           "class": "textFooter"
         },
-        "btn_regenerate": {
-          "type": "button",
-          "left": 230,
-          "top": 440,
-          "width": 180,
-          "height": 34,
-          "text": "🔄 Regenerate Events",
-          "events": [
-            "onClick"
-          ],
-          "focusable": true,
-          "method": "objbtn_regenerate.4dm",
-          "class": "btnSecondary",
-          "style": "flat"
-        },
         "btn_reset_all": {
           "type": "button",
-          "left": 450,
+          "left": 240,
           "top": 440,
           "width": 180,
           "height": 34,
@@ -261,7 +246,7 @@
         },
         "btn_rebuild_embeddings": {
           "type": "button",
-          "left": 648,
+          "left": 440,
           "top": 440,
           "width": 180,
           "height": 34,
