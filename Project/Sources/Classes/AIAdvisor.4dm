@@ -556,7 +556,14 @@ Function _enrichProposedLines($lines : Collection) : Collection
 			$line.category:=$svc.category
 			// For removes, prefer actual booked price over catalog price
 			If ($line.delta="remove")
-				var $booked : Object:=This._existingLines.find(Formula($1.serviceID=$2); $line.serviceID)
+				var $booked : Object:=Null
+				var $el : Object
+				For each ($el; This._existingLines)
+					If ($el.serviceID=$line.serviceID)
+						$booked:=$el
+						break
+					End if 
+				End for each 
 				$line.unitPrice:=($booked#Null) ? Num($booked.unitPrice) : $svc.unitPrice
 			Else 
 				$line.unitPrice:=$svc.unitPrice
