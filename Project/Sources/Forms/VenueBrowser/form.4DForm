@@ -76,7 +76,8 @@
           "enterable": true,
           "placeholder": "Search venues...",
           "events": [
-            "onChange"
+            "onChange",
+            "onAfterKeystroke"
           ],
           "method": "objinput_search.4dm",
           "class": "filterInput"

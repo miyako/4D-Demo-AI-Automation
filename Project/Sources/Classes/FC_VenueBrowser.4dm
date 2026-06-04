@@ -43,7 +43,7 @@ Function btnFilterOutdoorEventHandler($formEventCode : Integer)
 
 Function inputSearchEventHandler($formEventCode : Integer)
 	Case of 
-		: ($formEventCode=On Data Change)
+		: ($formEventCode=On Data Change) | ($formEventCode=On After Keystroke)
 			This.searchText:=OBJECT Get value("input_search")
 			This._loadVenues()
 	End case 

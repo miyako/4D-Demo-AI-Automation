@@ -76,7 +76,8 @@
           "enterable": true,
           "placeholder": "Search services...",
           "events": [
-            "onChange"
+            "onChange",
+            "onAfterKeystroke"
           ],
           "method": "objinput_search.4dm",
           "class": "filterInput"
