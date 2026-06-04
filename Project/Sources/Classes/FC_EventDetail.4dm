@@ -23,7 +23,6 @@ property hasEmail : Boolean
 property tabControl : Object
 property _lastValidationData : Object
 property _actionMap : Collection
-property _emailImpacts : Object
 property _weatherExplanation : Text
 property _listFC : Object
 
@@ -49,7 +48,6 @@ Class constructor($event : cs.EventEntity; $eventSelection : cs.EventSelection; 
 	This.tabControl:=New object("values"; New collection("⛅ Weather"; "📧 Email"); "index"; 0)
 	This._lastValidationData:=Null
 	This._actionMap:=[-1; -1; -1; -1]
-	This._emailImpacts:=Null
 	This._weatherExplanation:=""
 	If ($eventSelection#Null)
 		This._selection:=$eventSelection
@@ -154,8 +152,7 @@ Function _showValidationBadge($schemaName : Text; $validatedObject : Object)
 	
 	//MARK: - Private
 Function _onLoad()
-	This._resizeWindow(1100)
-	This._loadEventLines()
+	cs.UIHelpers.me.resizeWindowWidth(1100)
 	This._checkLinkedEmail()
 	This._renderCurrentTab()
 	This._updateNavButtons()
@@ -379,7 +376,6 @@ Function _onEmailAnalysisDone($result : Object)
 	End if 
 	
 	var $impacts : Object:=$result.impacts
-	This._emailImpacts:=$impacts
 	OBJECT SET TITLE(*; "text_ai_status"; "✓ Modification request analyzed")
 	This._showValidationBadge("schema_modification_impacts.json"; $result.rawAiResponse)
 	
@@ -631,11 +627,11 @@ Function _showConfirmPanel($action : Object; $execResult : Object)
 	OBJECT SET TITLE(*; "text_confirm_newtotal_val"; String($newTotal; "### ### ##0")+" €")
 	This.confirmEmailDraft:=""
 	This._setConfirmPanelVisible(True)
-	This._resizeWindow(1460)
+	cs.UIHelpers.me.resizeWindowWidth(1460)
 	
 Function _hideConfirmPanel()
 	This._setConfirmPanelVisible(False)
-	This._resizeWindow(1100)
+	cs.UIHelpers.me.resizeWindowWidth(1100)
 	This._pendingExecResult:=Null
 	This._pendingAction:=Null
 	
@@ -668,40 +664,6 @@ Function _dismissAfterActions()
 	If (This._listFC#Null)
 		CALL FORM(This._listFC._windowRef; Formula(Form._loadEvents(Form.activeFilter)))
 	End if 
-	
-Function _resizeWindow($width : Integer)
-	var $curL; $curT; $curR; $curB : Integer
-	GET WINDOW RECT($curL; $curT; $curR; $curB; Current form window)
-	var $height : Integer:=$curB-$curT
-	// Detect which screen the window is currently on
-	var $screenL; $screenT; $screenR; $screenB : Integer
-	var $sL; $sT; $sR; $sB : Integer
-	var $i : Integer
-	$screenL:=0
-	$screenT:=0
-	$screenR:=0
-	$screenB:=0
-	For ($i; 1; Count screens)
-		SCREEN COORDINATES($sL; $sT; $sR; $sB; $i)
-		If (($curL>=$sL) && ($curL<$sR))
-			$screenL:=$sL
-			$screenT:=$sT
-			$screenR:=$sR
-			$screenB:=$sB
-		End if 
-	End for 
-	If ($screenR=$screenL)
-		// Fallback to main screen
-		SCREEN COORDINATES($screenL; $screenT; $screenR; $screenB)
-	End if 
-	// Clamp to detected screen so window doesn't go off-screen
-	If (($curL+$width)>$screenR)
-		$curL:=$screenR-$width
-		If ($curL<$screenL)
-			$curL:=$screenL
-		End if 
-	End if 
-	SET WINDOW RECT($curL; $curT; $curL+$width; $curT+$height; Current form window)
 	
 Function _setConfirmPanelVisible($visible : Boolean)
 	OBJECT SET VISIBLE(*; "rect_confirm_header_bg"; $visible)
