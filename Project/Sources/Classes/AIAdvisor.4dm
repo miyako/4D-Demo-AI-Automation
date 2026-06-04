@@ -230,12 +230,15 @@ Function analyzeLinkedEmailAsync($email : cs.EmailEntity; $event : cs.EventEntit
 
 	var $system : Text:="You are a contract specialist for Event Pulse. "
 	$system:=$system+"A client has sent a modification request for a confirmed event. The event is already identified. "
-	$system:=$system+"Analyze the request and propose exactly ONE executionAction (actionType='calculate_impact'). "
-	$system:=$system+"In the hiddenPrompt, describe precisely: which services to REMOVE (use exact labels from the existing services list) "
-	$system:=$system+"and which services to SEARCH for and ADD (only if they could plausibly exist in a standard event catalog). "
-	$system:=$system+"If the requested substitute service is unlikely to be in a standard catalog, propose only the removal. "
-	$system:=$system+"Set selectedEventID to the event ID provided. Do not populate candidateEvents.\n"
-	$system:=$system+"Respond ONLY with a valid JSON object matching the modification_impacts schema. No markdown."
+	$system:=$system+"Analyze the request and produce one or more actions describing what service changes to make. "
+	$system:=$system+"Valid actionType values: 'add_services', 'remove_services', 'replace_services', 'switch_venue'.\n"
+	$system:=$system+"For each action, write a 'hiddenPrompt' describing precisely:\n"
+	$system:=$system+"- For removes: exact service labels from the existing services list to remove\n"
+	$system:=$system+"- For adds/replace: what services to SEARCH for and ADD (only if plausibly in a standard event catalog)\n"
+	$system:=$system+"- For replace: use format 'REMOVE: <labels>\nSEARCH: <what to find>'\n"
+	$system:=$system+"Keep 'label' short (button text, 3-5 words max).\n"
+	$system:=$system+"Also write a brief 'modificationSummary' (1-2 sentences) describing what the client requested.\n"
+	$system:=$system+"Respond ONLY with a valid JSON object: {\"modificationSummary\": \"...\", \"actions\": [...]}. No markdown."
 
 	var $user : Text:="From: "+$email.sender+" <"+$email.senderEmail+">"
 	$user:=$user+"\nSubject: "+$email.subject+"\n\n"
@@ -254,7 +257,7 @@ Function _onModificationChatDone($chatResult : Object; $callback : 4D.Function)
 	If (($chatResult#Null) && (Not($chatResult.terminated)))
 		return 
 	End if 
-	var $result : Object:={success: False; ambiguous: False; impacts: Null; validationError: ""; validation: Null}
+	var $result : Object:={success: False; impacts: Null; rawAiResponse: Null; validationError: ""; validation: Null}
 	var $parsed : Object:=This._extractParsedResponse($chatResult)
 	If ($parsed=Null)
 		$result.validationError:="schema_modification_impacts: "+This._extractError($chatResult)
@@ -268,6 +271,7 @@ Function _onModificationChatDone($chatResult : Object; $callback : 4D.Function)
 		return 
 	End if 
 	$result.success:=True
+	$result.rawAiResponse:=JSON Parse(JSON Stringify($parsed))
 	$result.impacts:=$parsed
 	$callback.call(Null; $result)
 

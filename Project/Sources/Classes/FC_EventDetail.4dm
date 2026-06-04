@@ -358,24 +358,17 @@ Function _onEmailAnalysisDone($result : Object)
 	var $impacts : Object:=$result.impacts
 	This._emailImpacts:=$impacts
 	OBJECT SET TITLE(*; "text_ai_status"; "✓ Modification request analyzed")
-	This._showValidationBadge("schema_modification_impacts.json"; $impacts)
+	This._showValidationBadge("schema_modification_impacts.json"; $result.rawAiResponse)
 	
 	var $summary : Text:=""
 	If (($impacts.modificationSummary#Null) && ($impacts.modificationSummary#""))
-		$summary:=$impacts.modificationSummary+"\n\n"
-	End if 
-	If (($impacts.impacts#Null) && ($impacts.impacts.length>0))
-		$summary:=$summary+"Service changes:\n"
-		var $imp : Object
-		For each ($imp; $impacts.impacts)
-			$summary:=$summary+"• "+String($imp.label)+"\n"
-		End for each 
+		$summary:=$impacts.modificationSummary
 	End if 
 	OBJECT SET TITLE(*; "text_email_ai_result"; $summary)
 	
-	If (($impacts.executionActions#Null) && ($impacts.executionActions.length>0))
-		This._actionMap:=cs.UIHelpers.me.showActionButtons($impacts.executionActions)
-		This.aiActions:=$impacts.executionActions
+	If (($impacts.actions#Null) && ($impacts.actions.length>0))
+		This._actionMap:=cs.UIHelpers.me.showActionButtons($impacts.actions)
+		This.aiActions:=$impacts.actions
 		// Hide analyze button once actions are proposed — user cannot re-trigger analysis
 		OBJECT SET VISIBLE(*; "btn_email_analyze"; False)
 	End if 
