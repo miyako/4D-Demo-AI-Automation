@@ -217,6 +217,11 @@
     fontSize: 12;
 }
 
+.textWarning {
+    stroke: #E65100;
+    fontSize: 12;
+}
+
 /* Footer text */
 .textFooter {
     stroke: #444444;

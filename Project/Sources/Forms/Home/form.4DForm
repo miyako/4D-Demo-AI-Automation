@@ -1,271 +1,302 @@
 {
-  "rightMargin": 0,
-  "bottomMargin": 0,
-  "windowSizingX": "fixed",
-  "windowSizingY": "fixed",
-  "windowMinWidth": 860,
-  "windowMinHeight": 540,
-  "pages": [
-    null,
-    {
-      "objects": {
-        "rect_bg": {
-          "type": "rectangle",
-          "left": 0,
-          "top": 0,
-          "width": 860,
-          "height": 540,
-          "class": "bgForm"
-        },
-        "rect_header": {
-          "type": "rectangle",
-          "left": 0,
-          "top": 0,
-          "width": 860,
-          "height": 90,
-          "class": "bgHeader"
-        },
-        "text_logo": {
-          "type": "text",
-          "left": 36,
-          "top": 22,
-          "width": 220,
-          "height": 46,
-          "text": "⚡ Event Pulse",
-          "class": "textTitle"
-        },
-        "text_subtitle": {
-          "type": "text",
-          "left": 36,
-          "top": 66,
-          "width": 400,
-          "height": 18,
-          "text": "International Event Management · AI-Powered",
-          "class": "textMuted"
-        },
-        "rect_status": {
-          "type": "rectangle",
-          "left": 700,
-          "top": 30,
-          "width": 130,
-          "height": 30,
-          "class": "bgStatusBadge"
-        },
-        "text_status": {
-          "type": "text",
-          "left": 716,
-          "top": 36,
-          "width": 98,
-          "height": 18,
-          "text": "● AI Connected",
-          "class": "textSuccess"
-        },
-        "rect_card1": {
-          "type": "rectangle",
-          "left": 60,
-          "top": 160,
-          "width": 220,
-          "height": 240,
-          "class": "bgCard"
-        },
-        "text_card1_icon": {
-          "type": "text",
-          "left": 60,
-          "top": 188,
-          "width": 220,
-          "height": 48,
-          "text": "📅",
-          "fontSize": 36,
-          "textAlign": "center"
-        },
-        "text_card1_title": {
-          "type": "text",
-          "left": 60,
-          "top": 244,
-          "width": 220,
-          "height": 24,
-          "text": "Events",
-          "textAlign": "center",
-          "class": "textSection"
-        },
-        "text_card1_sub": {
-          "type": "text",
-          "left": 68,
-          "top": 272,
-          "width": 204,
-          "height": 36,
-          "text": "Upcoming events with\nweather monitoring",
-          "textAlign": "center",
-          "class": "textMuted"
-        },
-        "btn_events": {
-          "type": "button",
-          "left": 80,
-          "top": 330,
-          "width": 180,
-          "height": 40,
-          "text": "Open Events",
-          "events": [
-            "onClick"
-          ],
-          "focusable": true,
-          "method": "objbtn_events.4dm",
-          "class": "btnPrimary",
-          "style": "flat"
-        },
-        "rect_card2": {
-          "type": "rectangle",
-          "left": 320,
-          "top": 160,
-          "width": 220,
-          "height": 240,
-          "class": "bgCard"
-        },
-        "text_card2_icon": {
-          "type": "text",
-          "left": 320,
-          "top": 188,
-          "width": 220,
-          "height": 48,
-          "text": "📦",
-          "fontSize": 36,
-          "textAlign": "center"
-        },
-        "text_card2_title": {
-          "type": "text",
-          "left": 320,
-          "top": 244,
-          "width": 220,
-          "height": 24,
-          "text": "Services",
-          "textAlign": "center",
-          "class": "textSection"
-        },
-        "text_card2_sub": {
-          "type": "text",
-          "left": 328,
-          "top": 272,
-          "width": 204,
-          "height": 36,
-          "text": "Browse the service\ncatalog",
-          "textAlign": "center",
-          "class": "textMuted"
-        },
-        "btn_inbox": {
-          "type": "button",
-          "left": 340,
-          "top": 330,
-          "width": 180,
-          "height": 40,
-          "text": "Open Services",
-          "events": [
-            "onClick"
-          ],
-          "focusable": true,
-          "method": "objbtn_services.4dm",
-          "class": "btnPrimary",
-          "style": "flat"
-        },
-        "rect_card3": {
-          "type": "rectangle",
-          "left": 580,
-          "top": 160,
-          "width": 220,
-          "height": 240,
-          "class": "bgCard"
-        },
-        "text_card3_icon": {
-          "type": "text",
-          "left": 580,
-          "top": 188,
-          "width": 220,
-          "height": 48,
-          "text": "📍",
-          "fontSize": 36,
-          "textAlign": "center"
-        },
-        "text_card3_title": {
-          "type": "text",
-          "left": 580,
-          "top": 244,
-          "width": 220,
-          "height": 24,
-          "text": "Venues",
-          "textAlign": "center",
-          "class": "textSection"
-        },
-        "text_card3_sub": {
-          "type": "text",
-          "left": 588,
-          "top": 272,
-          "width": 204,
-          "height": 36,
-          "text": "Explore venues &\nrental pricing",
-          "textAlign": "center",
-          "class": "textMuted"
-        },
-        "btn_simulate": {
-          "type": "button",
-          "left": 600,
-          "top": 330,
-          "width": 180,
-          "height": 40,
-          "text": "Open Venues",
-          "events": [
-            "onClick"
-          ],
-          "focusable": true,
-          "method": "objbtn_venues.4dm",
-          "class": "btnPrimary",
-          "style": "flat"
-        },
-        "text_footer": {
-          "type": "text",
-          "left": 0,
-          "top": 510,
-          "width": 860,
-          "height": 20,
-          "text": "Powered by GPT-4o · JSON Validate Draft 2020-12 · Open-Meteo",
-          "textAlign": "center",
-          "class": "textFooter"
-        },
-        "btn_reset_all": {
-          "type": "button",
-          "left": 240,
-          "top": 440,
-          "width": 180,
-          "height": 34,
-          "text": "🗑 Reset & Rebuild All",
-          "events": [
-            "onClick"
-          ],
-          "focusable": true,
-          "method": "objbtn_reset_all.4dm",
-          "class": "btnSecondary",
-          "style": "flat"
-        },
-        "btn_rebuild_embeddings": {
-          "type": "button",
-          "left": 440,
-          "top": 440,
-          "width": 180,
-          "height": 34,
-          "text": "🔍 Rebuild Embeddings",
-          "events": [
-            "onClick"
-          ],
-          "focusable": true,
-          "method": "objbtn_rebuild_embeddings.4dm",
-          "class": "btnSecondary",
-          "style": "flat"
-        }
-      }
-    }
-  ],
-  "events": [
-    "onLoad",
-    "onClick"
-  ],
-  "formClass": "FC_Home",
-  "method": "method.4dm"
+	"rightMargin": 0,
+	"bottomMargin": 0,
+	"windowSizingX": "fixed",
+	"windowSizingY": "fixed",
+	"windowMinWidth": 860,
+	"windowMinHeight": 540,
+	"pages": [
+		null,
+		{
+			"objects": {
+				"rect_bg": {
+					"type": "rectangle",
+					"left": 0,
+					"top": 0,
+					"width": 860,
+					"height": 540,
+					"class": "bgForm"
+				},
+				"rect_header": {
+					"type": "rectangle",
+					"left": 0,
+					"top": 0,
+					"width": 860,
+					"height": 90,
+					"class": "bgHeader"
+				},
+				"text_logo": {
+					"type": "text",
+					"left": 36,
+					"top": 22,
+					"width": 220,
+					"height": 46,
+					"text": "⚡ Event Pulse",
+					"class": "textTitle"
+				},
+				"text_subtitle": {
+					"type": "text",
+					"left": 36,
+					"top": 66,
+					"width": 400,
+					"height": 18,
+					"text": "International Event Management · AI-Powered",
+					"class": "textMuted"
+				},
+				"rect_status": {
+					"type": "rectangle",
+					"left": 700,
+					"top": 30,
+					"width": 130,
+					"height": 30,
+					"class": "bgStatusBadge"
+				},
+				"text_status": {
+					"type": "text",
+					"left": 716,
+					"top": 36,
+					"width": 98,
+					"height": 18,
+					"text": "● AI Connected",
+					"class": "textSuccess"
+				},
+				"rect_card1": {
+					"type": "rectangle",
+					"left": 60,
+					"top": 160,
+					"width": 220,
+					"height": 240,
+					"class": "bgCard"
+				},
+				"text_card1_icon": {
+					"type": "text",
+					"left": 60,
+					"top": 188,
+					"width": 220,
+					"height": 48,
+					"text": "📅",
+					"fontSize": 36,
+					"textAlign": "center"
+				},
+				"text_card1_title": {
+					"type": "text",
+					"left": 60,
+					"top": 244,
+					"width": 220,
+					"height": 24,
+					"text": "Events",
+					"textAlign": "center",
+					"class": "textSection"
+				},
+				"text_card1_sub": {
+					"type": "text",
+					"left": 68,
+					"top": 272,
+					"width": 204,
+					"height": 36,
+					"text": "Upcoming events with\nweather monitoring",
+					"textAlign": "center",
+					"class": "textMuted"
+				},
+				"btn_events": {
+					"type": "button",
+					"left": 80,
+					"top": 330,
+					"width": 180,
+					"height": 40,
+					"text": "Open Events",
+					"events": [
+						"onClick"
+					],
+					"focusable": true,
+					"method": "objbtn_events.4dm",
+					"class": "btnPrimary",
+					"style": "flat"
+				},
+				"rect_card2": {
+					"type": "rectangle",
+					"left": 320,
+					"top": 160,
+					"width": 220,
+					"height": 240,
+					"class": "bgCard"
+				},
+				"text_card2_icon": {
+					"type": "text",
+					"left": 320,
+					"top": 188,
+					"width": 220,
+					"height": 48,
+					"text": "📦",
+					"fontSize": 36,
+					"textAlign": "center"
+				},
+				"text_card2_title": {
+					"type": "text",
+					"left": 320,
+					"top": 244,
+					"width": 220,
+					"height": 24,
+					"text": "Services",
+					"textAlign": "center",
+					"class": "textSection"
+				},
+				"text_card2_sub": {
+					"type": "text",
+					"left": 328,
+					"top": 272,
+					"width": 204,
+					"height": 36,
+					"text": "Browse the service\ncatalog",
+					"textAlign": "center",
+					"class": "textMuted"
+				},
+				"btn_inbox": {
+					"type": "button",
+					"left": 340,
+					"top": 330,
+					"width": 180,
+					"height": 40,
+					"text": "Open Services",
+					"events": [
+						"onClick"
+					],
+					"focusable": true,
+					"method": "objbtn_services.4dm",
+					"class": "btnPrimary",
+					"style": "flat"
+				},
+				"rect_card3": {
+					"type": "rectangle",
+					"left": 580,
+					"top": 160,
+					"width": 220,
+					"height": 240,
+					"class": "bgCard"
+				},
+				"text_card3_icon": {
+					"type": "text",
+					"left": 580,
+					"top": 188,
+					"width": 220,
+					"height": 48,
+					"text": "📍",
+					"fontSize": 36,
+					"textAlign": "center"
+				},
+				"text_card3_title": {
+					"type": "text",
+					"left": 580,
+					"top": 244,
+					"width": 220,
+					"height": 24,
+					"text": "Venues",
+					"textAlign": "center",
+					"class": "textSection"
+				},
+				"text_card3_sub": {
+					"type": "text",
+					"left": 588,
+					"top": 272,
+					"width": 204,
+					"height": 36,
+					"text": "Explore venues &\nrental pricing",
+					"textAlign": "center",
+					"class": "textMuted"
+				},
+				"btn_simulate": {
+					"type": "button",
+					"left": 600,
+					"top": 330,
+					"width": 180,
+					"height": 40,
+					"text": "Open Venues",
+					"events": [
+						"onClick"
+					],
+					"focusable": true,
+					"method": "objbtn_venues.4dm",
+					"class": "btnPrimary",
+					"style": "flat"
+				},
+				"text_footer": {
+					"type": "text",
+					"left": 0,
+					"top": 510,
+					"width": 860,
+					"height": 20,
+					"text": "Powered by GPT-4o · JSON Validate Draft 2020-12 · Open-Meteo",
+					"textAlign": "center",
+					"class": "textFooter"
+				},
+				"btn_reset_all": {
+					"type": "button",
+					"left": 340,
+					"top": 440,
+					"width": 180,
+					"height": 34,
+					"text": "🗑 Reset & Rebuild All",
+					"events": [
+						"onClick"
+					],
+					"focusable": true,
+					"method": "objbtn_reset_all.4dm",
+					"class": "btnSecondary",
+					"style": "flat"
+				},
+				"btn_rebuild_embeddings": {
+					"type": "button",
+					"left": 600,
+					"top": 440,
+					"width": 180,
+					"height": 34,
+					"text": "🔍 Rebuild Embeddings",
+					"events": [
+						"onClick"
+					],
+					"focusable": true,
+					"method": "objbtn_rebuild_embeddings.4dm",
+					"class": "btnSecondary",
+					"style": "flat"
+				},
+				"btn_clear_data": {
+					"type": "button",
+					"left": 80,
+					"top": 440,
+					"width": 180,
+					"height": 34,
+					"text": "🗑 Clear All Data",
+					"events": [
+						"onClick"
+					],
+					"focusable": true,
+					"method": "objbtn_clear_data.4dm",
+					"class": "btnSecondary",
+					"style": "flat"
+				},
+				"btn_ai_setup_link": {
+					"type": "button",
+					"left": 600,
+					"top": 64,
+					"width": 230,
+					"height": 16,
+					"text": "→ Set up provider and model",
+					"visible": false,
+					"events": [
+						"onClick"
+					],
+					"focusable": false,
+					"method": "objbtn_ai_setup_link.4dm",
+					"class": "textMuted",
+					"style": "flat"
+				}
+			}
+		}
+	],
+	"events": [
+		"onLoad",
+		"onClick"
+	],
+	"formClass": "FC_Home",
+	"method": "method.4dm"
 }

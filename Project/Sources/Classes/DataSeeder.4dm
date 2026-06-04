@@ -50,6 +50,16 @@ Function resetAll()
 	// Recalculate embeddings (forced because services are new)
 	This._buildServiceEmbeddings()
 
+// ─── Clear only: empties everything without re-importing ────────────────────────
+Function clearAll()
+	ds.EventLine.all().drop()
+	ds.Event.all().drop()
+	ds.Email.all().drop()
+	ds.Service.all().drop()
+	ds.Venue.all().drop()
+	ds.Client.all().drop()
+	This._weatherTemplates:=Null
+
 // ─── Clients ─────────────────────────────────────────────────────────────────────
 Function _seedClients()
 	var $file : 4D.File:=Folder(fk resources folder).file("data/clients.json")

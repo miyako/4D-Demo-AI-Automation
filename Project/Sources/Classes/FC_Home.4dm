@@ -43,17 +43,37 @@ Function btnRebuildEmbeddingsEventHandler($formEventCode : Integer)
 			This._rebuildEmbeddings()
 	End case 
 
+Function btnClearDataEventHandler($formEventCode : Integer)
+	Case of 
+		: ($formEventCode=On Clicked)
+			This._clearData()
+	End case 
+
+Function btnAiSetupLinkEventHandler($formEventCode : Integer)
+	Case of 
+		: ($formEventCode=On Clicked)
+			OPEN URL("https://developer.4d.com/docs/settings/ai")
+	End case 
+
 //MARK: - Private
 Function _onLoad()
 	var $providers : Object:=cs.AIKit.OpenAIProviders.new()
-	If ($providers.list().length=0)
-		This.statusText:="⚠ No AI Provider configured"
-	End if 
-	OBJECT SET TITLE(*; "text_status"; This.statusText)
-	
-	// Build "Powered by" footer from model aliases
+	var $providerList : Collection:=$providers.list()
 	var $aliases : Collection:=$providers.modelAliases()
 	var $chatEntry : Object:=$aliases.query("name = :1"; "chat").first()
+	var $aiOk : Boolean:=($providerList.length>0) && ($chatEntry#Null) && ($chatEntry.model#"") && ($chatEntry.model#Null)
+	
+	If ($aiOk)
+		OBJECT SET TITLE(*; "text_status"; "● AI Connected")
+		OBJECT SET STYLE SHEET(*; "text_status"; "textSuccess")
+		OBJECT SET VISIBLE(*; "btn_ai_setup_link"; False)
+	Else 
+		OBJECT SET TITLE(*; "text_status"; "⚠ Set up AI")
+		OBJECT SET STYLE SHEET(*; "text_status"; "textWarning")
+		OBJECT SET VISIBLE(*; "btn_ai_setup_link"; True)
+	End if 
+	
+	// Build "Powered by" footer from model aliases
 	var $embeddingEntry : Object:=$aliases.query("name = :1"; "embedding").first()
 	var $chatLabel : Text:=$chatEntry ? $chatEntry.model : "?"
 	var $embedLabel : Text:=$embeddingEntry ? $embeddingEntry.model : "?"
@@ -89,4 +109,11 @@ Function _rebuildEmbeddings()
 	If (OK=1)
 		cs.DataSeeder.me.rebuildEmbeddings()
 		ALERT("Service embeddings rebuilt successfully!")
+	End if 
+
+Function _clearData()
+	CONFIRM("Clear ALL data?\n\nThis will delete all records without re-importing.\nThe database will be empty — use 'Reset & Rebuild All' to re-seed.")
+	If (OK=1)
+		cs.DataSeeder.me.clearAll()
+		ALERT("All data cleared. The database is now empty.")
 	End if 
