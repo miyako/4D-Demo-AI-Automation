@@ -1114,5 +1114,59 @@
     "available": true,
     "description": "Rental of the indoor event hall or room for the full event day. Price set per venue. Provides weather-protected enclosed space with heating, air conditioning, and indoor facilities.",
     "seedIndex": 123
+  },
+  {
+    "category": "Furniture & Decor",
+    "label": "Fleece blanket (per unit)",
+    "unit": "unit",
+    "unitPrice": 8.0,
+    "available": true,
+    "description": "Soft fleece blanket for outdoor guests during cooler weather events. Branded or plain options available.",
+    "seedIndex": 124
+  },
+  {
+    "category": "Catering",
+    "label": "Hot beverage station (tea, coffee, hot chocolate)",
+    "unit": "forfait",
+    "unitPrice": 380.0,
+    "available": true,
+    "description": "Self-service hot beverage station with tea, coffee, and hot chocolate. Includes setup, consumables, and service staff for up to 4 hours.",
+    "seedIndex": 125
+  },
+  {
+    "category": "Structures",
+    "label": "Covered walkway / tunnel connector (per 10m)",
+    "unit": "unit",
+    "unitPrice": 450.0,
+    "available": true,
+    "description": "Weather-protected covered tunnel connecting event areas or between tent and venue entrance. Suitable for rain and wind protection.",
+    "seedIndex": 126
+  },
+  {
+    "category": "Structures",
+    "label": "Windbreak panel set (10 panels)",
+    "unit": "set",
+    "unitPrice": 280.0,
+    "available": true,
+    "description": "Modular transparent or opaque windbreak panels to shield guests from wind and light rain at outdoor events.",
+    "seedIndex": 127
+  },
+  {
+    "category": "Furniture & Decor",
+    "label": "Portable outdoor fireplace / brazier",
+    "unit": "unit",
+    "unitPrice": 220.0,
+    "available": true,
+    "description": "Decorative outdoor fireplace or brazier providing warmth and ambiance for guests at cooler outdoor events.",
+    "seedIndex": 128
+  },
+  {
+    "category": "Technical",
+    "label": "Heated flooring mat (per 10m²)",
+    "unit": "unit",
+    "unitPrice": 95.0,
+    "available": true,
+    "description": "Electric heated floor mat for outdoor or tent events, keeping feet warm in cool conditions.",
+    "seedIndex": 129
   }
 ]
