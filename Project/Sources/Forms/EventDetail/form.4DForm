@@ -782,7 +782,7 @@
 					"columns": [
 						{
 							"name": "col_delta_icon",
-							"width": 28,
+							"width": 32,
 							"header": {
 								"text": "",
 								"name": "Entête6"
@@ -797,7 +797,7 @@
 						},
 						{
 							"name": "col_confirm_label",
-							"width": 176,
+							"width": 170,
 							"header": {
 								"text": "Service",
 								"name": "Entête7"
@@ -811,7 +811,7 @@
 						},
 						{
 							"name": "col_confirm_qty",
-							"width": 36,
+							"width": 37,
 							"header": {
 								"text": "Qty",
 								"name": "Entête8"
@@ -826,7 +826,7 @@
 						},
 						{
 							"name": "col_confirm_cost",
-							"width": 84,
+							"width": 85,
 							"header": {
 								"text": "Impact",
 								"name": "Entête9"

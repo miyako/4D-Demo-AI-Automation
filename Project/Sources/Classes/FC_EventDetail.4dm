@@ -415,19 +415,26 @@ Function _executeWithToolCalling($action : Object; $promptOverride : Text)
 	
 	// Event context — use _linesAsCollection() which includes serviceID (needed for removes)
 	var $w : Integer:=Current form window
+	var $lines : Collection:=This._linesAsCollection()
+	var $total : Real:=0
+	var $tl : Object
+	For each ($tl; $lines)
+		$total:=$total+($tl.quantity*$tl.unitPrice)
+	End for each 
 	var $context : Object:={\
 		windowID: $w; \
 		eventID: This.event.ID; \
 		eventDate: String(This.event.eventDate; "yyyy-MM-dd"); \
 		guestCount: This.event.guestCount; \
 		venueName: This.event.venue.name; \
-		existingLines: This._linesAsCollection()\
+		currentTotal: $total; \
+		existingLines: $lines\
 		}
 	
 	var $hiddenPrompt : Text:=$promptOverride || String($action.hiddenPrompt)
 	// Store in session singleton — shared with worker process, no JSON round-trip
 	cs.AIWorkerContext.me.storeAction($w; $action)
-	cs.AIWorkerContext.me.storeExistingLines($w; This._linesAsCollection())
+	cs.AIWorkerContext.me.storeExistingLines($w; $lines)
 	var $ctxJson : Text:=JSON Stringify($context)
 	CALL WORKER("aiAdvisorWorker_"+String($w); Formula(_aiExecuteWorkerJob($w; $hiddenPrompt; $ctxJson)))
 	
@@ -451,7 +458,7 @@ Function _executeSwitchVenue($action : Object)
 		$allServices:=$allServices+"- "+$line.serviceLabel+" x"+String($line.quantity)+" @ "+String($line.unitPrice)+"€\n"
 	End for each 
 	
-	// Compute current services total so AI can target revenue parity
+	// Compute current services total — passed to system prompt for revenue protection
 	var $currentTotal : Real:=0
 	For each ($line; This.eventLines)
 		$currentTotal:=$currentTotal+($line.quantity*$line.unitPrice)
@@ -462,10 +469,7 @@ Function _executeSwitchVenue($action : Object)
 	$prompt:=$prompt+"Current booked services (total: "+String($currentTotal)+"€):\n"+$allServices+"\n"
 	$prompt:=$prompt+"Task:\n"
 	$prompt:=$prompt+"1. REMOVE all services that are specific to outdoor events (tents, outdoor structures, outdoor sound, outdoor lighting, rain gear, patio heaters, outdoor venue rental, etc.) — use your knowledge to identify them.\n"
-	$prompt:=$prompt+"2. SEARCH for indoor equivalents and additions to replace them: indoor sound system for "+String($guestCount)+" guests, indoor lighting/decor upgrades, and any indoor comfort services. Do NOT search for venue rental — that is handled separately.\n"
-	$prompt:=$prompt+"3. REVENUE PROTECTION: The total cost impact of your changes (removes + adds) MUST be close to zero or positive. "
-	$prompt:=$prompt+"If removing outdoor services creates a significant negative impact, you MUST search for and add more indoor services (entertainment, decor upgrades, technical services, etc.) to compensate and keep total revenue near "+String($currentTotal)+"€. "
-	$prompt:=$prompt+"Use multiple search_services calls if needed to find enough indoor services."
+	$prompt:=$prompt+"2. SEARCH for indoor equivalents and additions: indoor sound system for "+String($guestCount)+" guests, indoor lighting/decor upgrades, indoor comfort services. Do NOT search for venue rental — that is handled separately.\n"
 	
 	// Tag the action so confirm step knows to save venueOption + inject indoor rental
 	$action._switchVenue:=True

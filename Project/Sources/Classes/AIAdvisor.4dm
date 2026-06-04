@@ -483,6 +483,11 @@ Function executeActionAsync($hiddenPrompt : Text; $context : Object; $callback :
 			$system:=$system+"- [ID:"+String($el.serviceID)+"] "+$el.serviceLabel+" × "+String($el.quantity)+" @ "+String($el.unitPrice)+"€\n"
 		End for each 
 	End if 
+	If ($context.currentTotal#Null)
+		$system:=$system+"\nREVENUE PROTECTION: The current services total is "+String($context.currentTotal)+"€. "
+		$system:=$system+"If your proposed changes (removes + adds) result in a net negative cost impact, you MUST search for and add more services (indoor upgrades, entertainment, decor, technical, comfort) to compensate. "
+		$system:=$system+"Keep using search_services until the total impact is zero or positive — adding revenue is always preferred over losing it.\n"
+	End if 
 	$system:=$system+"\nFor 'add' lines: ONLY propose services that were actually returned by the search_services tool. "
 	$system:=$system+"CRITICAL: If search_services returns no results, return an EMPTY proposedLines array. "
 	$system:=$system+"If search_services returns results but none are appropriate, return empty proposedLines AND set summary to explain clearly why each result was rejected (e.g. 'Found: X, Y, Z — rejected because task requires indoor heating and all results are outdoor equipment'). "
