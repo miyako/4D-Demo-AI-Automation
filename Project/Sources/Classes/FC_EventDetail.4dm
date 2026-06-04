@@ -338,7 +338,7 @@ Function _onEmailAnalysisDone($result : Object)
 	
 	If (Not($result.success))
 		OBJECT SET TITLE(*; "text_ai_status"; "❌ Email analysis failed")
-		OBJECT SET TITLE(*; "text_email_ai_result"; Choose($result.validationError#Null; $result.validationError; "Analysis failed"))
+		OBJECT SET TITLE(*; "text_email_ai_result"; $result.validationError ? $result.validationError : "Analysis failed")
 		return 
 	End if 
 	
@@ -391,12 +391,12 @@ Function _executeAction($slot : Integer)
 	// Fallback pour les actions sans hiddenPrompt
 	Case of 
 		: ($type="notify_client")
-			var $draft : Text:=Choose(($action.description#Null); $action.description; "")
+			var $draft : Text:=$action.description || ""
 			ALERT("Draft message to client:\n\n"+$draft)
 		: ($type="monitor")
 			ALERT("Monitoring set. Weather will be re-checked automatically.")
 		Else 
-			ALERT("Action: "+$action.label+"\n\n"+Choose(($action.description#Null); $action.description; ""))
+			ALERT("Action: "+$action.label+"\n\n"+($action.description || ""))
 	End case 
 	
 	// ─── Step 2: Execution with tool calling + confirmation dialog ──────────────────
@@ -423,7 +423,7 @@ Function _executeWithToolCalling($action : Object; $promptOverride : Text)
 	End for each 
 	
 	var $w : Integer:=Current form window
-	var $hiddenPrompt : Text:=Choose($promptOverride#""; $promptOverride; String($action.hiddenPrompt))
+	var $hiddenPrompt : Text:=$promptOverride || String($action.hiddenPrompt)
 	var $actJson : Text:=JSON Stringify($action)
 	var $ctxJson : Text:=JSON Stringify($context)
 	CALL WORKER("aiAdvisorWorker_"+String($w); Formula(_aiExecuteWorkerJob($w; $hiddenPrompt; $ctxJson; $actJson)))
@@ -504,7 +504,7 @@ Function _showConfirmPanel($action : Object; $execResult : Object)
 				$icon:="✏️"
 				// Impact = (newQty - oldQty) * unitPrice; look up old qty from eventLines
 				var $oldLine : cs.EventLineEntity:=This.eventLines.query("serviceID = :1"; $line.serviceID).first()
-				var $oldQty : Integer:=Choose($oldLine#Null; $oldLine.quantity; 0)
+				var $oldQty : Integer:=$oldLine ? $oldLine.quantity : 0
 				$impact:=($line.quantity-$oldQty)*$line.unitPrice
 			Else 
 				$icon:="·"

@@ -158,8 +158,8 @@ Function analyzeWeatherRiskAsync($event : cs.EventEntity; $weatherData : Object;
 	var $setup : Object:=$event.weatherSetup
 	If ($setup#Null)
 		$user:=$user+"Planned Weather Setup:\n"
-		$user:=$user+"- Conditions: "+$setup.conditions+" ("+Choose($setup.conditions="indifferent"; "indoor/weather-independent"; Choose($setup.conditions="sunny"; "planned for fair weather"; "already prepared for rain"))+")\n"
-		$user:=$user+"- Temperature: "+$setup.temperature+" ("+Choose($setup.temperature="normal"; "standard setup"; Choose($setup.temperature="cold"; "cold-weather equipment included"; "heat management included"))+")\n\n"
+		$user:=$user+"- Conditions: "+$setup.conditions+" ("+($setup.conditions="indifferent" ? "indoor/weather-independent" : ($setup.conditions="sunny" ? "planned for fair weather" : "already prepared for rain"))+")\n"
+		$user:=$user+"- Temperature: "+$setup.temperature+" ("+($setup.temperature="normal" ? "standard setup" : ($setup.temperature="cold" ? "cold-weather equipment included" : "heat management included"))+")\n\n"
 	Else 
 		$user:=$user+"Planned Weather Setup: not specified (assume sunny/normal)\n\n"
 	End if 
@@ -214,7 +214,7 @@ Function analyzeLinkedEmailAsync($email : cs.EmailEntity; $event : cs.EventEntit
 	var $venue : cs.VenueEntity:=$event.venue
 	var $eventText : Text:="Contract: "+$event.contractRef
 	$eventText:=$eventText+" | Date: "+String($event.eventDate; "yyyy-MM-dd")
-	$eventText:=$eventText+" | Venue: "+Choose($venue#Null; $venue.name; "?")
+	$eventText:=$eventText+" | Venue: "+($venue ? $venue.name : "?")
 	$eventText:=$eventText+" | Guests: "+String($event.guestCount)
 
 	var $linesText : Text:=""
@@ -276,9 +276,9 @@ Function generateDraftEmailAsync($event : cs.EventEntity; $action : Object; $pro
 	End if 
 
 	var $venue : cs.VenueEntity:=$event.venue
-	var $venueInfo : Text:=Choose($venue#Null; $venue.name+", "+$venue.city; "?")
+	var $venueInfo : Text:=$venue ? $venue.name+", "+$venue.city : "?"
 	var $client : cs.ClientEntity:=$event.client
-	var $clientName : Text:=Choose($client#Null; $client.contactName; "Client")
+	var $clientName : Text:=$client ? $client.contactName : "Client"
 
 	var $linesText : Text:=""
 	var $line : Object
@@ -340,7 +340,7 @@ Function draftReplyAsync($hiddenPrompt : Text; $email : cs.EmailEntity; $event :
 	var $venue : cs.VenueEntity:=$event.venue
 	var $eventContext : Text:="Contract: "+$event.contractRef
 	$eventContext:=$eventContext+" | Date: "+String($event.eventDate; "yyyy-MM-dd")
-	$eventContext:=$eventContext+" | Venue: "+Choose($venue#Null; $venue.name+", "+$venue.city; "?")
+	$eventContext:=$eventContext+" | Venue: "+($venue ? $venue.name+", "+$venue.city : "?")
 	$eventContext:=$eventContext+" | Guests: "+String($event.guestCount)
 	$eventContext:=$eventContext+" | Option: "+$event.venueOption
 
@@ -570,10 +570,10 @@ Function _buildCatalogSnippet($catalog : Collection) : Text
 	End if 
 	var $i : Integer
 	var $svc : Object
-	var $max : Integer:=Choose($catalog.length<30; $catalog.length; 30)
+	var $max : Integer:=($catalog.length<30) ? $catalog.length : 30
 	For ($i; 0; $max-1)
 		$svc:=$catalog[$i]
-		$result:=$result+Choose($svc.category#Null; $svc.category; "")+" | "+Choose($svc.label#Null; $svc.label; "")+" | "+String($svc.unitPrice)+"€/"+Choose($svc.unit#Null; $svc.unit; "unit")+Char(13)
+		$result:=$result+($svc.category || "")+" | "+($svc.label || "")+" | "+String($svc.unitPrice)+"€/"+($svc.unit || "unit")+Char(13)
 	End for 
 	return $result
 

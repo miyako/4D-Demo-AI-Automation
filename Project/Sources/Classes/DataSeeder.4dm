@@ -121,12 +121,12 @@ Function _seedEventsAndLines()
 Function _generateEventLines($evt : cs.EventEntity; $item : Object; $svcByCategory : Object)
 	var $guestCount : Integer:=$item.guestCount
 	var $status : Text:=$item.status
-	var $lineStatus : Text:=Choose($status="confirmed"; "confirmed"; "pending")
+	var $lineStatus : Text:=$status="confirmed" ? "confirmed" : "pending"
 
 	// Build weather profile key
 	var $setup : Object:=$evt.weatherSetup
-	var $conditions : Text:=Choose($setup#Null; $setup.conditions; "indifferent")
-	var $temperature : Text:=Choose($setup#Null; $setup.temperature; "normal")
+	var $conditions : Text:=$setup ? $setup.conditions : "indifferent"
+	var $temperature : Text:=$setup ? $setup.temperature : "normal"
 	var $venueOption : Text:=$evt.venueOption
 	var $profileKey : Text:=$venueOption+"__"+$conditions+"__"+$temperature
 
@@ -211,7 +211,7 @@ Function _generateEventLines($evt : cs.EventEntity; $item : Object; $svcByCatego
 	End if 
 
 	// Add venue rental as a service line (price from venue option, not catalog)
-	var $rentalLabel : Text:=Choose($venueOption="indoor"; "Indoor venue rental"; "Outdoor venue rental")
+	var $rentalLabel : Text:=$venueOption="indoor" ? "Indoor venue rental" : "Outdoor venue rental"
 	var $rentalPrice : Real:=Num($item.venueRentalPrice)
 	var $venueRentalList : Collection:=$svcByCategory["Venue"]
 	If (($rentalPrice>0) && ($venueRentalList#Null))
@@ -234,7 +234,7 @@ Function _addPreferredService($evt : cs.EventEntity; $svcByCategory : Object; $c
 	If (($list=Null) || ($list.length=0))
 		return 
 	End if 
-	var $keyword : Text:=Choose($preferOutdoor; "extérieure"; "salle")
+	var $keyword : Text:=$preferOutdoor ? "extérieure" : "salle"
 	var $preferred : Collection:=$list.query("label = :1"; "@"+$keyword+"@")
 	If ($preferred.length=0)
 		$preferred:=$list
@@ -389,7 +389,7 @@ Function regenerateEvents()
 				$venueOption:="outdoor"
 			Else 
 				// Mixed: 50/50
-				$venueOption:=Choose(Random%2=0; "indoor"; "outdoor")
+				$venueOption:=(Random%2=0) ? "indoor" : "outdoor"
 			End if 
 		End if 
 		$evt.venueOption:=$venueOption
@@ -459,8 +459,8 @@ Function _assignWeatherSetup($venueOption : Text) : Object
 			$temperature:="normal"
 		Else 
 			// Outdoor: mainly fair weather
-			$conditions:=Choose($r<7; "sunny"; "rain")
-			$temperature:=Choose($r<3; "hot"; Choose($r<8; "normal"; "cold"))
+			$conditions:=$r<7 ? "sunny" : "rain"
+			$temperature:=$r<3 ? "hot" : ($r<8 ? "normal" : "cold")
 	End case 
 
 	return {conditions: $conditions; temperature: $temperature}

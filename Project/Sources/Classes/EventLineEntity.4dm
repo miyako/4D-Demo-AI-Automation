@@ -4,11 +4,11 @@ Class extends Entity
 
 Function get serviceLabel() : Text
 	var $s : cs.ServiceEntity:=This.service
-	return Choose($s#Null; $s.label; "—")
+	return $s ? $s.label : "—"
 
 Function get serviceCategory() : Text
 	var $s : cs.ServiceEntity:=This.service
-	return Choose($s#Null; $s.category; "—")
+	return $s ? $s.category : "—"
 
 Function get quantityStr() : Text
 	return String(This.quantity)

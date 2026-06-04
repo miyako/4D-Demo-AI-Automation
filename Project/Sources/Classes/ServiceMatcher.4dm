@@ -16,7 +16,7 @@ Function buildEmbeddings()
 	var $count : Integer:=0
 
 	For each ($service; $services)
-		var $desc : Text:=Choose($service.description#""; $service.description; $service.label)
+		var $desc : Text:=$service.description || $service.label
 		var $text : Text:=$service.category+" | "+$service.label+" | "+$service.unit+" | "+$desc
 		var $result : Object:=This._client.embeddings.create($text; This._model)
 		If ($result.vector#Null)
@@ -32,7 +32,7 @@ Function rebuildAllEmbeddings()
 	var $service : cs.ServiceEntity
 
 	For each ($service; $services)
-		var $desc : Text:=Choose($service.description#""; $service.description; $service.label)
+		var $desc : Text:=$service.description || $service.label
 		var $text : Text:=$service.category+" | "+$service.label+" | "+$service.unit+" | "+$desc
 		var $result : Object:=This._client.embeddings.create($text; This._model)
 		If ($result.vector#Null)

@@ -26,7 +26,7 @@ Class constructor()
 
 Function search_services($params : Object) : Text
 	var $matcher : cs.ServiceMatcher:=cs.ServiceMatcher.new()
-	var $category : Text:=Choose($params.category#Null; $params.category; "")
+	var $category : Text:=$params.category || ""
 	var $results : Collection:=$matcher.search($params.query; $category; 5)
 
 	// Debug log

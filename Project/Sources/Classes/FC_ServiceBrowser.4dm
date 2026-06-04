@@ -80,7 +80,7 @@ Function _loadServices()
 				category: $svc.category; \
 				unit: $svc.unit; \
 				unitPriceStr: String($svc.unitPrice; "### ### ##0 €"); \
-				availableIcon: Choose($svc.available; "✓"; "–") \
+				availableIcon: $svc.available ? "✓" : "–" \
 			})
 		End if 
 	End for each 

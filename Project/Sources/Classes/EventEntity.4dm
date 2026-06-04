@@ -10,15 +10,15 @@ Function get eventDateStr() : Text
 
 Function get clientName() : Text
 	var $c : cs.ClientEntity:=This.client
-	return Choose($c#Null; $c.companyName; "—")
+	return $c ? $c.companyName : "—"
 
 Function get venueName() : Text
 	var $v : cs.VenueEntity:=This.venue
-	return Choose($v#Null; $v.name; "—")
+	return $v ? $v.name : "—"
 
 Function get venueCity() : Text
 	var $v : cs.VenueEntity:=This.venue
-	return Choose($v#Null; $v.city; "—")
+	return $v ? $v.city : "—"
 
 Function get guestCountStr() : Text
 	return String(This.guestCount)
@@ -31,11 +31,11 @@ Function get eventDateLong() : Text
 
 Function get contactInfo() : Text
 	var $c : cs.ClientEntity:=This.client
-	return Choose($c#Null; $c.contactName+" · "+$c.email; "")
+	return $c ? $c.contactName+" · "+$c.email : ""
 
 Function get venueLabel() : Text
 	var $v : cs.VenueEntity:=This.venue
-	return Choose($v#Null; $v.name+" – "+$v.city+", "+$v.country; "—")
+	return $v ? $v.name+" – "+$v.city+", "+$v.country : "—"
 
 // ─── Status labels ────────────────────────────────────────────────────────────
 
@@ -97,7 +97,7 @@ Function get riskLabel() : Text
 
 // venueOption is a real field ("indoor"/"outdoor") — use venueOptionIcon for the emoji column
 Function get venueOptionIcon() : Text
-	return Choose(This.venueOption="indoor"; "🏢"; "🌳")
+	return This.venueOption="indoor" ? "🏢" : "🌳"
 
 Function get emailIcon() : Text
 	If (This.emails.query("emailStatus = :1"; "pending").length>0)

@@ -61,8 +61,8 @@ Function _onLoad()
 	var $aliases : Collection:=$providers.modelAliases()
 	var $chatEntry : Object:=$aliases.query("name = :1"; "chat").first()
 	var $embeddingEntry : Object:=$aliases.query("name = :1"; "embedding").first()
-	var $chatLabel : Text:=Choose($chatEntry#Null; $chatEntry.model; "?")
-	var $embedLabel : Text:=Choose($embeddingEntry#Null; $embeddingEntry.model; "?")
+	var $chatLabel : Text:=$chatEntry ? $chatEntry.model : "?"
+	var $embedLabel : Text:=$embeddingEntry ? $embeddingEntry.model : "?"
 	OBJECT SET TITLE(*; "text_footer"; "Powered by "+$chatLabel+" (chat) · "+$embedLabel+" (embedding) · Open-Meteo")
 
 Function _openEvents()
