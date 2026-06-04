@@ -513,6 +513,7 @@ Function executeActionAsync($hiddenPrompt : Text; $context : Object; $callback :
 	End if 
 	$system:=$system+"\nFor 'add' lines: ONLY propose services that were actually returned by the search_services tool. "
 	$system:=$system+"DEDUPLICATION: Do NOT add a service that is already in the existing services list with the exact same label or serviceID. Adding a different service in the same category is fine (e.g. adding a gas heater when a patio heater is already booked is allowed). "
+	$system:=$system+"MEAL REPLACEMENT: If the task involves adding an upgraded meal service (dinner, lunch, buffet, banquet, seated meal) and the existing services list already contains a meal service, you MUST emit a 'remove' line for the existing meal service AND an 'add' line for the new one. Never keep two meal services at the same time. "
 	$system:=$system+"CRITICAL: If search_services returns no results, return an EMPTY proposedLines array. "
 	$system:=$system+"If search_services returns results but none are appropriate, return empty proposedLines AND set summary to explain clearly why each result was rejected (e.g. 'Found: X, Y, Z — rejected because task requires indoor heating and all results are outdoor equipment'). "
 	$system:=$system+"NEVER emit 'remove' lines for an 'add_services' task — only emit removes for 'remove_services' or 'replace_services' tasks. "
