@@ -387,6 +387,7 @@ Function _executeAction($slot : Integer)
 	End if 
 	var $action : Object:=This.aiActions[$actionIdx]
 	var $type : Text:=$action.actionType
+	This._hideConfirmPanel()
 	
 	// switch_venue: update venueOption and rental price directly — no AI tool call needed
 	If ($type="switch_venue")
