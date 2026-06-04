@@ -7,30 +7,18 @@ property _model : Text
 Class constructor()
 	This._client:=cs.AIKit.OpenAI.new()
 	This._model:="embedding"  // model alias defined in AIProviders.json
-
-// ─── Generates embeddings for all services in the catalog ───────────────────────
-// Called once at initial seed
+	
+// ─── Generates embeddings for services missing one ──────────────────────────
 Function buildEmbeddings()
-	var $services : cs.ServiceSelection:=ds.Service.query("embedding = null")
-	var $service : cs.ServiceEntity
-	var $count : Integer:=0
+	This._computeEmbeddings(ds.Service.query("embedding = null"))
 
-	For each ($service; $services)
-		var $desc : Text:=$service.description || $service.label
-		var $text : Text:=$service.category+" | "+$service.label+" | "+$service.unit+" | "+$desc
-		var $result : Object:=This._client.embeddings.create($text; This._model)
-		If ($result.vector#Null)
-			$service.embedding:=$result.vector
-			$service.save()
-			$count:=$count+1
-		End if 
-	End for each 
-
-// ─── Forces recalculation of all embeddings (after label changes) ──────────────
+// ─── Recomputes all embeddings (after label/description changes) ────────────
 Function rebuildAllEmbeddings()
-	var $services : cs.ServiceSelection:=ds.Service.all()
-	var $service : cs.ServiceEntity
+	This._computeEmbeddings(ds.Service.all())
 
+// ─── Shared embedding computation loop ────────────────────────────────────────
+Function _computeEmbeddings($services : cs.ServiceSelection)
+	var $service : cs.ServiceEntity
 	For each ($service; $services)
 		var $desc : Text:=$service.description || $service.label
 		var $text : Text:=$service.category+" | "+$service.label+" | "+$service.unit+" | "+$desc
@@ -40,14 +28,14 @@ Function rebuildAllEmbeddings()
 			$service.save()
 		End if 
 	End for each 
-
-// ─── Semantic search in the catalog ────────────────────────────────────────────
-// Returns the top services matching the query (max $limit results)
+	
+	// ─── Semantic search in the catalog ────────────────────────────────────────────
+	// Returns the top services matching the query (max $limit results)
 Function search($query : Text; $category : Text; $limit : Integer) : Collection
 	If ($limit=0)
 		$limit:=5
 	End if 
-
+	
 	// Create the query embedding — prepend category to steer the vector
 	var $searchText : Text:=($category#"") ? ($category+" | "+$query) : $query
 	var $result : Object:=This._client.embeddings.create($searchText; This._model)
@@ -55,26 +43,26 @@ Function search($query : Text; $category : Text; $limit : Integer) : Collection
 		// Fallback to keyword search if embedding fails
 		return This._keywordSearch($query; $category; $limit)
 	End if 
-
+	
 	var $vec : 4D.Vector:=$result.vector
-
+	
 	// Semantic vector search — strict threshold; sort by similarity so best matches come first
 	var $found : cs.ServiceSelection
 	var $comparisonVector : Object:={vector: $vec; metric: mk cosine; threshold: 0.3}
 	If ($category#"")
-		$found:=ds.Service.query("embedding > :1 AND category = :2 AND available = true order by embedding"; $comparisonVector; $category)
+		$found:=ds.Service.query("embedding > :1 AND category = :2 AND available = true order by embedding desc"; $comparisonVector; $category)
 	Else 
-		$found:=ds.Service.query("embedding > :1 AND available = true order by embedding"; $comparisonVector)
+		$found:=ds.Service.query("embedding > :1 AND available = true order by embedding desc"; $comparisonVector)
 	End if 
-
+	
 	// If semantic search returns nothing, fall back to keyword search
 	If ($found=Null) || ($found.length=0)
 		return This._keywordSearch($query; $category; $limit)
 	End if 
-
+	
 	return This._toResults($found; $limit)
-
-// ─── Fallback keyword search (used when vector search returns nothing) ────────
+	
+	// ─── Fallback keyword search (used when vector search returns nothing) ────────
 Function _keywordSearch($query : Text; $category : Text; $limit : Integer) : Collection
 	// Extract meaningful words from query (drop stop words and short tokens)
 	var $stopWords : Collection:=["for"; "a"; "an"; "the"; "of"; "to"; "with"; "and"; "or"; "in"; "on"; "at"; "by"; "from"; "per"; "x"; "guests"; "pax"; "units"; "pack"; "packs"; "set"; "sets"]
@@ -87,11 +75,11 @@ Function _keywordSearch($query : Text; $category : Text; $limit : Integer) : Col
 			$keywords.push($w)
 		End if 
 	End for each 
-
+	
 	If ($keywords.length=0)
 		return []
 	End if 
-
+	
 	// Union all keyword hits into a single deduplicated entity selection via .or()
 	var $allHits : cs.ServiceSelection:=ds.Service.newSelection()
 	var $kw : Text
@@ -104,19 +92,19 @@ Function _keywordSearch($query : Text; $category : Text; $limit : Integer) : Col
 		End if 
 		$allHits:=$allHits.or($hits)
 	End for each 
-
+	
 	return This._toResults($allHits; $limit)
-
-// ─── Converts a ServiceSelection to the standard result collection format ─────
+	
+	// ─── Converts a ServiceSelection to the standard result collection format ─────
+// Uses toCollection for efficient bulk extraction, then renames ID → serviceID
 Function _toResults($sel : cs.ServiceSelection; $limit : Integer) : Collection
+	var $raw : Collection:=$sel.toCollection("ID, label, category, unitPrice, unit"; 0; 0; $limit)
 	var $results : Collection:=[]
-	var $svc : cs.ServiceEntity
-	var $i : Integer:=0
-	For each ($svc; $sel)
-		If ($i>=$limit)
-			Break
-		End if 
-		$results.push({serviceID: $svc.ID; label: $svc.label; category: $svc.category; unitPrice: $svc.unitPrice; unit: $svc.unit})
-		$i:=$i+1
+	var $item : Object
+	For each ($item; $raw)
+		$item.serviceID:=$item.ID
+		OB REMOVE($item; "ID")
+		$results.push($item)
 	End for each 
 	return $results
+	
