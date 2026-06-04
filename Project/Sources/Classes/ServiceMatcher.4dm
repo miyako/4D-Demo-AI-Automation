@@ -58,13 +58,13 @@ Function search($query : Text; $category : Text; $limit : Integer) : Collection
 
 	var $vec : 4D.Vector:=$result.vector
 
-	// Semantic vector search — strict threshold; category filter already narrows scope
+	// Semantic vector search — strict threshold; sort by similarity so best matches come first
 	var $found : cs.ServiceSelection
 	var $comparisonVector : Object:={vector: $vec; metric: mk cosine; threshold: 0.3}
 	If ($category#"")
-		$found:=ds.Service.query("embedding > :1 AND category = :2 AND available = true"; $comparisonVector; $category)
+		$found:=ds.Service.query("embedding > :1 AND category = :2 AND available = true order by embedding"; $comparisonVector; $category)
 	Else 
-		$found:=ds.Service.query("embedding > :1 AND available = true"; $comparisonVector)
+		$found:=ds.Service.query("embedding > :1 AND available = true order by embedding"; $comparisonVector)
 	End if 
 
 	// If semantic search returns nothing, fall back to keyword search
@@ -108,13 +108,15 @@ Function _keywordSearch($query : Text; $category : Text; $limit : Integer) : Col
 	return This._toResults($allHits; $limit)
 
 // ─── Converts a ServiceSelection to the standard result collection format ─────
-// toCollection signature: (filterString; options; begin; howMany)
-// options=0, begin=0, howMany=$limit → first $limit items
 Function _toResults($sel : cs.ServiceSelection; $limit : Integer) : Collection
-	var $raw : Collection:=$sel.toCollection("ID, label, category, unitPrice, unit"; 0; 0; $limit)
 	var $results : Collection:=[]
-	var $item : Object
-	For each ($item; $raw)
-		$results.push({serviceID: $item.ID; label: $item.label; category: $item.category; unitPrice: $item.unitPrice; unit: $item.unit})
+	var $svc : cs.ServiceEntity
+	var $i : Integer:=0
+	For each ($svc; $sel)
+		If ($i>=$limit)
+			Break
+		End if 
+		$results.push({serviceID: $svc.ID; label: $svc.label; category: $svc.category; unitPrice: $svc.unitPrice; unit: $svc.unit})
+		$i:=$i+1
 	End for each 
 	return $results
