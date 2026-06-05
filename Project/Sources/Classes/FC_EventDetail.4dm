@@ -249,12 +249,12 @@ Function _renderWeatherTab($weatherResult : Object)
 	This.aiActions:=$weatherResult.actions
 
 Function _renderEmailTab()
-	var $hasEmail : Boolean:=(This.event.pendingEmail#Null)
+	var $e : cs.EmailEntity:=This.event.pendingEmail
+	var $hasEmail : Boolean:=(Value type($e)=Is object)
 	OBJECT SET VISIBLE(*; "text_email_ai_result"; True)
 	OBJECT SET VISIBLE(*; "input_email_body"; $hasEmail)
 	OBJECT SET VISIBLE(*; "btn_email_analyze"; $hasEmail)
 	If ($hasEmail)
-		var $e : cs.EmailEntity:=This.event.pendingEmail
 		var $meta : Text:="Subject: "+$e.subject+"\nFrom: "+$e.sender+" <"+$e.senderEmail+">\nReceived: "+String($e.receivedAt; "dd MMM yyyy")
 		OBJECT SET TITLE(*; "text_ai_context"; $meta)
 		OBJECT SET VALUE("input_email_body"; $e.body)
@@ -328,7 +328,8 @@ Function _runEmailAnalysis()
 	If (Not(This._checkAiReady()))
 		return 
 	End if 
-	If (This.event.pendingEmail=Null)
+	var $pendingEmail : cs.EmailEntity:=This.event.pendingEmail
+	If (Value type($pendingEmail)#Is object)
 		return 
 	End if 
 	This.running:=True
@@ -341,7 +342,7 @@ Function _runEmailAnalysis()
 	
 	var $evt : cs.EventEntity:=This.event
 	var $w : Integer:=Current form window
-	var $emailID : Text:=This.event.pendingEmail.ID
+	var $emailID : Text:=$pendingEmail.ID
 	var $eventID : Text:=String($evt.ID)
 	CALL WORKER("aiAdvisorWorker_"+String($w); Formula(_aiEmailWorkerJob($w; $emailID; $eventID)))
 	
@@ -661,7 +662,7 @@ Function _dismissAfterActions()
 	This.aiActions:=[]
 	// Always try to mark pending email as processed if one exists
 	var $email : cs.EmailEntity:=This.event.pendingEmail
-	If ($email#Null)
+	If (Value type($email)=Is object)
 		$email.emailStatus:="processed"
 		$email.save()
 		This.event.reload()
