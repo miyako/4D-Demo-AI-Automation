@@ -2,7 +2,6 @@
 // Scenario 2: Weather alert + AI panel with contextual actions
 
 property event : cs.EventEntity
-property currentLine : cs.EventLineEntity
 property aiActions : Collection
 property confirmDraft : Text
 property confirmEmailDraft : Text
@@ -27,7 +26,6 @@ property _listFC : Object
 
 Class constructor($event : cs.EventEntity; $eventSelection : cs.EventSelection; $listFC : Object)
 	This.event:=$event
-	This.currentLine:=Null
 	This.aiActions:=[]
 	This.confirmDraft:=""
 	This.confirmEmailDraft:=""

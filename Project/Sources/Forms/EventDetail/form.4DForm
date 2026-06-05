@@ -240,7 +240,6 @@
 					"hideFocusRing": true,
 					"scrollbarVertical": "automatic",
 					"scrollbarHorizontal": "hidden",
-					"currentItemSource": "Form:C1466.currentLine",
 					"columns": [
 						{
 							"header": {
