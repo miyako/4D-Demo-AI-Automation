@@ -71,7 +71,7 @@ Function formEventHandler($formEventCode : Integer)
 					OBJECT SET TITLE(*; $btns[This._spinnerBtnSlot]; This._spinnerBtnLabel+"  "+$frame)
 				End if 
 				If (This._spinnerAnalyzeBtn#"")
-					OBJECT SET TITLE(*; This._spinnerAnalyzeBtn; $frame)
+					OBJECT SET TITLE(*; This._spinnerAnalyzeBtn; This._spinnerAnalyzeLabel+"  "+$frame)
 				End if 
 			End if 
 	End case 
