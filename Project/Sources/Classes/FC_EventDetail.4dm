@@ -12,6 +12,8 @@ property _spinnerFrames : Collection
 property _spinnerActive : Boolean
 property _spinnerBtnSlot : Integer
 property _spinnerBtnLabel : Text
+property _spinnerAnalyzeBtn : Text
+property _spinnerAnalyzeLabel : Text
 property _aiStatusBase : Text
 property _selection : cs.EventSelection
 property _pendingExecResult : Object
@@ -35,6 +37,8 @@ Class constructor($event : cs.EventEntity; $eventSelection : cs.EventSelection; 
 	This._spinnerActive:=False
 	This._spinnerBtnSlot:=-1
 	This._spinnerBtnLabel:=""
+	This._spinnerAnalyzeBtn:=""
+	This._spinnerAnalyzeLabel:=""
 	This._aiStatusBase:=""
 	This._pendingExecResult:=Null
 	This._pendingAction:=Null
@@ -56,7 +60,7 @@ Function formEventHandler($formEventCode : Integer)
 		: ($formEventCode=On Load)
 			This._onLoad()
 		: ($formEventCode=On Timer)
-			If (This._spinnerActive || (This._spinnerBtnSlot>=0))
+			If (This._spinnerActive || (This._spinnerBtnSlot>=0) || (This._spinnerAnalyzeBtn#""))
 				This._spinnerIndex:=(This._spinnerIndex+1)%(This._spinnerFrames.length)
 				var $frame : Text:=This._spinnerFrames[This._spinnerIndex]
 				If (This._spinnerActive)
@@ -65,6 +69,9 @@ Function formEventHandler($formEventCode : Integer)
 				If (This._spinnerBtnSlot>=0)
 					var $btns : Collection:=["btn_ai_action1"; "btn_ai_action2"; "btn_ai_action3"; "btn_ai_action4"]
 					OBJECT SET TITLE(*; $btns[This._spinnerBtnSlot]; This._spinnerBtnLabel+"  "+$frame)
+				End if 
+				If (This._spinnerAnalyzeBtn#"")
+					OBJECT SET TITLE(*; This._spinnerAnalyzeBtn; $frame)
 				End if 
 			End if 
 	End case 
@@ -267,7 +274,7 @@ Function _runWeatherAnalysis()
 	End if 
 	This.running:=True
 	This._startSpinner()
-	OBJECT SET VISIBLE(*; "btn_ai_analyze"; False)
+	This._startAnalyzeSpinner("btn_ai_analyze"; "⚡ Run AI Weather Analysis")
 	If (This._pendingExecResult#Null)
 		This._hideConfirmPanel()
 	End if 
@@ -299,8 +306,7 @@ Function _onWeatherAnalysisDone($aiResult : Object)
 	End if 
 	This.running:=False
 	This._stopSpinner()
-	OBJECT SET VISIBLE(*; "btn_ai_analyze"; True)
-	OBJECT SET TITLE(*; "btn_ai_analyze"; "⚡ Run AI Weather Analysis")
+	This._stopAnalyzeSpinner()
 	This._clearAIPanel()
 	OBJECT SET VISIBLE(*; "text_weather_ai_explanation"; True)
 	This._renderWeatherTab($aiResult)
@@ -327,7 +333,7 @@ Function _runEmailAnalysis()
 	End if 
 	This.running:=True
 	This._startSpinner()
-	OBJECT SET VISIBLE(*; "btn_email_analyze"; False)
+	This._startAnalyzeSpinner("btn_email_analyze"; "📧 Analyze Email with AI")
 	If (This._pendingExecResult#Null)
 		This._hideConfirmPanel()
 	End if 
@@ -345,8 +351,7 @@ Function _onEmailAnalysisDone($result : Object)
 	End if 
 	This.running:=False
 	This._stopSpinner()
-	OBJECT SET VISIBLE(*; "btn_email_analyze"; True)
-	OBJECT SET TITLE(*; "btn_email_analyze"; "📧 Analyze Email with AI")
+	This._stopAnalyzeSpinner()
 	
 	If (Not($result.success))
 		This._setAiStatus("❌ Email analysis failed")
@@ -809,8 +814,6 @@ Function _onDraftEmailDone($result : Object)
 	//MARK: - Helpers
 Function _setAiStatus($text : Text)
 	This._aiStatusBase:=$text
-	var $logFile : 4D.File:=Folder(fk logs folder).file("ai_status.log")
-	$logFile.setText(($logFile.exists ? $logFile.getText() : "")+"["+String(Current time; HH:MM:SS)+"] "+$text+"\n")
 	If (This._spinnerActive)
 		OBJECT SET TITLE(*; "text_ai_status"; This._spinnerFrames[This._spinnerIndex]+" "+$text)
 	Else 
@@ -836,6 +839,13 @@ Function _startButtonSpinner($slot : Integer; $label : Text)
 	If (Not(This._spinnerActive))
 		SET TIMER(6)
 	End if 
+
+Function _startAnalyzeSpinner($btnName : Text; $label : Text)
+	This._spinnerAnalyzeBtn:=$btnName
+	This._spinnerAnalyzeLabel:=$label
+	If (Not(This._spinnerActive)) && (This._spinnerBtnSlot<0)
+		SET TIMER(6)
+	End if 
 	
 Function _stopButtonSpinner()
 	If (This._spinnerBtnSlot>=0)
@@ -844,14 +854,24 @@ Function _stopButtonSpinner()
 		This._spinnerBtnSlot:=-1
 		This._spinnerBtnLabel:=""
 	End if 
-	If (Not(This._spinnerActive))
+	If (Not(This._spinnerActive)) && (This._spinnerAnalyzeBtn="")
+		SET TIMER(0)
+	End if 
+
+Function _stopAnalyzeSpinner()
+	If (This._spinnerAnalyzeBtn#"")
+		OBJECT SET TITLE(*; This._spinnerAnalyzeBtn; This._spinnerAnalyzeLabel)
+		This._spinnerAnalyzeBtn:=""
+		This._spinnerAnalyzeLabel:=""
+	End if 
+	If (Not(This._spinnerActive)) && (This._spinnerBtnSlot<0)
 		SET TIMER(0)
 	End if 
 	
 Function _stopSpinner()
 	This._spinnerActive:=False
 	OBJECT SET TITLE(*; "text_ai_status"; This._aiStatusBase)
-	If (This._spinnerBtnSlot<0)
+	If (This._spinnerBtnSlot<0) && (This._spinnerAnalyzeBtn="")
 		SET TIMER(0)
 	End if 
 Function _navigate($direction : Integer)
