@@ -280,6 +280,9 @@ Function _addLineWithPrice($evt : cs.EventEntity; $svc : Object; $qty : Integer;
 // ─── Emails ───────────────────────────────────────────────────────────────────
 // Only modification emails, all linked to a specific confirmed event
 Function _seedEmails()
+	// Always clear first to stay idempotent — prevents duplicates if called multiple times
+	ds.Email.all().drop()
+	
 	var $file : 4D.File:=Folder(fk resources folder).file("data/emails.json")
 	var $data : Collection:=JSON Parse($file.getText())
 	var $item : Object
