@@ -435,38 +435,13 @@ Function _executeSwitchVenue($action : Object)
 		$indoorName:=String($venue.indoorOption.name)
 		$indoorRental:=Num($venue.indoorOption.rentalPrice)
 	End if 
-	var $guestCount : Integer:=$evt.guestCount
-	
-	// List all booked services with IDs and prices for removes
-	var $allServices : Text:=""
-	var $removedTotal : Real:=0
-	var $line : cs.EventLineEntity
-	For each ($line; $evt.lines)
-		$allServices:=$allServices+"- [ID:"+String($line.serviceID)+"] "+$line.serviceLabel+" x"+String($line.quantity)+" @ "+String($line.unitPrice)+"€\n"
-		$removedTotal:=$removedTotal+($line.quantity*$line.unitPrice)
-	End for each 
-	
-	// Budget for indoor additions: money freed by removing outdoor services minus indoor rental cost
-	// The AI will compute the actual freed amount; we pass the worst-case cap (total - rental)
-	// so it knows not to overshoot by more than 10% of the freed amount
-	var $maxBudget : Real:=($removedTotal-$indoorRental)*1.10
-	
-	var $prompt : Text:="Switch this outdoor event to the indoor venue '"+$indoorName+"' (rental: "+String($indoorRental)+"€).\n\n"
-	$prompt:=$prompt+"Current booked services:\n"+$allServices+"\n"
-	$prompt:=$prompt+"Step 1 — REMOVE: Identify and remove all outdoor-specific services (tents, outdoor structures, outdoor sound/lighting, rain gear, patio heaters, outdoor venue rental, outdoor power/generators used for structures, etc.). Use [ID:xxx] from the list above.\n\n"
-	$prompt:=$prompt+"Step 2 — Indoor rental: The indoor venue rental ("+String($indoorRental)+"€) will be added automatically. Do NOT search for it.\n\n"
-	$prompt:=$prompt+"Step 3 — COMPUTE: Calculate freed_budget = SUM(removed services cost) - "+String($indoorRental)+"€ (indoor rental).\n\n"
-	$prompt:=$prompt+"Step 4 — ADD indoor services (ONLY if freed_budget > 0):\n"
-	$prompt:=$prompt+"  Search for indoor-compatible services (sound system, lighting, decor, comfort) appropriate for "+String($guestCount)+" guests.\n"
-	$prompt:=$prompt+"  STRICT BUDGET: total cost of ADD lines (excluding venue rental) must NOT exceed freed_budget × 1.10 (max budget: "+String($maxBudget)+"€).\n"
-	$prompt:=$prompt+"  Stop searching once budget is reached. Do NOT add services just to fill the budget — only add what is genuinely useful.\n"
-	$prompt:=$prompt+"  If freed_budget <= 0: skip this step entirely.\n"
 	
 	// Tag the action so confirm step knows to save venueOption + inject indoor rental
 	$action._switchVenue:=True
 	$action._indoorRental:=$indoorRental
 	$action._indoorName:=$indoorName
 	
+	var $prompt : Text:=cs.AIAdvisor.new().switchVenuePrompt($evt)
 	This._setAiStatus("Switching to indoor — calculating replacements...")
 	This._executeWithToolCalling($action; $prompt)
 	
@@ -487,14 +462,16 @@ Function _onExecutionDone($execResult : Object)
 		return 
 	End if 
 	
+	var $isFillRound : Boolean:=($action._partialLines#Null)
+	
 	// Second round (fill): merge fill lines into partial result from first round
-	If ($action._partialLines#Null)
+	If ($isFillRound)
 		var $merged : Collection:=$action._partialLines
 		If (($execResult.proposedLines#Null) && ($execResult.proposedLines.length>0))
 			var $fl : Object
 			For each ($fl; $execResult.proposedLines)
-				// Skip any venue rental the AI may have added despite instructions
-				If (Position("venue rental"; Lowercase($fl.label))=0)
+				// Strip any venue rental the AI may have added despite instructions
+				If (Position("venue rental"; Lowercase(String($fl.label)))=0)
 					$merged.push($fl)
 				End if 
 			End for each 
@@ -511,17 +488,29 @@ Function _onExecutionDone($execResult : Object)
 		return 
 	End if 
 	
-	// For switch_venue: inject the indoor venue rental (only on first round, not after fill merge)
-	If ($action._switchVenue=True) && (Num($action._indoorRental)>0) && ($action._partialLines=Null)
-		var $indoorSvc : cs.ServiceEntity:=ds.Service.query("label = :1"; "Indoor venue rental").first()
-		If ($indoorSvc#Null)
-			$execResult.proposedLines.push({\
-				delta: "add"; \
-				serviceID: $indoorSvc.ID; \
-				label: "Indoor venue rental"; \
-				quantity: 1; \
-				unitPrice: Num($action._indoorRental)\
-				})
+	// For switch_venue: inject indoor rental once (first round only) — strip AI-added rentals first
+	If ($action._switchVenue=True) && (Not($isFillRound))
+		// Remove any venue rental the AI may have added (catalog price = 0, we inject the correct price)
+		var $filtered : Collection:=[]
+		var $rl : Object
+		For each ($rl; $execResult.proposedLines)
+			If (Position("venue rental"; Lowercase(String($rl.label)))=0)
+				$filtered.push($rl)
+			End if 
+		End for each 
+		$execResult.proposedLines:=$filtered
+		// Now inject the real rental at venue-specific price
+		If (Num($action._indoorRental)>0)
+			var $indoorSvc : cs.ServiceEntity:=ds.Service.query("label = :1"; "Indoor venue rental").first()
+			If ($indoorSvc#Null)
+				$execResult.proposedLines.push({\
+					delta: "add"; \
+					serviceID: $indoorSvc.ID; \
+					label: "Indoor venue rental"; \
+					quantity: 1; \
+					unitPrice: Num($action._indoorRental)\
+					})
+			End if 
 		End if 
 	End if 
 	
@@ -549,10 +538,7 @@ Function _onExecutionDone($execResult : Object)
 			var $w2 : Integer:=Current form window
 			cs.AIWorkerContext.me.storeAction($w2; $action)
 			cs.AIWorkerContext.me.storeExistingLines($w2; This._linesAsCollection())
-			var $fillPrompt : Text:="Find indoor-compatible services to add for an event with "+String(This.event.guestCount)+" guests at '"+String(This.event.venue.indoorOption.name)+"'.\n"
-			$fillPrompt:=$fillPrompt+"STRICT BUDGET: total cost of proposed ADD lines must NOT exceed "+String($fillBudget)+"€.\n"
-			$fillPrompt:=$fillPrompt+"Search for services like: indoor sound, lighting/decor, comfort, entertainment. Stop once budget is reached.\n"
-			$fillPrompt:=$fillPrompt+"Do NOT add venue rental. Do NOT add services already being removed or already in the existing services list."
+			var $fillPrompt : Text:=cs.AIAdvisor.new().fillServicesPrompt(This.event; $fillBudget)
 			var $fillCtx : Object:={\
 				windowID: $w2; \
 				eventDate: String(This.event.eventDate; "yyyy-MM-dd"); \

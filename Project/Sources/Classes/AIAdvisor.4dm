@@ -495,3 +495,44 @@ Function _loadSchema($filename : Text) : Object
 	End if 
 	return JSON Parse($file.getText())
 
+// ─── Prompt builders (called from FC_EventDetail before tool-calling dispatch) ──
+
+// Builds the switch_venue execution prompt for _executeSwitchVenue
+Function switchVenuePrompt($event : cs.EventEntity) : Text
+	var $venue : cs.VenueEntity:=$event.venue
+	var $indoorName : Text:=($venue#Null) && ($venue.indoorOption#Null) ? String($venue.indoorOption.name) : "indoor option"
+	var $indoorRental : Real:=($venue#Null) && ($venue.indoorOption#Null) ? Num($venue.indoorOption.rentalPrice) : 0
+	var $guestCount : Integer:=$event.guestCount
+	
+	var $allServices : Text:=""
+	var $removedTotal : Real:=0
+	var $line : cs.EventLineEntity
+	For each ($line; $event.lines)
+		$allServices:=$allServices+"- [ID:"+String($line.serviceID)+"] "+$line.serviceLabel+" x"+String($line.quantity)+" @ "+String($line.unitPrice)+"€\n"
+		$removedTotal:=$removedTotal+($line.quantity*$line.unitPrice)
+	End for each 
+	
+	var $maxBudget : Real:=($removedTotal-$indoorRental)*1.10
+	
+	var $prompt : Text:="Switch this outdoor event to the indoor venue '"+$indoorName+"' (rental: "+String($indoorRental)+"€).\n\n"
+	$prompt:=$prompt+"Current booked services:\n"+$allServices+"\n"
+	$prompt:=$prompt+"Step 1 — REMOVE: Identify and remove all outdoor-specific services (tents, outdoor structures, outdoor sound/lighting, rain gear, patio heaters, outdoor venue rental, outdoor power/generators, etc.). Use [ID:xxx] from the list above.\n\n"
+	$prompt:=$prompt+"Step 2 — Indoor rental: The indoor venue rental ("+String($indoorRental)+"€) will be added automatically. Do NOT search for it.\n\n"
+	$prompt:=$prompt+"Step 3 — COMPUTE: Calculate freed_budget = SUM(removed services cost) - "+String($indoorRental)+"€ (indoor rental).\n\n"
+	$prompt:=$prompt+"Step 4 — ADD indoor services (ONLY if freed_budget > 0):\n"
+	$prompt:=$prompt+"  Search for indoor-compatible services (sound system, lighting, decor, comfort) appropriate for "+String($guestCount)+" guests.\n"
+	$prompt:=$prompt+"  STRICT BUDGET: total cost of ADD lines must NOT exceed freed_budget × 1.10 (max budget: "+String($maxBudget)+"€).\n"
+	$prompt:=$prompt+"  Stop searching once budget is reached. Only add what is genuinely useful.\n"
+	$prompt:=$prompt+"  If freed_budget <= 0: skip this step entirely.\n"
+	return $prompt
+
+// Builds the fill services prompt for the second round of switch_venue
+Function fillServicesPrompt($event : cs.EventEntity; $budget : Real) : Text
+	var $venue : cs.VenueEntity:=$event.venue
+	var $indoorName : Text:=($venue#Null) && ($venue.indoorOption#Null) ? String($venue.indoorOption.name) : "indoor venue"
+	var $prompt : Text:="Find indoor-compatible services to add for an event with "+String($event.guestCount)+" guests at '"+$indoorName+"'.\n"
+	$prompt:=$prompt+"STRICT BUDGET: total cost of ADD lines must NOT exceed "+String($budget)+"€.\n"
+	$prompt:=$prompt+"Search for services like: indoor sound, lighting/decor, comfort, entertainment. Stop once budget is reached.\n"
+	$prompt:=$prompt+"Do NOT add venue rental. Do NOT add services already being removed or already in the existing services list."
+	return $prompt
+
