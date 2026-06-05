@@ -659,15 +659,14 @@ Function _hideConfirmPanel()
 Function _dismissAfterActions()
 	cs.UIHelpers.me.resetActionButtons()
 	This.aiActions:=[]
-	If (This.activeAdvisorTab="email")
-		// Mark linked email as processed so it disappears from the email queue
-		var $email : cs.EmailEntity:=This.event.pendingEmail
-		If ($email#Null)
-			$email.emailStatus:="processed"
-			$email.save()
-			This.event.reload()
-		End if 
-	Else 
+	// Always try to mark pending email as processed if one exists
+	var $email : cs.EmailEntity:=This.event.pendingEmail
+	If ($email#Null)
+		$email.emailStatus:="processed"
+		$email.save()
+		This.event.reload()
+	End if 
+	If (This.activeAdvisorTab#"email")
 		// Update weatherSetup to match current forecast so no future alert is raised,
 		// then clear the alert level
 		var $forecast : Object:=This.event.weatherForecast
