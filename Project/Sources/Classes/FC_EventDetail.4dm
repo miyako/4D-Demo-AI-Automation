@@ -250,7 +250,7 @@ Function _renderWeatherTab($weatherResult : Object)
 
 Function _renderEmailTab()
 	var $e : cs.EmailEntity:=This.event.pendingEmail
-	var $hasEmail : Boolean:=(Value type($e)=Is object)
+	var $hasEmail : Boolean:=(Not(Undefined($e)) && ($e#Null))
 	OBJECT SET VISIBLE(*; "text_email_ai_result"; True)
 	OBJECT SET VISIBLE(*; "input_email_body"; $hasEmail)
 	OBJECT SET VISIBLE(*; "btn_email_analyze"; $hasEmail)
@@ -329,7 +329,7 @@ Function _runEmailAnalysis()
 		return 
 	End if 
 	var $pendingEmail : cs.EmailEntity:=This.event.pendingEmail
-	If (Value type($pendingEmail)#Is object)
+	If (Undefined($pendingEmail) || ($pendingEmail=Null))
 		return 
 	End if 
 	This.running:=True
@@ -662,7 +662,7 @@ Function _dismissAfterActions()
 	This.aiActions:=[]
 	// Always try to mark pending email as processed if one exists
 	var $email : cs.EmailEntity:=This.event.pendingEmail
-	If (Value type($email)=Is object)
+	If (Not(Undefined($email)) && ($email#Null))
 		$email.emailStatus:="processed"
 		$email.save()
 		This.event.reload()
