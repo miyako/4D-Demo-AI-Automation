@@ -12,6 +12,7 @@ property _spinnerFrames : Collection
 property _spinnerActive : Boolean
 property _spinnerBtnSlot : Integer
 property _spinnerBtnLabel : Text
+property _aiStatusBase : Text
 property _selection : cs.EventSelection
 property _pendingExecResult : Object
 property _pendingAction : Object
@@ -34,6 +35,7 @@ Class constructor($event : cs.EventEntity; $eventSelection : cs.EventSelection; 
 	This._spinnerActive:=False
 	This._spinnerBtnSlot:=-1
 	This._spinnerBtnLabel:=""
+	This._aiStatusBase:=""
 	This._pendingExecResult:=Null
 	This._pendingAction:=Null
 	This.activeAdvisorTab:="weather"
@@ -58,7 +60,7 @@ Function formEventHandler($formEventCode : Integer)
 				This._spinnerIndex:=(This._spinnerIndex+1)%(This._spinnerFrames.length)
 				var $frame : Text:=This._spinnerFrames[This._spinnerIndex]
 				If (This._spinnerActive)
-					OBJECT SET TITLE(*; "text_ai_spinner"; $frame)
+					OBJECT SET TITLE(*; "text_ai_status"; $frame+" "+This._aiStatusBase)
 				End if 
 				If (This._spinnerBtnSlot>=0)
 					var $btns : Collection:=["btn_ai_action1"; "btn_ai_action2"; "btn_ai_action3"; "btn_ai_action4"]
@@ -175,7 +177,7 @@ Function _clearAIPanel()
 	This.aiActions:=[]
 	This._lastValidationData:=Null
 	OBJECT SET TITLE(*; "text_ai_context"; "")
-	OBJECT SET TITLE(*; "text_ai_status"; "")
+	This._setAiStatus("")
 	OBJECT SET TITLE(*; "text_weather_ai_explanation"; "")
 	OBJECT SET TITLE(*; "text_email_ai_result"; "")
 	OBJECT SET VISIBLE(*; "text_ai_validation_badge"; False)
@@ -213,22 +215,22 @@ Function _renderWeatherTab($weatherResult : Object)
 		var $level : Text:=This.event.weatherAlertLevel
 		var $hasAlert : Boolean:=(($level#"none") && ($level#""))
 		If ($hasAlert)
-			OBJECT SET TITLE(*; "text_ai_status"; "⚠ Weather alert: "+$level)
+			This._setAiStatus("⚠ Weather alert: "+$level)
 			OBJECT SET VISIBLE(*; "btn_ai_analyze"; True)
 		Else 
-			OBJECT SET TITLE(*; "text_ai_status"; "No weather alerts detected.")
+			This._setAiStatus("No weather alerts detected.")
 			OBJECT SET VISIBLE(*; "btn_ai_analyze"; False)
 		End if 
 		return 
 	End if 
 	
 	If (Not($weatherResult.success))
-		OBJECT SET TITLE(*; "text_ai_status"; "⚠ Analysis failed: "+$weatherResult.validationError)
+		This._setAiStatus("⚠ Analysis failed: "+$weatherResult.validationError)
 		return 
 	End if 
 	
 	var $wa : Object:=$weatherResult.weatherActions
-	OBJECT SET TITLE(*; "text_ai_status"; This.event.riskLabel)
+	This._setAiStatus(This.event.riskLabel)
 	
 	If (($wa.explanation#Null) && ($wa.explanation#""))
 		OBJECT SET TITLE(*; "text_weather_ai_explanation"; $wa.explanation)
@@ -252,10 +254,10 @@ Function _renderEmailTab()
 		OBJECT SET TITLE(*; "text_ai_context"; $meta)
 		OBJECT SET VALUE("input_email_body"; $e.body)
 		OBJECT SET TITLE(*; "text_email_ai_result"; "")
-		OBJECT SET TITLE(*; "text_ai_status"; "📧 Email pending")
+		This._setAiStatus("📧 Email pending")
 	Else 
 		OBJECT SET TITLE(*; "text_ai_context"; "No pending email for this event.")
-		OBJECT SET TITLE(*; "text_ai_status"; "No email to process.")
+		This._setAiStatus("No email to process.")
 	End if 
 	
 Function _checkAiReady() : Boolean
@@ -271,7 +273,7 @@ Function _runWeatherAnalysis()
 	If (This._pendingExecResult#Null)
 		This._hideConfirmPanel()
 	End if 
-	OBJECT SET TITLE(*; "text_ai_status"; "Fetching weather data...")
+	This._setAiStatus("Fetching weather data...")
 	
 	var $weather : cs.WeatherService:=cs.WeatherService.me
 	var $weatherFetch : Object:=$weather.fetchForEvent(This.event)
@@ -286,7 +288,7 @@ Function _runWeatherAnalysis()
 	End if 
 	This.event.save()
 	
-	OBJECT SET TITLE(*; "text_ai_status"; "Asking AI for recommendations...")
+	This._setAiStatus("Asking AI for recommendations...")
 	
 	var $w : Integer:=Current form window
 	var $wfJson : Text:=JSON Stringify($weatherFetch)
@@ -333,7 +335,7 @@ Function _runEmailAnalysis()
 	If (This._pendingExecResult#Null)
 		This._hideConfirmPanel()
 	End if 
-	OBJECT SET TITLE(*; "text_ai_status"; "⏳ Analyzing modification request...")
+	This._setAiStatus("Analyzing modification request...")
 	
 	var $evt : cs.EventEntity:=This.event
 	var $w : Integer:=Current form window
@@ -352,13 +354,13 @@ Function _onEmailAnalysisDone($result : Object)
 	OBJECT SET TITLE(*; "btn_email_analyze"; "📧 Analyze Email with AI")
 	
 	If (Not($result.success))
-		OBJECT SET TITLE(*; "text_ai_status"; "❌ Email analysis failed")
+		This._setAiStatus("❌ Email analysis failed")
 		OBJECT SET TITLE(*; "text_email_ai_result"; $result.validationError ? $result.validationError : "Analysis failed")
 		return 
 	End if 
 	
 	var $impacts : Object:=$result.impacts
-	OBJECT SET TITLE(*; "text_ai_status"; "✓ Modification request analyzed")
+	This._setAiStatus("✓ Modification request analyzed")
 	This._showValidationBadge("schema_modification_impacts.json"; $result.rawAiResponse)
 	
 	var $summary : Text:=""
@@ -373,7 +375,7 @@ Function _onEmailAnalysisDone($result : Object)
 		// Hide analyze button once actions are proposed — user cannot re-trigger analysis
 		OBJECT SET VISIBLE(*; "btn_email_analyze"; False)
 	Else 
-		OBJECT SET TITLE(*; "text_ai_status"; "✓ No service changes required")
+		This._setAiStatus("✓ No service changes required")
 	End if 
 	
 Function _executeAction($slot : Integer)
@@ -395,7 +397,7 @@ Function _executeAction($slot : Integer)
 	// If the action has a hiddenPrompt, use tool calling (Step 2)
 	If (($action.hiddenPrompt#Null) && ($action.hiddenPrompt#""))
 		This._startButtonSpinner($slot; $action.label)
-		OBJECT SET TITLE(*; "text_ai_status"; "⏳ "+String($action.label)+"...")
+		This._setAiStatus(""+String($action.label)+"...")
 		This._executeWithToolCalling($action)
 		return 
 	End if 
@@ -411,7 +413,7 @@ Function _executeAction($slot : Integer)
 	// ─── Step 2: Execution with tool calling + confirmation dialog ──────────────────
 // $promptOverride: optional — if provided, replaces the action's hiddenPrompt
 Function _executeWithToolCalling($action : Object; $promptOverride : Text)
-	OBJECT SET TITLE(*; "text_ai_status"; "⏳ Searching services...")
+	This._setAiStatus("Searching services...")
 	
 	// Event context — use _linesAsCollection() which includes serviceID (needed for removes)
 	var $w : Integer:=Current form window
@@ -481,7 +483,7 @@ Function _executeSwitchVenue($action : Object)
 	$action._indoorRental:=$indoorRental
 	$action._indoorName:=$indoorName
 	
-	OBJECT SET TITLE(*; "text_ai_status"; "⏳ Switching to indoor — calculating replacements...")
+	This._setAiStatus("Switching to indoor — calculating replacements...")
 	This._executeWithToolCalling($action; $prompt)
 	
 Function _onExecutionDone($execResult : Object)
@@ -496,12 +498,12 @@ Function _onExecutionDone($execResult : Object)
 	cs.AIWorkerContext.me.clearAction(Current form window)
 	
 	If (Not($execResult.success))
-		OBJECT SET TITLE(*; "text_ai_status"; "❌ "+String($execResult.error))
+		This._setAiStatus("❌ "+String($execResult.error))
 		return 
 	End if 
 	
 	If (($execResult.proposedLines=Null) || ($execResult.proposedLines.length=0))
-		OBJECT SET TITLE(*; "text_ai_status"; "No services proposed.")
+		This._setAiStatus("No services proposed.")
 		return 
 	End if 
 	
@@ -526,7 +528,7 @@ Function _onExecutionDone($execResult : Object)
 		End if 
 	End if 
 	
-	OBJECT SET TITLE(*; "text_ai_status"; "✓ Impact calculated")
+	This._setAiStatus("✓ Impact calculated")
 	This._showValidationBadge("schema_action_execution.json"; $execResult.rawAiResponse)
 	This._showConfirmPanel($action; $execResult)
 	
@@ -701,7 +703,7 @@ Function btnConfirmActionEventHandler($formEventCode : Integer)
 			Else 
 				// Reassess remaining actions with AI
 				This._startSpinner()
-				OBJECT SET TITLE(*; "text_ai_status"; "✅ Applied. Reassessing remaining actions...")
+				This._setAiStatus("✅ Applied. Reassessing remaining actions...")
 				var $w : Integer:=Current form window
 				var $lbl : Text:=$appliedLabel
 				var $remJson : Text:=JSON Stringify($remaining)
@@ -718,7 +720,7 @@ Function _onReassessmentDone($result : Object)
 	cs.UIHelpers.me.resetActionButtons()
 	If (Not($result.success))
 		This._actionMap:=cs.UIHelpers.me.showActionButtons(This.aiActions)
-		OBJECT SET TITLE(*; "text_ai_status"; "✅ Applied. (Reassessment failed: "+$result.validationError+")")
+		This._setAiStatus("✅ Applied. (Reassessment failed: "+$result.validationError+")")
 		return 
 	End if 
 	This.aiActions:=$result.actions
@@ -726,7 +728,7 @@ Function _onReassessmentDone($result : Object)
 		This._dismissAfterActions()
 	Else 
 		This._actionMap:=cs.UIHelpers.me.showActionButtons($result.actions)
-		OBJECT SET TITLE(*; "text_ai_status"; "✅ Applied. "+String($result.actions.length)+" action(s) remaining.")
+		This._setAiStatus("✅ Applied. "+String($result.actions.length)+" action(s) remaining.")
 		This._showValidationBadge("schema_reassess_actions.json"; $result.rawAiResponse)
 	End if 
 	
@@ -734,7 +736,7 @@ Function btnCancelConfirmEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
 			This._hideConfirmPanel()
-			OBJECT SET TITLE(*; "text_ai_status"; "Action cancelled.")
+			This._setAiStatus("Action cancelled.")
 	End case 
 	
 Function btnDraftEmailEventHandler($formEventCode : Integer)
@@ -744,7 +746,7 @@ Function btnDraftEmailEventHandler($formEventCode : Integer)
 				This.confirmEmailDraft:="(No proposed changes to draft an email for.)"
 				return 
 			End if 
-			OBJECT SET TITLE(*; "text_ai_status"; "✉ Drafting confirmation email...")
+			This._setAiStatus("✉ Drafting confirmation email...")
 			var $self : Object:=This
 			var $advisor : cs.AIAdvisor:=cs.AIAdvisor.new()
 			var $evt : cs.EventEntity:=This.event
@@ -767,20 +769,27 @@ Function _onDraftEmailDone($result : Object)
 		return 
 	End if 
 	If (Not($result.success))
-		OBJECT SET TITLE(*; "text_ai_status"; "❌ Email draft failed: "+$result.validationError)
+		This._setAiStatus("❌ Email draft failed: "+$result.validationError)
 		This.confirmEmailDraft:="(Email generation failed.)"
 		return 
 	End if 
 	This.confirmEmailDraft:=$result.emailText
-	OBJECT SET TITLE(*; "text_ai_status"; "✉ Draft email ready")
+	This._setAiStatus("✉ Draft email ready")
 	This._showValidationBadge("schema_draft_email.json"; $result.rawAiResponse)
 	
 	//MARK: - Helpers
+Function _setAiStatus($text : Text)
+	This._aiStatusBase:=$text
+	If (This._spinnerActive)
+		OBJECT SET TITLE(*; "text_ai_status"; This._spinnerFrames[This._spinnerIndex]+" "+$text)
+	Else 
+		OBJECT SET TITLE(*; "text_ai_status"; $text)
+	End if 
+
 Function _startSpinner()
 	This._spinnerActive:=True
 	This._spinnerIndex:=0
-	OBJECT SET TITLE(*; "text_ai_spinner"; This._spinnerFrames[0])
-	OBJECT SET VISIBLE(*; "text_ai_spinner"; True)
+	OBJECT SET VISIBLE(*; "text_ai_spinner"; False)  // no longer used for main spinner
 	// Hide action buttons during spinner
 	cs.UIHelpers.me.resetActionButtons()
 	SET TIMER(6)  // ~100ms per frame
@@ -806,8 +815,7 @@ Function _stopButtonSpinner()
 	
 Function _stopSpinner()
 	This._spinnerActive:=False
-	OBJECT SET VISIBLE(*; "text_ai_spinner"; False)
-	OBJECT SET TITLE(*; "text_ai_spinner"; "")
+	OBJECT SET TITLE(*; "text_ai_status"; This._aiStatusBase)
 	If (This._spinnerBtnSlot<0)
 		SET TIMER(0)
 	End if 
@@ -855,6 +863,6 @@ Function _applyReadOnlyIfDone()
 	OBJECT SET ENABLED(*; "btn_ai_action3"; Not($isDone))
 	OBJECT SET ENABLED(*; "btn_ai_action4"; Not($isDone))
 	If ($isDone)
-		OBJECT SET TITLE(*; "text_ai_status"; "This event is "+This.event.status+" and cannot be modified.")
+		This._setAiStatus("This event is "+This.event.status+" and cannot be modified.")
 	End if 
 	
