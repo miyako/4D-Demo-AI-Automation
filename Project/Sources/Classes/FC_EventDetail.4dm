@@ -454,7 +454,7 @@ Function _executeSwitchVenue($action : Object)
 	var $prompt : Text:="Switch this outdoor event to the indoor venue '"+$indoorName+"' (rental: "+String($indoorRental)+"€).\n\n"
 	$prompt:=$prompt+"Current booked services:\n"+$allServices+"\n"
 	$prompt:=$prompt+"Step 1 — REMOVE: Identify and remove all outdoor-specific services (tents, outdoor structures, outdoor sound/lighting, rain gear, patio heaters, outdoor venue rental, outdoor power/generators used for structures, etc.). Use [ID:xxx] from the list above.\n\n"
-	$prompt:=$prompt+"Step 2 — ADD indoor rental: Add the indoor venue rental at "+String($indoorRental)+"€ (search for 'indoor venue rental' if needed, or use the injected rental line).\n\n"
+	$prompt:=$prompt+"Step 2 — Indoor rental: The indoor venue rental ("+String($indoorRental)+"€) will be added automatically. Do NOT search for it.\n\n"
 	$prompt:=$prompt+"Step 3 — COMPUTE: Calculate freed_budget = SUM(removed services cost) - "+String($indoorRental)+"€ (indoor rental).\n\n"
 	$prompt:=$prompt+"Step 4 — ADD indoor services (ONLY if freed_budget > 0):\n"
 	$prompt:=$prompt+"  Search for indoor-compatible services (sound system, lighting, decor, comfort) appropriate for "+String($guestCount)+" guests.\n"
@@ -495,21 +495,16 @@ Function _onExecutionDone($execResult : Object)
 	// For switch_venue: inject the indoor venue rental as a guaranteed add line
 	// (AI may fail to find it; we always inject it from the venue's indoorOption.rentalPrice)
 	If ($action._switchVenue=True) && (Num($action._indoorRental)>0)
-		var $alreadyHasIndoor : Boolean:=$execResult.proposedLines.some(Formula(\
-			($1.delta="add") && (Position("indoor"; Lowercase($1.label))>0) && (Position("rental"; Lowercase($1.label))>0)\
-			))
-		If (Not($alreadyHasIndoor))
-			// Look up the real service so we use its actual ID
-			var $indoorSvc : cs.ServiceEntity:=ds.Service.query("label = :1"; "Indoor venue rental").first()
-			If ($indoorSvc#Null)
-				$execResult.proposedLines.push({\
-					delta: "add"; \
-					serviceID: $indoorSvc.ID; \
-					label: "Indoor venue rental"; \
-					quantity: 1; \
-					unitPrice: Num($action._indoorRental)\
-					})
-			End if 
+		// Always inject the indoor venue rental — AI is told not to search for it
+		var $indoorSvc : cs.ServiceEntity:=ds.Service.query("label = :1"; "Indoor venue rental").first()
+		If ($indoorSvc#Null)
+			$execResult.proposedLines.push({\
+				delta: "add"; \
+				serviceID: $indoorSvc.ID; \
+				label: "Indoor venue rental"; \
+				quantity: 1; \
+				unitPrice: Num($action._indoorRental)\
+				})
 		End if 
 	End if 
 	
