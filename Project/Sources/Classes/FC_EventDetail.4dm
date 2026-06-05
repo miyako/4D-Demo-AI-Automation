@@ -516,7 +516,8 @@ Function _onExecutionDone($execResult : Object)
 	End if 
 	
 	// For switch_venue: if net impact is negative after injecting rental, search for indoor fill services
-	If ($action._switchVenue=True)
+	// Only trigger on first round — never recurse into a third round
+	If ($action._switchVenue=True) && (Not($isFillRound))
 		var $netImpact : Real:=0
 		var $il : Object
 		For each ($il; $execResult.proposedLines)
