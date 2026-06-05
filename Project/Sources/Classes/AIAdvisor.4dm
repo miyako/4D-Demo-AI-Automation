@@ -306,7 +306,7 @@ Function _onGenerateDraftEmailDone($chatResult : Object; $callback : 4D.Function
 // $callback receives {success; draft; error}
 // ─── Re-evaluation of remaining actions after applying an action ────────────────
 // $callback receives {success; actions; validationError}
-Function reassessActionsAsync($remainingActions : Collection; $appliedLabel : Text; $eventLines : Collection; $callback : 4D.Function)
+Function reassessActionsAsync($remainingActions : Collection; $appliedLabel : Text; $event : cs.EventEntity; $callback : 4D.Function)
 	var $schemaReassess : Object:=This._loadSchema("schema_reassess_actions.json")
 	If ($schemaReassess=Null)
 		$callback.call(Null; {success: False; actions: []; validationError: "Cannot load schema_reassess_actions.json"})
@@ -314,8 +314,8 @@ Function reassessActionsAsync($remainingActions : Collection; $appliedLabel : Te
 	End if 
 
 	var $servicesSnippet : Text:=""
-	var $line : Object
-	For each ($line; $eventLines)
+	var $line : cs.EventLineEntity
+	For each ($line; $event.lines)
 		$servicesSnippet:=$servicesSnippet+"- "+$line.serviceLabel+" × "+String($line.quantity)+" @ "+String($line.unitPrice)+"€\n"
 	End for each 
 

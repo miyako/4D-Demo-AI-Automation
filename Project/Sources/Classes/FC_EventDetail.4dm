@@ -707,8 +707,8 @@ Function btnConfirmActionEventHandler($formEventCode : Integer)
 				var $w : Integer:=Current form window
 				var $lbl : Text:=$appliedLabel
 				var $remJson : Text:=JSON Stringify($remaining)
-				var $linesJson : Text:=JSON Stringify(This._linesAsCollection())
-				CALL WORKER("aiAdvisorWorker_"+String($w); Formula(_aiReassessWorkerJob($w; $remJson; $lbl; $linesJson)))
+				var $evtID : Text:=This.event.ID
+				CALL WORKER("aiAdvisorWorker_"+String($w); Formula(_aiReassessWorkerJob($w; $remJson; $lbl; $evtID)))
 			End if 
 	End case 
 	
