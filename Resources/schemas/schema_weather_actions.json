@@ -16,7 +16,8 @@
         "required": [
           "actionType",
           "label",
-          "hiddenPrompt"
+          "hiddenPrompt",
+          "newGuestCount"
         ],
         "additionalProperties": false,
         "properties": {
@@ -35,8 +36,11 @@
             "type": "string"
           },
           "newGuestCount": {
-            "type": "integer",
-            "description": "Updated guest count if client changed the number of attendees"
+            "type": [
+              "integer",
+              "null"
+            ],
+            "description": "Updated guest count if client changed the number of attendees, null otherwise"
           }
         }
       },
