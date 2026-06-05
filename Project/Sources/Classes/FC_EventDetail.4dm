@@ -862,18 +862,7 @@ Function _updateNavButtons()
 	End if 
 	
 Function _linesAsCollection() : Collection
-	var $col : Collection:=[]
-	var $line : cs.EventLineEntity
-	For each ($line; This.event.lines)
-		$col.push({\
-			serviceID: $line.serviceID; \
-			serviceLabel: $line.serviceLabel; \
-			category: $line.serviceCategory; \
-			quantity: $line.quantity; \
-			unitPrice: $line.unitPrice\
-			})
-	End for each 
-	return $col
+	return This.event.lines.toCollection("serviceID, serviceLabel, serviceCategory as category, quantity, unitPrice")
 	
 Function _applyReadOnlyIfDone()
 	var $isDone : Boolean:=((This.event.status="completed") || (This.event.status="cancelled"))
