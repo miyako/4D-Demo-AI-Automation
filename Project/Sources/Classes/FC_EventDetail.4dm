@@ -657,6 +657,14 @@ Function _hideConfirmPanel()
 	// Called when all actions have been applied (directly or after reassessment).
 	// Dismisses the weather alert or marks the pending email as processed,
 	// then re-renders the AI panel to reflect the resolved state.
+Function _markAllPendingEmailsProcessed()
+	var $pending : cs.EmailSelection:=ds.Email.query("emailStatus = :1 AND linkedEvent.ID = :2"; "pending"; This.event.ID)
+	var $e : cs.EmailEntity
+	For each ($e; $pending)
+		$e.emailStatus:="processed"
+		$e.save()
+	End for each 
+
 Function _dismissAfterActions()
 	cs.UIHelpers.me.resetActionButtons()
 	This.aiActions:=[]
@@ -725,13 +733,9 @@ Function btnConfirmActionEventHandler($formEventCode : Integer)
 			var $remaining : Collection:=This.aiActions.query("label != :1"; $appliedLabel)
 			This.aiActions:=$remaining
 			
-			// If on email tab and no more actions, mark the pending email as processed now
+			// If on email tab and no more actions, mark all pending emails as processed now
 			If ((This.activeAdvisorTab="email") && ($remaining.length=0))
-				var $emailToProcess : cs.EmailEntity:=This.event.pendingEmail
-				If (Not(Undefined($emailToProcess)) && ($emailToProcess#Null))
-					$emailToProcess.emailStatus:="processed"
-					$emailToProcess.save()
-				End if 
+				This._markAllPendingEmailsProcessed()
 			End if 
 			
 			If ($remaining.length=0)
@@ -761,13 +765,9 @@ Function _onReassessmentDone($result : Object)
 	End if 
 	This.aiActions:=$result.actions
 	If ($result.actions.length=0)
-		// If on email tab, mark the pending email as processed before dismiss
+		// If on email tab, mark all pending emails as processed before dismiss
 		If (This.activeAdvisorTab="email")
-			var $emailToProcess : cs.EmailEntity:=This.event.pendingEmail
-			If (Not(Undefined($emailToProcess)) && ($emailToProcess#Null))
-				$emailToProcess.emailStatus:="processed"
-				$emailToProcess.save()
-			End if 
+			This._markAllPendingEmailsProcessed()
 		End if 
 		This._dismissAfterActions()
 	Else 
