@@ -16,8 +16,6 @@ property _selection : cs.EventSelection
 property _pendingExecResult : Object
 property _pendingAction : Object
 property activeAdvisorTab : Text
-property linkedEmail : cs.EmailEntity
-property hasEmail : Boolean
 property tabControl : Object
 property _lastValidationData : Object
 property _actionMap : Collection
@@ -39,8 +37,6 @@ Class constructor($event : cs.EventEntity; $eventSelection : cs.EventSelection; 
 	This._pendingExecResult:=Null
 	This._pendingAction:=Null
 	This.activeAdvisorTab:="weather"
-	This.linkedEmail:=Null
-	This.hasEmail:=False
 	This.tabControl:=New object("values"; New collection("⛅ Weather"; "📧 Email"); "index"; 0)
 	This._lastValidationData:=Null
 	This._actionMap:=[-1; -1; -1; -1]
@@ -150,7 +146,6 @@ Function _showValidationBadge($schemaName : Text; $validatedObject : Object)
 Function _onLoad()
 	cs.UIHelpers.me.resizeWindowWidth(1100)
 	This._loadEventLines()
-	This._checkLinkedEmail()
 	This._renderCurrentTab()
 	This._updateNavButtons()
 	This._applyReadOnlyIfDone()
@@ -247,12 +242,12 @@ Function _renderWeatherTab($weatherResult : Object)
 	This.aiActions:=$actions
 	
 Function _renderEmailTab()
-	var $hasEmail : Boolean:=(This.linkedEmail#Null)
+	var $hasEmail : Boolean:=(This.event.pendingEmail#Null)
 	OBJECT SET VISIBLE(*; "text_email_ai_result"; True)
 	OBJECT SET VISIBLE(*; "input_email_body"; $hasEmail)
 	OBJECT SET VISIBLE(*; "btn_email_analyze"; $hasEmail)
 	If ($hasEmail)
-		var $e : cs.EmailEntity:=This.linkedEmail
+		var $e : cs.EmailEntity:=This.event.pendingEmail
 		var $meta : Text:="Subject: "+$e.subject+"\nFrom: "+$e.sender+" <"+$e.senderEmail+">\nReceived: "+String($e.receivedAt; "dd MMM yyyy")
 		OBJECT SET TITLE(*; "text_ai_context"; $meta)
 		OBJECT SET VALUE("input_email_body"; $e.body)
@@ -313,16 +308,6 @@ Function _onWeatherAnalysisDone($aiResult : Object; $weatherFetch : Object)
 	This._renderWeatherTab($aiResult)
 	
 	// ─── Tab management ───────────────────────────────────────────────────────────
-Function _checkLinkedEmail()
-	var $emails : cs.EmailSelection:=ds.Email.query("linkedEventID = :1 AND emailStatus = :2"; String(This.event.ID); "pending")
-	If ($emails.length>0)
-		This.linkedEmail:=$emails.first()
-		This.hasEmail:=True
-	Else 
-		This.linkedEmail:=Null
-		This.hasEmail:=False
-	End if 
-	
 Function _setAdvisorTab($tab : Text)
 	This.activeAdvisorTab:=$tab
 	This._hideConfirmPanel()
@@ -339,7 +324,7 @@ Function _runEmailAnalysis()
 	If (Not(This._checkAiReady()))
 		return 
 	End if 
-	If (This.linkedEmail=Null)
+	If (This.event.pendingEmail=Null)
 		return 
 	End if 
 	This.running:=True
@@ -352,7 +337,7 @@ Function _runEmailAnalysis()
 	
 	var $evt : cs.EventEntity:=This.event
 	var $w : Integer:=Current form window
-	var $emailID : Text:=This.linkedEmail.ID
+	var $emailID : Text:=This.event.pendingEmail.ID
 	var $eventID : Text:=String($evt.ID)
 	var $linesJson : Text:=JSON Stringify(This._linesAsCollection())
 	CALL WORKER("aiAdvisorWorker_"+String($w); Formula(_aiEmailWorkerJob($w; $emailID; $eventID; $linesJson)))
@@ -639,13 +624,13 @@ Function _dismissAfterActions()
 	cs.UIHelpers.me.resetActionButtons()
 	This.aiActions:=[]
 	If (This.activeAdvisorTab="email")
-		// Mark linked email as read so it disappears from the email queue
-		If (This.linkedEmail#Null)
-			This.linkedEmail.emailStatus:="processed"
-			This.linkedEmail.save()
+		// Mark linked email as processed so it disappears from the email queue
+		var $email : cs.EmailEntity:=This.event.pendingEmail
+		If ($email#Null)
+			$email.emailStatus:="processed"
+			$email.save()
+			This.event.reload()
 		End if 
-		This.linkedEmail:=Null
-		This.hasEmail:=False
 	Else 
 		// Update weatherSetup to match current forecast so no future alert is raised,
 		// then clear the alert level
@@ -770,8 +755,9 @@ Function btnDraftEmailEventHandler($formEventCode : Integer)
 			If ((This._weatherExplanation#Null) && (This._weatherExplanation#""))
 				$ctx.weatherExplanation:=This._weatherExplanation
 			End if 
-			If (This.linkedEmail#Null)
-				$ctx.clientEmail:={sender: This.linkedEmail.sender; subject: This.linkedEmail.subject; body: This.linkedEmail.body}
+			If (This.event.pendingEmail#Null)
+				var $pe : cs.EmailEntity:=This.event.pendingEmail
+				$ctx.clientEmail:={sender: $pe.sender; subject: $pe.subject; body: $pe.body}
 			End if 
 			$advisor.generateDraftEmailAsync($evt; $act; $plines; $ctx; Formula($self._onDraftEmailDone($1)))
 	End case 
@@ -840,7 +826,6 @@ Function _navigate($direction : Integer)
 		This._hideConfirmPanel()
 	End if 
 	This._loadEventLines()
-	This._checkLinkedEmail()
 	This._renderCurrentTab()
 	This._updateNavButtons()
 	This._applyReadOnlyIfDone()

@@ -105,6 +105,9 @@ Function get emailIcon() : Text
 	End if 
 	return ""
 
+Function get pendingEmail() : cs.EmailEntity
+	return This.emails.query("emailStatus = :1"; "pending").first()
+
 // ─── Weather setup & forecast labels (detail panel) ──────────────────────────
 
 // Compact icons for list column
