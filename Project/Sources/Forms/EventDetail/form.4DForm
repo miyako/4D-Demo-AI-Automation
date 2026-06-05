@@ -231,7 +231,7 @@
 					"width": 728,
 					"height": 462,
 					"listboxType": "collection",
-					"dataSource": "Form:C1466.eventLines",
+					"dataSource": "Form:C1466.event.lines",
 					"headerHeight": "28px",
 					"showHeaders": true,
 					"rowHeight": "40px",

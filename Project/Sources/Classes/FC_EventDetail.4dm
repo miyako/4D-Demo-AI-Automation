@@ -2,7 +2,6 @@
 // Scenario 2: Weather alert + AI panel with contextual actions
 
 property event : cs.EventEntity
-property eventLines : cs.EventLineSelection
 property currentLine : cs.EventLineEntity
 property aiActions : Collection
 property confirmDraft : Text
@@ -28,7 +27,6 @@ property _listFC : Object
 
 Class constructor($event : cs.EventEntity; $eventSelection : cs.EventSelection; $listFC : Object)
 	This.event:=$event
-	This.eventLines:=ds.EventLine.newSelection()
 	This.currentLine:=Null
 	This.aiActions:=[]
 	This.confirmDraft:=""
@@ -160,12 +158,12 @@ Function _onLoad()
 	This._applyReadOnlyIfDone()
 	
 Function _loadEventLines()
-	This.eventLines:=ds.EventLine.query("eventID = :1"; This.event.ID)
+	This.event.reload()  // ensure relation cache is fresh
 	
 	// Compute total (lines + venue rental)
 	var $total : Real:=0
 	var $line : cs.EventLineEntity
-	For each ($line; This.eventLines)
+	For each ($line; This.event.lines)
 		$total:=$total+$line.lineTotal
 	End for each 
 	
@@ -474,13 +472,13 @@ Function _executeSwitchVenue($action : Object)
 	// List all booked services — let AI decide which are outdoor-specific
 	var $allServices : Text:=""
 	var $line : Object
-	For each ($line; This.eventLines)
+	For each ($line; This.event.lines)
 		$allServices:=$allServices+"- "+$line.serviceLabel+" x"+String($line.quantity)+" @ "+String($line.unitPrice)+"€\n"
 	End for each 
 	
 	// Compute current services total — passed to system prompt for revenue protection
 	var $currentTotal : Real:=0
-	For each ($line; This.eventLines)
+	For each ($line; This.event.lines)
 		$currentTotal:=$currentTotal+($line.quantity*$line.unitPrice)
 	End for each 
 	
@@ -571,7 +569,7 @@ Function _showConfirmPanel($action : Object; $execResult : Object)
 			: ($line.delta="update")
 				$icon:="✏️"
 				// Impact = (newQty - oldQty) * unitPrice; look up old qty from eventLines
-				var $oldLine : cs.EventLineEntity:=This.eventLines.query("serviceID = :1"; $line.serviceID).first()
+				var $oldLine : cs.EventLineEntity:=This.event.lines.query("serviceID = :1"; $line.serviceID).first()
 				var $oldQty : Integer:=$oldLine ? $oldLine.quantity : 0
 				$impact:=($line.quantity-$oldQty)*$line.unitPrice
 			Else 
@@ -598,10 +596,10 @@ Function _showConfirmPanel($action : Object; $execResult : Object)
 	End for each 
 	This.confirmLines:=$lines
 	
-	// Compute new total from current eventLines + impact + venue rental
+	// Compute new total from current event lines + impact + venue rental
 	var $currentTotal : Real:=0
 	var $tl : cs.EventLineEntity
-	For each ($tl; This.eventLines)
+	For each ($tl; This.event.lines)
 		$currentTotal:=$currentTotal+$tl.lineTotal
 	End for each 
 	// Include venue rental cost (same as displayed in event total)
@@ -866,7 +864,7 @@ Function _updateNavButtons()
 Function _linesAsCollection() : Collection
 	var $col : Collection:=[]
 	var $line : cs.EventLineEntity
-	For each ($line; This.eventLines)
+	For each ($line; This.event.lines)
 		$col.push({\
 			serviceID: $line.serviceID; \
 			serviceLabel: $line.serviceLabel; \
