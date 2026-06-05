@@ -291,12 +291,11 @@ Function _runWeatherAnalysis()
 	This._setAiStatus("Asking AI for recommendations...")
 	
 	var $w : Integer:=Current form window
-	var $wfJson : Text:=JSON Stringify($weatherFetch)
 	var $evtID : Text:=This.event.ID
-	CALL WORKER("aiAdvisorWorker_"+String($w); Formula(_aiWeatherWorkerJob($w; $evtID; $wfJson)))
+	CALL WORKER("aiAdvisorWorker_"+String($w); Formula(_aiWeatherWorkerJob($w; $evtID)))
 	
 	// ─── Callbacks async ─────────────────────────────────────────────────────────
-Function _onWeatherAnalysisDone($aiResult : Object; $weatherFetch : Object)
+Function _onWeatherAnalysisDone($aiResult : Object)
 	If (Form=Null)
 		return 
 	End if 

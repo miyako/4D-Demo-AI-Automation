@@ -39,7 +39,7 @@ Function _createChat($systemPrompt : Text; $schema : Object; $schemaName : Text;
 
 // ─── Scenario 2: Weather alert on an event ─────────────────────────────────────
 // $callback receives {success; weatherActions; validationError}
-Function analyzeWeatherRiskAsync($event : cs.EventEntity; $weatherData : Object; $callback : 4D.Function)
+Function analyzeWeatherRiskAsync($event : cs.EventEntity; $callback : 4D.Function)
 	var $schemaWeather : Object:=This._loadSchema("schema_weather_actions.json")
 	If ($schemaWeather=Null)
 		$callback.call(Null; {success: False; weatherActions: Null; validationError: "Impossible de charger schema_weather_actions.json"})
@@ -69,6 +69,8 @@ Function analyzeWeatherRiskAsync($event : cs.EventEntity; $weatherData : Object;
 		$venueInfo:="[No venue]"
 	End if 
 
+	var $weatherData : Object:=$event.weatherAlertJson.weatherData
+
 	var $system : Text:="You are a risk management specialist for Event Pulse, an international event agency. "
 	$system:=$system+"Analyze weather conditions for an upcoming event and compare them with the event's planned weather setup.\n\n"
 	$system:=$system+"The event has a 'weatherSetup' describing what weather it was planned for:\n"
@@ -79,7 +81,7 @@ Function analyzeWeatherRiskAsync($event : cs.EventEntity; $weatherData : Object;
 	$system:=$system+"Valid actionType values: 'add_services', 'remove_services', 'replace_services', 'switch_venue'.\n\n"
 	$system:=$system+"Your analysis MUST:\n"
 	$system:=$system+"1) Compare the forecast with the planned weatherSetup to assess if current services are adequate\n"
-	$system:=$system+"2) In the 'explanation' field, explain in 3-5 sentences: what weather was planned for, what's actually forecast, "
+	$system:=$system+"2) In the 'explanation' field, explain in 2-4 sentences: what weather was planned for, what's actually forecast, "
 	$system:=$system+"whether current services match or mismatch, and what should change. Be specific about which booked services are affected.\n"
 	$system:=$system+"3) If forecast is WORSE than planned (e.g., planned sunny but rain forecast): propose adding weather protection services (tents, waterproof covers, drainage, etc.)\n"
 	$system:=$system+"4) If forecast is BETTER than planned (e.g., planned rain but sunny forecast): propose removing now-unnecessary rain services and replacing them with fair-weather upgrades\n"
@@ -96,9 +98,8 @@ Function analyzeWeatherRiskAsync($event : cs.EventEntity; $weatherData : Object;
 	$system:=$system+"CRITICAL for 'replace_services' actions: the hiddenPrompt MUST contain two explicit sections:\n"
 	$system:=$system+"  Section REMOVE: list exact labels of existing services to remove (copy them verbatim from the event's services list), e.g. 'REMOVE: Poncho pluie jetable (lot de 50) x3, Parapluie personnalisé événement x43'\n"
 	$system:=$system+"  Section SEARCH: describe what replacement services to search in the catalog, e.g. 'SEARCH: outdoor lounge furniture for 86 guests, comfort seating'\n"
-	$system:=$system+"Respond ONLY with a valid JSON object: {\"explanation\": \"...\", \"actions\": [...]}. "
-	$system:=$system+"Do NOT include eventID, riskLevel, forecastDate, weatherSummary, weatherData, affectedServices, or draftClientMessage — those are handled server-side. "
-	$system:=$system+"Each action has only: actionType, label, hiddenPrompt. No description, priority, deadlineToDecide, estimatedExtraCost, or suggestedServices."
+	$system:=$system+"Respond ONLY with a valid JSON object: {\"explanation\": \"...\", \"actions\": [...]}.'\n"
+	$system:=$system+"Each action has only: actionType, label, hiddenPrompt."
 
 	var $user : Text:="Event ID: "+$event.ID+"\n"
 	$user:=$user+"Event Date: "+String($event.eventDate; "yyyy-MM-dd")+"\n"
