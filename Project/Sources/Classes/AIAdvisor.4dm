@@ -364,6 +364,7 @@ Function executeActionAsync($hiddenPrompt : Text; $context : Object; $callback :
 	var $system : Text:="Event service execution assistant for Event Pulse.\n"
 	$system:=$system+"Delta rules: 'add' = call search_services; 'remove'/'update' = use [ID:xxx] from existing list, no search.\n"
 	$system:=$system+"Never duplicate an existing service. If upgrading a meal, remove the existing one first.\n"
+	$system:=$system+"ALWAYS call calculate_cost to verify totals for removes and adds before returning your final answer.\n"
 	$system:=$system+"Summary: 1-2 sentences, 'We propose...'. Do NOT output label/category/unitPrice.\n"
 
 	// Build user message: event context + existing services (event-specific) + action prompt
@@ -393,12 +394,16 @@ Function executeActionAsync($hiddenPrompt : Text; $context : Object; $callback :
 	var $cb : 4D.Function:=$callback
 	This._windowID:=($context.windowID#Null) ? $context.windowID : 0
 	This._chat:=This._createChat($system; $execSchema; "action_execution"; Formula($self._onExecutionChatDone($1; $cb)); False)
-	var $searchTool : cs.Tool_SearchServices:=cs.Tool_SearchServices.new(This._contractRef)
+	var $searchTool : cs.Tool_SearchServices:=cs.Tool_SearchServices.new(This._contractRef; This._windowID)
+	var $costTool : cs.Tool_CalculateCost:=cs.Tool_CalculateCost.new(This._contractRef)
 	var $td : Object
 	For each ($td; $searchTool.tools)
 		$td.handler:=$searchTool
 	End for each 
-	This._chat.registerTools($searchTool.tools)
+	For each ($td; $costTool.tools)
+		$td.handler:=$costTool
+	End for each 
+	This._chat.registerTools($searchTool.tools.concat($costTool.tools))
 	This._logPrompts("executeAction"; $system; $userMsg)
 	This._chat.prompt($userMsg)
 
@@ -532,8 +537,8 @@ Function _loadSchema($filename : Text) : Object
 // $venueBalance = newRentalPrice - oldRentalPrice (handled server-side, not in existing services list)
 Function switchVenuePrompt($isToIndoor : Boolean; $newVenueName : Text; $venueBalance : Real; $guestCount : Integer) : Text
 	var $direction : Text:=$isToIndoor ? "indoor" : "outdoor"
-	var $removeHints : Text:=$isToIndoor ? "tents, outdoor structures, outdoor AV/sound/lighting, patio heaters, generators, outdoor venue rental" : "indoor AV, room draping, indoor lighting, lounge furniture, indoor comfort equipment"
-	var $addHints : Text:=$isToIndoor ? "indoor AV/sound, stage lighting, room decor/draping, entertainment, catering upgrades" : "outdoor tents/structures, outdoor sound/AV, outdoor lighting, patio heaters, outdoor comfort"
+	//var $removeHints : Text:=$isToIndoor ? "tents, outdoor structures, outdoor AV/sound/lighting, patio heaters, generators, outdoor venue rental" : "indoor AV, room draping, indoor lighting, lounge furniture, indoor comfort equipment"
+	//var $addHints : Text:=$isToIndoor ? "indoor AV/sound, stage lighting, room decor/draping, entertainment, catering upgrades" : "outdoor tents/structures, outdoor sound/AV, outdoor lighting, patio heaters, outdoor comfort"
 
 	var $prompt : Text:="Switch to '"+$newVenueName+"' ("+$direction+"). Venue switch balance (A): "
 	If ($venueBalance>=0)
@@ -547,5 +552,5 @@ Function switchVenuePrompt($isToIndoor : Boolean; $newVenueName : Text; $venueBa
 	$prompt:=$prompt+"   Mandatory minimum target budget for adds (C) ≈ (freed cost from your proposed removes (B) − "+String(Round($venueBalance; 0))+"€(A)) * 110%.\n"
 	$prompt:=$prompt+"   Use quantity=1 for fixed-price services; "+String($guestCount)+" guests only for per-guest services.\n"
 	$prompt:=$prompt+"   Use services search sparingly and incrementally. Stop searching as soon as you reached your target budget.\n"
-$prompt:=$prompt+"4. RETURN a unique array of removes and adds. Indicate clearly within your summary: (A) The venue switch balance (positive or negative), (B) the total removed services cost, (C) your target budget, (D) the total amount of added services, and (E) = (D) - (C). if (E) <= you must add more services\n"
+	$prompt:=$prompt+"4. RETURN a unique array of removes and adds. Indicate clearly within your summary: (A) The venue switch balance (positive or negative), (B) the total removed services cost (always negative), (C) your target budget, (D) the total amount of added services, and (E) = (D) - (C). if (E) <= you must add more services\n"
 	return $prompt

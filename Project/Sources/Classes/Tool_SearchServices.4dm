@@ -4,9 +4,11 @@
 
 property tools : Collection
 property _contractRef : Text
+property _windowID : Integer
 
-Class constructor($contractRef : Text)
+Class constructor($contractRef : Text; $windowID : Integer)
 	This._contractRef:=$contractRef || ""
+	This._windowID:=$windowID || 0
 	This.tools:=[{ \
 		name: "search_services"; \
 		description: "Search the service catalog to find services matching a description. Returns matching services with their ID, label, category, unit price, and unit. Use this to find appropriate services for event quotes, weather contingencies, or modifications."; \
@@ -32,6 +34,12 @@ Function search_services($params : Object) : Text
 	// Never expose Venue-category services to the AI
 	If ($category="Venue")
 		$category:=""
+	End if 
+	// Push query details to form status
+	If (This._windowID>0)
+		var $statusMsg : Text:="🔍 Searching: "+String($params.query)+(($category#"") ? " | "+$category : "")
+		var $w : Integer:=This._windowID
+		CALL FORM($w; Formula(Form._setAiStatus($1)); $statusMsg)
 	End if 
 	var $results : Collection:=$matcher.search($params.query; $category; 5)
 	// Strip any Venue-category items that may have slipped through semantic search
