@@ -364,7 +364,7 @@ Function executeActionAsync($hiddenPrompt : Text; $context : Object; $callback :
 	var $system : Text:="Event service execution assistant for Event Pulse.\n"
 	$system:=$system+"Delta rules: 'add' = call search_services; 'remove'/'update' = use [ID:xxx] from existing list, no search.\n"
 	$system:=$system+"Never duplicate an existing service. If upgrading a meal, remove the existing one first.\n"
-	$system:=$system+"ALWAYS call calculate_cost to verify totals for removes and adds before returning your final answer.\n"
+	$system:=$system+"Tool call limits: max 8 search_services calls. Do NOT repeat a similar search query. Call calculate_cost exactly once for removes and once for adds.\n"
 	$system:=$system+"Summary: 1-2 sentences, 'We propose...'. Do NOT output label/category/unitPrice.\n"
 
 	// Build user message: event context + existing services (event-specific) + action prompt
@@ -537,20 +537,17 @@ Function _loadSchema($filename : Text) : Object
 // $venueBalance = newRentalPrice - oldRentalPrice (handled server-side, not in existing services list)
 Function switchVenuePrompt($isToIndoor : Boolean; $newVenueName : Text; $venueBalance : Real; $guestCount : Integer) : Text
 	var $direction : Text:=$isToIndoor ? "indoor" : "outdoor"
-	//var $removeHints : Text:=$isToIndoor ? "tents, outdoor structures, outdoor AV/sound/lighting, patio heaters, generators, outdoor venue rental" : "indoor AV, room draping, indoor lighting, lounge furniture, indoor comfort equipment"
-	//var $addHints : Text:=$isToIndoor ? "indoor AV/sound, stage lighting, room decor/draping, entertainment, catering upgrades" : "outdoor tents/structures, outdoor sound/AV, outdoor lighting, patio heaters, outdoor comfort"
-
-	var $prompt : Text:="Switch to '"+$newVenueName+"' ("+$direction+"). Venue switch balance (A): "
-	If ($venueBalance>=0)
-		$prompt:=$prompt+"+"+String(Round($venueBalance; 0))+"€.\n\n"
-	Else 
-		$prompt:=$prompt+String(Round($venueBalance; 0))+"€.\n\n"
-	End if 
-	$prompt:=$prompt+"1. REMOVE all "+($isToIndoor ? "outdoor" : "indoor")+"-specific services from the list above: "/*+$removeHints*/+".\n"
-	$prompt:=$prompt+"2. KEEP TRACK of total removed services cost (B). To compensate revenue loss, you must compensate for (C) = ((B) - (A)) * 110% in added services.\n"
-	$prompt:=$prompt+"3. SEARCH "+$direction+" relevant replacements (or new) services matching the event spirit and initially contracted services "/*+$addHints*/ +".\n"
-	$prompt:=$prompt+"   Mandatory minimum target budget for adds (C) ≈ (freed cost from your proposed removes (B) − "+String(Round($venueBalance; 0))+"€(A)) * 110%.\n"
-	$prompt:=$prompt+"   Use quantity=1 for fixed-price services; "+String($guestCount)+" guests only for per-guest services.\n"
-	$prompt:=$prompt+"   Use services search sparingly and incrementally. Stop searching as soon as you reached your target budget.\n"
-	$prompt:=$prompt+"4. RETURN a unique array of removes and adds. Indicate clearly within your summary: (A) The venue switch balance (positive or negative), (B) the total removed services cost (always negative), (C) your target budget, (D) the total amount of added services, and (E) = (D) - (C). if (E) <= you must add more services\n"
+	var $opposite : Text:=$isToIndoor ? "outdoor" : "indoor"
+	var $venueBalanceStr : Text:=($venueBalance>=0 ? "+"+String(Round($venueBalance; 0)) : String(Round($venueBalance; 0)))+"€"
+	
+	var $prompt : Text:="Switch to '"+$newVenueName+"' ("+$direction+"). Venue switch balance (A): "+$venueBalanceStr+".\n"
+	$prompt:=$prompt+"IMPORTANT: The venue rental itself is already handled server-side. Do NOT search for venue rental — it is not in the catalog.\n\n"
+	$prompt:=$prompt+"WORKFLOW — follow these steps in order:\n"
+	$prompt:=$prompt+"1. REMOVE all "+$opposite+"-specific services from the existing list. Call calculate_cost on your remove lines → this gives you B.\n"
+	$prompt:=$prompt+"2. Your add target is C = (B − ("+$venueBalanceStr+")) × 1.1. Compute once. Do not recalculate.\n"
+	$prompt:=$prompt+"3. Search for "+$direction+" replacement services. Up to 5 searches if needed. Do not repeat a similar query.\n"
+	$prompt:=$prompt+"   Quantity rules: use "+String($guestCount)+" for per-guest services (food, drinks, seating per person). Use appropriate multiples for unit services (e.g. 1 table per 10 guests = "+String(Round($guestCount/10; 0))+" tables). Use 1 for package/flat-rate services.\n"
+	$prompt:=$prompt+"   Favor speed over quality, calculate_cost and search take time and I need a fast answer. Increasing quantities is faster than searching new services.\n"
+	$prompt:=$prompt+"4. Call calculate_cost once on your add lines → D. If D < C, continue searching until D >= C.\n"
+	$prompt:=$prompt+"5. Return removes + adds and summarize your changes.\n"
 	return $prompt

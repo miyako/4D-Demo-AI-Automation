@@ -491,37 +491,9 @@ Function _onExecutionDone($execResult : Object)
 		return 
 	End if 
 	
-	// For switch_venue: server-side venue rental swap + budget cap on AI adds
+	// For switch_venue: server-side venue rental swap
 	If ($action._switchVenue=True)
-		// Compute freed budget from AI-proposed service removes (venue was filtered from existingLines)
-		var $serviceRemovedTotal : Real:=0
-		var $rl : Object
-		For each ($rl; $execResult.proposedLines)
-			If ($rl.delta="remove")
-				$serviceRemovedTotal:=$serviceRemovedTotal+($rl.quantity*$rl.unitPrice)
-			End if 
-		End for each 
-		
-		// Cap AI-added services: freed removes minus venue rental balance
-		var $venueBalance : Real:=Num($action._venueBalance)
-		var $fillBudget : Real:=($serviceRemovedTotal-$venueBalance)*1.1
-		If ($fillBudget>0)
-			var $spentAdd : Real:=0
-			var $cappedLines : Collection:=[]
-			var $al : Object
-			For each ($al; $execResult.proposedLines)
-				If ($al.delta#"add")
-					$cappedLines.push($al)
-				Else 
-					var $lineCost : Real:=Num($al.quantity)*Num($al.unitPrice)
-					If (($spentAdd+$lineCost)<=$fillBudget)
-						$cappedLines.push($al)
-						$spentAdd:=$spentAdd+$lineCost
-					End if 
-				End if 
-			End for each 
-			$execResult.proposedLines:=$cappedLines
-		End if 
+		// Venue rental swap handled below — no server-side budget cap, AI manages the target
 		
 		// Inject server-side venue rental: remove old, add new
 		var $oldVenueLine : cs.EventLineEntity:=This.event.lines.query("serviceCategory = :1"; "Venue").first()
