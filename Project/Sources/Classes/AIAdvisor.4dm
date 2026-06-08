@@ -535,14 +535,17 @@ Function switchVenuePrompt($isToIndoor : Boolean; $newVenueName : Text; $venueBa
 	var $removeHints : Text:=$isToIndoor ? "tents, outdoor structures, outdoor AV/sound/lighting, patio heaters, generators, outdoor venue rental" : "indoor AV, room draping, indoor lighting, lounge furniture, indoor comfort equipment"
 	var $addHints : Text:=$isToIndoor ? "indoor AV/sound, stage lighting, room decor/draping, entertainment, catering upgrades" : "outdoor tents/structures, outdoor sound/AV, outdoor lighting, patio heaters, outdoor comfort"
 
-	var $prompt : Text:="Switch to '"+$newVenueName+"' ("+$direction+"). Venue rental change: "
+	var $prompt : Text:="Switch to '"+$newVenueName+"' ("+$direction+"). Venue switch balance (A): "
 	If ($venueBalance>=0)
-		$prompt:=$prompt+"+"+String(Round($venueBalance; 0))+"€ (handled server-side).\n\n"
+		$prompt:=$prompt+"+"+String(Round($venueBalance; 0))+"€.\n\n"
 	Else 
-		$prompt:=$prompt+String(Round($venueBalance; 0))+"€ (handled server-side).\n\n"
+		$prompt:=$prompt+String(Round($venueBalance; 0))+"€.\n\n"
 	End if 
 	$prompt:=$prompt+"1. REMOVE all "+($isToIndoor ? "outdoor" : "indoor")+"-specific services from the list above: "/*+$removeHints*/+".\n"
-	$prompt:=$prompt+"2. SEARCH "+$direction+" replacements: "+$addHints+".\n"
-	$prompt:=$prompt+"   Budget for adds ≈ freed cost from removes − "+String(Round($venueBalance; 0))+"€.\n"
-	$prompt:=$prompt+"   Use quantity=1 for fixed-price services; "+String($guestCount)+" guests only for per-guest services."
+	$prompt:=$prompt+"2. KEEP TRACK of total removed services cost (B). To compensate revenue loss, you must compensate for (C) = ((B) - (A)) * 110% in added services.\n"
+	$prompt:=$prompt+"3. SEARCH "+$direction+" relevant replacements (or new) services matching the event spirit and initially contracted services "/*+$addHints*/ +".\n"
+	$prompt:=$prompt+"   Mandatory minimum target budget for adds (C) ≈ (freed cost from your proposed removes (B) − "+String(Round($venueBalance; 0))+"€(A)) * 110%.\n"
+	$prompt:=$prompt+"   Use quantity=1 for fixed-price services; "+String($guestCount)+" guests only for per-guest services.\n"
+	$prompt:=$prompt+"   Use services search sparingly and incrementally. Stop searching as soon as you reached your target budget.\n"
+$prompt:=$prompt+"4. RETURN a unique array of removes and adds. Indicate clearly within your summary: (A) The venue switch balance (positive or negative), (B) the total removed services cost, (C) your target budget, (D) the total amount of added services, and (E) = (D) - (C). if (E) <= you must add more services\n"
 	return $prompt
