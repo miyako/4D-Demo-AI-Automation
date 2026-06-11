@@ -35,20 +35,6 @@ Function showActionButtons($actions : Collection) : Collection
 	End for 
 	return $map
 
-// ─── Badges de type email ─────────────────────────────────────────────────────
-// Version courte (listes)
-Function typeBadge($type : Text) : Text
-	Case of 
-		: ($type="quote")
-			return "📋 Quote"
-		: ($type="modification")
-			return "🌧 Modification"
-		: ($type="info")
-			return "ℹ Info"
-		Else 
-			return $type
-	End case 
-
 // ─── AI alias helpers ─────────────────────────────────────────────────────────
 
 // Returns True if the named model alias is configured (non-empty model value)
