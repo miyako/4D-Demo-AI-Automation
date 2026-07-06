@@ -11,18 +11,6 @@
 	"pages": [
 		{
 			"objects": {
-				"rect_filter_bar": {
-					"type": "rectangle",
-					"left": 0,
-					"top": 64,
-					"width": 900,
-					"height": 52,
-					"class": "bgToolbar"
-				}
-			}
-		},
-		{
-			"objects": {
 				"rect_bg": {
 					"type": "rectangle",
 					"left": 0,
@@ -31,6 +19,14 @@
 					"height": 680,
 					"class": "bgForm"
 				},
+				"rect_filter_bar": {
+					"type": "rectangle",
+					"left": 0,
+					"top": 64,
+					"width": 900,
+					"height": 52,
+					"class": "bgToolbar"
+				},
 				"rect_header": {
 					"type": "rectangle",
 					"left": 0,
@@ -38,7 +34,11 @@
 					"width": 900,
 					"height": 64,
 					"class": "bgHeader"
-				},
+				}
+			}
+		},
+		{
+			"objects": {
 				"btn_back": {
 					"type": "button",
 					"left": 16,
@@ -269,7 +269,7 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 15,
+	"geometryStamp": 19,
 	"editor": {
 		"activeView": "View 1",
 		"defaultView": "View 1",

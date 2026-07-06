@@ -6,7 +6,6 @@
 	"windowMinWidth": 1280,
 	"windowMinHeight": 640,
 	"pages": [
-		null,
 		{
 			"objects": {
 				"rect_bg": {
@@ -25,6 +24,18 @@
 					"height": 64,
 					"class": "bgHeader"
 				},
+				"rect_filter_bar": {
+					"type": "rectangle",
+					"left": 0,
+					"top": 64,
+					"width": 1280,
+					"height": 52,
+					"class": "bgToolbar"
+				}
+			}
+		},
+		{
+			"objects": {
 				"text_title": {
 					"type": "text",
 					"left": 24,
@@ -33,14 +44,6 @@
 					"height": 28,
 					"text": "📅 Events",
 					"class": "textTitle"
-				},
-				"rect_filter_bar": {
-					"type": "rectangle",
-					"left": 0,
-					"top": 64,
-					"width": 1280,
-					"height": 52,
-					"class": "bgToolbar"
 				},
 				"text_event_count": {
 					"type": "text",
@@ -62,7 +65,7 @@
 					"dataSource": "Form:C1466.events",
 					"headerHeight": "30px",
 					"showHeaders": true,
-					"rowHeight": "52px",
+					"rowHeight": "2em",
 					"events": [
 						"onClick",
 						"onDoubleClick"
@@ -70,6 +73,8 @@
 					"currentItemSource": "Form:C1466.currentEvent",
 					"verticalAlign": "middle",
 					"class": "listbox",
+					"selectionMode": "single",
+					"resizingMode": "legacy",
 					"columns": [
 						{
 							"header": {
@@ -84,7 +89,8 @@
 							"footer": {
 								"name": "Pied1"
 							},
-							"dataSource": "This.weatherIcon"
+							"dataSource": "This:C1470.weatherIcon",
+							"truncateMode": "none"
 						},
 						{
 							"header": {
@@ -99,7 +105,8 @@
 							"footer": {
 								"name": "Pied3"
 							},
-							"dataSource": "This.emailIcon"
+							"dataSource": "This:C1470.emailIcon",
+							"truncateMode": "none"
 						},
 						{
 							"header": {
@@ -114,7 +121,8 @@
 							"footer": {
 								"name": "Pied4"
 							},
-							"dataSource": "This:C1470.eventDateStr"
+							"dataSource": "This:C1470.eventDateStr",
+							"truncateMode": "none"
 						},
 						{
 							"header": {
@@ -129,7 +137,8 @@
 							"footer": {
 								"name": "Pied5"
 							},
-							"dataSource": "This:C1470.clientName"
+							"dataSource": "This:C1470.clientName",
+							"truncateMode": "none"
 						},
 						{
 							"header": {
@@ -144,7 +153,8 @@
 							"footer": {
 								"name": "Pied6"
 							},
-							"dataSource": "This:C1470.venueName"
+							"dataSource": "This:C1470.venueName",
+							"truncateMode": "none"
 						},
 						{
 							"header": {
@@ -159,7 +169,8 @@
 							"footer": {
 								"name": "Pied7"
 							},
-							"dataSource": "This:C1470.venueCity"
+							"dataSource": "This:C1470.venueCity",
+							"truncateMode": "none"
 						},
 						{
 							"header": {
@@ -175,7 +186,8 @@
 							"footer": {
 								"name": "Pied8"
 							},
-							"dataSource": "This:C1470.guestCountStr"
+							"dataSource": "This:C1470.guestCountStr",
+							"truncateMode": "none"
 						},
 						{
 							"header": {
@@ -190,7 +202,8 @@
 							"footer": {
 								"name": "Pied2"
 							},
-							"dataSource": "This.venueOptionIcon"
+							"dataSource": "This:C1470.venueOptionIcon",
+							"truncateMode": "none"
 						},
 						{
 							"header": {
@@ -206,7 +219,8 @@
 							"footer": {
 								"name": "Pied9"
 							},
-							"dataSource": "This:C1470.plannedWeather"
+							"dataSource": "This:C1470.plannedWeather",
+							"truncateMode": "none"
 						},
 						{
 							"header": {
@@ -222,7 +236,8 @@
 							"footer": {
 								"name": "Pied10"
 							},
-							"dataSource": "This:C1470.forecastWeather"
+							"dataSource": "This:C1470.forecastWeather",
+							"truncateMode": "none"
 						},
 						{
 							"header": {
@@ -238,7 +253,8 @@
 							"footer": {
 								"name": "Pied11"
 							},
-							"dataSource": "This:C1470.statusBadge"
+							"dataSource": "This:C1470.statusBadge",
+							"truncateMode": "none"
 						},
 						{
 							"header": {
@@ -253,7 +269,8 @@
 							"footer": {
 								"name": "Pied12"
 							},
-							"dataSource": "This:C1470.contractRef"
+							"dataSource": "This:C1470.contractRef",
+							"truncateMode": "none"
 						}
 					]
 				},
@@ -299,7 +316,7 @@
 					],
 					"focusable": true,
 					"method": "objbtn_filter_confirmed.4dm",
-					"class": "btnFilterInactive",
+					"class": "btnFilterActive",
 					"style": "flat"
 				},
 				"btn_filter_quote": {
@@ -314,7 +331,7 @@
 					],
 					"focusable": true,
 					"method": "objbtn_filter_quote.4dm",
-					"class": "btnFilterInactive",
+					"class": "btnFilterActive",
 					"style": "flat"
 				},
 				"btn_filter_weather": {
@@ -329,7 +346,7 @@
 					],
 					"focusable": true,
 					"method": "objbtn_filter_weather.4dm",
-					"class": "btnFilterInactive",
+					"class": "btnFilterActive",
 					"style": "flat"
 				},
 				"btn_filter_email": {
@@ -344,7 +361,7 @@
 					],
 					"focusable": true,
 					"method": "objbtn_filter_email.4dm",
-					"class": "btnFilterInactive",
+					"class": "btnFilterActive",
 					"style": "flat"
 				},
 				"btn_toggle_past": {
@@ -359,7 +376,7 @@
 					],
 					"focusable": true,
 					"method": "objbtn_toggle_past.4dm",
-					"class": "btnFilterInactive",
+					"class": "btnFilterActive",
 					"style": "flat"
 				}
 			}
@@ -375,5 +392,6 @@
 	"$4d": {
 		"version": "1",
 		"kind": "form"
-	}
+	},
+	"geometryStamp": 16
 }
