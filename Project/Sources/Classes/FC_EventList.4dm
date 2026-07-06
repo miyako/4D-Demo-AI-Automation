@@ -8,15 +8,19 @@ property currentEvent : cs.EventEntity
 property showPast : Boolean
 property _windowRef : Integer
 
+Class extends FC
+
 Class constructor()
+	
+	Super()
 	This.events:=ds.Event.newSelection()
 	This.activeFilter:="all"
 	This.running:=False
 	This.currentEvent:=Null
 	This.showPast:=False
 	This._windowRef:=0
-
-//MARK: - Form & form objects event handlers
+	
+	//MARK: - Form & form objects event handlers
 Function formEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Load)
@@ -24,43 +28,43 @@ Function formEventHandler($formEventCode : Integer)
 		: ($formEventCode=On Double Clicked)
 			This._onDoubleClicked()
 	End case 
-
+	
 Function btnRefreshEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
 			This._refreshWeather()
 	End case 
-
+	
 Function btnFilterAllEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
 			This._setFilter("all")
 	End case 
-
+	
 Function btnFilterConfirmedEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
 			This._setFilter("confirmed")
 	End case 
-
+	
 Function btnFilterQuoteEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
 			This._setFilter("quote")
 	End case 
-
+	
 Function btnFilterWeatherEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
 			This._setFilter("weather")
 	End case 
-
+	
 Function btnFilterEmailEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
 			This._setFilter("email")
 	End case 
-
+	
 Function btnTogglePastEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
@@ -72,12 +76,12 @@ Function btnTogglePastEventHandler($formEventCode : Integer)
 			End if 
 			This._loadEvents(This.activeFilter)
 	End case 
-
-//MARK: - Private
+	
+	//MARK: - Private
 Function _onLoad()
 	This._windowRef:=Current form window
 	This._loadEvents("all")
-
+	
 Function _onDoubleClicked()
 	If (This.currentEvent#Null)
 		var $fc : cs.FC_EventDetail:=cs.FC_EventDetail.new(This.currentEvent; This.events; This)
@@ -86,15 +90,15 @@ Function _onDoubleClicked()
 		CLOSE WINDOW($w)
 		This._loadEvents(This.activeFilter)
 	End if 
-
+	
 Function _setFilter($filter : Text)
 	This.activeFilter:=$filter
 	This._loadEvents($filter)
-
+	
 Function _loadEvents($filter : Text)
 	var $selection : cs.EventSelection
 	var $today : Date:=Current date
-
+	
 	Case of 
 		: ($filter="confirmed")
 			If (This.showPast)
@@ -127,11 +131,11 @@ Function _loadEvents($filter : Text)
 				$selection:=ds.Event.query("eventDate >= :1"; $today).orderBy("eventDate ASC")
 			End if 
 	End case 
-
+	
 	This.events:=$selection
 	OBJECT SET TITLE(*; "text_event_count"; String(This.events.length)+" events")
 	This._updateFilterCounts()
-
+	
 Function _updateFilterCounts()
 	var $today : Date:=Current date
 	var $allCount : Integer
@@ -139,7 +143,7 @@ Function _updateFilterCounts()
 	var $quoteCount : Integer
 	var $weatherCount : Integer
 	var $emailCount : Integer
-
+	
 	If (This.showPast)
 		$allCount:=ds.Event.all().length
 		$confirmedCount:=ds.Event.query("status = :1"; "confirmed").length
@@ -153,21 +157,22 @@ Function _updateFilterCounts()
 		$weatherCount:=ds.Event.query("weatherAlertLevel != :1 AND eventDate >= :2"; "none"; $today).length
 		$emailCount:=ds.Event.query("emails.emailStatus = :1 AND eventDate >= :2"; "pending"; $today).length
 	End if 
-
+	
 	OBJECT SET TITLE(*; "btn_filter_all"; "All ("+String($allCount)+")")
 	OBJECT SET TITLE(*; "btn_filter_confirmed"; "Confirmed ("+String($confirmedCount)+")")
 	OBJECT SET TITLE(*; "btn_filter_quote"; "Quotes ("+String($quoteCount)+")")
 	OBJECT SET TITLE(*; "btn_filter_weather"; "⚠ Weather ("+String($weatherCount)+")")
 	OBJECT SET TITLE(*; "btn_filter_email"; "✉ Emails ("+String($emailCount)+")")
-
+	
 Function _refreshWeather()
 	This.running:=True
 	OBJECT SET TITLE(*; "btn_refresh"; "⏳ Updating...")
-
+	
 	var $window : Integer:=Current form window
 	CALL WORKER("weatherWorker"; Formula(_weatherWorkerJob($window)))
-
+	
 Function _onWeatherDone()
 	This.running:=False
 	OBJECT SET TITLE(*; "btn_refresh"; "🌤 Refresh Weather")
 	This._loadEvents(This.activeFilter)
+	
