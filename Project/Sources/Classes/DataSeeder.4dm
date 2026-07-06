@@ -79,6 +79,7 @@ Function _seedClients()
 		$e:=ds.Client.new()
 		$e.companyName:=$item.companyName
 		$e.contactName:=$item.contactName
+		$e.contactName:=Replace string($e.contactName; "&#39;"; "'"; *)
 		$e.email:=$item.email
 		$e.phone:=$item.phone
 		$e.country:=$item.country
@@ -133,6 +134,8 @@ Function _seedServices()
 		$e.seedIndex:=$item.seedIndex
 		$e.label:=Replace string($e.label; "&amp;"; "&"; *)
 		$e.category:=Replace string($e.category; "&amp;"; "&"; *)
+		$e.label:=Replace string($e.label; "&gt;"; ">"; *)
+		$e.label:=Replace string($e.label; "&lt;"; "<"; *)
 		$e.save()
 	End for each 
 	
