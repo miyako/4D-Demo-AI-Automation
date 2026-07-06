@@ -1,5 +1,8 @@
-<?xml version="1.0" encoding="UTF-8"?><preferences stamp="20">
+<?xml version="1.0" encoding="UTF-8"?><preferences stamp="22">
 	<com.4d>
-		<general allow_user_settings="true"/>
+		<general allow_user_settings="true" startup_environnement="1"/>
+		<interface>
+			<user flush_window="false" print_progress="false" sdi_application="true" splash_screen="false"/>
+		</interface>
 	</com.4d>
 </preferences>
