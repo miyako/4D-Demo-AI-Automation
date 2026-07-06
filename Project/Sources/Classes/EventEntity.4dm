@@ -11,7 +11,7 @@ Function get eventDateStr() : Text
 	
 Function get clientName() : Text
 	var $c : cs.ClientEntity:=This.client
-	return $c ? $c.companyName : ""
+	return $c ? $c._companyName : ""
 	
 Function get venueName() : Text
 	var $v : cs.VenueEntity:=This.venue
@@ -28,8 +28,11 @@ Function get guestCountLabel() : Text
 	return String(This.guestCount)+" 人"
 	
 Function get eventDateLong() : Text
-	return String(This.eventDate; "EEEE dd MMMM yyyy")
-	return String(This.eventDate; "EEEE yyyy MMMM dd")
+	//return String(This.eventDate; "EEEE dd MMMM yyyy")
+	var $date : Text
+	$date:=String(This.eventDate; "yyyy年 M月 d日 ")
+	$date+=Choose(Day number(This.eventDate); ""; "日"; "月"; "火"; "水"; "木"; "金"; "土")+"曜日"
+	return $date
 	
 Function get contactInfo() : Text
 	var $c : cs.ClientEntity:=This.client
@@ -92,7 +95,7 @@ Function get riskLabel() : Text
 		: (This.weatherAlertLevel="warning")
 			return "⛈ 警告レベル – 注意が必要"
 		: (This.weatherAlertLevel="watch")
-			return "🌧 不安定 – 監視が必要"
+			return "🌧 不安定 – 警戒が必要"
 		Else 
 			return "☀️ 天候リスクなし"
 	End case 

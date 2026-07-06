@@ -71,7 +71,7 @@ Function clearAll()
 	
 	// ─── Clients ─────────────────────────────────────────────────────────────────────
 Function _seedClients()
-	var $file : 4D.File:=Folder(fk resources folder).file("data/clients.json")
+	var $file : 4D.File:=Folder(fk resources folder).file("data/clients.ja.json")
 	var $data : Collection:=JSON Parse($file.getText())
 	var $item : Object
 	var $e : cs.ClientEntity
@@ -131,6 +131,8 @@ Function _seedServices()
 		$e.available:=$item.available
 		$e.description:=$item.description
 		$e.seedIndex:=$item.seedIndex
+		$e.label:=Replace string($e.label; "&amp;"; "&"; *)
+		$e.category:=Replace string($e.category; "&amp;"; "&"; *)
 		$e.save()
 	End for each 
 	

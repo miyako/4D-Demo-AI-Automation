@@ -17,31 +17,31 @@ Class constructor()
 	This._contractRef:=""
 	This._windowID:=0
 	This._client:=cs.AIKit.OpenAI.new()
-
-// ─── Factory: creates a configured Chat Helper ─────────────────────────────────
-// $useSimple: True = chat-simple (gpt-4o); False = chat-reasoning (o4-mini)
+	
+	// ─── Factory: creates a configured Chat Helper ─────────────────────────────────
+	// $useSimple: True = chat-simple (gpt-4o); False = chat-reasoning (o4-mini)
 Function _createChat($systemPrompt : Text; $schema : Object; $schemaName : Text; $formula : 4D.Function; $useSimple : Boolean) : cs.AIKit.OpenAIChatHelper
 	var $options:=cs.AIKit.OpenAIChatCompletionsParameters.new()
 	$options.model:=$useSimple ? This._modelSimple : This._model
 	$options.max_completion_tokens:=16000
 	$options.formula:=$formula
 	If ($schema#Null)
-		$options.response_format:={type: "json_schema"; json_schema: { \
+		$options.response_format:={type: "json_schema"; json_schema: {\
 			name: $schemaName; \
 			schema: $schema; \
-			strict: True \
-		}}
+			strict: True\
+			}}
 	End if 
 	return This._client.chat.create($systemPrompt; $options)
-
-// ─── Logging helpers ──────────────────────────────────────────────────────────
+	
+	// ─── Logging helpers ──────────────────────────────────────────────────────────
 Function _logPrompts($callType : Text; $system : Text; $user : Text)
 	If (This._contractRef#"")
 		var $logger : cs.EventLogger:=cs.EventLogger.me
 		$logger.logBlock(This._contractRef; "AI SYS"; $callType+" SYSTEM PROMPT"; $system)
 		$logger.logBlock(This._contractRef; "AI USER"; $callType+" USER PROMPT"; $user)
 	End if 
-
+	
 Function _logResponse($callType : Text; $chatResult : Object)
 	If (This._contractRef#"")
 		var $logger : cs.EventLogger:=cs.EventLogger.me
@@ -49,48 +49,48 @@ Function _logResponse($callType : Text; $chatResult : Object)
 		var $content : Text:=($chatResult#Null) && ($chatResult.choice#Null) ? String($chatResult.choice.message.content) : ""
 		$logger.logBlock(This._contractRef; "AI RESPONSE"; $callType+" (finish: "+$finish+")"; $content)
 	End if 
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// ─── ASYNC API (Chat Helper + formula) ────────────────────────────────────────
-// All methods return immediately.
-// The callback (4D.Function) is invoked in the form event loop.
-// Pattern: $self:=This + Formula($self._onXxx($1; captured_params...))
-// ═══════════════════════════════════════════════════════════════════════════════
-
-// ─── Scenario 2: Weather alert on an event ─────────────────────────────────────
-// $callback receives {success; weatherActions; validationError}
+	
+	// ═══════════════════════════════════════════════════════════════════════════════
+	// ─── ASYNC API (Chat Helper + formula) ────────────────────────────────────────
+	// All methods return immediately.
+	// The callback (4D.Function) is invoked in the form event loop.
+	// Pattern: $self:=This + Formula($self._onXxx($1; captured_params...))
+	// ═══════════════════════════════════════════════════════════════════════════════
+	
+	// ─── Scenario 2: Weather alert on an event ─────────────────────────────────────
+	// $callback receives {success; weatherActions; validationError}
 Function analyzeWeatherRiskAsync($event : cs.EventEntity; $callback : 4D.Function)
 	var $schemaWeather : Object:=This._loadSchema("schema_weather_actions.json")
 	If ($schemaWeather=Null)
 		$callback.call(Null; {success: False; weatherActions: Null; validationError: "Impossible de charger schema_weather_actions.json"})
 		return 
 	End if 
-
+	
 	var $servicesSnippet : Text:=""
 	var $line : cs.EventLineEntity
 	For each ($line; $event.lines)
 		$servicesSnippet:=$servicesSnippet+"- "+$line.serviceLabel+" (qty: "+String($line.quantity)+")\n"
 	End for each 
-
+	
 	var $venue : cs.VenueEntity:=$event.venue
 	var $venueInfo : Text
 	If ($venue#Null)
 		$venueInfo:=$venue.name+" - "+$venue.city+", "+$venue.country+" ("+$venue.venueType+")"
 		$venueInfo:=$venueInfo+" | Event option: "+$event.venueOption
-	// Mention indoor alternative if available explicitly state absence otherwise
-	If ($event.venueOption="outdoor")
-		If ($venue.indoorOption#Null)
-			$venueInfo:=$venueInfo+"\nIndoor alternative available at same venue: "+$venue.indoorOption.name+" (capacity: "+String($venue.indoorOption.capacity)+", rental: "+String($venue.indoorOption.rentalPrice)+"€)"
-		Else 
-			$venueInfo:=$venueInfo+"\nNo indoor alternative at this venue."
+		// Mention indoor alternative if available explicitly state absence otherwise
+		If ($event.venueOption="outdoor")
+			If ($venue.indoorOption#Null)
+				$venueInfo:=$venueInfo+"\nIndoor alternative available at same venue: "+$venue.indoorOption.name+" (capacity: "+String($venue.indoorOption.capacity)+", rental: "+String($venue.indoorOption.rentalPrice)+"€)"
+			Else 
+				$venueInfo:=$venueInfo+"\nNo indoor alternative at this venue."
+			End if 
 		End if 
-	End if 
 	Else 
 		$venueInfo:="[No venue]"
 	End if 
-
+	
 	var $weatherData : Object:=$event.weatherAlertJson.weatherData
-
+	
 	var $system : Text:="You are a risk management specialist for Event Pulse, an international event agency. "
 	$system:=$system+"Analyze weather conditions for an upcoming event and compare them with the event's planned weather setup.\n\n"
 	$system:=$system+"The event has a 'weatherSetup' describing what weather it was planned for:\n"
@@ -121,12 +121,14 @@ Function analyzeWeatherRiskAsync($event : cs.EventEntity; $callback : 4D.Functio
 	$system:=$system+"  Section SEARCH: describe what replacement services to search in the catalog, e.g. 'SEARCH: outdoor lounge furniture for 86 guests, comfort seating'\n"
 	$system:=$system+"Respond ONLY with a valid JSON object: {\"summary\": \"...\", \"actions\": [...]}.'\n"
 	$system:=$system+"Each action has only: actionType, label, hiddenPrompt."
-
+	
+	$system:=$system+"The brief summary and label should be written in Japanese."
+	
 	var $user : Text:="Event ID: "+$event.ID+"\n"
 	$user:=$user+"Event Date: "+String($event.eventDate; "yyyy-MM-dd")+"\n"
 	$user:=$user+"Venue: "+$venueInfo+"\n"
 	$user:=$user+"Guest Count: "+String($event.guestCount)+"\n\n"
-
+	
 	// Planned weather setup for this event
 	var $setup : Object:=$event.weatherSetup
 	If ($setup#Null)
@@ -136,40 +138,40 @@ Function analyzeWeatherRiskAsync($event : cs.EventEntity; $callback : 4D.Functio
 	Else 
 		$user:=$user+"Planned Weather Setup: not specified (assume sunny/normal)\n\n"
 	End if 
-
+	
 	$user:=$user+"Weather Forecast:\n"
 	$user:=$user+JSON Stringify($weatherData)+"\n\n"
 	$user:=$user+"Booked Services:\n"+$servicesSnippet+"\n"
 	$user:=$user+"Return the weather risk analysis with summary and 2-4 recommended actions covering diverse strategies."
-
+	
 	var $self : Object:=This
 	var $cb : 4D.Function:=$callback
 	This._logPrompts("analyzeWeatherRisk"; $system; $user)
 	This._chat:=This._createChat($system; $schemaWeather; "weather_actions"; Formula($self._onChatDone($1; $cb; "schema_weather_actions.json")); True)
 	This._chat.prompt($user)
-
-// ─── Scenario 3: Client modification email linked to a known event ──────────
-// The event is already identified no need to disambiguate.
-// $callback receives {success; impacts; validationError}
+	
+	// ─── Scenario 3: Client modification email linked to a known event ──────────
+	// The event is already identified no need to disambiguate.
+	// $callback receives {success; impacts; validationError}
 Function analyzeLinkedEmailAsync($email : cs.EmailEntity; $event : cs.EventEntity; $callback : 4D.Function)
 	var $schemaImpacts : Object:=This._loadSchema("schema_modification_impacts.json")
 	If ($schemaImpacts=Null)
 		$callback.call(Null; {success: False; impacts: Null; validationError: "Cannot load schema_modification_impacts.json"})
 		return 
 	End if 
-
+	
 	var $venue : cs.VenueEntity:=$event.venue
 	var $eventText : Text:="Contract: "+$event.contractRef
 	$eventText:=$eventText+" | Date: "+String($event.eventDate; "yyyy-MM-dd")
 	$eventText:=$eventText+" | Venue: "+($venue ? $venue.name : "?")
 	$eventText:=$eventText+" | Guests: "+String($event.guestCount)
-
+	
 	var $linesText : Text:=""
 	var $line : cs.EventLineEntity
 	For each ($line; $event.lines)
 		$linesText:=$linesText+"- [ID:"+String($line.serviceID)+"] "+$line.serviceLabel+" × "+String($line.quantity)+" @ "+String($line.unitPrice)+"€/u\n"
 	End for each 
-
+	
 	var $system : Text:="You are a contract specialist for Event Pulse. "
 	$system:=$system+"A client has sent a message about a confirmed event. The event is already identified. "
 	$system:=$system+"Your task is to identify ONLY requests that require an actual change to the contracted services (add, remove, or replace a service line). "
@@ -190,7 +192,9 @@ Function analyzeLinkedEmailAsync($email : cs.EmailEntity; $event : cs.EventEntit
 	$system:=$system+"If the email contains NO actionable service changes, return an empty actions array [].\n"
 	$system:=$system+"Also write a brief 'summary' (1-2 sentences) describing what the client requested.\n"
 	$system:=$system+"Respond ONLY with a valid JSON object: {\"summary\": \"...\", \"actions\": [...]}. No markdown."
-
+	
+	$system:=$system+"The brief summary and label should be written in Japanese."
+	
 	var $user : Text:="From: "+$email.sender+" <"+$email.senderEmail+">"
 	$user:=$user+"\nSubject: "+$email.subject+"\n\n"
 	$user:=$user+"Body:\n"+$email.body+"\n\n"
@@ -198,42 +202,44 @@ Function analyzeLinkedEmailAsync($email : cs.EmailEntity; $event : cs.EventEntit
 	If ($event.lines.length>0)
 		$user:=$user+"\nCurrent services:\n"+$linesText
 	End if 
-
+	
 	var $self : Object:=This
 	var $cb : 4D.Function:=$callback
 	This._logPrompts("analyzeLinkedEmail"; $system; $user)
 	This._chat:=This._createChat($system; $schemaImpacts; "modification_impacts"; Formula($self._onChatDone($1; $cb; "schema_modification_impacts.json")); True)
 	This._chat.prompt($user)
-
-// ─── generateDraftEmail: confirmation email after applying an action ──────────
-// $callback receives {success; emailText; validationError}
-// $context: optional {weatherExplanation, weatherForecast, clientEmail: {subject, body, sender}}
+	
+	// ─── generateDraftEmail: confirmation email after applying an action ──────────
+	// $callback receives {success; emailText; validationError}
+	// $context: optional {weatherExplanation, weatherForecast, clientEmail: {subject, body, sender}}
 Function generateDraftEmailAsync($event : cs.EventEntity; $action : Object; $proposedLines : Collection; $context : Object; $callback : 4D.Function)
 	var $schemaDraft : Object:=This._loadSchema("schema_draft_email.json")
 	If ($schemaDraft=Null)
 		$callback.call(Null; {success: False; emailText: ""; validationError: "Cannot load schema_draft_email.json"})
 		return 
 	End if 
-
+	
 	var $venue : cs.VenueEntity:=$event.venue
 	var $venueInfo : Text:=$venue ? $venue.name+", "+$venue.city : "?"
 	var $client : cs.ClientEntity:=$event.client
 	var $clientName : Text:=$client ? $client.contactName : "Client"
-
+	
 	var $linesText : Text:=""
 	var $line : Object
 	For each ($line; $proposedLines)
 		var $lineTotal : Real:=Num($line.quantity)*Num($line.unitPrice)
 		$linesText:=$linesText+"- "+String($line.label)+" × "+String($line.quantity)+" @ "+String($line.unitPrice)+"€ = "+String($lineTotal)+"€\n"
 	End for each 
-
+	
 	var $system : Text:="You are an event coordinator at Event Pulse drafting a professional email to a client about PROPOSED service changes. "
 	$system:=$system+"Write a clear, professional email in the language typically used with the client. "
 	$system:=$system+"Address the client by first name. Be concise and positive. "
 	$system:=$system+"IMPORTANT: these are PROPOSED changes, NOT yet applied. Use conditional language: 'we would like to propose', 'we recommend', 'subject to your approval', 'pending your confirmation'. Do NOT write as if changes are already done. "
 	$system:=$system+"Do NOT include subject line or headers just the email body text. "
 	$system:=$system+"Respond ONLY with a valid JSON object matching the schema: {\"emailText\": \"...\"}."
-
+	
+	$system:=$system+"The emailText should be written in Japanese followed by English."
+	
 	var $user : Text:="Client: "+$clientName+"\n"
 	$user:=$user+"Event: "+$event.contractRef+" "+String($event.eventDate; "yyyy-MM-dd")+" at "+$venueInfo+" ("+String($event.guestCount)+" guests)\n\n"
 	If (($context#Null) && ($context.clientEmail#Null))
@@ -258,13 +264,13 @@ Function generateDraftEmailAsync($event : cs.EventEntity; $action : Object; $pro
 		$user:=$user+"Proposed service changes:\n"+$linesText+"\n"
 	End if 
 	$user:=$user+"Draft a short professional email to the client presenting these proposed changes and asking for their confirmation."
-
+	
 	var $self : Object:=This
 	var $cb : 4D.Function:=$callback
 	This._logPrompts("generateDraftEmail"; $system; $user)
 	This._chat:=This._createChat($system; $schemaDraft; "draft_email"; Formula($self._onGenerateDraftEmailDone($1; $cb)); True)
 	This._chat.prompt($user)
-
+	
 Function _onGenerateDraftEmailDone($chatResult : Object; $callback : 4D.Function)
 	If (($chatResult#Null) && (Not($chatResult.terminated)))
 		return 
@@ -287,30 +293,30 @@ Function _onGenerateDraftEmailDone($chatResult : Object; $callback : 4D.Function
 	$result.emailText:=$parsed.emailText
 	This._logResponse("generateDraftEmail"; $chatResult)
 	$callback.call(Null; $result)
-
-// ─── draft_reply: AI generates email text for client ─────────────────────────
-// $callback receives {success; draft; error}
-// ─── Re-evaluation of remaining actions after applying an action ────────────────
-// $callback receives {success; actions; validationError}
+	
+	// ─── draft_reply: AI generates email text for client ─────────────────────────
+	// $callback receives {success; draft; error}
+	// ─── Re-evaluation of remaining actions after applying an action ────────────────
+	// $callback receives {success; actions; validationError}
 Function reassessActionsAsync($remainingActions : Collection; $appliedLabel : Text; $event : cs.EventEntity; $callback : 4D.Function)
 	var $schemaReassess : Object:=This._loadSchema("schema_reassess_actions.json")
 	If ($schemaReassess=Null)
 		$callback.call(Null; {success: False; actions: []; validationError: "Cannot load schema_reassess_actions.json"})
 		return 
 	End if 
-
+	
 	var $servicesSnippet : Text:=""
 	var $line : cs.EventLineEntity
 	For each ($line; $event.lines)
 		$servicesSnippet:=$servicesSnippet+"- "+$line.serviceLabel+" × "+String($line.quantity)+" @ "+String($line.unitPrice)+"€\n"
 	End for each 
-
+	
 	var $actionsSnippet : Text:=""
 	var $action : Object
 	For each ($action; $remainingActions)
 		$actionsSnippet:=$actionsSnippet+"- ["+$action.actionType+"] "+$action.label+"\n"
 	End for each 
-
+	
 	var $system : Text:="You are a risk management specialist for Event Pulse. "
 	$system:=$system+"An action has just been applied to an event. Re-evaluate the remaining proposed actions to determine which are still relevant.\n\n"
 	$system:=$system+"For each remaining action, decide:\n"
@@ -320,20 +326,22 @@ Function reassessActionsAsync($remainingActions : Collection; $appliedLabel : Te
 	$system:=$system+"NEVER propose passive monitoring actions. Only concrete service operations.\n"
 	$system:=$system+"Return ONLY the actions that are still relevant. If all issues are resolved, return an empty actions array.\n"
 	$system:=$system+"Respond ONLY with a valid JSON object matching the reassess_actions schema."
-
+	
+	$system:=$system+"The label should be written in Japanese."
+	
 	var $user : Text:="Action just applied: "+$appliedLabel+"\n\n"
 	$user:=$user+"Current services on event (after applying action):\n"+$servicesSnippet+"\n"
 	$user:=$user+"Remaining actions to reassess:\n"+$actionsSnippet+"\n"
 	$user:=$user+"Return only the actions that are still necessary."
-
+	
 	var $self : Object:=This
 	var $cb : 4D.Function:=$callback
 	This._logPrompts("reassessActions"; $system; $user)
 	This._chat:=This._createChat($system; $schemaReassess; "reassess_actions"; Formula($self._onChatDone($1; $cb; "schema_reassess_actions.json")); False)
 	This._chat.prompt($user)
-
-// ─── Shared chat completion handler ──────────────────────────────────────────
-// Result: {success; summary; actions; rawAiResponse; validationError; validation}
+	
+	// ─── Shared chat completion handler ──────────────────────────────────────────
+	// Result: {success; summary; actions; rawAiResponse; validationError; validation}
 Function _onChatDone($chatResult : Object; $callback : 4D.Function; $schemaFile : Text)
 	If (($chatResult#Null) && (Not($chatResult.terminated)))
 		return 
@@ -357,16 +365,19 @@ Function _onChatDone($chatResult : Object; $callback : 4D.Function; $schemaFile 
 	$result.actions:=$parsed.actions
 	This._logResponse($schemaFile; $chatResult)
 	$callback.call(Null; $result)
-
-// ─── Step 2: Execution with tool calling (ChatHelper + registerTools) ───────────
-// $callback receives {success; proposedLines; summary; error}
+	
+	// ─── Step 2: Execution with tool calling (ChatHelper + registerTools) ───────────
+	// $callback receives {success; proposedLines; summary; error}
 Function executeActionAsync($hiddenPrompt : Text; $context : Object; $callback : 4D.Function)
 	var $system : Text:="Event service execution assistant for Event Pulse.\n"
 	$system:=$system+"Delta rules: 'add' = call search_services; 'remove'/'update' = use [ID:xxx] from existing list, no search.\n"
 	$system:=$system+"Never duplicate an existing service. If upgrading a meal, remove the existing one first.\n"
 	$system:=$system+"Tool call limits: max 8 search_services calls. Do NOT repeat a similar search query. Call calculate_cost exactly once for removes and once for adds.\n"
-	$system:=$system+"Summary: 1-2 sentences, 'We propose...'. Do NOT output label/category/unitPrice.\n"
-
+	//$system:=$system+"Summary: 1-2 sentences, 'We propose...'. Do NOT output label/category/unitPrice.\n"
+	$system:=$system+"Summary: 1-2 sentences. Do NOT output label/category/unitPrice.\n"
+	
+	$system:=$system+"The summary should be written in Japanese."
+	
 	// Build user message: event context + existing services (event-specific) + action prompt
 	var $userMsg : Text:=""
 	If ($context.eventDate#Null)
@@ -388,7 +399,7 @@ Function executeActionAsync($hiddenPrompt : Text; $context : Object; $callback :
 		$userMsg:=$userMsg+"\n"
 	End if 
 	$userMsg:=$userMsg+$hiddenPrompt
-
+	
 	var $execSchema : Object:=This._loadSchema("schema_action_execution.json")
 	var $self : Object:=This
 	var $cb : 4D.Function:=$callback
@@ -406,7 +417,7 @@ Function executeActionAsync($hiddenPrompt : Text; $context : Object; $callback :
 	This._chat.registerTools($searchTool.tools.concat($costTool.tools))
 	This._logPrompts("executeAction"; $system; $userMsg)
 	This._chat.prompt($userMsg)
-
+	
 Function _onExecutionChatDone($chatResult : Object; $callback : 4D.Function)
 	If (($chatResult#Null) && (Not($chatResult.terminated)))
 		return 
@@ -414,11 +425,11 @@ Function _onExecutionChatDone($chatResult : Object; $callback : 4D.Function)
 	This._logResponse("executeAction"; $chatResult)
 	var $result : Object:={success: False; proposedLines: Null; summary: ""; error: ""; validation: Null}
 	var $parsed : Object:=This._extractParsedResponse($chatResult)
-
+	
 	// Debug: log full parsed result
 	var $logFile : 4D.File:=Folder(fk logs folder).file("execution_result.json")
 	$logFile.setText(JSON Stringify({parsed: $parsed; choice: $chatResult.choice}; *))
-
+	
 	If ($parsed=Null)
 		$result.error:=This._extractError($chatResult)
 		$callback.call(Null; $result)
@@ -436,14 +447,14 @@ Function _onExecutionChatDone($chatResult : Object; $callback : 4D.Function)
 	$result.proposedLines:=This._enrichProposedLines($parsed.proposedLines)
 	$result.summary:=$parsed.summary
 	$callback.call(Null; $result)
-
-// ═══════════════════════════════════════════════════════════════════════════════
-// ─── HELPERS ──────────────────────────────────────────────────────────────────
-// ═══════════════════════════════════════════════════════════════════════════════
-
-// ─── Enriches proposed lines with label/category/unitPrice ──────────────────────
-// For 'remove' lines: use actual booked price from session singleton (event-specific).
-// For 'add' lines: use catalog price from ds.Service.
+	
+	// ═══════════════════════════════════════════════════════════════════════════════
+	// ─── HELPERS ──────────────────────────────────────────────────────────────────
+	// ═══════════════════════════════════════════════════════════════════════════════
+	
+	// ─── Enriches proposed lines with label/category/unitPrice ──────────────────────
+	// For 'remove' lines: use actual booked price from session singleton (event-specific).
+	// For 'add' lines: use catalog price from ds.Service.
 Function _enrichProposedLines($lines : Collection) : Collection
 	If ($lines=Null)
 		return []
@@ -477,8 +488,8 @@ Function _enrichProposedLines($lines : Collection) : Collection
 		End if 
 	End for each 
 	return $lines
-
-// ─── Extracts and parses JSON from the chat response ────────────────────────────
+	
+	// ─── Extracts and parses JSON from the chat response ────────────────────────────
 Function _extractParsedResponse($chatResult : Object) : Object
 	If ($chatResult=Null) || (Not($chatResult.success))
 		return Null
@@ -494,8 +505,8 @@ Function _extractParsedResponse($chatResult : Object) : Object
 		return Null
 	End if 
 	return JSON Parse($content)
-
-// ─── Extracts a readable error message from the chat response ───────────────────
+	
+	// ─── Extracts a readable error message from the chat response ───────────────────
 Function _extractError($chatResult : Object) : Text
 	If ($chatResult=Null)
 		return "API call returned Null"
@@ -509,11 +520,12 @@ Function _extractError($chatResult : Object) : Text
 	If ($chatResult.choice=Null)
 		return "No choice in response"
 	End if 
-	return "Empty or invalid JSON response"
-
-// ─── JSON Validation on the 4D side (illustrates the "Making AI Predictable" blog) ─
-// Validates the parsed AI response against the Draft 2020-12 schema.
-// Retourne {success; errors; schemaName}
+	//return "Empty or invalid JSON response"
+	return "空または無効なJSONが返されました"
+	
+	// ─── JSON Validation on the 4D side (illustrates the "Making AI Predictable" blog) ─
+	// Validates the parsed AI response against the Draft 2020-12 schema.
+	// Retourne {success; errors; schemaName}
 Function _validateResponse($parsed : Object; $schemaFilename : Text) : Object
 	var $schema : Object:=This._loadSchema($schemaFilename)
 	If ($schema=Null)
@@ -521,20 +533,20 @@ Function _validateResponse($parsed : Object; $schemaFilename : Text) : Object
 	End if 
 	var $validation : Object:=JSON Validate($parsed; $schema)
 	return {success: $validation.success; errors: $validation.errors; schemaName: $schemaFilename}
-
-// ─── Schema loading from Resources/schemas ─────────────────────────────────────
+	
+	// ─── Schema loading from Resources/schemas ─────────────────────────────────────
 Function _loadSchema($filename : Text) : Object
 	var $file : 4D.File:=Folder(fk resources folder).file("schemas/"+$filename)
 	If (Not($file.exists))
 		return Null
 	End if 
 	return JSON Parse($file.getText())
-
-// ─── Prompt builders (called from FC_EventDetail before tool-calling dispatch) ──
-
-// Builds the switch_venue execution prompt for _executeSwitchVenue
-// Builds the switch_venue prompt bidirectional (outdoor→indoor or indoor→outdoor)
-// $venueBalance = newRentalPrice - oldRentalPrice (handled server-side, not in existing services list)
+	
+	// ─── Prompt builders (called from FC_EventDetail before tool-calling dispatch) ──
+	
+	// Builds the switch_venue execution prompt for _executeSwitchVenue
+	// Builds the switch_venue prompt bidirectional (outdoor→indoor or indoor→outdoor)
+	// $venueBalance = newRentalPrice - oldRentalPrice (handled server-side, not in existing services list)
 Function switchVenuePrompt($isToIndoor : Boolean; $newVenueName : Text; $venueBalance : Real; $guestCount : Integer) : Text
 	var $direction : Text:=$isToIndoor ? "indoor" : "outdoor"
 	var $opposite : Text:=$isToIndoor ? "outdoor" : "indoor"
@@ -551,3 +563,4 @@ Function switchVenuePrompt($isToIndoor : Boolean; $newVenueName : Text; $venueBa
 	$prompt:=$prompt+"4. Call calculate_cost once on your add lines → D. If D < C, continue searching until D >= C.\n"
 	$prompt:=$prompt+"5. Return removes + adds and summarize your changes.\n"
 	return $prompt
+	
