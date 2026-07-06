@@ -1,3 +1,4 @@
+//%attributes = {"invisible":true}
 #DECLARE($window : Integer; $hiddenPrompt : Text; $contextJson : Text)
 // Runs in a worker calls AI execute action then notifies the EventDetail form.
 // The action object is stored in AIWorkerContext singleton by the caller (no JSON round-trip).

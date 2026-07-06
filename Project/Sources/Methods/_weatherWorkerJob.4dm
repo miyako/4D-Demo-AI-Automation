@@ -1,3 +1,4 @@
+//%attributes = {"invisible":true}
 #DECLARE($window : Integer)
 // Runs in "weatherWorker" fetches weather for upcoming events, then notifies the form
 

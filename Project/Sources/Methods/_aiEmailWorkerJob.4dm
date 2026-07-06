@@ -1,3 +1,4 @@
+//%attributes = {"invisible":true}
 #DECLARE($window : Integer; $emailID : Text; $eventID : Text)
 // Runs in a worker calls AI email modification analysis then notifies the EventDetail form
 // Email is always linked to a known event (no disambiguation needed)

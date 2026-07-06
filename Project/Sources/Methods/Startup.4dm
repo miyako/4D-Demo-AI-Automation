@@ -1,4 +1,4 @@
-//%attributes = {"invisible":true}
+//%attributes = {}
 #DECLARE($params : Object)
 // Startup.4dm
 // Startup method for the Event Pulse application

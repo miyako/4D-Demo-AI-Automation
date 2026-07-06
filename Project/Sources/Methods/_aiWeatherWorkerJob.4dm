@@ -1,3 +1,4 @@
+//%attributes = {"invisible":true}
 #DECLARE($window : Integer; $eventID : Text)
 // Runs in a worker calls AI weather risk analysis then notifies the EventDetail form
 
