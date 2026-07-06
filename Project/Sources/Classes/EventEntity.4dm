@@ -15,7 +15,7 @@ Function get clientName() : Text
 	
 Function get venueName() : Text
 	var $v : cs.VenueEntity:=This.venue
-	return $v ? $v.name : ""
+	return $v ? $v._name : ""
 	
 Function get venueCity() : Text
 	var $v : cs.VenueEntity:=This.venue
@@ -25,10 +25,11 @@ Function get guestCountStr() : Text
 	return String(This.guestCount)
 	
 Function get guestCountLabel() : Text
-	return String(This.guestCount)+" guests"
+	return String(This.guestCount)+" 人"
 	
 Function get eventDateLong() : Text
 	return String(This.eventDate; "EEEE dd MMMM yyyy")
+	return String(This.eventDate; "EEEE yyyy MMMM dd")
 	
 Function get contactInfo() : Text
 	var $c : cs.ClientEntity:=This.client
@@ -44,13 +45,13 @@ Function get venueLabel() : Text
 Function get statusBadge() : Text
 	Case of 
 		: (This.status="confirmed")
-			return "Confirmed"
+			return "確定"
 		: (This.status="quote")
-			return "Quote"
+			return "商談中"
 		: (This.status="completed")
-			return "Done"
+			return "終了"
 		: (This.status="cancelled")
-			return "Cancelled"
+			return "中止"
 		Else 
 			return This.status
 	End case 
@@ -59,13 +60,13 @@ Function get statusBadge() : Text
 Function get statusLabel() : Text
 	Case of 
 		: (This.status="confirmed")
-			return "✅ Confirmed"
+			return "✅ 確定"
 		: (This.status="quote")
-			return "💬 Quote"
+			return "💬 商談中"
 		: (This.status="completed")
-			return "✔ Completed"
+			return "✔ 終了"
 		: (This.status="cancelled")
-			return "❌ Cancelled"
+			return "❌ 中止"
 		Else 
 			return This.status
 	End case 
@@ -87,13 +88,13 @@ Function get weatherIcon() : Text
 Function get riskLabel() : Text
 	Case of 
 		: (This.weatherAlertLevel="critical")
-			return "🚨 Critical risk – action required"
+			return "🚨 危険レベル – 緊急対応が必要"
 		: (This.weatherAlertLevel="warning")
-			return "⛈ Weather warning for event day"
+			return "⛈ 警告レベル – 注意が必要"
 		: (This.weatherAlertLevel="watch")
-			return "🌧 Weather watch – monitor closely"
+			return "🌧 不安定 – 監視が必要"
 		Else 
-			return "☀ No significant weather risk"
+			return "☀️ 天候リスクなし"
 	End case 
 	
 	// venueOption is a real field ("indoor"/"outdoor") use venueOptionIcon for the emoji column
@@ -127,22 +128,22 @@ Function get setupLabel() : Text
 	var $cond : Text
 	Case of 
 		: ($setup.conditions="indifferent")
-			return "🏢 Indoor"
+			return "🏢 屋内"
 		: ($setup.conditions="rain")
-			$cond:="🌧 Rain-ready"
+			$cond:="🌧 雨天対応"
 		: ($setup.conditions="sunny")
-			$cond:="☀ Fair weather"
+			$cond:="☀️ 晴天"
 		Else 
 			$cond:=$setup.conditions
 	End case 
 	var $temp : Text
 	Case of 
 		: ($setup.temperature="cold")
-			$temp:="❄ Cold"
+			$temp:="❄ 厳寒"
 		: ($setup.temperature="hot")
-			$temp:="🔥 Hot"
+			$temp:="🔥 猛暑"
 		Else 
-			$temp:="🌡 Normal temp"
+			$temp:="🌡 平常"
 	End case 
 	return $cond+" · "+$temp
 	
@@ -154,22 +155,22 @@ Function get forecastLabel() : Text
 	var $cond : Text
 	Case of 
 		: ($forecast.conditions="indifferent")
-			return "🏢 Indoor"
+			return "🏢 屋内"
 		: ($forecast.conditions="rain")
-			$cond:="🌧 Rain expected"
+			$cond:="🌧 雨天"
 		: ($forecast.conditions="sunny")
-			$cond:="☀ Sunny"
+			$cond:="☀️ 晴天"
 		Else 
 			$cond:=$forecast.conditions
 	End case 
 	var $temp : Text
 	Case of 
 		: ($forecast.temperature="cold")
-			$temp:="❄ Cold"
+			$temp:="❄ 厳寒"
 		: ($forecast.temperature="hot")
-			$temp:="🔥 Hot"
+			$temp:="🔥 猛暑"
 		Else 
-			$temp:="🌡 Normal temp"
+			$temp:="🌡 平常"
 	End case 
 	return $cond+" · "+$temp
 	
@@ -180,14 +181,14 @@ Function _weatherLabel($setup : Object) : Text
 		return ""
 	End if 
 	If ($setup.conditions="indifferent")
-		return "🏢 Indoor"
+		return "🏢 屋内"
 	End if 
 	var $icon : Text
 	Case of 
 		: ($setup.conditions="rain")
 			$icon:="🌧"
 		: ($setup.conditions="sunny")
-			$icon:="☀"
+			$icon:="☀️"
 		Else 
 			$icon:="❓"
 	End case 

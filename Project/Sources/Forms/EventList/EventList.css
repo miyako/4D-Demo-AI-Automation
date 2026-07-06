@@ -1,0 +1,51 @@
+#text_title {
+   text: "📅 イベント"
+}
+#btn_toggle_past {
+   text: "過去のイベント"
+}
+#btn_filter_email {
+   text: "メール"
+}
+#btn_filter_weather {
+   text: "⚠ 天候アラート"
+}
+#btn_filter_quote {
+   text: "商談中"
+}
+#btn_filter_confirmed {
+   text: "確定"
+}
+#btn_filter_all {
+   text: "すべて"
+}
+#Entête4 {
+   text: "開催日"
+}
+#Entête5 {
+   text: "主催者"
+}
+#Entête6 {
+   text: "施設"
+}
+#Entête7 {
+   text: "都市"
+}
+#Entête8 {
+    text: "人数"
+}
+#Entête9 {
+   text: "想定"
+} 
+#Entête10 {
+    text: "予報"
+}
+#Entête11 {
+   text: "スタータス"   
+} 
+#Entête12 {
+   text: "契約"
+}  
+#btn_refresh {
+   text: "🌤 天気情報を更新"
+}

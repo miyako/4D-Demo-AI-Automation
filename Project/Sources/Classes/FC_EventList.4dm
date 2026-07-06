@@ -132,8 +132,15 @@ Function _loadEvents($filter : Text)
 			End if 
 	End case 
 	
+	var $l10n : Object:={}
+	If (True)
+		$l10n.events:=" イベント"
+	Else 
+		$l10n.events:=" events"
+	End if 
+	
 	This.events:=$selection
-	OBJECT SET TITLE(*; "text_event_count"; String(This.events.length)+" events")
+	OBJECT SET TITLE(*; "text_event_count"; String(This.events.length)+$l10n.events)
 	This._updateFilterCounts()
 	
 Function _updateFilterCounts()
@@ -158,21 +165,28 @@ Function _updateFilterCounts()
 		$emailCount:=ds.Event.query("emails.emailStatus = :1 AND eventDate >= :2"; "pending"; $today).length
 	End if 
 	
+	//OBJECT SET TITLE(*; "btn_filter_all"; "All ("+String($allCount)+")")
+	//OBJECT SET TITLE(*; "btn_filter_confirmed"; "Confirmed ("+String($confirmedCount)+")")
+	//OBJECT SET TITLE(*; "btn_filter_quote"; "Quotes ("+String($quoteCount)+")")
+	//OBJECT SET TITLE(*; "btn_filter_weather"; "⚠ Weather ("+String($weatherCount)+")")
+	//OBJECT SET TITLE(*; "btn_filter_email"; "✉ Emails ("+String($emailCount)+")")
 	OBJECT SET TITLE(*; "btn_filter_all"; "All ("+String($allCount)+")")
-	OBJECT SET TITLE(*; "btn_filter_confirmed"; "Confirmed ("+String($confirmedCount)+")")
-	OBJECT SET TITLE(*; "btn_filter_quote"; "Quotes ("+String($quoteCount)+")")
-	OBJECT SET TITLE(*; "btn_filter_weather"; "⚠ Weather ("+String($weatherCount)+")")
-	OBJECT SET TITLE(*; "btn_filter_email"; "✉ Emails ("+String($emailCount)+")")
+	OBJECT SET TITLE(*; "btn_filter_confirmed"; "確定 ("+String($confirmedCount)+")")
+	OBJECT SET TITLE(*; "btn_filter_quote"; "商談中 ("+String($quoteCount)+")")
+	OBJECT SET TITLE(*; "btn_filter_weather"; "⚠ 天候アラート ("+String($weatherCount)+")")
+	OBJECT SET TITLE(*; "btn_filter_email"; "✉ メール ("+String($emailCount)+")")
 	
 Function _refreshWeather()
 	This.running:=True
-	OBJECT SET TITLE(*; "btn_refresh"; "⏳ Updating...")
+	//OBJECT SET TITLE(*; "btn_refresh"; "⏳ Updating...")
+	OBJECT SET TITLE(*; "btn_refresh"; "⏳ 更新中...")
 	
 	var $window : Integer:=Current form window
 	CALL WORKER("weatherWorker"; Formula(_weatherWorkerJob($window)))
 	
 Function _onWeatherDone()
 	This.running:=False
-	OBJECT SET TITLE(*; "btn_refresh"; "🌤 Refresh Weather")
+	//OBJECT SET TITLE(*; "btn_refresh"; "🌤 Refresh Weather")
+	OBJECT SET TITLE(*; "btn_refresh"; "🌤 天気予報")
 	This._loadEvents(This.activeFilter)
 	

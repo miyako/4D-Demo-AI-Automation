@@ -5,6 +5,9 @@
 	"windowSizingY": "fixed",
 	"windowMinWidth": 1280,
 	"windowMinHeight": 640,
+	"css": [
+		"EventList.css"
+	],
 	"pages": [
 		{
 			"objects": {
@@ -42,7 +45,6 @@
 					"top": 18,
 					"width": 200,
 					"height": 28,
-					"text": "📅 Events",
 					"class": "textTitle"
 				},
 				"text_event_count": {
@@ -90,7 +92,8 @@
 								"name": "Pied1"
 							},
 							"dataSource": "This:C1470.weatherIcon",
-							"truncateMode": "none"
+							"truncateMode": "none",
+							"enterable": false
 						},
 						{
 							"header": {
@@ -106,11 +109,11 @@
 								"name": "Pied3"
 							},
 							"dataSource": "This:C1470.emailIcon",
-							"truncateMode": "none"
+							"truncateMode": "none",
+							"enterable": false
 						},
 						{
 							"header": {
-								"text": "DATE",
 								"name": "Entête4"
 							},
 							"name": "col_date",
@@ -122,11 +125,11 @@
 								"name": "Pied4"
 							},
 							"dataSource": "This:C1470.eventDateStr",
-							"truncateMode": "none"
+							"truncateMode": "none",
+							"enterable": false
 						},
 						{
 							"header": {
-								"text": "CLIENT",
 								"name": "Entête5"
 							},
 							"name": "col_client",
@@ -138,11 +141,11 @@
 								"name": "Pied5"
 							},
 							"dataSource": "This:C1470.clientName",
-							"truncateMode": "none"
+							"truncateMode": "none",
+							"enterable": false
 						},
 						{
 							"header": {
-								"text": "VENUE",
 								"name": "Entête6"
 							},
 							"name": "col_venue",
@@ -154,11 +157,11 @@
 								"name": "Pied6"
 							},
 							"dataSource": "This:C1470.venueName",
-							"truncateMode": "none"
+							"truncateMode": "none",
+							"enterable": false
 						},
 						{
 							"header": {
-								"text": "CITY",
 								"name": "Entête7"
 							},
 							"name": "col_city",
@@ -170,11 +173,11 @@
 								"name": "Pied7"
 							},
 							"dataSource": "This:C1470.venueCity",
-							"truncateMode": "none"
+							"truncateMode": "none",
+							"enterable": false
 						},
 						{
 							"header": {
-								"text": "GUESTS",
 								"name": "Entête8"
 							},
 							"name": "col_guests",
@@ -187,7 +190,8 @@
 								"name": "Pied8"
 							},
 							"dataSource": "This:C1470.guestCountStr",
-							"truncateMode": "none"
+							"truncateMode": "none",
+							"enterable": false
 						},
 						{
 							"header": {
@@ -203,11 +207,11 @@
 								"name": "Pied2"
 							},
 							"dataSource": "This:C1470.venueOptionIcon",
-							"truncateMode": "none"
+							"truncateMode": "none",
+							"enterable": false
 						},
 						{
 							"header": {
-								"text": "PLANNED",
 								"name": "Entête9"
 							},
 							"name": "col_planned",
@@ -220,11 +224,11 @@
 								"name": "Pied9"
 							},
 							"dataSource": "This:C1470.plannedWeather",
-							"truncateMode": "none"
+							"truncateMode": "none",
+							"enterable": false
 						},
 						{
 							"header": {
-								"text": "FORECAST",
 								"name": "Entête10"
 							},
 							"name": "col_forecast",
@@ -237,11 +241,11 @@
 								"name": "Pied10"
 							},
 							"dataSource": "This:C1470.forecastWeather",
-							"truncateMode": "none"
+							"truncateMode": "none",
+							"enterable": false
 						},
 						{
 							"header": {
-								"text": "STATUS",
 								"name": "Entête11"
 							},
 							"name": "col_status",
@@ -254,11 +258,11 @@
 								"name": "Pied11"
 							},
 							"dataSource": "This:C1470.statusBadge",
-							"truncateMode": "none"
+							"truncateMode": "none",
+							"enterable": false
 						},
 						{
 							"header": {
-								"text": "CONTRACT",
 								"name": "Entête12"
 							},
 							"name": "col_ref",
@@ -270,7 +274,8 @@
 								"name": "Pied12"
 							},
 							"dataSource": "This:C1470.contractRef",
-							"truncateMode": "none"
+							"truncateMode": "none",
+							"enterable": false
 						}
 					]
 				},
@@ -280,7 +285,6 @@
 					"top": 16,
 					"width": 160,
 					"height": 34,
-					"text": "🌤 Refresh Weather",
 					"events": [
 						"onClick"
 					],
@@ -295,11 +299,10 @@
 					"top": 76,
 					"width": 100,
 					"height": 28,
-					"text": "All",
 					"events": [
 						"onClick"
 					],
-					"focusable": true,
+					"focusable": false,
 					"method": "objbtn_filter_all.4dm",
 					"class": "btnFilterActive",
 					"style": "flat"
@@ -310,11 +313,10 @@
 					"top": 76,
 					"width": 130,
 					"height": 28,
-					"text": "Confirmed",
 					"events": [
 						"onClick"
 					],
-					"focusable": true,
+					"focusable": false,
 					"method": "objbtn_filter_confirmed.4dm",
 					"class": "btnFilterActive",
 					"style": "flat"
@@ -325,11 +327,10 @@
 					"top": 76,
 					"width": 110,
 					"height": 28,
-					"text": "Quotes",
 					"events": [
 						"onClick"
 					],
-					"focusable": true,
+					"focusable": false,
 					"method": "objbtn_filter_quote.4dm",
 					"class": "btnFilterActive",
 					"style": "flat"
@@ -340,11 +341,10 @@
 					"top": 76,
 					"width": 150,
 					"height": 28,
-					"text": "⚠ Weather Alerts",
 					"events": [
 						"onClick"
 					],
-					"focusable": true,
+					"focusable": false,
 					"method": "objbtn_filter_weather.4dm",
 					"class": "btnFilterActive",
 					"style": "flat"
@@ -355,11 +355,10 @@
 					"top": 76,
 					"width": 130,
 					"height": 28,
-					"text": "📧 Email",
 					"events": [
 						"onClick"
 					],
-					"focusable": true,
+					"focusable": false,
 					"method": "objbtn_filter_email.4dm",
 					"class": "btnFilterActive",
 					"style": "flat"
@@ -370,11 +369,10 @@
 					"top": 76,
 					"width": 110,
 					"height": 28,
-					"text": "Show Past",
 					"events": [
 						"onClick"
 					],
-					"focusable": true,
+					"focusable": false,
 					"method": "objbtn_toggle_past.4dm",
 					"class": "btnFilterActive",
 					"style": "flat"
@@ -393,5 +391,12 @@
 		"version": "1",
 		"kind": "form"
 	},
-	"geometryStamp": 16
+	"geometryStamp": 16,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
+	}
 }
