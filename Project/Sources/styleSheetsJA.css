@@ -1,0 +1,45 @@
+#text_logo {
+   text: "⚡ イベントパルス"
+}
+#btn_ai_setup {
+   text: "⚠ プロバイダーとモデルを設定"
+}
+#text_card1_title {
+   text: "イベント" 
+}
+#text_card2_title {
+   text: "サービス" 
+}
+#text_card3_title {
+   text: "施設" 
+}
+#text_subtitle {
+   text: "世界都市イベント管理システム"
+}
+#btn_clear_data {
+   text: "🗑 全データ削除"
+}
+#btn_reset_all {
+   text: "🚀 サンプルデータ生成"
+}
+#btn_rebuild_embeddings {
+   text: "🔍 埋め込みを再生成"
+}
+#text_card1_sub {
+   text: "開催予定と気象予報"
+}
+#text_card2_sub {
+   text: "追加オプション"
+}
+ #text_card3_sub {
+    text: "レンタル会場"
+ }
+ #btn_events {
+    text: "イベントを見る"
+ }
+ #btn_inbox {
+    text: "サービスを見る"
+ }
+ #btn_simulate {
+    text: "施設を見る"
+ }

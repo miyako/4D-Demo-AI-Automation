@@ -5,8 +5,8 @@ property statusText : Text
 
 Class constructor()
 	This.statusText:="● AI Connected"
-
-//MARK: - Form & form objects event handlers
+	
+	//MARK: - Form & form objects event handlers
 Function formEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Load)
@@ -14,53 +14,53 @@ Function formEventHandler($formEventCode : Integer)
 		: ($formEventCode=On Activate)
 			This._refreshAiStatus()
 	End case 
-
+	
 Function btnEventsEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
 			This._openEvents()
 	End case 
-
+	
 Function btnServicesEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
 			This._openServices()
 	End case 
-
+	
 Function btnVenuesEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
 			This._openVenues()
 	End case 
-
+	
 Function btnResetAllEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
 			This._resetAll()
 	End case 
-
+	
 Function btnRebuildEmbeddingsEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
 			This._rebuildEmbeddings()
 	End case 
-
+	
 Function btnClearDataEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
 			This._clearData()
 	End case 
-
+	
 Function btnAiSetupEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
 			This._openAiSetupDocs()
 	End case 
-
-//MARK: - Private
+	
+	//MARK: - Private
 Function _onLoad()
 	This._refreshAiStatus()
-
+	
 Function _refreshAiStatus()
 	var $reasoningOk : Boolean:=cs.UIHelpers.me.isAliasConfigured("chat-reasoning")
 	var $simpleOk : Boolean:=cs.UIHelpers.me.isAliasConfigured("chat-simple")
@@ -100,25 +100,25 @@ Function _refreshAiStatus()
 	var $simpleLabel : Text:=$simpleOk ? $simpleEntry.model : "not configured"
 	var $embedLabel : Text:=$embedOk ? $embeddingEntry.model : "not configured"
 	OBJECT SET TITLE(*; "text_footer"; "Reasoning: "+$reasoningLabel+" · Simple: "+$simpleLabel+" · Embed: "+$embedLabel+" · Open-Meteo")
-
+	
 Function _openEvents()
 	var $w : Integer:=Open form window("EventList"; Plain form window)
 	DIALOG("EventList")
 	CLOSE WINDOW($w)
-
+	
 Function _openServices()
 	var $w : Integer:=Open form window("ServiceBrowser"; Plain form window)
 	DIALOG("ServiceBrowser")
 	CLOSE WINDOW($w)
-
+	
 Function _openVenues()
 	var $w : Integer:=Open form window("VenueBrowser"; Plain form window)
 	DIALOG("VenueBrowser")
 	CLOSE WINDOW($w)
-
+	
 Function _checkEmbeddingReady() : Boolean
 	return cs.UIHelpers.me.checkAliasOrPrompt("embedding")
-
+	
 Function _resetAll()
 	If (Not(This._checkEmbeddingReady()))
 		return 
@@ -131,7 +131,7 @@ Function _resetAll()
 		CLOSE WINDOW($w)
 		ALERT("All data has been reset and rebuilt!\nService embeddings have been regenerated.")
 	End if 
-
+	
 Function _rebuildEmbeddings()
 	If (Not(This._checkEmbeddingReady()))
 		return 
@@ -141,13 +141,20 @@ Function _rebuildEmbeddings()
 		cs.DataSeeder.me.rebuildEmbeddings()
 		ALERT("Service embeddings rebuilt successfully!")
 	End if 
-
+	
 Function _openAiSetupDocs()
 	cs.UIHelpers.me.openAiSetup()
-
+	
 Function _clearData()
 	CONFIRM("Clear ALL data?\n\nThis will delete all records without re-importing.\nThe database will be empty use 'Reset & Rebuild All' to re-seed.")
 	If (OK=1)
 		cs.DataSeeder.me.clearAll()
 		ALERT("All data cleared. The database is now empty.")
 	End if 
+	
+Function _activate()
+	
+	var $x; $y; $r; $b; $window : Integer
+	$window:=Current form window
+	GET WINDOW RECT($x; $y; $r; $b; $window)
+	SET WINDOW RECT($x; $y; $r; $b; $window)

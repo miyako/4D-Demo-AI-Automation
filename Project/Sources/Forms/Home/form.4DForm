@@ -5,6 +5,9 @@
 	"windowSizingY": "fixed",
 	"windowMinWidth": 860,
 	"windowMinHeight": 540,
+	"css": [
+		"/SOURCES/styleSheetsJA.css"
+	],
 	"pages": [
 		null,
 		{
@@ -31,7 +34,6 @@
 					"top": 22,
 					"width": 220,
 					"height": 46,
-					"text": "⚡ Event Pulse",
 					"class": "textTitle"
 				},
 				"text_subtitle": {
@@ -40,7 +42,6 @@
 					"top": 66,
 					"width": 400,
 					"height": 18,
-					"text": "International Event Management · AI-Powered",
 					"class": "textMuted"
 				},
 				"rect_card1": {
@@ -67,7 +68,6 @@
 					"top": 244,
 					"width": 220,
 					"height": 24,
-					"text": "Events",
 					"textAlign": "center",
 					"class": "textSection"
 				},
@@ -77,7 +77,6 @@
 					"top": 272,
 					"width": 204,
 					"height": 36,
-					"text": "Upcoming events with\nweather monitoring",
 					"textAlign": "center",
 					"class": "textMuted"
 				},
@@ -87,7 +86,6 @@
 					"top": 330,
 					"width": 180,
 					"height": 40,
-					"text": "Open Events",
 					"events": [
 						"onClick"
 					],
@@ -120,7 +118,6 @@
 					"top": 244,
 					"width": 220,
 					"height": 24,
-					"text": "Services",
 					"textAlign": "center",
 					"class": "textSection"
 				},
@@ -130,7 +127,6 @@
 					"top": 272,
 					"width": 204,
 					"height": 36,
-					"text": "Browse the service\ncatalog",
 					"textAlign": "center",
 					"class": "textMuted"
 				},
@@ -140,7 +136,6 @@
 					"top": 330,
 					"width": 180,
 					"height": 40,
-					"text": "Open Services",
 					"events": [
 						"onClick"
 					],
@@ -173,7 +168,6 @@
 					"top": 244,
 					"width": 220,
 					"height": 24,
-					"text": "Venues",
 					"textAlign": "center",
 					"class": "textSection"
 				},
@@ -183,7 +177,6 @@
 					"top": 272,
 					"width": 204,
 					"height": 36,
-					"text": "Explore venues &\nrental pricing",
 					"textAlign": "center",
 					"class": "textMuted"
 				},
@@ -193,7 +186,6 @@
 					"top": 330,
 					"width": 180,
 					"height": 40,
-					"text": "Open Venues",
 					"events": [
 						"onClick"
 					],
@@ -218,7 +210,6 @@
 					"top": 440,
 					"width": 180,
 					"height": 34,
-					"text": "🚀 Initialize Sample Data",
 					"events": [
 						"onClick"
 					],
@@ -233,7 +224,6 @@
 					"top": 440,
 					"width": 180,
 					"height": 34,
-					"text": "🔍 Rebuild Embeddings",
 					"events": [
 						"onClick"
 					],
@@ -248,7 +238,6 @@
 					"top": 440,
 					"width": 180,
 					"height": 34,
-					"text": "🗑 Clear All Data",
 					"events": [
 						"onClick"
 					],
@@ -280,7 +269,6 @@
 					"top": 30,
 					"width": 220,
 					"height": 30,
-					"text": "⚠ Set up provider & model",
 					"visible": false,
 					"events": [
 						"onClick"
@@ -316,5 +304,12 @@
 	"$4d": {
 		"version": "1",
 		"kind": "form"
+	},
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
 	}
 }
