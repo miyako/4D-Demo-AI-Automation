@@ -2,8 +2,8 @@
 // UI functions shared between form controllers (AI action buttons)
 
 singleton Class constructor()
-
-// ─── Masquer les 4 boutons d'action IA ────────────────────────────────────────
+	
+	// ─── Masquer les 4 boutons d'action IA ────────────────────────────────────────
 Function resetActionButtons()
 	var $btns : Collection:=["btn_ai_action1"; "btn_ai_action2"; "btn_ai_action3"; "btn_ai_action4"]
 	var $btn : Text
@@ -12,11 +12,11 @@ Function resetActionButtons()
 		OBJECT SET TITLE(*; $btn; "")
 	End for each 
 	OBJECT SET TITLE(*; "text_ai_validation_badge"; "")
-
-// ─── Display AI action buttons (max 4), stacked from the bottom ─────────────────
-// Buttons are pre-positioned bottom-to-top in the form (action4=680, action3=624, action2=568, action1=512)
-// We show the last N slots so actions always appear just above the analyze button.
-// Returns a Collection[4] mapping slot index → action index (or -1 if unused).
+	
+	// ─── Display AI action buttons (max 4), stacked from the bottom ─────────────────
+	// Buttons are pre-positioned bottom-to-top in the form (action4=680, action3=624, action2=568, action1=512)
+	// We show the last N slots so actions always appear just above the analyze button.
+	// Returns a Collection[4] mapping slot index → action index (or -1 if unused).
 Function showActionButtons($actions : Collection) : Collection
 	var $btnNames : Collection:=["btn_ai_action1"; "btn_ai_action2"; "btn_ai_action3"; "btn_ai_action4"]
 	var $maxAct : Integer:=$actions.length
@@ -34,24 +34,24 @@ Function showActionButtons($actions : Collection) : Collection
 		OBJECT SET TITLE(*; $btnNames[$slot]; $actions[$i].label)
 	End for 
 	return $map
-
-// ─── AI alias helpers ─────────────────────────────────────────────────────────
-
-// Returns True if the named model alias is configured (non-empty model value)
+	
+	// ─── AI alias helpers ─────────────────────────────────────────────────────────
+	
+	// Returns True if the named model alias is configured (non-empty model value)
 Function isAliasConfigured($alias : Text) : Boolean
 	var $entry : Object:=cs.AIKit.OpenAIProviders.new().modelAliases().query("name = :1"; $alias).first()
 	return ($entry#Null) && ($entry.model#"") && ($entry.model#Null)
-
-// Opens AI settings in dev mode, or the online doc page otherwise
+	
+	// Opens AI settings in dev mode, or the online doc page otherwise
 Function openAiSetup()
 	If (Application type=0)
-		OPEN SETTINGS WINDOW("/Database/AI")
+		OPEN SETTINGS WINDOW("/Database/AI/"; True; Structure settings)
 	Else 
 		OPEN URL("https://developer.4d.com/docs/settings/ai")
 	End if 
-
-// Checks that $alias is configured; if not, prompts and offers to open settings.
-// Returns True if ready, False if not configured.
+	
+	// Checks that $alias is configured; if not, prompts and offers to open settings.
+	// Returns True if ready, False if not configured.
 Function checkAliasOrPrompt($alias : Text) : Boolean
 	If (This.isAliasConfigured($alias))
 		return True
@@ -65,17 +65,17 @@ Function checkAliasOrPrompt($alias : Text) : Boolean
 		ALERT("No '"+$alias+"' model alias is configured.\n\nPlease set up a '"+$alias+"' model alias in the AI settings.\nSee: https://developer.4d.com/docs/settings/ai")
 	End if 
 	return False
-
-// ─── Spinner constants ────────────────────────────────────────────────────────
-
-// Returns the braille spinner frame sequence used by all form spinners
+	
+	// ─── Spinner constants ────────────────────────────────────────────────────────
+	
+	// Returns the braille spinner frame sequence used by all form spinners
 Function spinnerFrames() : Collection
 	return ["⠋"; "⠙"; "⠹"; "⠸"; "⠼"; "⠴"; "⠦"; "⠧"; "⠇"; "⠏"]
-
-// ─── Window utilities ─────────────────────────────────────────────────────────
-
-// Resizes the current form window to $width, keeping height and position,
-// clamped to the screen the window currently lives on.
+	
+	// ─── Window utilities ─────────────────────────────────────────────────────────
+	
+	// Resizes the current form window to $width, keeping height and position,
+	// clamped to the screen the window currently lives on.
 Function resizeWindowWidth($width : Integer)
 	var $curL; $curT; $curR; $curB : Integer
 	GET WINDOW RECT($curL; $curT; $curR; $curB; Current form window)
@@ -106,3 +106,4 @@ Function resizeWindowWidth($width : Integer)
 		End if 
 	End if 
 	SET WINDOW RECT($curL; $curT; $curL+$width; $curT+$height; Current form window)
+	

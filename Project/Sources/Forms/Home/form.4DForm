@@ -252,7 +252,6 @@
 					"top": 30,
 					"width": 130,
 					"height": 30,
-					"text": "● AI Connected",
 					"visible": true,
 					"events": [
 						"onClick"
@@ -311,5 +310,6 @@
 		"views": {
 			"View 1": {}
 		}
-	}
+	},
+	"geometryStamp": 12
 }

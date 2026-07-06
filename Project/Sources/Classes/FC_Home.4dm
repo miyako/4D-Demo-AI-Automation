@@ -67,6 +67,23 @@ Function _refreshAiStatus()
 	var $embedOk : Boolean:=cs.UIHelpers.me.isAliasConfigured("embedding")
 	var $allOk : Boolean:=$reasoningOk && $simpleOk && $embedOk
 	
+	var $l10n : Object:={}
+	If (Get database localization(Current localization)="ja")
+		$l10n.notConfigured:="未設定"
+		$l10n.reasoning:="思考: "
+		$l10n.simple:=" · 簡易: "
+		$l10n.embed:=" · 埋め込み: "
+		$l10n.missingModelAlias:="Missing model alias: "
+		$l10n.and:=", "
+	Else 
+		$l10n.notConfigured:="not configured"
+		$l10n.reasoning:="Reasoning: "
+		$l10n.simple:=" · Simple: "
+		$l10n.embed:=" · Embed: "
+		$l10n.missingModelAlias:="Missing model alias: "
+		$l10n.and:=" and "
+	End if 
+	
 	If ($allOk)
 		OBJECT SET VISIBLE(*; "btn_ai_connected"; True)
 		OBJECT SET VISIBLE(*; "btn_ai_setup"; False)
@@ -84,7 +101,7 @@ Function _refreshAiStatus()
 		If (Not($embedOk))
 			$missing.push("'embedding'")
 		End if 
-		OBJECT SET TITLE(*; "text_ai_hint"; "Missing model alias: "+$missing.join(" and "))
+		OBJECT SET TITLE(*; "text_ai_hint"; $l10n.missingModelAlias+$missing.join($l10n.and))
 		OBJECT SET VISIBLE(*; "text_ai_hint"; True)
 	End if 
 	
@@ -96,10 +113,10 @@ Function _refreshAiStatus()
 	var $reasoningEntry : Object:=$aliases.query("name = :1"; "chat-reasoning").first()
 	var $simpleEntry : Object:=$aliases.query("name = :1"; "chat-simple").first()
 	var $embeddingEntry : Object:=$aliases.query("name = :1"; "embedding").first()
-	var $reasoningLabel : Text:=$reasoningOk ? $reasoningEntry.model : "not configured"
-	var $simpleLabel : Text:=$simpleOk ? $simpleEntry.model : "not configured"
-	var $embedLabel : Text:=$embedOk ? $embeddingEntry.model : "not configured"
-	OBJECT SET TITLE(*; "text_footer"; "Reasoning: "+$reasoningLabel+" · Simple: "+$simpleLabel+" · Embed: "+$embedLabel+" · Open-Meteo")
+	var $reasoningLabel : Text:=$reasoningOk ? $reasoningEntry.model : $l10n.notConfigured
+	var $simpleLabel : Text:=$simpleOk ? $simpleEntry.model : $l10n.notConfigured
+	var $embedLabel : Text:=$embedOk ? $embeddingEntry.model : $l10n.notConfigured
+	OBJECT SET TITLE(*; "text_footer"; $l10n.reasoning+$reasoningLabel+$l10n.simple+$simpleLabel+$l10n.embed+$embedLabel+" · Open-Meteo")
 	
 Function _openEvents()
 	var $w : Integer:=Open form window("EventList"; Plain form window)
