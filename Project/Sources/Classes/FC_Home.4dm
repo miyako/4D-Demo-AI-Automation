@@ -3,8 +3,14 @@
 
 property statusText : Text
 
+Class extends FC
+
 Class constructor()
-	This.statusText:="● AI Connected"
+	
+	Super()
+	
+	//This.statusText:="● AI Connected"
+	This.statusText:="● AI 接続中"
 	
 	//MARK: - Form & form objects event handlers
 Function formEventHandler($formEventCode : Integer)
@@ -68,7 +74,7 @@ Function _refreshAiStatus()
 	var $allOk : Boolean:=$reasoningOk && $simpleOk && $embedOk
 	
 	var $l10n : Object:={}
-	If (Get database localization(Current localization)="ja")
+	If (True)
 		$l10n.notConfigured:="未設定"
 		$l10n.reasoning:="思考: "
 		$l10n.simple:=" · 簡易: "
@@ -129,9 +135,25 @@ Function _openServices()
 	CLOSE WINDOW($w)
 	
 Function _openVenues()
-	var $w : Integer:=Open form window("VenueBrowser"; Plain form window)
-	DIALOG("VenueBrowser")
-	CLOSE WINDOW($w)
+	
+	var $title : Text:="施設"
+	
+	ARRAY LONGINT($windows; 0)
+	WINDOW LIST($windows)
+	
+	var $i; $window : Integer
+	For ($i; 1; Size of array($windows))
+		$window:=$windows{$i}
+		If (Get window title($window)=$title) && (Window process($window)=1)
+			CALL FORM($window; Formula(Form._activate.call()))  //FC_VenueBrowser
+			return 
+		End if 
+	End for 
+	
+	$window:=Open form window("VenueBrowser"; Plain form window)  //FC_VenueBrowser
+	SET WINDOW TITLE($title; $window)
+	DIALOG("VenueBrowser"; *)  //FC_VenueBrowser
+	//CLOSE WINDOW($w)
 	
 Function _checkEmbeddingReady() : Boolean
 	return cs.UIHelpers.me.checkAliasOrPrompt("embedding")
@@ -169,9 +191,3 @@ Function _clearData()
 		ALERT("All data cleared. The database is now empty.")
 	End if 
 	
-Function _activate()
-	
-	var $x; $y; $r; $b; $window : Integer
-	$window:=Current form window
-	GET WINDOW RECT($x; $y; $r; $b; $window)
-	SET WINDOW RECT($x; $y; $r; $b; $window)

@@ -1,0 +1,39 @@
+#input_search {
+   placeholder: "施設を検索..."
+}
+#btn_back {
+   text: "← 閉じる"
+}
+#text_title {
+   text: "📍 施設"
+}
+.btn_filter_all {
+   text: "すべて"
+}
+.btn_filter_both {
+   text: "🏢+🌳 両方"
+}
+.btn_filter_indoor {
+   text: "🏢 屋内"
+}
+.btn_filter_outdoor {
+   text: "🌳 野外"
+}
+#Entête1 {
+   text: "施設名称"
+}
+#Entête2 {
+   text: "都市"
+}
+#Entête3 {
+   text: "国"
+}
+#Entête4 {
+   text: "🏢 屋内"
+}
+#Entête5 {
+   text: "🌳 野外"
+}
+#Entête6 {
+   text: "コスト"
+}

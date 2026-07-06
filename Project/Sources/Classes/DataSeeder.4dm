@@ -5,8 +5,8 @@
 property _weatherTemplates : Object
 
 singleton Class constructor()
-
-// ─── Main entry point ───────────────────────────────────────────────────────────
+	
+	// ─── Main entry point ───────────────────────────────────────────────────────────
 Function seedIfEmpty()
 	If (ds.Client.all().length=0)
 		This._seedClients()
@@ -23,11 +23,11 @@ Function seedIfEmpty()
 	If (ds.Email.all().length=0)
 		This._seedEmails()
 	End if 
-
+	
 	// Generate vector embeddings for services (if missing)
 	This._buildServiceEmbeddings()
-
-// ─── Full reset: empties everything and re-imports ──────────────────────────────
+	
+	// ─── Full reset: empties everything and re-imports ──────────────────────────────
 Function resetAll()
 	// Delete in order (children first)
 	ds.EventLine.all().drop()
@@ -36,20 +36,20 @@ Function resetAll()
 	ds.Service.all().drop()
 	ds.Venue.all().drop()
 	ds.Client.all().drop()
-
+	
 	// Reset cached templates so file is reloaded
 	This._weatherTemplates:=Null
-
+	
 	// Re-import everything from JSON files
 	This._seedClients()
 	This._seedVenues()
 	This._seedServices()
 	This._seedEventsAndLines()
 	This._seedEmails()
-
+	
 	// Recalculate embeddings (forced because services are new)
 	This._buildServiceEmbeddings()
-
+	
 	// Clear event logs
 	var $logsFolder : 4D.Folder:=Folder(fk logs folder)
 	If ($logsFolder.exists)
@@ -58,8 +58,8 @@ Function resetAll()
 			$logFile.delete()
 		End for each 
 	End if 
-
-// ─── Clear only: empties everything without re-importing ────────────────────────
+	
+	// ─── Clear only: empties everything without re-importing ────────────────────────
 Function clearAll()
 	ds.EventLine.all().drop()
 	ds.Event.all().drop()
@@ -68,8 +68,8 @@ Function clearAll()
 	ds.Venue.all().drop()
 	ds.Client.all().drop()
 	This._weatherTemplates:=Null
-
-// ─── Clients ─────────────────────────────────────────────────────────────────────
+	
+	// ─── Clients ─────────────────────────────────────────────────────────────────────
 Function _seedClients()
 	var $file : 4D.File:=Folder(fk resources folder).file("data/clients.json")
 	var $data : Collection:=JSON Parse($file.getText())
@@ -84,11 +84,13 @@ Function _seedClients()
 		$e.country:=$item.country
 		$e.seedIndex:=$item.seedIndex
 		$e.save()
-	End for each
-
-// ─── Venues ──────────────────────────────────────────────────────────────────────
+	End for each 
+	
+	// ─── Venues ──────────────────────────────────────────────────────────────────────
 Function _seedVenues()
-	var $file : 4D.File:=Folder(fk resources folder).file("data/venues.json")
+	//var $file : 4D.File:=Folder(fk resources folder).file("data/venues.json")
+	var $file : 4D.File:=Folder(fk resources folder).file("data/venues.ja.json")
+	
 	var $data : Collection:=JSON Parse($file.getText())
 	var $item : Object
 	var $e : cs.VenueEntity
@@ -111,11 +113,12 @@ Function _seedVenues()
 			$e.outdoorOption:=$item.outdoorOption
 		End if 
 		$e.save()
-	End for each
-
-// ─── Services ────────────────────────────────────────────────────────────────────
+	End for each 
+	
+	// ─── Services ────────────────────────────────────────────────────────────────────
 Function _seedServices()
-	var $file : 4D.File:=Folder(fk resources folder).file("data/services.json")
+	//var $file : 4D.File:=Folder(fk resources folder).file("data/services.json")
+	var $file : 4D.File:=Folder(fk resources folder).file("data/services.ja.json")
 	var $data : Collection:=JSON Parse($file.getText())
 	var $item : Object
 	var $e : cs.ServiceEntity
@@ -129,32 +132,32 @@ Function _seedServices()
 		$e.description:=$item.description
 		$e.seedIndex:=$item.seedIndex
 		$e.save()
-	End for each
-
-// ─── Events + EventLines ────────────────────────────────────────────────────────
+	End for each 
+	
+	// ─── Events + EventLines ────────────────────────────────────────────────────────
 Function _seedEventsAndLines()
 	// Delegates to regenerateEvents() which loads events.json with relative dates
 	This.regenerateEvents()
-
-// ─── Generates realistic lines for an event ────────────────────────────────────
+	
+	// ─── Generates realistic lines for an event ────────────────────────────────────
 Function _generateEventLines($evt : cs.EventEntity; $item : Object; $svcByCategory : Object)
 	var $guestCount : Integer:=$item.guestCount
 	var $status : Text:=$item.status
 	var $lineStatus : Text:=$status="confirmed" ? "confirmed" : "pending"
-
+	
 	// Build weather profile key
 	var $setup : Object:=$evt.weatherSetup
 	var $conditions : Text:=$setup ? $setup.conditions : "indifferent"
 	var $temperature : Text:=$setup ? $setup.temperature : "normal"
 	var $venueOption : Text:=$evt.venueOption
 	var $profileKey : Text:=$venueOption+"__"+$conditions+"__"+$temperature
-
+	
 	// Load templates (cached)
 	If (This._weatherTemplates=Null)
 		var $tplFile : 4D.File:=Folder(fk resources folder).file("data/weather-service-templates.json")
 		This._weatherTemplates:=JSON Parse($tplFile.getText())
 	End if 
-
+	
 	// Fallback to indoor__indifferent__normal if key not found
 	var $tpl : Object:=This._weatherTemplates[$profileKey]
 	If ($tpl=Null)
@@ -163,7 +166,7 @@ Function _generateEventLines($evt : cs.EventEntity; $item : Object; $svcByCatego
 	If ($tpl=Null)
 		return 
 	End if 
-
+	
 	// Apply mandatory services
 	var $spec : Object
 	For each ($spec; $tpl.mandatory)
@@ -199,7 +202,7 @@ Function _generateEventLines($evt : cs.EventEntity; $item : Object; $svcByCatego
 			End if 
 		End if 
 	End for each 
-
+	
 	// Apply optional services (probabilistic)
 	For each ($spec; $tpl.optional)
 		var $roll : Real:=Random%100/100
@@ -220,7 +223,7 @@ Function _generateEventLines($evt : cs.EventEntity; $item : Object; $svcByCatego
 			End if 
 		End if 
 	End for each 
-
+	
 	// Apply forced services (override randomness for events with email references)
 	If ($item.forcedServices#Null)
 		var $forced : Object
@@ -228,7 +231,7 @@ Function _generateEventLines($evt : cs.EventEntity; $item : Object; $svcByCatego
 			This._addServiceByLabel($evt; $svcByCategory; $forced.category; $forced.label; Num($forced.qty); $lineStatus)
 		End for each 
 	End if 
-
+	
 	// Add venue rental as a service line (price from venue option, not catalog)
 	var $rentalLabel : Text:=$venueOption="indoor" ? "Indoor venue rental" : "Outdoor venue rental"
 	var $rentalPrice : Real:=Num($item.venueRentalPrice)
@@ -239,15 +242,15 @@ Function _generateEventLines($evt : cs.EventEntity; $item : Object; $svcByCatego
 			This._addLineWithPrice($evt; $rsvc; 1; $lineStatus; $rentalPrice)
 		End if 
 	End if 
-
-// ─── Adds a random service from a given category ───────────────────────────────
+	
+	// ─── Adds a random service from a given category ───────────────────────────────
 Function _addRandomService($evt : cs.EventEntity; $svcByCategory : Object; $category : Text; $qty : Integer; $lineStatus : Text)
 	var $list : Collection:=$svcByCategory[$category]
 	If (($list#Null) && ($list.length>0))
 		This._addLine($evt; $list[Random%$list.length]; $qty; $lineStatus)
-	End if
-
-// ─── Adds a service preferring outdoor or indoor labels ────────────────────────
+	End if 
+	
+	// ─── Adds a service preferring outdoor or indoor labels ────────────────────────
 Function _addPreferredService($evt : cs.EventEntity; $svcByCategory : Object; $category : Text; $qty : Integer; $lineStatus : Text; $preferOutdoor : Boolean)
 	var $list : Collection:=$svcByCategory[$category]
 	If (($list=Null) || ($list.length=0))
@@ -259,8 +262,8 @@ Function _addPreferredService($evt : cs.EventEntity; $svcByCategory : Object; $c
 		$preferred:=$list
 	End if 
 	This._addLine($evt; $preferred[Random%$preferred.length]; $qty; $lineStatus)
-
-// ─── Adds a specific service by its label ──────────────────────────────────────
+	
+	// ─── Adds a specific service by its label ──────────────────────────────────────
 Function _addServiceByLabel($evt : cs.EventEntity; $svcByCategory : Object; $category : Text; $label : Text; $qty : Integer; $lineStatus : Text)
 	var $list : Collection:=$svcByCategory[$category]
 	If (($list=Null) || ($list.length=0))
@@ -271,12 +274,12 @@ Function _addServiceByLabel($evt : cs.EventEntity; $svcByCategory : Object; $cat
 		If ($qty>0)
 			This._addLine($evt; $svc; $qty; $lineStatus)
 		End if 
-	End if
-
-// ─── Adds an order line ─────────────────────────────────────────────────────────
+	End if 
+	
+	// ─── Adds an order line ─────────────────────────────────────────────────────────
 Function _addLine($evt : cs.EventEntity; $svc : Object; $qty : Integer; $status : Text)
 	This._addLineWithPrice($evt; $svc; $qty; $status; $svc.unitPrice)
-
+	
 Function _addLineWithPrice($evt : cs.EventEntity; $svc : Object; $qty : Integer; $status : Text; $price : Real)
 	var $line : cs.EventLineEntity:=ds.EventLine.new()
 	$line.eventID:=$evt.ID
@@ -285,18 +288,19 @@ Function _addLineWithPrice($evt : cs.EventEntity; $svc : Object; $qty : Integer;
 	$line.unitPrice:=$price
 	$line.lineStatus:=$status
 	$line.save()
-
-// ─── Emails ───────────────────────────────────────────────────────────────────
-// Only modification emails, all linked to a specific confirmed event
+	
+	// ─── Emails ───────────────────────────────────────────────────────────────────
+	// Only modification emails, all linked to a specific confirmed event
 Function _seedEmails()
 	// Always clear first to stay idempotent prevents duplicates if called multiple times
 	ds.Email.all().drop()
 	
-	var $file : 4D.File:=Folder(fk resources folder).file("data/emails.json")
+	//var $file : 4D.File:=Folder(fk resources folder).file("data/emails.json")
+	var $file : 4D.File:=Folder(fk resources folder).file("data/emails.ja.json")
 	var $data : Collection:=JSON Parse($file.getText())
 	var $item : Object
 	var $e : cs.EmailEntity
-
+	
 	For each ($item; $data)
 		$e:=ds.Email.new()
 		$e.sender:=$item.sender
@@ -315,24 +319,25 @@ Function _seedEmails()
 		End if 
 		$e.save()
 	End for each 
-
-// ─── Regeneration of events with relative dates ────────────────────────────────
-// Deletes all events + eventlines, then reloads events.json with
-// dates calculated relative to the current date.
-// Only 1-2 nearby events receive a fake weather alert.
+	
+	// ─── Regeneration of events with relative dates ────────────────────────────────
+	// Deletes all events + eventlines, then reloads events.json with
+	// dates calculated relative to the current date.
+	// Only 1-2 nearby events receive a fake weather alert.
 Function regenerateEvents()
 	// Delete existing data
 	ds.EventLine.all().drop()
 	ds.Event.all().drop()
-
+	
 	// Load templates from events.json
-	var $file : 4D.File:=Folder(fk resources folder).file("data/events.json")
+	//var $file : 4D.File:=Folder(fk resources folder).file("data/events.json")
+	var $file : 4D.File:=Folder(fk resources folder).file("data/events.ja.json")
 	var $templates : Collection:=JSON Parse($file.getText())
 	var $total : Integer:=$templates.length
-
+	
 	// Load references from database no ordering needed, lookup by seedIndex
 	var $services : cs.ServiceSelection:=ds.Service.all()
-
+	
 	// Cache services by category
 	var $svcByCategory : Object:={}
 	var $svc : cs.ServiceEntity
@@ -341,12 +346,12 @@ Function regenerateEvents()
 		$cat:=$svc.category
 		If ($svcByCategory[$cat]=Null)
 			$svcByCategory[$cat]:=[]
-		End if
+		End if 
 		$svcByCategory[$cat].push({id: $svc.ID; label: $svc.label; unitPrice: $svc.unitPrice})
-	End for each
-
+	End for each 
+	
 	var $today : Date:=Current date
-
+	
 	// ── Relative date distribution ─────────────────────────────────────────────
 	// 300 events distributed:
 	//   [0..39]     → completed  (-1 to -180d)
@@ -362,10 +367,10 @@ Function regenerateEvents()
 	var $venueEnt : cs.VenueEntity
 	var $daysOffset : Integer
 	var $status : Text
-
+	
 	For ($i; 0; $total-1)
 		$item:=$templates[$i]
-
+		
 		// Determine status and relative date based on slot
 		Case of 
 			: ($i<40)
@@ -387,11 +392,11 @@ Function regenerateEvents()
 				$status:="confirmed"
 				$daysOffset:=(Random%185+181)
 		End case 
-
+		
 		// Resolve client & venue by seedIndex
 		$clientEnt:=ds.Client.query("seedIndex = :1"; $item.clientSeedIndex).first()
 		$venueEnt:=ds.Venue.query("seedIndex = :1"; $item.venueSeedIndex).first()
-
+		
 		$evt:=ds.Event.new()
 		$evt.clientID:=$clientEnt.ID
 		$evt.venueID:=$venueEnt.ID
@@ -401,7 +406,7 @@ Function regenerateEvents()
 		$evt.contractRef:="CTR-"+String(Year of($today+$daysOffset))+"-"+String(100+$i)
 		$evt.notes:=$item.notes
 		$evt.createdAt:=Current date
-
+		
 		// Determine venue option (indoor/outdoor) based on venue capabilities
 		var $venueOption : Text
 		If ($venueEnt.venueType="indoor")
@@ -415,7 +420,7 @@ Function regenerateEvents()
 			End if 
 		End if 
 		$evt.venueOption:=$venueOption
-
+		
 		// Compute rental price from venue option (stored for reference, line added in _generateEventLines)
 		var $venueRentalPrice : Real
 		If ($venueOption="indoor")
@@ -432,28 +437,28 @@ Function regenerateEvents()
 			End if 
 		End if 
 		$evt.venueRentalPrice:=$venueRentalPrice  // keep field as reference for venue switch
-
+		
 		// Assign the weatherSetup based on the chosen type
 		$evt.weatherSetup:=This._assignWeatherSetup($venueOption)
-
+		
 		// Weather alerts will be calculated by the WeatherService
 		$evt.weatherAlertLevel:="none"
 		$evt.seedIndex:=$item.seedIndex
 		$evt.weatherForecast:=Null  // explicit NULL avoids empty-string Object field on catalog migration
 		$evt.weatherAlertJson:=Null
-
+		
 		$evt.save()
-
+		
 		// Generate event lines (pass forcedServices + venueRentalPrice for venue rental line)
 		var $fakeItem : Object:={guestCount: $evt.guestCount; status: $status; forcedServices: $item.forcedServices; venueRentalPrice: $venueRentalPrice}
 		This._generateEventLines($evt; $fakeItem; $svcByCategory)
-	End for
-
+	End for 
+	
 	// Re-seed emails so linkedEventID references match the new event UUIDs
 	ds.Email.all().drop()
 	This._seedEmails()
-
-// ─── Vector embeddings for services ────────────────────────────────────────────
+	
+	// ─── Vector embeddings for services ────────────────────────────────────────────
 Function _buildServiceEmbeddings()
 	// Check if at least one service has no embedding
 	var $missing : cs.ServiceSelection:=ds.Service.query("embedding = null")
@@ -462,18 +467,18 @@ Function _buildServiceEmbeddings()
 	End if 
 	var $matcher : cs.ServiceMatcher:=cs.ServiceMatcher.new()
 	$matcher.buildEmbeddings()
-
-// ─── Forces rebuild of all embeddings (after label changes) ────────────────────
+	
+	// ─── Forces rebuild of all embeddings (after label changes) ────────────────────
 Function rebuildEmbeddings()
 	var $matcher : cs.ServiceMatcher:=cs.ServiceMatcher.new()
 	$matcher.rebuildAllEmbeddings()
-
-// ─── Assignment of weatherSetup based on indoor/outdoor choice ─────────────────
+	
+	// ─── Assignment of weatherSetup based on indoor/outdoor choice ─────────────────
 Function _assignWeatherSetup($venueOption : Text) : Object
 	var $conditions : Text
 	var $temperature : Text
 	var $r : Integer:=Random%10
-
+	
 	Case of 
 		: ($venueOption="indoor")
 			// Indoor: weather-indifferent
@@ -484,5 +489,6 @@ Function _assignWeatherSetup($venueOption : Text) : Object
 			$conditions:=$r<7 ? "sunny" : "rain"
 			$temperature:=$r<3 ? "hot" : ($r<8 ? "normal" : "cold")
 	End case 
-
+	
 	return {conditions: $conditions; temperature: $temperature}
+	

@@ -72,12 +72,12 @@
 				"alpha": 0
 			},
 			"coordinates": {
-				"left": 647.67578125,
-				"top": 501.7734375,
-				"width": 279.34375,
-				"height": 273.01953125
+				"left": 351.53515625,
+				"top": 459.9765625,
+				"width": 129,
+				"height": 314.33203125
 			},
-			"displayable_fields_count": 11,
+			"displayable_fields_count": 13,
 			"fields_ordering": 1
 		},
 		"Client": {

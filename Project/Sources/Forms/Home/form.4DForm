@@ -6,7 +6,7 @@
 	"windowMinWidth": 860,
 	"windowMinHeight": 540,
 	"css": [
-		"/SOURCES/styleSheetsJA.css"
+		"Home.css"
 	],
 	"pages": [
 		null,
