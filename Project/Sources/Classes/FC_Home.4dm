@@ -130,9 +130,24 @@ Function _openEvents()
 	CLOSE WINDOW($w)
 	
 Function _openServices()
-	var $w : Integer:=Open form window("ServiceBrowser"; Plain form window)
-	DIALOG("ServiceBrowser")
-	CLOSE WINDOW($w)
+	
+	var $title : Text:="サービス"
+	
+	ARRAY LONGINT($windows; 0)
+	WINDOW LIST($windows)
+	
+	var $i; $window : Integer
+	For ($i; 1; Size of array($windows))
+		$window:=$windows{$i}
+		If (Get window title($window)=$title) && (Window process($window)=1)
+			CALL FORM($window; Formula(Form._activate.call()))  //FC_VenueBrowser
+			return 
+		End if 
+	End for 
+	
+	$window:=Open form window("ServiceBrowser"; Plain form window)
+	SET WINDOW TITLE($title; $window)
+	DIALOG("ServiceBrowser"; *)
 	
 Function _openVenues()
 	

@@ -1,0 +1,36 @@
+#input_search {
+   placeholder: "サービスを検索..."
+}
+#text_title {
+   text: "📦 サービスメニュー"
+}
+#btn_back {
+   text: "← 閉じる"
+}
+#btn_filter_all {
+   text: "すべて"
+}
+#btn_filter_catering {
+   text: "飲食"
+}
+#btn_filter_sound {
+   text: "音響•映像"
+}
+#btn_filter_structures {
+   text: "構造•設営"
+}
+#btn_filter_decor {
+   text: "家具•装飾"
+}
+#Entête1 {
+   text: "カテゴリー"
+}
+#Entête2 {
+   text: "サービス名称"
+}
+#Entête3 {
+   text: "単位"
+}
+#Entête4 {
+   text: "単価"
+}

@@ -5,8 +5,22 @@
 	"windowSizingY": "fixed",
 	"windowMinWidth": 900,
 	"windowMinHeight": 680,
+	"css": [
+		"ServiceBrowser.css"
+	],
 	"pages": [
-		null,
+		{
+			"objects": {
+				"rect_filter_bar": {
+					"type": "rectangle",
+					"left": 0,
+					"top": 64,
+					"width": 900,
+					"height": 52,
+					"class": "bgToolbar"
+				}
+			}
+		},
 		{
 			"objects": {
 				"rect_bg": {
@@ -31,7 +45,6 @@
 					"top": 16,
 					"width": 80,
 					"height": 32,
-					"text": "← Home",
 					"events": [
 						"onClick"
 					],
@@ -46,7 +59,6 @@
 					"top": 18,
 					"width": 300,
 					"height": 28,
-					"text": "📦 Services Catalog",
 					"class": "textTitle"
 				},
 				"text_count": {
@@ -59,41 +71,16 @@
 					"textAlign": "right",
 					"class": "textMuted"
 				},
-				"rect_filter_bar": {
-					"type": "rectangle",
-					"left": 0,
-					"top": 64,
-					"width": 900,
-					"height": 52,
-					"class": "bgToolbar"
-				},
-				"input_search": {
-					"type": "input",
-					"left": 24,
-					"top": 78,
-					"width": 240,
-					"height": 28,
-					"enterable": true,
-					"placeholder": "Search services...",
-					"events": [
-						"onChange",
-						"onAfterKeystroke"
-					],
-					"method": "objinput_search.4dm",
-					"class": "filterInput",
-					"multiline": "no"
-				},
 				"btn_filter_all": {
 					"type": "button",
 					"left": 280,
 					"top": 78,
 					"width": 60,
 					"height": 28,
-					"text": "All",
 					"events": [
 						"onClick"
 					],
-					"focusable": true,
+					"focusable": false,
 					"method": "objbtn_filter_all.4dm",
 					"class": "btnFilterActive",
 					"style": "flat"
@@ -104,13 +91,12 @@
 					"top": 78,
 					"width": 80,
 					"height": 28,
-					"text": "Catering",
 					"events": [
 						"onClick"
 					],
-					"focusable": true,
+					"focusable": false,
 					"method": "objbtn_filter_catering.4dm",
-					"class": "btnFilterInactive",
+					"class": "btnFilterActive",
 					"style": "flat"
 				},
 				"btn_filter_sound": {
@@ -119,13 +105,12 @@
 					"top": 78,
 					"width": 80,
 					"height": 28,
-					"text": "Sound & AV",
 					"events": [
 						"onClick"
 					],
-					"focusable": true,
+					"focusable": false,
 					"method": "objbtn_filter_sound.4dm",
-					"class": "btnFilterInactive",
+					"class": "btnFilterActive",
 					"style": "flat"
 				},
 				"btn_filter_structures": {
@@ -134,13 +119,12 @@
 					"top": 78,
 					"width": 90,
 					"height": 28,
-					"text": "Structures",
 					"events": [
 						"onClick"
 					],
-					"focusable": true,
+					"focusable": false,
 					"method": "objbtn_filter_structures.4dm",
-					"class": "btnFilterInactive",
+					"class": "btnFilterActive",
 					"style": "flat"
 				},
 				"btn_filter_decor": {
@@ -149,13 +133,12 @@
 					"top": 78,
 					"width": 110,
 					"height": 28,
-					"text": "Furniture & Decor",
 					"events": [
 						"onClick"
 					],
-					"focusable": true,
+					"focusable": false,
 					"method": "objbtn_filter_decor.4dm",
-					"class": "btnFilterInactive",
+					"class": "btnFilterActive",
 					"style": "flat"
 				},
 				"listbox_services": {
@@ -168,14 +151,15 @@
 					"dataSource": "Form:C1466.services",
 					"headerHeight": "30px",
 					"showHeaders": true,
-					"rowHeight": "40px",
+					"rowHeight": "2em",
 					"events": [],
 					"class": "listbox",
 					"verticalAlign": "middle",
+					"resizingMode": "legacy",
+					"selectionMode": "single",
 					"columns": [
 						{
 							"header": {
-								"text": "CATEGORY",
 								"name": "Entête1"
 							},
 							"dataSource": "This:C1470.category",
@@ -186,11 +170,12 @@
 							"class": "colMuted",
 							"footer": {
 								"name": "Pied1"
-							}
+							},
+							"enterable": false,
+							"truncateMode": "none"
 						},
 						{
 							"header": {
-								"text": "SERVICE",
 								"name": "Entête2"
 							},
 							"dataSource": "This:C1470.label",
@@ -201,11 +186,12 @@
 							"class": "colPrimary",
 							"footer": {
 								"name": "Pied2"
-							}
+							},
+							"enterable": false,
+							"truncateMode": "none"
 						},
 						{
 							"header": {
-								"text": "UNIT",
 								"name": "Entête3"
 							},
 							"dataSource": "This:C1470.unit",
@@ -217,11 +203,12 @@
 							"class": "colMuted",
 							"footer": {
 								"name": "Pied3"
-							}
+							},
+							"enterable": false,
+							"truncateMode": "none"
 						},
 						{
 							"header": {
-								"text": "UNIT PRICE",
 								"name": "Entête4"
 							},
 							"dataSource": "This:C1470.unitPriceStr",
@@ -233,14 +220,16 @@
 							"class": "colDefault",
 							"footer": {
 								"name": "Pied4"
-							}
+							},
+							"enterable": false,
+							"truncateMode": "none"
 						},
 						{
 							"header": {
 								"text": "",
 								"name": "Entête5"
 							},
-							"dataSource": "This.availableIcon",
+							"dataSource": "This:C1470.availableIcon",
 							"name": "col_avail",
 							"width": 40,
 							"fontSize": 14,
@@ -248,9 +237,25 @@
 							"verticalAlign": "middle",
 							"footer": {
 								"name": "Pied5"
-							}
+							},
+							"enterable": false,
+							"truncateMode": "none"
 						}
 					]
+				},
+				"input_search": {
+					"type": "input",
+					"left": 16,
+					"top": 82,
+					"width": 240,
+					"height": 17,
+					"enterable": true,
+					"events": [
+						"onAfterEdit"
+					],
+					"method": "objinput_search.4dm",
+					"class": "filterInput",
+					"multiline": "no"
 				}
 			}
 		}
@@ -263,5 +268,13 @@
 	"$4d": {
 		"version": "1",
 		"kind": "form"
+	},
+	"geometryStamp": 15,
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
 	}
 }

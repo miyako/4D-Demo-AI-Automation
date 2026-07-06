@@ -6,40 +6,41 @@ Class extends Entity
 // ─── Display helpers ─────────────────────────────────────────────────────────
 
 Function get eventDateStr() : Text
-	return String(This.eventDate; "dd/MM/yyyy")
-
+	//return String(This.eventDate; "dd/MM/yyyy")
+	return String(This.eventDate; "yyyy.MM.dd")
+	
 Function get clientName() : Text
 	var $c : cs.ClientEntity:=This.client
 	return $c ? $c.companyName : ""
-
+	
 Function get venueName() : Text
 	var $v : cs.VenueEntity:=This.venue
 	return $v ? $v.name : ""
-
+	
 Function get venueCity() : Text
 	var $v : cs.VenueEntity:=This.venue
 	return $v ? $v.city : ""
-
+	
 Function get guestCountStr() : Text
 	return String(This.guestCount)
-
+	
 Function get guestCountLabel() : Text
 	return String(This.guestCount)+" guests"
-
+	
 Function get eventDateLong() : Text
 	return String(This.eventDate; "EEEE dd MMMM yyyy")
-
+	
 Function get contactInfo() : Text
 	var $c : cs.ClientEntity:=This.client
 	return $c ? $c.contactName+" · "+$c.email : ""
-
+	
 Function get venueLabel() : Text
 	var $v : cs.VenueEntity:=This.venue
 	return $v ? $v.name+" – "+$v.city+", "+$v.country : ""
-
-// ─── Status labels ────────────────────────────────────────────────────────────
-
-// Short badge for listbox column
+	
+	// ─── Status labels ────────────────────────────────────────────────────────────
+	
+	// Short badge for listbox column
 Function get statusBadge() : Text
 	Case of 
 		: (This.status="confirmed")
@@ -53,8 +54,8 @@ Function get statusBadge() : Text
 		Else 
 			return This.status
 	End case 
-
-// Full label with icon for detail header
+	
+	// Full label with icon for detail header
 Function get statusLabel() : Text
 	Case of 
 		: (This.status="confirmed")
@@ -68,9 +69,9 @@ Function get statusLabel() : Text
 		Else 
 			return This.status
 	End case 
-
-// ─── Weather icons & alert label ─────────────────────────────────────────────
-
+	
+	// ─── Weather icons & alert label ─────────────────────────────────────────────
+	
 Function get weatherIcon() : Text
 	Case of 
 		: (This.weatherAlertLevel="critical")
@@ -82,7 +83,7 @@ Function get weatherIcon() : Text
 		Else 
 			return ""
 	End case 
-
+	
 Function get riskLabel() : Text
 	Case of 
 		: (This.weatherAlertLevel="critical")
@@ -94,30 +95,30 @@ Function get riskLabel() : Text
 		Else 
 			return "☀ No significant weather risk"
 	End case 
-
-// venueOption is a real field ("indoor"/"outdoor") use venueOptionIcon for the emoji column
+	
+	// venueOption is a real field ("indoor"/"outdoor") use venueOptionIcon for the emoji column
 Function get venueOptionIcon() : Text
 	return This.venueOption="indoor" ? "🏢" : "🌳"
-
+	
 Function get emailIcon() : Text
 	If (ds.Email.query("emailStatus = :1 AND linkedEvent.ID = :2"; "pending"; This.ID).length>0)
 		return "📧"
 	End if 
 	return ""
-
+	
 Function get pendingEmail() : cs.EmailEntity
 	return ds.Email.query("emailStatus = :1 AND linkedEvent.ID = :2"; "pending"; This.ID).first()
-
-// ─── Weather setup & forecast labels (detail panel) ──────────────────────────
-
-// Compact icons for list column
+	
+	// ─── Weather setup & forecast labels (detail panel) ──────────────────────────
+	
+	// Compact icons for list column
 Function get plannedWeather() : Text
 	return This._weatherLabel(This.weatherSetup)
-
+	
 Function get forecastWeather() : Text
 	return This._weatherLabel(This.weatherForecast)
-
-// Full readable labels for detail header
+	
+	// Full readable labels for detail header
 Function get setupLabel() : Text
 	var $setup : Object:=This.weatherSetup
 	If ($setup=Null)
@@ -144,7 +145,7 @@ Function get setupLabel() : Text
 			$temp:="🌡 Normal temp"
 	End case 
 	return $cond+" · "+$temp
-
+	
 Function get forecastLabel() : Text
 	var $forecast : Object:=This.weatherForecast
 	If ($forecast=Null)
@@ -171,9 +172,9 @@ Function get forecastLabel() : Text
 			$temp:="🌡 Normal temp"
 	End case 
 	return $cond+" · "+$temp
-
-// ─── Private helper ───────────────────────────────────────────────────────────
-
+	
+	// ─── Private helper ───────────────────────────────────────────────────────────
+	
 Function _weatherLabel($setup : Object) : Text
 	If ($setup=Null)
 		return ""
@@ -200,3 +201,4 @@ Function _weatherLabel($setup : Object) : Text
 			$temp:=""
 	End case 
 	return $icon+$temp
+	
