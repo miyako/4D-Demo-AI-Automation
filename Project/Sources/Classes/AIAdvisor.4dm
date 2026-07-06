@@ -11,6 +11,14 @@ property _chat : cs.AIKit.OpenAIChatHelper
 property _windowID : Integer
 property _contractRef : Text
 
+/*
+weather_actions:       simple
+modification_impacts:  simple
+draft_email:           simple
+reassess_actions:      reasoning
+action_execution:      reasoning
+ */
+
 Class constructor()
 	This._model:="chat-reasoning"
 	This._modelSimple:="chat-simple"

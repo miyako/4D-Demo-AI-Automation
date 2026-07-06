@@ -6,28 +6,44 @@ property _model : Text
 
 Class constructor()
 	This._client:=cs.AIKit.OpenAI.new()
-	This._model:="embedding"  // model alias defined in AIProviders.json
+	This._model:="embedding-local"  // model alias defined in AIProviders.json
 	
-// ─── Generates embeddings for services missing one ──────────────────────────
+	// ─── Generates embeddings for services missing one ──────────────────────────
 Function buildEmbeddings()
 	This._computeEmbeddings(ds.Service.query("embedding = null"))
-
-// ─── Recomputes all embeddings (after label/description changes) ────────────
+	
+	// ─── Recomputes all embeddings (after label/description changes) ────────────
 Function rebuildAllEmbeddings()
 	This._computeEmbeddings(ds.Service.all())
-
-// ─── Shared embedding computation loop ────────────────────────────────────────
+	
+	// ─── Shared embedding computation loop ────────────────────────────────────────
 Function _computeEmbeddings($services : cs.ServiceSelection)
 	var $service : cs.ServiceEntity
-	For each ($service; $services)
-		var $desc : Text:=$service.description || $service.label
-		var $text : Text:=$service.category+" | "+$service.label+" | "+$service.unit+" | "+$desc
-		var $result : Object:=This._client.embeddings.create($text; This._model)
-		If ($result.vector#Null)
-			$service.embedding:=$result.vector
-			$service.save()
+	var $batch : Object
+	var $i; $length : Integer
+	$i:=0
+	$length:=16  //records per batch
+	var $entities : cs.EntitySelection
+	$entities:=$services.slice($i; $i+$length)
+	While ($entities.length#0)
+		var $text : Collection
+		$text:=[]
+		var $entity : cs.Entity
+		For each ($entity; $entities)
+			var $desc : Text:=$entity.description || $entity.label
+			$text.push($entity.category+" | "+$entity.label+" | "+$entity.unit+" | "+$desc)
+		End for each 
+		$batch:=This._client.embeddings.create($text; This._model)
+		If ($batch.success)
+			$embeddings:=$batch.embeddings
+			For each ($entity; $entities)
+				$entity.embedding:=$embeddings.shift().embedding
+				$entity.save()
+			End for each 
 		End if 
-	End for each 
+		$i+=$length
+		$entities:=$services.slice($i; $i+$length)
+	End while 
 	
 	// ─── Semantic search in the catalog ────────────────────────────────────────────
 	// Returns the top services matching the query (max $limit results)
@@ -96,7 +112,7 @@ Function _keywordSearch($query : Text; $category : Text; $limit : Integer) : Col
 	return This._toResults($allHits; $limit)
 	
 	// ─── Converts a ServiceSelection to the standard result collection format ─────
-// Uses toCollection for efficient bulk extraction, then renames ID → serviceID
+	// Uses toCollection for efficient bulk extraction, then renames ID → serviceID
 Function _toResults($sel : cs.ServiceSelection; $limit : Integer) : Collection
 	var $raw : Collection:=$sel.toCollection("ID, label, category, unitPrice, unit"; 0; 0; $limit)
 	var $results : Collection:=[]
