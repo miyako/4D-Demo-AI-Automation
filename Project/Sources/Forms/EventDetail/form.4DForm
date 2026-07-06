@@ -4,7 +4,10 @@
 	"windowSizingX": "fixed",
 	"windowSizingY": "fixed",
 	"windowMinWidth": 1100,
-	"windowMinHeight": 800,
+	"windowMinHeight": 782,
+	"css": [
+		"EventDetail.css"
+	],
 	"pages": [
 		{
 			"objects": {
@@ -50,25 +53,8 @@
 					"top": 725,
 					"width": 355,
 					"height": 12,
-					"text": "AI STATUS",
 					"class": "textLabel",
 					"stroke": "#FFFFFF"
-				},
-				"text_ai_validation_badge": {
-					"type": "button",
-					"left": 776,
-					"top": 739,
-					"width": 308,
-					"height": 23,
-					"text": "",
-					"visibility": "hidden",
-					"events": [
-						"onClick"
-					],
-					"focusable": true,
-					"method": "objvalidation_badge.4dm",
-					"class": "btnValidationBadge",
-					"style": "flat"
 				},
 				"text_AI_Status_label1": {
 					"type": "text",
@@ -90,7 +76,6 @@
 					"top": 16,
 					"width": 80,
 					"height": 32,
-					"text": "← Events",
 					"events": [
 						"onClick"
 					],
@@ -105,7 +90,6 @@
 					"top": 18,
 					"width": 400,
 					"height": 28,
-					"text": "Event Detail",
 					"class": "textTitle"
 				},
 				"text_ref": {
@@ -142,7 +126,6 @@
 					"top": 96,
 					"width": 80,
 					"height": 16,
-					"text": "CLIENT",
 					"class": "textLabel"
 				},
 				"text_client_val": {
@@ -175,7 +158,6 @@
 					"top": 96,
 					"width": 80,
 					"height": 16,
-					"text": "DATE",
 					"class": "textLabel"
 				},
 				"text_date_val": {
@@ -196,7 +178,6 @@
 					"top": 160,
 					"width": 100,
 					"height": 16,
-					"text": "GUESTS",
 					"class": "textLabel"
 				},
 				"text_guests_val": {
@@ -217,7 +198,6 @@
 					"top": 160,
 					"width": 100,
 					"height": 16,
-					"text": "VENUE",
 					"class": "textLabel"
 				},
 				"text_venue_val": {
@@ -238,7 +218,6 @@
 					"top": 160,
 					"width": 80,
 					"height": 16,
-					"text": "STATUS",
 					"class": "textLabel"
 				},
 				"text_status_val": {
@@ -259,7 +238,6 @@
 					"top": 96,
 					"width": 140,
 					"height": 16,
-					"text": "OPTION",
 					"class": "textLabel"
 				},
 				"text_option_val": {
@@ -280,7 +258,6 @@
 					"top": 232,
 					"width": 200,
 					"height": 20,
-					"text": "SERVICES BOOKED",
 					"class": "textLabel"
 				},
 				"listbox_lines": {
@@ -293,16 +270,17 @@
 					"dataSource": "Form:C1466.event.lines",
 					"headerHeight": "28px",
 					"showHeaders": true,
-					"rowHeight": "40px",
+					"rowHeight": "2em",
 					"class": "listbox",
 					"verticalAlign": "middle",
 					"hideFocusRing": true,
 					"scrollbarVertical": "automatic",
 					"scrollbarHorizontal": "hidden",
+					"resizingMode": "legacy",
+					"selectionMode": "single",
 					"columns": [
 						{
 							"header": {
-								"text": "SERVICE",
 								"name": "Entête1"
 							},
 							"dataSource": "This:C1470.serviceLabel",
@@ -313,11 +291,12 @@
 							"class": "colPrimary",
 							"footer": {
 								"name": "Pied1"
-							}
+							},
+							"enterable": false,
+							"truncateMode": "none"
 						},
 						{
 							"header": {
-								"text": "CATEGORY",
 								"name": "Entête2"
 							},
 							"dataSource": "This:C1470.serviceCategory",
@@ -328,11 +307,12 @@
 							"class": "colMuted",
 							"footer": {
 								"name": "Pied2"
-							}
+							},
+							"enterable": false,
+							"truncateMode": "none"
 						},
 						{
 							"header": {
-								"text": "QTY",
 								"name": "Entête3"
 							},
 							"dataSource": "This:C1470.quantityStr",
@@ -344,11 +324,12 @@
 							"class": "colDefault",
 							"footer": {
 								"name": "Pied3"
-							}
+							},
+							"enterable": false,
+							"truncateMode": "none"
 						},
 						{
 							"header": {
-								"text": "UNIT PRICE",
 								"name": "Entête4"
 							},
 							"dataSource": "This:C1470.unitPriceStr",
@@ -360,11 +341,12 @@
 							"class": "colDefault",
 							"footer": {
 								"name": "Pied4"
-							}
+							},
+							"enterable": false,
+							"truncateMode": "none"
 						},
 						{
 							"header": {
-								"text": "TOTAL",
 								"name": "Entête5"
 							},
 							"dataSource": "This:C1470.totalStr",
@@ -376,7 +358,9 @@
 							"class": "colPrimary",
 							"footer": {
 								"name": "Pied5"
-							}
+							},
+							"enterable": false,
+							"truncateMode": "none"
 						}
 					]
 				},
@@ -386,7 +370,6 @@
 					"top": 670,
 					"width": 100,
 					"height": 20,
-					"text": "TOTAL EST.",
 					"class": "textLabel",
 					"textAlign": "right"
 				},
@@ -401,7 +384,7 @@
 				"text_total_val": {
 					"type": "text",
 					"left": 590,
-					"top": 750,
+					"top": 670,
 					"width": 154,
 					"height": 20,
 					"text": "",
@@ -422,7 +405,6 @@
 					"top": 80,
 					"width": 200,
 					"height": 20,
-					"text": "✦ AI Advisor",
 					"class": "textSection"
 				},
 				"rect_ai_divider": {
@@ -439,7 +421,6 @@
 					"top": 656,
 					"width": 308,
 					"height": 48,
-					"text": "⚡ Run AI Weather Analysis",
 					"events": [
 						"onClick"
 					],
@@ -562,7 +543,6 @@
 					"top": 333,
 					"width": 308,
 					"height": 142,
-					"text": "Email analysis result...",
 					"class": "textBody",
 					"visibility": "hidden",
 					"wordwrap": true
@@ -573,7 +553,6 @@
 					"top": 656,
 					"width": 308,
 					"height": 48,
-					"text": "📧 Analyze Email with AI",
 					"events": [
 						"onClick"
 					],
@@ -597,7 +576,7 @@
 					"left": 1100,
 					"top": 64,
 					"width": 2,
-					"height": 736,
+					"height": 656,
 					"class": "bgContent",
 					"visibility": "hidden"
 				},
@@ -616,7 +595,6 @@
 					"top": 80,
 					"width": 324,
 					"height": 16,
-					"text": "PROPOSED CHANGES",
 					"class": "textLabel",
 					"visibility": "hidden"
 				},
@@ -665,7 +643,6 @@
 					"top": 656,
 					"width": 88,
 					"height": 48,
-					"text": "Annuler",
 					"events": [
 						"onClick"
 					],
@@ -681,7 +658,6 @@
 					"top": 656,
 					"width": 114,
 					"height": 48,
-					"text": "✓ Confirm",
 					"style": "flat",
 					"class": "btnPrimary",
 					"events": [
@@ -706,7 +682,6 @@
 					"top": 500,
 					"width": 324,
 					"height": 14,
-					"text": "EMAIL DRAFT TO CLIENT",
 					"class": "textLabel",
 					"visibility": "hidden"
 				},
@@ -731,7 +706,6 @@
 					"top": 656,
 					"width": 108,
 					"height": 48,
-					"text": "📧 Draft email",
 					"events": [
 						"onClick"
 					],
@@ -769,8 +743,7 @@
 					"left": 776,
 					"top": 142,
 					"width": 308,
-					"height": 65,
-					"text": "Context...",
+					"height": 26,
 					"class": "textLabel",
 					"visibility": "visible",
 					"fontSize": 11,
@@ -791,13 +764,16 @@
 					"scrollbarHorizontal": "hidden",
 					"class": "listboxCard",
 					"visibility": "hidden",
+					"selectionMode": "single",
+					"resizingMode": "legacy",
 					"columns": [
 						{
 							"name": "col_delta_icon",
 							"width": 24,
 							"header": {
 								"text": "",
-								"name": "Entête6"
+								"name": "Entête6",
+								"stroke": "automatic"
 							},
 							"dataSource": "This:C1470.deltaIcon",
 							"type": "text",
@@ -805,28 +781,32 @@
 							"class": "colPrimary",
 							"footer": {
 								"name": "Pied6"
-							}
+							},
+							"enterable": false,
+							"truncateMode": "none"
 						},
 						{
 							"name": "col_confirm_label",
 							"width": 185,
 							"header": {
-								"text": "Service",
-								"name": "Entête7"
+								"name": "Entête7",
+								"stroke": "automatic"
 							},
 							"dataSource": "This:C1470.label",
 							"type": "text",
 							"class": "colDefault",
 							"footer": {
 								"name": "Pied7"
-							}
+							},
+							"enterable": false,
+							"truncateMode": "none"
 						},
 						{
 							"name": "col_confirm_qty",
 							"width": 34,
 							"header": {
-								"text": "Qty",
-								"name": "Entête8"
+								"name": "Entête8",
+								"stroke": "automatic"
 							},
 							"dataSource": "This:C1470.qtyStr",
 							"type": "text",
@@ -834,14 +814,16 @@
 							"class": "colMuted",
 							"footer": {
 								"name": "Pied8"
-							}
+							},
+							"enterable": false,
+							"truncateMode": "none"
 						},
 						{
 							"name": "col_confirm_cost",
 							"width": 66,
 							"header": {
-								"text": "Impact",
-								"name": "Entête9"
+								"name": "Entête9",
+								"stroke": "automatic"
 							},
 							"dataSource": "This:C1470.costImpactStr",
 							"type": "text",
@@ -849,7 +831,9 @@
 							"class": "colPrimary",
 							"footer": {
 								"name": "Pied9"
-							}
+							},
+							"enterable": false,
+							"truncateMode": "none"
 						}
 					]
 				},
@@ -859,7 +843,6 @@
 					"top": 443,
 					"width": 200,
 					"height": 16,
-					"text": "Cost impact:",
 					"class": "textMuted",
 					"visibility": "hidden"
 				},
@@ -869,7 +852,6 @@
 					"top": 445,
 					"width": 324,
 					"height": 16,
-					"text": "",
 					"class": "textBody",
 					"textAlign": "right",
 					"visibility": "hidden"
@@ -880,7 +862,6 @@
 					"top": 465,
 					"width": 200,
 					"height": 16,
-					"text": "New event total:",
 					"class": "textMuted",
 					"visibility": "hidden"
 				},
@@ -906,6 +887,22 @@
 					"textAlign": "center",
 					"verticalAlign": "middle",
 					"visibility": "hidden"
+				},
+				"text_ai_validation_badge": {
+					"type": "button",
+					"left": 776,
+					"top": 739,
+					"width": 308,
+					"height": 23,
+					"text": "",
+					"visibility": "hidden",
+					"events": [
+						"onClick"
+					],
+					"focusable": true,
+					"method": "objvalidation_badge.4dm",
+					"class": "btnValidationBadge",
+					"style": "flat"
 				}
 			}
 		}
@@ -916,13 +913,13 @@
 		"onTimer"
 	],
 	"method": "method.4dm",
-	"geometryStamp": 736,
+	"geometryStamp": 760,
 	"$4d": {
 		"version": "1",
 		"kind": "form"
 	},
 	"editor": {
-		"activeView": "default",
+		"activeView": "EmailView",
 		"defaultView": "default",
 		"views": {
 			"EmailView": {
@@ -943,6 +940,7 @@
 				]
 			},
 			"SpinnerView": {
+				"visible": false,
 				"objects": [
 					"text_ai_spinner"
 				]

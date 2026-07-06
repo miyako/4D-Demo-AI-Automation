@@ -86,9 +86,9 @@ Function _onDoubleClicked()
 	If (This.currentEvent#Null)
 		var $fc : cs.FC_EventDetail:=cs.FC_EventDetail.new(This.currentEvent; This.events; This)
 		var $w : Integer:=Open form window("EventDetail"; Plain form window)
-		DIALOG("EventDetail"; $fc)
-		CLOSE WINDOW($w)
-		This._loadEvents(This.activeFilter)
+		DIALOG("EventDetail"; $fc; *)
+		//CLOSE WINDOW($w)
+		//This._loadEvents(This.activeFilter)
 	End if 
 	
 Function _setFilter($filter : Text)
@@ -173,8 +173,8 @@ Function _updateFilterCounts()
 	OBJECT SET TITLE(*; "btn_filter_all"; "All ("+String($allCount)+")")
 	OBJECT SET TITLE(*; "btn_filter_confirmed"; "確定 ("+String($confirmedCount)+")")
 	OBJECT SET TITLE(*; "btn_filter_quote"; "商談中 ("+String($quoteCount)+")")
-	OBJECT SET TITLE(*; "btn_filter_weather"; "⚠ 天候アラート ("+String($weatherCount)+")")
-	OBJECT SET TITLE(*; "btn_filter_email"; "✉ メール ("+String($emailCount)+")")
+	OBJECT SET TITLE(*; "btn_filter_weather"; "⚠️ 天候アラート ("+String($weatherCount)+")")
+	OBJECT SET TITLE(*; "btn_filter_email"; "📧 メール ("+String($emailCount)+")")
 	
 Function _refreshWeather()
 	This.running:=True

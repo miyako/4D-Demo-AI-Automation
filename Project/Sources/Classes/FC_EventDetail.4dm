@@ -43,7 +43,8 @@ Class constructor($event : cs.EventEntity; $eventSelection : cs.EventSelection; 
 	This._pendingExecResult:=Null
 	This._pendingAction:=Null
 	This.activeAdvisorTab:="weather"
-	This.tabControl:=New object("values"; New collection("⛅ Weather"; "📧 Email"); "index"; 0)
+	//This.tabControl:=New object("values"; New collection("⛅ Weather"; "📧 Email"); "index"; 0)
+	This.tabControl:=New object("values"; New collection("⛅ 天候"; "📧 メール"); "index"; 0)
 	This._lastValidationData:=Null
 	This._actionMap:=[-1; -1; -1; -1]
 	This._weatherExplanation:=""
@@ -202,10 +203,12 @@ Function _renderWeatherTab($weatherResult : Object)
 	var $forecast : Object:=This.event.weatherForecast
 	var $setupStr : Text:=""
 	If ($setup#Null)
-		$setupStr:="Planned: "+This.event.setupLabel
+		//$setupStr:="Planned: "+This.event.setupLabel
+		$setupStr:="想定: "+This.event.setupLabel
 	End if 
 	If ($forecast#Null)
-		$setupStr:=$setupStr+"\nForecast: "+This.event.forecastLabel
+		//$setupStr:=$setupStr+"\nForecast: "+This.event.forecastLabel
+		$setupStr:=$setupStr+"\n予報: "+This.event.forecastLabel
 	End if 
 	OBJECT SET TITLE(*; "text_ai_context"; $setupStr)
 	
@@ -213,17 +216,31 @@ Function _renderWeatherTab($weatherResult : Object)
 		var $level : Text:=This.event.weatherAlertLevel
 		var $hasAlert : Boolean:=(($level#"none") && ($level#""))
 		If ($hasAlert)
-			This._setAiStatus("⚠ Weather alert: "+$level)
+			//This._setAiStatus("⚠ Weather alert: "+$level)
+			
+			Case of 
+				: ($level="critical")
+					$level:="危険"
+				: ($level="warning")
+					$level:="警告"
+				: ($level="watch")
+					$level:="警戒"
+			End case 
+			
+			This._setAiStatus("⚠️ 天候アラート: "+$level)
 			OBJECT SET VISIBLE(*; "btn_ai_analyze"; True)
 		Else 
-			This._setAiStatus("No weather alerts detected.")
+			//This._setAiStatus("No weather alerts detected.")
+			This._setAiStatus("天候アラート: なし")
 			OBJECT SET VISIBLE(*; "btn_ai_analyze"; False)
 		End if 
 		return 
 	End if 
 	
 	If (Not($weatherResult.success))
-		This._setAiStatus("⚠ Analysis failed: "+$weatherResult.validationError)
+		//This._setAiStatus("⚠ Analysis failed: "+$weatherResult.validationError)
+		This._setAiStatus("⚠ 分析に失敗しました: "+$weatherResult.validationError)
+		
 		return 
 	End if 
 	
@@ -238,7 +255,7 @@ Function _renderWeatherTab($weatherResult : Object)
 	
 	This._actionMap:=cs.UIHelpers.me.showActionButtons($weatherResult.actions)
 	This.aiActions:=$weatherResult.actions
-
+	
 Function _renderEmailTab()
 	var $e : cs.EmailEntity:=This.event.pendingEmail
 	var $hasEmail : Boolean:=(Not(Undefined($e)) && ($e#Null))
@@ -250,10 +267,13 @@ Function _renderEmailTab()
 		OBJECT SET TITLE(*; "text_ai_context"; $meta)
 		OBJECT SET VALUE("input_email_body"; $e.body)
 		OBJECT SET TITLE(*; "text_email_ai_result"; "")
-		This._setAiStatus("📧 Email pending")
+		//This._setAiStatus("📧 Email pending")
+		This._setAiStatus("📧 未処理のメールがあります")
 	Else 
-		OBJECT SET TITLE(*; "text_ai_context"; "No pending email for this event.")
-		This._setAiStatus("No email to process.")
+		//OBJECT SET TITLE(*; "text_ai_context"; "No pending email for this event.")
+		OBJECT SET TITLE(*; "text_ai_context"; "イベントに関する未処理のメールはありません")
+		//This._setAiStatus("No email to process.")
+		This._setAiStatus("未処理のメールはありません")
 	End if 
 	
 Function _checkAiReady() : Boolean
@@ -266,11 +286,13 @@ Function _runWeatherAnalysis()
 	This._logUserAction("Weather Analysis"; "User pressed Weather Analysis button")
 	This.running:=True
 	This._startSpinner()
-	This._startAnalyzeSpinner("btn_ai_analyze"; "⚡ Run AI Weather Analysis")
+	//This._startAnalyzeSpinner("btn_ai_analyze"; "⚡ Run AI Weather Analysis")
+	This._startAnalyzeSpinner("btn_ai_analyze"; "⚡ AI天気予報アナライザーを起動")
 	If (This._pendingExecResult#Null)
 		This._hideConfirmPanel()
 	End if 
-	This._setAiStatus("Fetching weather data...")
+	//This._setAiStatus("Fetching weather data...")
+	This._setAiStatus("天候データを取得中...")
 	
 	var $weather : cs.WeatherService:=cs.WeatherService.me
 	var $weatherFetch : Object:=$weather.fetchForEvent(This.event)
@@ -285,7 +307,8 @@ Function _runWeatherAnalysis()
 	End if 
 	This.event.save()
 	
-	This._setAiStatus("Asking AI for recommendations...")
+	//This._setAiStatus("Asking AI for recommendations...")
+	This._setAiStatus("AIに対策を相談中...")
 	
 	var $w : Integer:=Current form window
 	var $evtID : Text:=This.event.ID
@@ -328,12 +351,14 @@ Function _runEmailAnalysis()
 	This._logUserAction("Email Analysis"; "User pressed Analyze Email subject: "+String($pendingEmail.subject))
 	This.running:=True
 	This._startSpinner()
-	This._startAnalyzeSpinner("btn_email_analyze"; "📧 Analyze Email with AI")
+	//This._startAnalyzeSpinner("btn_email_analyze"; "📧 Analyze Email with AI")
+	This._startAnalyzeSpinner("btn_email_analyze"; "📧 AIメールアナライザーを起動")
+	
 	If (This._pendingExecResult#Null)
 		This._hideConfirmPanel()
 	End if 
-	This._setAiStatus("Analyzing modification request...")
-	
+	//This._setAiStatus("Analyzing modification request...")
+	This._setAiStatus("AIに対策を相談中...")
 	var $evt : cs.EventEntity:=This.event
 	var $w : Integer:=Current form window
 	var $emailID : Text:=$pendingEmail.ID
@@ -350,12 +375,15 @@ Function _onEmailAnalysisDone($result : Object)
 	This._stopAnalyzeSpinner()
 	
 	If (Not($result.success))
-		This._setAiStatus("❌ Email analysis failed")
+		//This._setAiStatus("❌ Email analysis failed")
+		This._setAiStatus("❌ メールの分析に失敗しました")
 		OBJECT SET TITLE(*; "text_email_ai_result"; $result.validationError ? $result.validationError : "Analysis failed")
 		return 
 	End if 
 	
-	This._setAiStatus("✓ Modification request analyzed")
+	//This._setAiStatus("✓ Modification request analyzed")
+	This._setAiStatus("✓ AIの提案を分析しました")
+	
 	This._showValidationBadge("schema_modification_impacts.json"; $result.rawAiResponse)
 	
 	OBJECT SET TITLE(*; "text_email_ai_result"; $result.summary)
@@ -366,7 +394,8 @@ Function _onEmailAnalysisDone($result : Object)
 		// Hide analyze button once actions are proposed user cannot re-trigger analysis
 		OBJECT SET VISIBLE(*; "btn_email_analyze"; False)
 	Else 
-		This._setAiStatus("✓ No service changes required")
+		//This._setAiStatus("✓ No service changes required")
+		This._setAiStatus("✓ サービスの見直しは必要ありません")
 	End if 
 	
 Function _executeAction($slot : Integer)
@@ -406,7 +435,8 @@ Function _executeAction($slot : Integer)
 	// $promptOverride: optional if provided, replaces the action's hiddenPrompt
 Function _executeWithToolCalling($action : Object; $promptOverride : Text)
 	This._startSpinner()
-	This._setAiStatus("Searching services...")
+	//This._setAiStatus("Searching services...")
+	This._setAiStatus("サービスを検索中...")
 	
 	// Event context filter out Venue-category services (venue rental handled server-side)
 	var $w : Integer:=Current form window
@@ -453,7 +483,8 @@ Function _executeSwitchVenue($action : Object)
 	$action._venueBalance:=$newRentalPrice-$oldRentalPrice
 	
 	var $prompt : Text:=cs.AIAdvisor.new().switchVenuePrompt($isToIndoor; $newVenueName; $action._venueBalance; $evt.guestCount)
-	This._setAiStatus("Switching venue calculating changes...")
+	//This._setAiStatus("Switching venue calculating changes...")
+	This._setAiStatus("開催地の変更に伴う費用を計算中...")
 	This._executeWithToolCalling($action; $prompt)
 	
 Function _onExecutionDone($execResult : Object)
@@ -474,7 +505,8 @@ Function _onExecutionDone($execResult : Object)
 	End if 
 	
 	If (($execResult.proposedLines=Null) || ($execResult.proposedLines.length=0))
-		var $noSvcMsg : Text:="No services proposed."
+		//var $noSvcMsg : Text:="No services proposed."
+		var $noSvcMsg : Text:="サービスの見直しは必要ないと思われます。"
 		If ($execResult.summary#"")
 			$noSvcMsg:=$noSvcMsg+" (AI: "+$execResult.summary+")"
 		End if 
@@ -513,7 +545,8 @@ Function _onExecutionDone($execResult : Object)
 		End if 
 	End if 
 	
-	This._setAiStatus("✓ Impact calculated")
+	//This._setAiStatus("✓ Impact calculated")
+	This._setAiStatus("✓ コスト計算が完了しました")
 	This._showValidationBadge("schema_action_execution.json"; $execResult.rawAiResponse)
 	This._showConfirmPanel($action; $execResult)
 	
@@ -609,7 +642,7 @@ Function _markAllPendingEmailsProcessed()
 		$e.emailStatus:="processed"
 		$e.save()
 	End for each 
-
+	
 Function _dismissAfterActions()
 	cs.UIHelpers.me.resetActionButtons()
 	This.aiActions:=[]
@@ -697,7 +730,9 @@ Function btnConfirmActionEventHandler($formEventCode : Integer)
 			Else 
 				// Reassess remaining actions with AI
 				This._startSpinner()
-				This._setAiStatus("✅ Applied. Reassessing remaining actions...")
+				//This._setAiStatus("✅ Applied. Reassessing remaining actions...")
+				This._setAiStatus("✅ 変更を適用しました。必要な処理を算定中...")
+				
 				var $w : Integer:=Current form window
 				var $lbl : Text:=$appliedLabel
 				var $remJson : Text:=JSON Stringify($remaining)
@@ -714,7 +749,8 @@ Function _onReassessmentDone($result : Object)
 	cs.UIHelpers.me.resetActionButtons()
 	If (Not($result.success))
 		This._actionMap:=cs.UIHelpers.me.showActionButtons(This.aiActions)
-		This._setAiStatus("✅ Applied. (Reassessment failed: "+$result.validationError+")")
+		//This._setAiStatus("✅ Applied. (Reassessment failed: "+$result.validationError+")")
+		This._setAiStatus("✅ 変更を適用しました。(必要な処理の算定に失敗しました: "+$result.validationError+")")
 		return 
 	End if 
 	This.aiActions:=$result.actions
@@ -726,7 +762,8 @@ Function _onReassessmentDone($result : Object)
 		This._dismissAfterActions()
 	Else 
 		This._actionMap:=cs.UIHelpers.me.showActionButtons($result.actions)
-		This._setAiStatus("✅ Applied. "+String($result.actions.length)+" action(s) remaining.")
+		//This._setAiStatus("✅ Applied. "+String($result.actions.length)+" action(s) remaining.")
+		This._setAiStatus("✅ 変更を適用しました。"+String($result.actions.length)+"件の処理がさらに必要です。")
 		This._showValidationBadge("schema_reassess_actions.json"; $result.rawAiResponse)
 	End if 
 	
@@ -736,18 +773,21 @@ Function btnCancelConfirmEventHandler($formEventCode : Integer)
 			var $cancelLabel : Text:=(This._pendingAction#Null) ? String(This._pendingAction.label) : ""
 			This._logUserAction("Cancel Action"; $cancelLabel)
 			This._hideConfirmPanel()
-			This._setAiStatus("Action cancelled.")
+			//This._setAiStatus("Action cancelled.")
+			This._setAiStatus("キャンセルしました")
 	End case 
 	
 Function btnDraftEmailEventHandler($formEventCode : Integer)
 	Case of 
 		: ($formEventCode=On Clicked)
 			If (This._pendingExecResult=Null)
-				This.confirmEmailDraft:="(No proposed changes to draft an email for.)"
+				//This.confirmEmailDraft:="(No proposed changes to draft an email for.)"
+				This.confirmEmailDraft:="(メールの必要な変更処理は提案されませんでした)"
 				return 
 			End if 
 			This._logUserAction("Draft Email Requested"; String(This._pendingAction ? This._pendingAction.label : ""))
-			This._setAiStatus("✉ Drafting confirmation email...")
+			//This._setAiStatus("✉ Drafting confirmation email...")
+			This._setAiStatus("📧 確定メールの下書きを準備中...")
 			var $self : Object:=This
 			var $advisor : cs.AIAdvisor:=cs.AIAdvisor.new()
 			var $evt : cs.EventEntity:=This.event
@@ -770,13 +810,15 @@ Function _onDraftEmailDone($result : Object)
 		return 
 	End if 
 	If (Not($result.success))
-		This._setAiStatus("❌ Email draft failed: "+$result.validationError)
+		//This._setAiStatus("❌ Email draft failed: "+$result.validationError)
+		This._setAiStatus("❌ メールの下書きが用意できませんでした: "+$result.validationError)
 		This.confirmEmailDraft:="(Email generation failed.)"
 		return 
 	End if 
 	This.confirmEmailDraft:=$result.emailText
 	This._logUserAction("Draft Email"; $result.emailText)
-	This._setAiStatus("✉ Draft email ready")
+	//This._setAiStatus("✉ Draft email ready")
+	This._setAiStatus("📧 メールの下書きが用意できました")
 	This._showValidationBadge("schema_draft_email.json"; $result.rawAiResponse)
 	
 	//MARK: - Helpers
@@ -807,7 +849,7 @@ Function _startButtonSpinner($slot : Integer; $label : Text)
 	If (Not(This._spinnerActive))
 		SET TIMER(6)
 	End if 
-
+	
 Function _startAnalyzeSpinner($btnName : Text; $label : Text)
 	This._spinnerAnalyzeBtn:=$btnName
 	This._spinnerAnalyzeLabel:=$label
@@ -825,7 +867,7 @@ Function _stopButtonSpinner()
 	If (Not(This._spinnerActive)) && (This._spinnerAnalyzeBtn="")
 		SET TIMER(0)
 	End if 
-
+	
 Function _stopAnalyzeSpinner()
 	If (This._spinnerAnalyzeBtn#"")
 		OBJECT SET TITLE(*; This._spinnerAnalyzeBtn; This._spinnerAnalyzeLabel)
@@ -886,12 +928,13 @@ Function _applyReadOnlyIfDone()
 	OBJECT SET ENABLED(*; "btn_ai_action3"; Not($isDone))
 	OBJECT SET ENABLED(*; "btn_ai_action4"; Not($isDone))
 	If ($isDone)
-		This._setAiStatus("This event is "+This.event.status+" and cannot be modified.")
+		//This._setAiStatus("This event is "+This.event.status+" and cannot be modified.")
+		This._setAiStatus(This.event.status+"のイベントは変更できません")
 	End if 
-
+	
 Function _logUserAction($tag : Text; $detail : Text)
 	var $ref : Text:=String(This.event.contractRef)
 	If ($ref#"")
 		cs.EventLogger.me.logBlock($ref; "USER"; $tag; $detail)
-	End if  
+	End if 
 	

@@ -1,0 +1,93 @@
+#Entête1 {
+   text: "名称"
+}
+#Entête2 {
+   text: "カテゴリー"
+}
+#Entête3 {
+   text: "数量"
+}
+#Entête4 {
+   text: "単価"
+}
+#Entête5 {
+   text: "合計"
+}
+#text_services_header {
+   text: "追加項目"
+}
+#text_title {
+   text: "イベント詳細"
+}
+#btn_back {
+   text: "← 閉じる"   
+}
+#text_AI_Status_label {
+   text: "AI ステータス"
+}
+#text_ai_title {
+   text: "✦ AIアドバイザー"
+}
+#text_ai_context {
+   text: "コンテキスト"
+}
+#text_email_ai_result {
+   text: "AIによるメール解析..."
+}
+#btn_email_analyze {
+   text: "📧 AIによるメール解析"
+}
+#text_confirm_header {
+   text: "AIからの提案"
+}
+#text_confirm_impact_lbl {
+   text: "費用に与える影響: "
+}
+#text_confirm_newtotal_lbl {
+   text: "再計算後のコスト: "
+}
+#text_confirm_email_lbl {
+   text: "返信の下書き"
+}
+#btn_cancel_confirm {
+   text: "取り消し"
+}
+#btn_draft_email {
+   text: "📧 メール下書き"
+}
+#btn_confirm_action {
+   text: "✓ 確定"
+}
+#text_client_label {
+   text: "主催者"
+}
+#text_guests_label {
+   text: "ゲスト"
+}
+#text_date_label {
+   text: "開催日"
+}
+#text_option_label {
+   text: "オプション"
+}
+#text_status_label {
+   text: "スタータス"
+}
+#text_venue_label {
+   text: "開催地"
+}
+#btn_ai_analyze {
+   text: "⚡ AI天気予報アナライザーを起動"
+}
+#text_total_label {
+   text: "予想合計額: "
+}
+#Entête7 {
+   text: "サービス"
+}
+#Entête9 {
+   text: "費用の増減"
+}
+#Entête8 {
+   text: "数量"
+}

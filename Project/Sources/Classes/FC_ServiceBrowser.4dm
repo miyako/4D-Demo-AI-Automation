@@ -81,7 +81,7 @@ Function _loadServices()
 		If (($search="") || (Position($search; Lowercase($svc.label))>0) || (Position($search; Lowercase($svc.category))>0))
 			$result.push({\
 				label: $svc.label; \
-				category: $svc.category; \
+				category: $svc._category; \
 				unit: $svc.unit; \
 				unitPriceStr: String($svc.unitPrice; "### ### ##0 €"); \
 				availableIcon: $svc.available ? "✓" : "–"\
