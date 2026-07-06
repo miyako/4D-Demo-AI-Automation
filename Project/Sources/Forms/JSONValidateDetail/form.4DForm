@@ -7,8 +7,10 @@
 	"windowMinHeight": 760,
 	"windowTitle": "JSON Validation",
 	"method": "method.4dm",
+	"css": [
+		"JSONValidateDetail.css"
+	],
 	"pages": [
-		null,
 		{
 			"objects": {
 				"rect_bg": {
@@ -18,7 +20,11 @@
 					"width": 1100,
 					"height": 760,
 					"class": "bgForm"
-				},
+				}
+			}
+		},
+		{
+			"objects": {
 				"rect_header": {
 					"type": "rectangle",
 					"left": 0,
@@ -33,7 +39,6 @@
 					"top": 13,
 					"width": 1060,
 					"height": 26,
-					"text": "JSON Validation",
 					"class": "textTitle"
 				},
 				"text_schema_label": {
@@ -42,7 +47,6 @@
 					"top": 58,
 					"width": 520,
 					"height": 16,
-					"text": "Schema",
 					"dataSource": "Form:C1466.schemaLabel",
 					"class": "textLabel"
 				},
@@ -50,7 +54,7 @@
 					"type": "input",
 					"left": 20,
 					"top": 78,
-					"width": 520,
+					"width": 500,
 					"height": 601,
 					"dataSource": "Form:C1466.schemaContent",
 					"enterable": false,
@@ -66,14 +70,13 @@
 					"top": 58,
 					"width": 520,
 					"height": 16,
-					"text": "JSON received by AI",
 					"class": "textLabel"
 				},
 				"input_json": {
 					"type": "input",
 					"left": 560,
 					"top": 78,
-					"width": 520,
+					"width": 500,
 					"height": 601,
 					"dataSource": "Form:C1466.jsonContent",
 					"enterable": false,
@@ -89,7 +92,6 @@
 					"top": 716,
 					"width": 120,
 					"height": 32,
-					"text": "Close",
 					"events": [
 						"onClick"
 					],
@@ -101,9 +103,16 @@
 			}
 		}
 	],
-	"geometryStamp": 1,
+	"geometryStamp": 5,
 	"$4d": {
 		"version": "1",
 		"kind": "form"
+	},
+	"editor": {
+		"activeView": "View 1",
+		"defaultView": "View 1",
+		"views": {
+			"View 1": {}
+		}
 	}
 }
