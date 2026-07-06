@@ -125,9 +125,24 @@ Function _refreshAiStatus()
 	OBJECT SET TITLE(*; "text_footer"; $l10n.reasoning+$reasoningLabel+$l10n.simple+$simpleLabel+$l10n.embed+$embedLabel+" · Open-Meteo")
 	
 Function _openEvents()
-	var $w : Integer:=Open form window("EventList"; Plain form window)
-	DIALOG("EventList")
-	CLOSE WINDOW($w)
+	
+	var $title : Text:="イベント"
+	
+	ARRAY LONGINT($windows; 0)
+	WINDOW LIST($windows)
+	
+	var $i; $window : Integer
+	For ($i; 1; Size of array($windows))
+		$window:=$windows{$i}
+		If (Get window title($window)=$title) && (Window process($window)=1)
+			CALL FORM($window; Formula(Form._activate.call()))  //FC_VenueBrowser
+			return 
+		End if 
+	End for 
+	
+	$window:=Open form window("EventList"; Plain form window)
+	SET WINDOW TITLE($title; $window)
+	DIALOG("EventList"; *)
 	
 Function _openServices()
 	
@@ -168,7 +183,6 @@ Function _openVenues()
 	$window:=Open form window("VenueBrowser"; Plain form window)  //FC_VenueBrowser
 	SET WINDOW TITLE($title; $window)
 	DIALOG("VenueBrowser"; *)  //FC_VenueBrowser
-	//CLOSE WINDOW($w)
 	
 Function _checkEmbeddingReady() : Boolean
 	return cs.UIHelpers.me.checkAliasOrPrompt("embedding")
