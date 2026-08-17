@@ -35,6 +35,7 @@ Function _computeEmbeddings($services : cs.ServiceSelection)
 		End for each 
 		$batch:=This._client.embeddings.create($text; This._model)
 		If ($batch.success)
+			var $embeddings : Object
 			$embeddings:=$batch.embeddings
 			For each ($entity; $entities)
 				$entity.embedding:=$embeddings.shift().embedding

@@ -55,65 +55,14 @@ $ini.push("threads-http = "+String($batches+1))
 $iniFile:=$folder.file("models.ini")
 $iniFile.setText($ini.join("\n"))
 
+var $logFile : 4D.File
 $logFile:=$folder.file("llama.log")
 $folder.create()
 If (Not($logFile.exists))
 	$logFile.setContent(4D.Blob.new())
 End if 
 
+var $options : Object
 $options:={models_preset: $iniFile; log_file: $logFile; log_disable: False}
 
 $llama:=cs.llama.llama.new($port; Null; $homeFolder; $options; $event)
-
-If (False)
-	
-	$port:=8081
-	
-	$folder:=$homeFolder.folder("gemma-4")
-	$path:="gemma-4-E4B-it-Q4_K_M.gguf"
-	$URL:="unsloth/gemma-4-E4B-it-GGUF"
-	$cache_type_k:="q4_0"
-	$cache_type_v:="q4_0"
-	$n_gpu_layers:=99
-	$threads:=6
-	$batches:=1
-	$ubatch_size:=512
-	$batch_size:=2048
-	$max_position_embeddings:=8192
-	
-	var $logFile : 4D.File
-	$logFile:=$folder.file("llama.log")
-	$folder.create()
-	If (Not($logFile.exists))
-		$logFile.setContent(4D.Blob.new())
-	End if 
-	
-	var $options : Object
-	
-	$options:={\
-		ctx_size: $max_position_embeddings*$batches; \
-		batch_size: $batch_size; \
-		ubatch_size: $ubatch_size; \
-		parallel: $batches; \
-		threads: $threads; \
-		threads_batch: $threads; \
-		threads_http: 2; \
-		temp: 1; \
-		min_p: 0; \
-		top_k: 20; \
-		top_p: 0.95; \
-		repeat_penalty: 1; \
-		presence_penalty: 0; \
-		n_gpu_layers: $n_gpu_layers; \
-		log_disable: False; \
-		log_file: $logFile; \
-		jinja: True}
-	
-	var $huggingfaces : cs.event.huggingfaces
-	
-	$huggingface:=cs.event.huggingface.new($folder; $URL; [$path; $assistant; $mmproj])
-	$huggingfaces:=cs.event.huggingfaces.new([$huggingface])
-	
-	$llama:=cs.llama.llama.new($port; $huggingfaces; $homeFolder; $options; $event)
-	
-End if 

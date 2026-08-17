@@ -182,7 +182,13 @@ Function _refreshWeather()
 	OBJECT SET TITLE(*; "btn_refresh"; "⏳ 更新中...")
 	
 	var $window : Integer:=Current form window
-	CALL WORKER("weatherWorker"; Formula(_weatherWorkerJob($window)))
+	var $weather : cs.WeatherService:=cs.WeatherService.me
+	$weather.refreshUpcomingEvents($window)
+	
+Function _onWeatherRefresh($count : Integer; $total : Integer)
+	
+	//OBJECT SET TITLE(*; "btn_refresh"; "⏳ Updating..."+String($count)+"/"+String($total))
+	OBJECT SET TITLE(*; "btn_refresh"; "⏳ 更新中..."+String($count)+"/"+String($total))
 	
 Function _onWeatherDone()
 	This.running:=False
